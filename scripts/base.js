@@ -97,7 +97,7 @@
     }
 }, function(t, e, i) {
     (function(e) {
-        t.exports.isProd = void 0 !== e && !!e.env.IS_PROD || "undefined" != typeof location && "127.0.0.1" !== location.hostname && "localhost" !== location.hostname && !location.hostname.startsWith("192.168."), t.exports.enableHttps = t.exports.isProd, t.exports.serverTickRate = 1e3 / 30, t.exports.serverSendRate = 100, t.exports.clientSendRate = 1e3 / 30, t.exports.dltMx = Math.round(1e3 / 30), t.exports.streamUpdate = 1e4, t.exports.maxPlayers = 8, t.exports.serverSpread = 3, t.exports.minServerSpace = 3, t.exports.gamesPerServer = 5, t.exports.serverBrowserRate = 1e4, t.exports.maxPlayersTotal = t.exports.maxPlayers * t.exports.gamesPerServer + 50, t.exports.kickTimer = 9e4, t.exports.endTimer = 2e4, t.exports.endAnim = 5e3, t.exports.thirdPZ = 14, t.exports.thirdPX = 5, t.exports.serverConfig = [{
+        t.exports.isProd = void 0 !== e && !!e.env.IS_PROD || "undefined" != typeof location && "127.0.0.1" !== location.hostname && "localhost" !== location.hostname && !location.hostname.startsWith("192.168."), t.exports.enableHttps = t.exports.isProd, t.exports.serverTickRate = 1e3 / 30, t.exports.serverSendRate = 100, t.exports.clientSendRate = 1e3 / 30, t.exports.dltMx = Math.round(1e3 / 30), t.exports.streamUpdate = 1e4, t.exports.maxPlayers = 8, t.exports.serverSpread = 3, t.exports.minServerSpace = 3, t.exports.gamesPerServer = 5, t.exports.serverBrowserRate = 1e4, t.exports.maxPlayersTotal = t.exports.maxPlayers * t.exports.gamesPerServer + 50, t.exports.kickTimer = 9e4, t.exports.apiURL = void 0 === e ? t.exports.isProd ? "krunker.io" == location.hostname ? "https://api.krunker.io" : "https://api_beta.krunker.io" : "http://127.0.0.1:5060" : t.exports.isProd ? "krunker_prod" == e.env.VULTR_SCHEME ? "https://api.krunker.io" : "https://api_beta.krunker.io" : "http://127.0.0.1:5060", t.exports.endTimer = 2e4, t.exports.endAnim = 5e3, t.exports.thirdPZ = 14, t.exports.thirdPX = 5, t.exports.serverConfig = [{
             name: "Players",
             varN: "maxPlayers",
             def: 2,
@@ -202,7 +202,7 @@
             default: .5
         }, t.exports.nameOffset = .6, t.exports.nameOffsetHat = .8, t.exports.maxNameLength = 14, t.exports.maxPassLength = 16, t.exports.playerHeight = 11, t.exports.chestWidth = 2.6, t.exports.chestScale = 1.3, t.exports.armScale = 1.3, t.exports.legScale = 1.3, t.exports.uArmLength = 2.7, t.exports.armInset = -.1, t.exports.lArmLength = 2.7, t.exports.headScale = 2, t.exports.armOff = -.8, t.exports.legHeight = 4.2, t.exports.playerScale = (2 * t.exports.armScale + t.exports.chestWidth + t.exports.armInset) / 2, t.exports.hitBoxPad = 1, t.exports.tracerMinDst = 20, t.exports.tracerMaxDst = 500, t.exports.tracerChance = 1, t.exports.crouchLean = -.1 * Math.PI, t.exports.crouchDst = 2.5, t.exports.crouchSlow = .3, t.exports.crouchSpeed = .007, t.exports.crouchJump = .25, t.exports.crouchSpread = .4, t.exports.crouchAnim = 8e-4, t.exports.crouchAnimMlt = .5, t.exports.spreadMove = 30, t.exports.spreadFall = 35, t.exports.spreadRecover = .985, t.exports.spreadAdj = 63e-5, t.exports.spreadMlt = 400, t.exports.recoilMlt = .3, t.exports.maxLevel = 102, t.exports.assistTime = 5e3, t.exports.assistScore = 25, t.exports.assistMin = 20, t.exports.medalAnim = 1e3, t.exports.medalDelay = 900, t.exports.scoreStreak = 2e3, t.exports.feedTimer = 2e3, t.exports.spinTimer = 1800, t.exports.endStats = ["sid", "name", "score", "kills", "deaths", "reward"], t.exports.endForm = {
             reward: function(t) {
-                return t + "KR"
+                return t ? "<span style='color:#F8C55C'>+" + t + "</span> KR" : "NONE"
             },
             time: function(t, e, i) {
                 return i.timer || "DNF"
@@ -312,7 +312,7 @@
     }), i.d(e, "CanvasTexture", function() {
         return Ls
     }), i.d(e, "DepthTexture", function() {
-        return Rs
+        return ks
     }), i.d(e, "Texture", function() {
         return oi
     }), i.d(e, "CompressedTextureLoader", function() {
@@ -512,9 +512,9 @@
     }), i.d(e, "GridHelper", function() {
         return Ll
     }), i.d(e, "PolarGridHelper", function() {
-        return Rl
-    }), i.d(e, "FaceNormalsHelper", function() {
         return kl
+    }), i.d(e, "FaceNormalsHelper", function() {
+        return Rl
     }), i.d(e, "DirectionalLightHelper", function() {
         return Pl
     }), i.d(e, "CameraHelper", function() {
@@ -538,7 +538,7 @@
     }), i.d(e, "Font", function() {
         return bc
     }), i.d(e, "CurvePath", function() {
-        return ka
+        return Ra
     }), i.d(e, "Curve", function() {
         return pa
     }), i.d(e, "ImageUtils", function() {
@@ -548,7 +548,7 @@
     }), i.d(e, "WebGLUtils", function() {
         return is
     }), i.d(e, "WireframeGeometry", function() {
-        return ks
+        return Rs
     }), i.d(e, "ParametricGeometry", function() {
         return Ps
     }), i.d(e, "ParametricBufferGeometry", function() {
@@ -594,9 +594,9 @@
     }), i.d(e, "SphereBufferGeometry", function() {
         return Lo
     }), i.d(e, "RingGeometry", function() {
-        return Ro
-    }), i.d(e, "RingBufferGeometry", function() {
         return ko
+    }), i.d(e, "RingBufferGeometry", function() {
+        return Ro
     }), i.d(e, "PlaneGeometry", function() {
         return nn
     }), i.d(e, "PlaneBufferGeometry", function() {
@@ -734,9 +734,9 @@
     }), i.d(e, "DoubleSide", function() {
         return L
     }), i.d(e, "FlatShading", function() {
-        return R
-    }), i.d(e, "SmoothShading", function() {
         return k
+    }), i.d(e, "SmoothShading", function() {
+        return R
     }), i.d(e, "NoColors", function() {
         return P
     }), i.d(e, "FaceColors", function() {
@@ -842,9 +842,9 @@
     }), i.d(e, "MirroredRepeatWrapping", function() {
         return Lt
     }), i.d(e, "NearestFilter", function() {
-        return Rt
-    }), i.d(e, "NearestMipMapNearestFilter", function() {
         return kt
+    }), i.d(e, "NearestMipMapNearestFilter", function() {
+        return Rt
     }), i.d(e, "NearestMipMapLinearFilter", function() {
         return Pt
     }), i.d(e, "LinearFilter", function() {
@@ -950,9 +950,9 @@
     }), i.d(e, "InterpolateLinear", function() {
         return Le
     }), i.d(e, "InterpolateSmooth", function() {
-        return Re
-    }), i.d(e, "ZeroCurvatureEnding", function() {
         return ke
+    }), i.d(e, "ZeroCurvatureEnding", function() {
+        return Re
     }), i.d(e, "ZeroSlopeEnding", function() {
         return Pe
     }), i.d(e, "WrapAroundEnding", function() {
@@ -1124,8 +1124,8 @@
         T = 0,
         A = 1,
         L = 2,
-        R = 1,
-        k = 2,
+        k = 1,
+        R = 2,
         P = 0,
         C = 1,
         I = 2,
@@ -1178,8 +1178,8 @@
         Tt = 1e3,
         At = 1001,
         Lt = 1002,
-        Rt = 1003,
-        kt = 1004,
+        kt = 1003,
+        Rt = 1004,
         Pt = 1005,
         Ct = 1006,
         It = 1007,
@@ -1232,8 +1232,8 @@
         Te = 2202,
         Ae = 2300,
         Le = 2301,
-        Re = 2302,
-        ke = 2400,
+        ke = 2302,
+        Re = 2400,
         Pe = 2401,
         Ce = 2402,
         Ie = 0,
@@ -1637,15 +1637,15 @@
                 T = n[5],
                 A = n[9],
                 L = n[13],
-                R = n[2],
-                k = n[6],
+                k = n[2],
+                R = n[6],
                 P = n[10],
                 C = n[14],
                 I = n[3],
                 O = n[7],
                 D = n[11],
                 B = n[15];
-            return r[0] = s * b + o * E + a * R + c * I, r[4] = s * M + o * T + a * k + c * O, r[8] = s * _ + o * A + a * P + c * D, r[12] = s * S + o * L + a * C + c * B, r[1] = l * b + p * E + h * R + u * I, r[5] = l * M + p * T + h * k + u * O, r[9] = l * _ + p * A + h * P + u * D, r[13] = l * S + p * L + h * C + u * B, r[2] = d * b + f * E + m * R + g * I, r[6] = d * M + f * T + m * k + g * O, r[10] = d * _ + f * A + m * P + g * D, r[14] = d * S + f * L + m * C + g * B, r[3] = v * b + y * E + x * R + w * I, r[7] = v * M + y * T + x * k + w * O, r[11] = v * _ + y * A + x * P + w * D, r[15] = v * S + y * L + x * C + w * B, this
+            return r[0] = s * b + o * E + a * k + c * I, r[4] = s * M + o * T + a * R + c * O, r[8] = s * _ + o * A + a * P + c * D, r[12] = s * S + o * L + a * C + c * B, r[1] = l * b + p * E + h * k + u * I, r[5] = l * M + p * T + h * R + u * O, r[9] = l * _ + p * A + h * P + u * D, r[13] = l * S + p * L + h * C + u * B, r[2] = d * b + f * E + m * k + g * I, r[6] = d * M + f * T + m * R + g * O, r[10] = d * _ + f * A + m * P + g * D, r[14] = d * S + f * L + m * C + g * B, r[3] = v * b + y * E + x * k + w * I, r[7] = v * M + y * T + x * R + w * O, r[11] = v * _ + y * A + x * P + w * D, r[15] = v * S + y * L + x * C + w * B, this
         },
         multiplyScalar: function(t) {
             var e = this.elements;
@@ -2494,7 +2494,7 @@
             data: t,
             width: e,
             height: i
-        }, this.magFilter = void 0 !== c ? c : Rt, this.minFilter = void 0 !== l ? l : Rt, this.generateMipmaps = !1, this.flipY = !1, this.unpackAlignment = 1
+        }, this.magFilter = void 0 !== c ? c : kt, this.minFilter = void 0 !== l ? l : kt, this.generateMipmaps = !1, this.flipY = !1, this.unpackAlignment = 1
     }
 
     function hi(t, e) {
@@ -4215,7 +4215,7 @@
             return 0 != (this.mask & t.mask)
         }
     });
-    var Ai, Li, Ri, ki, Pi = 0;
+    var Ai, Li, ki, Ri, Pi = 0;
 
     function Ci() {
         Object.defineProperty(this, "id", {
@@ -4289,8 +4289,8 @@
         setRotationFromQuaternion: function(t) {
             this.quaternion.copy(t)
         },
-        rotateOnAxis: (ki = new Je, function(t, e) {
-            return ki.setFromAxisAngle(t, e), this.quaternion.multiply(ki), this
+        rotateOnAxis: (Ri = new Je, function(t, e) {
+            return Ri.setFromAxisAngle(t, e), this.quaternion.multiply(Ri), this
         }),
         rotateOnWorldAxis: function() {
             var t = new Je;
@@ -4343,8 +4343,8 @@
         localToWorld: function(t) {
             return t.applyMatrix4(this.matrixWorld)
         },
-        worldToLocal: (Ri = new Ke, function(t) {
-            return t.applyMatrix4(Ri.getInverse(this.matrixWorld))
+        worldToLocal: (ki = new Ke, function(t) {
+            return t.applyMatrix4(ki.getInverse(this.matrixWorld))
         }),
         lookAt: function() {
             var t = new Ke,
@@ -5200,12 +5200,12 @@
                 T = g + 1,
                 A = 0,
                 L = 0,
-                R = new Qe;
+                k = new Qe;
             for (x = 0; x < T; x++) {
-                var k = x * b - _;
+                var R = x * b - _;
                 for (y = 0; y < E; y++) {
                     var P = y * w - M;
-                    R[t] = P * n, R[e] = k * r, R[i] = S, c.push(R.x, R.y, R.z), R[t] = 0, R[e] = 0, R[i] = f > 0 ? 1 : -1, l.push(R.x, R.y, R.z), p.push(y / m), p.push(1 - x / g), A += 1
+                    k[t] = P * n, k[e] = R * r, k[i] = S, c.push(k.x, k.y, k.z), k[t] = 0, k[e] = 0, k[i] = f > 0 ? 1 : -1, l.push(k.x, k.y, k.z), p.push(y / m), p.push(1 - x / g), A += 1
                 }
             }
             for (x = 0; x < g; x++)
@@ -5842,7 +5842,7 @@
         }
     }
 
-    function Rn(t, e, i, n) {
+    function kn(t, e, i, n) {
         var r, s, o;
         this.setMode = function(t) {
             r = t
@@ -5858,7 +5858,7 @@
         }
     }
 
-    function kn(t) {
+    function Rn(t) {
         var e = {
             frame: 0,
             calls: 0,
@@ -5973,7 +5973,7 @@
                         if ("shading" !== e) {
                             var n = this[e];
                             void 0 !== n ? n && n.isColor ? n.set(i) : n && n.isVector3 && i && i.isVector3 ? n.copy(i) : this[e] = "overdraw" === e ? Number(i) : i : console.warn("THREE." + this.type + ": '" + e + "' is not a property of this material.")
-                        } else console.warn("THREE." + this.type + ": .shading has been removed. Use the boolean .flatShading instead."), this.flatShading = i === R;
+                        } else console.warn("THREE." + this.type + ": .shading has been removed. Use the boolean .flatShading instead."), this.flatShading = i === k;
                     else console.warn("THREE.Material: '" + e + "' parameter is undefined.")
                 }
         },
@@ -6332,7 +6332,7 @@
                     b = this.matrixWorld;
                 if (void 0 !== w && (null === x.boundingSphere && x.computeBoundingSphere(), i.copy(x.boundingSphere), i.applyMatrix4(b), !1 !== u.ray.intersectsSphere(i) && (t.getInverse(b), e.copy(u.ray).applyMatrix4(t), null === x.boundingBox || !1 !== e.intersectsBox(x.boundingBox))))
                     if (x.isBufferGeometry) {
-                        var M, _, S, E, T, A, L, R, k, P = x.index,
+                        var M, _, S, E, T, A, L, k, R, P = x.index,
                             C = x.attributes.position,
                             I = x.attributes.uv,
                             O = x.groups,
@@ -6340,13 +6340,13 @@
                         if (null !== P)
                             if (Array.isArray(w))
                                 for (E = 0, A = O.length; E < A; E++)
-                                    for (k = w[(R = O[E]).materialIndex], T = Math.max(R.start, D.start), L = Math.min(R.start + R.count, D.start + D.count); T < L; T += 3) M = P.getX(T), _ = P.getX(T + 1), S = P.getX(T + 2), (y = v(this, k, u, e, C, I, M, _, S)) && (y.faceIndex = Math.floor(T / 3), f.push(y));
+                                    for (R = w[(k = O[E]).materialIndex], T = Math.max(k.start, D.start), L = Math.min(k.start + k.count, D.start + D.count); T < L; T += 3) M = P.getX(T), _ = P.getX(T + 1), S = P.getX(T + 2), (y = v(this, R, u, e, C, I, M, _, S)) && (y.faceIndex = Math.floor(T / 3), f.push(y));
                             else
                                 for (E = Math.max(0, D.start), A = Math.min(P.count, D.start + D.count); E < A; E += 3) M = P.getX(E), _ = P.getX(E + 1), S = P.getX(E + 2), (y = v(this, w, u, e, C, I, M, _, S)) && (y.faceIndex = Math.floor(E / 3), f.push(y));
                         else if (void 0 !== C)
                             if (Array.isArray(w))
                                 for (E = 0, A = O.length; E < A; E++)
-                                    for (k = w[(R = O[E]).materialIndex], T = Math.max(R.start, D.start), L = Math.min(R.start + R.count, D.start + D.count); T < L; T += 3)(y = v(this, k, u, e, C, I, M = T, _ = T + 1, S = T + 2)) && (y.faceIndex = Math.floor(T / 3), f.push(y));
+                                    for (R = w[(k = O[E]).materialIndex], T = Math.max(k.start, D.start), L = Math.min(k.start + k.count, D.start + D.count); T < L; T += 3)(y = v(this, R, u, e, C, I, M = T, _ = T + 1, S = T + 2)) && (y.faceIndex = Math.floor(T / 3), f.push(y));
                             else
                                 for (E = Math.max(0, D.start), A = Math.min(C.count, D.start + D.count); E < A; E += 3)(y = v(this, w, u, e, C, I, M = E, _ = E + 1, S = E + 2)) && (y.faceIndex = Math.floor(E / 3), f.push(y))
                     } else if (x.isGeometry) {
@@ -6798,11 +6798,11 @@
         return "" !== t
     }
 
-    function Rr(t, e) {
+    function kr(t, e) {
         return t.replace(/NUM_DIR_LIGHTS/g, e.numDirLights).replace(/NUM_SPOT_LIGHTS/g, e.numSpotLights).replace(/NUM_RECT_AREA_LIGHTS/g, e.numRectAreaLights).replace(/NUM_POINT_LIGHTS/g, e.numPointLights).replace(/NUM_HEMI_LIGHTS/g, e.numHemiLights)
     }
 
-    function kr(t, e) {
+    function Rr(t, e) {
         return t.replace(/NUM_CLIPPING_PLANES/g, e.numClippingPlanes).replace(/UNION_CLIPPING_PLANES/g, e.numClippingPlanes - e.numClipIntersection)
     }
 
@@ -6877,18 +6877,18 @@
                 return e.join("\n")
             }(c),
             _ = a.createProgram();
-        if (n.isRawShaderMaterial ? ((m = [M].filter(Lr).join("\n")).length > 0 && (m += "\n"), (g = [b, M].filter(Lr).join("\n")).length > 0 && (g += "\n")) : (m = ["precision " + s.precision + " float;", "precision " + s.precision + " int;", "#define SHADER_NAME " + r.name, M, s.supportsVertexTextures ? "#define VERTEX_TEXTURES" : "", "#define GAMMA_FACTOR " + w, "#define MAX_BONES " + s.maxBones, s.useFog && s.fog ? "#define USE_FOG" : "", s.useFog && s.fogExp ? "#define FOG_EXP2" : "", s.map ? "#define USE_MAP" : "", s.envMap ? "#define USE_ENVMAP" : "", s.envMap ? "#define " + d : "", s.lightMap ? "#define USE_LIGHTMAP" : "", s.aoMap ? "#define USE_AOMAP" : "", s.emissiveMap ? "#define USE_EMISSIVEMAP" : "", s.bumpMap ? "#define USE_BUMPMAP" : "", s.normalMap ? "#define USE_NORMALMAP" : "", s.normalMap && s.objectSpaceNormalMap ? "#define OBJECTSPACE_NORMALMAP" : "", s.displacementMap && s.supportsVertexTextures ? "#define USE_DISPLACEMENTMAP" : "", s.specularMap ? "#define USE_SPECULARMAP" : "", s.roughnessMap ? "#define USE_ROUGHNESSMAP" : "", s.metalnessMap ? "#define USE_METALNESSMAP" : "", s.alphaMap ? "#define USE_ALPHAMAP" : "", s.vertexColors ? "#define USE_COLOR" : "", s.flatShading ? "#define FLAT_SHADED" : "", s.skinning ? "#define USE_SKINNING" : "", s.useVertexTexture ? "#define BONE_TEXTURE" : "", s.morphTargets ? "#define USE_MORPHTARGETS" : "", s.morphNormals && !1 === s.flatShading ? "#define USE_MORPHNORMALS" : "", s.doubleSided ? "#define DOUBLE_SIDED" : "", s.flipSided ? "#define FLIP_SIDED" : "", s.shadowMapEnabled ? "#define USE_SHADOWMAP" : "", s.shadowMapEnabled ? "#define " + h : "", s.sizeAttenuation ? "#define USE_SIZEATTENUATION" : "", s.logarithmicDepthBuffer ? "#define USE_LOGDEPTHBUF" : "", s.logarithmicDepthBuffer && (o.isWebGL2 || e.get("EXT_frag_depth")) ? "#define USE_LOGDEPTHBUF_EXT" : "", "uniform mat4 modelMatrix;", "uniform mat4 modelViewMatrix;", "uniform mat4 projectionMatrix;", "uniform mat4 viewMatrix;", "uniform mat3 normalMatrix;", "uniform vec3 cameraPosition;", "attribute vec3 position;", "attribute vec3 normal;", "attribute vec2 uv;", "#ifdef USE_COLOR", "\tattribute vec3 color;", "#endif", "#ifdef USE_MORPHTARGETS", "\tattribute vec3 morphTarget0;", "\tattribute vec3 morphTarget1;", "\tattribute vec3 morphTarget2;", "\tattribute vec3 morphTarget3;", "\t#ifdef USE_MORPHNORMALS", "\t\tattribute vec3 morphNormal0;", "\t\tattribute vec3 morphNormal1;", "\t\tattribute vec3 morphNormal2;", "\t\tattribute vec3 morphNormal3;", "\t#else", "\t\tattribute vec3 morphTarget4;", "\t\tattribute vec3 morphTarget5;", "\t\tattribute vec3 morphTarget6;", "\t\tattribute vec3 morphTarget7;", "\t#endif", "#endif", "#ifdef USE_SKINNING", "\tattribute vec4 skinIndex;", "\tattribute vec4 skinWeight;", "#endif", "\n"].filter(Lr).join("\n"), g = [b, "precision " + s.precision + " float;", "precision " + s.precision + " int;", "#define SHADER_NAME " + r.name, M, s.alphaTest ? "#define ALPHATEST " + s.alphaTest + (s.alphaTest % 1 ? "" : ".0") : "", "#define GAMMA_FACTOR " + w, s.useFog && s.fog ? "#define USE_FOG" : "", s.useFog && s.fogExp ? "#define FOG_EXP2" : "", s.map ? "#define USE_MAP" : "", s.envMap ? "#define USE_ENVMAP" : "", s.envMap ? "#define " + u : "", s.envMap ? "#define " + d : "", s.envMap ? "#define " + f : "", s.lightMap ? "#define USE_LIGHTMAP" : "", s.aoMap ? "#define USE_AOMAP" : "", s.emissiveMap ? "#define USE_EMISSIVEMAP" : "", s.bumpMap ? "#define USE_BUMPMAP" : "", s.normalMap ? "#define USE_NORMALMAP" : "", s.normalMap && s.objectSpaceNormalMap ? "#define OBJECTSPACE_NORMALMAP" : "", s.specularMap ? "#define USE_SPECULARMAP" : "", s.roughnessMap ? "#define USE_ROUGHNESSMAP" : "", s.metalnessMap ? "#define USE_METALNESSMAP" : "", s.alphaMap ? "#define USE_ALPHAMAP" : "", s.vertexColors ? "#define USE_COLOR" : "", s.gradientMap ? "#define USE_GRADIENTMAP" : "", s.flatShading ? "#define FLAT_SHADED" : "", s.doubleSided ? "#define DOUBLE_SIDED" : "", s.flipSided ? "#define FLIP_SIDED" : "", s.shadowMapEnabled ? "#define USE_SHADOWMAP" : "", s.shadowMapEnabled ? "#define " + h : "", s.premultipliedAlpha ? "#define PREMULTIPLIED_ALPHA" : "", s.physicallyCorrectLights ? "#define PHYSICALLY_CORRECT_LIGHTS" : "", s.logarithmicDepthBuffer ? "#define USE_LOGDEPTHBUF" : "", s.logarithmicDepthBuffer && (o.isWebGL2 || e.get("EXT_frag_depth")) ? "#define USE_LOGDEPTHBUF_EXT" : "", s.envMap && (o.isWebGL2 || e.get("EXT_shader_texture_lod")) ? "#define TEXTURE_LOD_EXT" : "", "uniform mat4 viewMatrix;", "uniform vec3 cameraPosition;", s.toneMapping !== dt ? "#define TONE_MAPPING" : "", s.toneMapping !== dt ? gi.tonemapping_pars_fragment : "", s.toneMapping !== dt ? Ar("toneMapping", s.toneMapping) : "", s.dithering ? "#define DITHERING" : "", s.outputEncoding || s.mapEncoding || s.envMapEncoding || s.emissiveMapEncoding ? gi.encodings_pars_fragment : "", s.mapEncoding ? Tr("mapTexelToLinear", s.mapEncoding) : "", s.envMapEncoding ? Tr("envMapTexelToLinear", s.envMapEncoding) : "", s.emissiveMapEncoding ? Tr("emissiveMapTexelToLinear", s.emissiveMapEncoding) : "", s.outputEncoding ? (v = "linearToOutputTexel", y = s.outputEncoding, x = Er(y), "vec4 " + v + "( vec4 value ) { return LinearTo" + x[0] + x[1] + "; }") : "", s.depthPacking ? "#define DEPTH_PACKING " + n.depthPacking : "", "\n"].filter(Lr).join("\n")), l = kr(l = Rr(l = Pr(l), s), s), p = kr(p = Rr(p = Pr(p), s), s), l = Cr(l), p = Cr(p), o.isWebGL2 && !n.isRawShaderMaterial) {
+        if (n.isRawShaderMaterial ? ((m = [M].filter(Lr).join("\n")).length > 0 && (m += "\n"), (g = [b, M].filter(Lr).join("\n")).length > 0 && (g += "\n")) : (m = ["precision " + s.precision + " float;", "precision " + s.precision + " int;", "#define SHADER_NAME " + r.name, M, s.supportsVertexTextures ? "#define VERTEX_TEXTURES" : "", "#define GAMMA_FACTOR " + w, "#define MAX_BONES " + s.maxBones, s.useFog && s.fog ? "#define USE_FOG" : "", s.useFog && s.fogExp ? "#define FOG_EXP2" : "", s.map ? "#define USE_MAP" : "", s.envMap ? "#define USE_ENVMAP" : "", s.envMap ? "#define " + d : "", s.lightMap ? "#define USE_LIGHTMAP" : "", s.aoMap ? "#define USE_AOMAP" : "", s.emissiveMap ? "#define USE_EMISSIVEMAP" : "", s.bumpMap ? "#define USE_BUMPMAP" : "", s.normalMap ? "#define USE_NORMALMAP" : "", s.normalMap && s.objectSpaceNormalMap ? "#define OBJECTSPACE_NORMALMAP" : "", s.displacementMap && s.supportsVertexTextures ? "#define USE_DISPLACEMENTMAP" : "", s.specularMap ? "#define USE_SPECULARMAP" : "", s.roughnessMap ? "#define USE_ROUGHNESSMAP" : "", s.metalnessMap ? "#define USE_METALNESSMAP" : "", s.alphaMap ? "#define USE_ALPHAMAP" : "", s.vertexColors ? "#define USE_COLOR" : "", s.flatShading ? "#define FLAT_SHADED" : "", s.skinning ? "#define USE_SKINNING" : "", s.useVertexTexture ? "#define BONE_TEXTURE" : "", s.morphTargets ? "#define USE_MORPHTARGETS" : "", s.morphNormals && !1 === s.flatShading ? "#define USE_MORPHNORMALS" : "", s.doubleSided ? "#define DOUBLE_SIDED" : "", s.flipSided ? "#define FLIP_SIDED" : "", s.shadowMapEnabled ? "#define USE_SHADOWMAP" : "", s.shadowMapEnabled ? "#define " + h : "", s.sizeAttenuation ? "#define USE_SIZEATTENUATION" : "", s.logarithmicDepthBuffer ? "#define USE_LOGDEPTHBUF" : "", s.logarithmicDepthBuffer && (o.isWebGL2 || e.get("EXT_frag_depth")) ? "#define USE_LOGDEPTHBUF_EXT" : "", "uniform mat4 modelMatrix;", "uniform mat4 modelViewMatrix;", "uniform mat4 projectionMatrix;", "uniform mat4 viewMatrix;", "uniform mat3 normalMatrix;", "uniform vec3 cameraPosition;", "attribute vec3 position;", "attribute vec3 normal;", "attribute vec2 uv;", "#ifdef USE_COLOR", "\tattribute vec3 color;", "#endif", "#ifdef USE_MORPHTARGETS", "\tattribute vec3 morphTarget0;", "\tattribute vec3 morphTarget1;", "\tattribute vec3 morphTarget2;", "\tattribute vec3 morphTarget3;", "\t#ifdef USE_MORPHNORMALS", "\t\tattribute vec3 morphNormal0;", "\t\tattribute vec3 morphNormal1;", "\t\tattribute vec3 morphNormal2;", "\t\tattribute vec3 morphNormal3;", "\t#else", "\t\tattribute vec3 morphTarget4;", "\t\tattribute vec3 morphTarget5;", "\t\tattribute vec3 morphTarget6;", "\t\tattribute vec3 morphTarget7;", "\t#endif", "#endif", "#ifdef USE_SKINNING", "\tattribute vec4 skinIndex;", "\tattribute vec4 skinWeight;", "#endif", "\n"].filter(Lr).join("\n"), g = [b, "precision " + s.precision + " float;", "precision " + s.precision + " int;", "#define SHADER_NAME " + r.name, M, s.alphaTest ? "#define ALPHATEST " + s.alphaTest + (s.alphaTest % 1 ? "" : ".0") : "", "#define GAMMA_FACTOR " + w, s.useFog && s.fog ? "#define USE_FOG" : "", s.useFog && s.fogExp ? "#define FOG_EXP2" : "", s.map ? "#define USE_MAP" : "", s.envMap ? "#define USE_ENVMAP" : "", s.envMap ? "#define " + u : "", s.envMap ? "#define " + d : "", s.envMap ? "#define " + f : "", s.lightMap ? "#define USE_LIGHTMAP" : "", s.aoMap ? "#define USE_AOMAP" : "", s.emissiveMap ? "#define USE_EMISSIVEMAP" : "", s.bumpMap ? "#define USE_BUMPMAP" : "", s.normalMap ? "#define USE_NORMALMAP" : "", s.normalMap && s.objectSpaceNormalMap ? "#define OBJECTSPACE_NORMALMAP" : "", s.specularMap ? "#define USE_SPECULARMAP" : "", s.roughnessMap ? "#define USE_ROUGHNESSMAP" : "", s.metalnessMap ? "#define USE_METALNESSMAP" : "", s.alphaMap ? "#define USE_ALPHAMAP" : "", s.vertexColors ? "#define USE_COLOR" : "", s.gradientMap ? "#define USE_GRADIENTMAP" : "", s.flatShading ? "#define FLAT_SHADED" : "", s.doubleSided ? "#define DOUBLE_SIDED" : "", s.flipSided ? "#define FLIP_SIDED" : "", s.shadowMapEnabled ? "#define USE_SHADOWMAP" : "", s.shadowMapEnabled ? "#define " + h : "", s.premultipliedAlpha ? "#define PREMULTIPLIED_ALPHA" : "", s.physicallyCorrectLights ? "#define PHYSICALLY_CORRECT_LIGHTS" : "", s.logarithmicDepthBuffer ? "#define USE_LOGDEPTHBUF" : "", s.logarithmicDepthBuffer && (o.isWebGL2 || e.get("EXT_frag_depth")) ? "#define USE_LOGDEPTHBUF_EXT" : "", s.envMap && (o.isWebGL2 || e.get("EXT_shader_texture_lod")) ? "#define TEXTURE_LOD_EXT" : "", "uniform mat4 viewMatrix;", "uniform vec3 cameraPosition;", s.toneMapping !== dt ? "#define TONE_MAPPING" : "", s.toneMapping !== dt ? gi.tonemapping_pars_fragment : "", s.toneMapping !== dt ? Ar("toneMapping", s.toneMapping) : "", s.dithering ? "#define DITHERING" : "", s.outputEncoding || s.mapEncoding || s.envMapEncoding || s.emissiveMapEncoding ? gi.encodings_pars_fragment : "", s.mapEncoding ? Tr("mapTexelToLinear", s.mapEncoding) : "", s.envMapEncoding ? Tr("envMapTexelToLinear", s.envMapEncoding) : "", s.emissiveMapEncoding ? Tr("emissiveMapTexelToLinear", s.emissiveMapEncoding) : "", s.outputEncoding ? (v = "linearToOutputTexel", y = s.outputEncoding, x = Er(y), "vec4 " + v + "( vec4 value ) { return LinearTo" + x[0] + x[1] + "; }") : "", s.depthPacking ? "#define DEPTH_PACKING " + n.depthPacking : "", "\n"].filter(Lr).join("\n")), l = Rr(l = kr(l = Pr(l), s), s), p = Rr(p = kr(p = Pr(p), s), s), l = Cr(l), p = Cr(p), o.isWebGL2 && !n.isRawShaderMaterial) {
             var T = !1,
                 A = /^\s*#version\s+300\s+es\s*\n/;
             n.isShaderMaterial && null !== l.match(A) && null !== p.match(A) && (T = !0, l = l.replace(A, ""), p = p.replace(A, "")), m = ["#version 300 es\n", "#define attribute in", "#define varying out", "#define texture2D texture"].join("\n") + "\n" + m, g = ["#version 300 es\n", "#define varying in", T ? "" : "out highp vec4 pc_fragColor;", T ? "" : "#define gl_FragColor pc_fragColor", "#define gl_FragDepthEXT gl_FragDepth", "#define texture2D texture", "#define textureCube texture", "#define texture2DProj textureProj", "#define texture2DLodEXT textureLod", "#define texture2DProjLodEXT textureProjLod", "#define textureCubeLodEXT textureLod", "#define texture2DGradEXT textureGrad", "#define texture2DProjGradEXT textureProjGrad", "#define textureCubeGradEXT textureGrad"].join("\n") + "\n" + g
         }
         var L = m + l,
-            R = g + p,
-            k = _r(a, a.VERTEX_SHADER, L),
-            P = _r(a, a.FRAGMENT_SHADER, R);
-        a.attachShader(_, k), a.attachShader(_, P), void 0 !== n.index0AttributeName ? a.bindAttribLocation(_, 0, n.index0AttributeName) : !0 === s.morphTargets && a.bindAttribLocation(_, 0, "position"), a.linkProgram(_);
+            k = g + p,
+            R = _r(a, a.VERTEX_SHADER, L),
+            P = _r(a, a.FRAGMENT_SHADER, k);
+        a.attachShader(_, R), a.attachShader(_, P), void 0 !== n.index0AttributeName ? a.bindAttribLocation(_, 0, n.index0AttributeName) : !0 === s.morphTargets && a.bindAttribLocation(_, 0, "position"), a.linkProgram(_);
         var C, I, O = a.getProgramInfoLog(_).trim(),
-            D = a.getShaderInfoLog(k).trim(),
+            D = a.getShaderInfoLog(R).trim(),
             B = a.getShaderInfoLog(P).trim(),
             N = !0,
             z = !0;
@@ -6904,7 +6904,7 @@
                 log: B,
                 prefix: g
             }
-        }), a.deleteShader(k), a.deleteShader(P), this.getUniforms = function() {
+        }), a.deleteShader(R), a.deleteShader(P), this.getUniforms = function() {
             return void 0 === C && (C = new Mr(a, _, t)), C
         }, this.getAttributes = function() {
             return void 0 === I && (I = function(t, e) {
@@ -6927,7 +6927,7 @@
                     return console.warn("THREE.WebGLProgram: .attributes is now .getAttributes()."), this.getAttributes()
                 }
             }
-        }), this.name = r.name, this.id = Sr++, this.code = i, this.usedTimes = 1, this.program = _, this.vertexShader = k, this.fragmentShader = P, this
+        }), this.name = r.name, this.id = Sr++, this.code = i, this.usedTimes = 1, this.program = _, this.vertexShader = R, this.fragmentShader = P, this
     }
 
     function Or(t, e, i) {
@@ -7311,7 +7311,7 @@
         }
         var E = this;
 
-        function R(e, i, n, r, s, o) {
+        function k(e, i, n, r, s, o) {
             var a = e.geometry,
                 c = null,
                 h = u,
@@ -7335,7 +7335,7 @@
             return c.visible = i.visible, c.wireframe = i.wireframe, c.side = null != i.shadowSide ? i.shadowSide : m[i.side], c.clipShadows = i.clipShadows, c.clippingPlanes = i.clippingPlanes, c.clipIntersection = i.clipIntersection, c.wireframeLinewidth = i.wireframeLinewidth, c.linewidth = i.linewidth, n && c.isMeshDistanceMaterial && (c.referencePosition.copy(r), c.nearDistance = s, c.farDistance = o), c
         }
 
-        function k(i, r, s, o) {
+        function R(i, r, s, o) {
             if (!1 !== i.visible) {
                 if (i.layers.test(r.layers) && (i.isMesh || i.isLine || i.isPoints) && i.castShadow && (!i.frustumCulled || n.intersectsObject(i))) {
                     i.modelViewMatrix.multiplyMatrices(s.matrixWorldInverse, i.matrixWorld);
@@ -7346,15 +7346,15 @@
                             var d = p[h],
                                 f = l[d.materialIndex];
                             if (f && f.visible) {
-                                var m = R(i, f, o, c, s.near, s.far);
+                                var m = k(i, f, o, c, s.near, s.far);
                                 t.renderBufferDirect(s, null, a, m, i, d)
                             }
                         } else if (l.visible) {
-                            m = R(i, l, o, c, s.near, s.far);
+                            m = k(i, l, o, c, s.near, s.far);
                             t.renderBufferDirect(s, null, a, m, i, null)
                         }
                 }
-                for (var g = i.children, v = 0, y = g.length; v < y; v++) k(g[v], r, s, o)
+                for (var g = i.children, v = 0, y = g.length; v < y; v++) R(g[v], r, s, o)
             }
         }
         this.enabled = !1, this.autoUpdate = !0, this.needsUpdate = !1, this.type = S, this.render = function(e, i, l) {
@@ -7375,8 +7375,8 @@
                         }
                         if (null === x.map) {
                             var S = {
-                                minFilter: Rt,
-                                magFilter: Rt,
+                                minFilter: kt,
+                                magFilter: kt,
                                 format: Zt
                             };
                             x.map = new ci(s.x, s.y, S), x.map.texture.name = m.name + ".shadowMap", b.updateProjectionMatrix()
@@ -7388,10 +7388,10 @@
                         for (var L = 0; L < p; L++) {
                             if (w) {
                                 a.copy(b.position), a.add(g[L]), b.up.copy(v[L]), b.lookAt(a), b.updateMatrixWorld();
-                                var R = y[L];
-                                u.viewport(R)
+                                var k = y[L];
+                                u.viewport(k)
                             }
-                            r.multiplyMatrices(b.projectionMatrix, b.matrixWorldInverse), n.setFromMatrix(r), k(i, l, b, w)
+                            r.multiplyMatrices(b.projectionMatrix, b.matrixWorldInverse), n.setFromMatrix(r), R(i, l, b, w)
                         }
                     } else console.warn("THREE.WebGLShadowMap:", m, "has no shadow.")
                 }
@@ -7528,8 +7528,8 @@
             S = !1,
             E = null,
             T = null,
-            R = null,
             k = null,
+            R = null,
             P = null,
             C = t.getParameter(t.MAX_COMBINED_TEXTURE_IMAGE_UNITS),
             I = !1,
@@ -7590,7 +7590,7 @@
         }
 
         function tt(e, i, n) {
-            e ? (Z(t.POLYGON_OFFSET_FILL), k === i && P === n || (t.polygonOffset(i, n), k = i, P = n)) : K(t.POLYGON_OFFSET_FILL)
+            e ? (Z(t.POLYGON_OFFSET_FILL), R === i && P === n || (t.polygonOffset(i, n), R = i, P = n)) : K(t.POLYGON_OFFSET_FILL)
         }
 
         function et(e) {
@@ -7631,7 +7631,7 @@
             setFlipSided: Q,
             setCullFace: $,
             setLineWidth: function(e) {
-                e !== R && (I && t.lineWidth(e), R = e)
+                e !== k && (I && t.lineWidth(e), k = e)
             },
             setPolygonOffset: tt,
             setScissorTest: function(e) {
@@ -7691,7 +7691,7 @@
         }
 
         function h(t, e) {
-            return t.generateMipmaps && e && t.minFilter !== Rt && t.minFilter !== Ct
+            return t.generateMipmaps && e && t.minFilter !== kt && t.minFilter !== Ct
         }
 
         function u(e, i, r, s) {
@@ -7714,7 +7714,7 @@
         }
 
         function f(e) {
-            return e === Rt || e === kt || e === Pt ? t.NEAREST : t.LINEAR
+            return e === kt || e === Rt || e === Pt ? t.NEAREST : t.LINEAR
         }
 
         function m(e) {
@@ -7763,7 +7763,7 @@
                         i.activeTexture(t.TEXTURE0 + c), i.bindTexture(t.TEXTURE_2D, e.__webglTexture), t.pixelStorei(t.UNPACK_FLIP_Y_WEBGL, n.flipY), t.pixelStorei(t.UNPACK_PREMULTIPLY_ALPHA_WEBGL, n.premultiplyAlpha), t.pixelStorei(t.UNPACK_ALIGNMENT, n.unpackAlignment);
                         var f = l(n.image, r.maxTextureSize);
                         (function(t) {
-                            return !r.isWebGL2 && (t.wrapS !== At || t.wrapT !== At || t.minFilter !== Rt && t.minFilter !== Ct)
+                            return !r.isWebGL2 && (t.wrapS !== At || t.wrapT !== At || t.minFilter !== kt && t.minFilter !== Ct)
                         })(n) && !1 === p(f) && (f = function(t) {
                             return t instanceof HTMLImageElement || t instanceof HTMLCanvasElement || t instanceof ImageBitmap ? (void 0 === a && (a = document.createElementNS("http://www.w3.org/1999/xhtml", "canvas")), a.width = Xe.floorPowerOfTwo(t.width), a.height = Xe.floorPowerOfTwo(t.height), a.getContext("2d").drawImage(t, 0, 0, a.width, a.height), console.warn("THREE.WebGLRenderer: image is not power of two (" + t.width + "x" + t.height + "). Resized to " + a.width + "x" + a.height), a) : t
                         }(f));
@@ -7802,7 +7802,7 @@
 
         function y(i, o, a) {
             var c;
-            if (a ? (t.texParameteri(i, t.TEXTURE_WRAP_S, s.convert(o.wrapS)), t.texParameteri(i, t.TEXTURE_WRAP_T, s.convert(o.wrapT)), t.texParameteri(i, t.TEXTURE_MAG_FILTER, s.convert(o.magFilter)), t.texParameteri(i, t.TEXTURE_MIN_FILTER, s.convert(o.minFilter))) : (t.texParameteri(i, t.TEXTURE_WRAP_S, t.CLAMP_TO_EDGE), t.texParameteri(i, t.TEXTURE_WRAP_T, t.CLAMP_TO_EDGE), o.wrapS === At && o.wrapT === At || console.warn("THREE.WebGLRenderer: Texture is not power of two. Texture.wrapS and Texture.wrapT should be set to THREE.ClampToEdgeWrapping."), t.texParameteri(i, t.TEXTURE_MAG_FILTER, f(o.magFilter)), t.texParameteri(i, t.TEXTURE_MIN_FILTER, f(o.minFilter)), o.minFilter !== Rt && o.minFilter !== Ct && console.warn("THREE.WebGLRenderer: Texture is not power of two. Texture.minFilter should be set to THREE.NearestFilter or THREE.LinearFilter.")), c = e.get("EXT_texture_filter_anisotropic")) {
+            if (a ? (t.texParameteri(i, t.TEXTURE_WRAP_S, s.convert(o.wrapS)), t.texParameteri(i, t.TEXTURE_WRAP_T, s.convert(o.wrapT)), t.texParameteri(i, t.TEXTURE_MAG_FILTER, s.convert(o.magFilter)), t.texParameteri(i, t.TEXTURE_MIN_FILTER, s.convert(o.minFilter))) : (t.texParameteri(i, t.TEXTURE_WRAP_S, t.CLAMP_TO_EDGE), t.texParameteri(i, t.TEXTURE_WRAP_T, t.CLAMP_TO_EDGE), o.wrapS === At && o.wrapT === At || console.warn("THREE.WebGLRenderer: Texture is not power of two. Texture.wrapS and Texture.wrapT should be set to THREE.ClampToEdgeWrapping."), t.texParameteri(i, t.TEXTURE_MAG_FILTER, f(o.magFilter)), t.texParameteri(i, t.TEXTURE_MIN_FILTER, f(o.minFilter)), o.minFilter !== kt && o.minFilter !== Ct && console.warn("THREE.WebGLRenderer: Texture is not power of two. Texture.minFilter should be set to THREE.NearestFilter or THREE.LinearFilter.")), c = e.get("EXT_texture_filter_anisotropic")) {
                 if (o.type === Ht && null === e.get("OES_texture_float_linear")) return;
                 if (o.type === jt && null === (r.isWebGL2 || e.get("OES_texture_half_float_linear"))) return;
                 (o.anisotropy > 1 || n.get(o).__currentAnisotropy) && (t.texParameterf(i, c.TEXTURE_MAX_ANISOTROPY_EXT, Math.min(o.anisotropy, r.getMaxAnisotropy())), n.get(o).__currentAnisotropy = o.anisotropy)
@@ -7893,8 +7893,8 @@
                 if (n === Tt) return t.REPEAT;
                 if (n === At) return t.CLAMP_TO_EDGE;
                 if (n === Lt) return t.MIRRORED_REPEAT;
-                if (n === Rt) return t.NEAREST;
-                if (n === kt) return t.NEAREST_MIPMAP_NEAREST;
+                if (n === kt) return t.NEAREST;
+                if (n === Rt) return t.NEAREST_MIPMAP_NEAREST;
                 if (n === Pt) return t.NEAREST_MIPMAP_LINEAR;
                 if (n === Ct) return t.LINEAR;
                 if (n === It) return t.LINEAR_MIPMAP_NEAREST;
@@ -8180,7 +8180,7 @@
             p = null,
             h = null;
         this.domElement = e, this.context = null, this.autoClear = !0, this.autoClearColor = !0, this.autoClearDepth = !0, this.autoClearStencil = !0, this.sortObjects = !0, this.clippingPlanes = [], this.localClippingEnabled = !1, this.gammaFactor = 2, this.gammaInput = !1, this.gammaOutput = !1, this.physicallyCorrectLights = !1, this.toneMapping = ft, this.toneMappingExposure = 1, this.toneMappingWhitePoint = 1, this.maxMorphTargets = 8, this.maxMorphNormals = 4;
-        var u, d, f, g, v, y, x, w, b, M, _, S, E, T, L, R, k, P, C = this,
+        var u, d, f, g, v, y, x, w, b, M, _, S, E, T, L, k, R, P, C = this,
             I = !1,
             O = null,
             D = null,
@@ -8236,7 +8236,7 @@
         }
 
         function st() {
-            d = new An(u), (f = new En(u, d, t)).isWebGL2 || (d.get("WEBGL_depth_texture"), d.get("OES_texture_float"), d.get("OES_texture_half_float"), d.get("OES_texture_half_float_linear"), d.get("OES_standard_derivatives"), d.get("OES_element_index_uint"), d.get("ANGLE_instanced_arrays")), d.get("OES_texture_float_linear"), P = new is(u, d, f), (g = new ts(u, d, P, f)).scissor(j.copy(Z).multiplyScalar(q)), g.viewport(H.copy(X).multiplyScalar(q)), v = new kn(u), y = new Dr, x = new es(u, d, g, y, f, P, v), w = new Si(u), b = new Ln(u, w, v), M = new In(b, v), L = new Cn(u), _ = new Or(C, d, f), S = new Ur, E = new Kr, T = new _n(C, g, M, a), R = new Sn(u, d, v, f), k = new Rn(u, d, v, f), v.programs = _.programs, C.context = u, C.capabilities = f, C.extensions = d, C.properties = y, C.renderLists = S, C.state = g, C.info = v
+            d = new An(u), (f = new En(u, d, t)).isWebGL2 || (d.get("WEBGL_depth_texture"), d.get("OES_texture_float"), d.get("OES_texture_half_float"), d.get("OES_texture_half_float_linear"), d.get("OES_standard_derivatives"), d.get("OES_element_index_uint"), d.get("ANGLE_instanced_arrays")), d.get("OES_texture_float_linear"), P = new is(u, d, f), (g = new ts(u, d, P, f)).scissor(j.copy(Z).multiplyScalar(q)), g.viewport(H.copy(X).multiplyScalar(q)), v = new Rn(u), y = new Dr, x = new es(u, d, g, y, f, P, v), w = new Si(u), b = new Ln(u, w, v), M = new In(b, v), L = new Cn(u), _ = new Or(C, d, f), S = new Ur, E = new Kr, T = new _n(C, g, M, a), k = new Sn(u, d, v, f), R = new kn(u, d, v, f), v.programs = _.programs, C.context = u, C.capabilities = f, C.extensions = d, C.properties = y, C.renderLists = S, C.state = g, C.info = v
         }
         st();
         var ot = "xr" in navigator ? new as(C) : new os(C);
@@ -8336,8 +8336,8 @@
                 h = i.attributes.position,
                 m = 1;
             !0 === n.wireframe && (p = b.getWireframeAttribute(i), m = 2);
-            var v = R;
-            null !== p && (l = w.get(p), (v = k).setIndex(l)), c && (! function(t, e, i) {
+            var v = k;
+            null !== p && (l = w.get(p), (v = R).setIndex(l)), c && (! function(t, e, i) {
                 if (i && i.isInstancedBufferGeometry & !f.isWebGL2 && null === d.get("ANGLE_instanced_arrays")) return void console.error("THREE.WebGLRenderer.setupVertexAttributes: using THREE.InstancedBufferGeometry but hardware does not support extension ANGLE_instanced_arrays.");
                 g.initAttributes();
                 var n = i.attributes,
@@ -8809,15 +8809,15 @@
         oi.call(this, t, e, i, n, r, s, o, a, c), this.needsUpdate = !0
     }
 
-    function Rs(t, e, i, n, r, s, o, a, c, l) {
+    function ks(t, e, i, n, r, s, o, a, c, l) {
         if ((l = void 0 !== l ? l : $t) !== $t && l !== te) throw new Error("DepthTexture format must be either THREE.DepthFormat or THREE.DepthStencilFormat");
         void 0 === i && l === $t && (i = zt), void 0 === i && l === te && (i = Yt), oi.call(this, null, n, r, s, o, a, l, i, c), this.image = {
             width: t,
             height: e
-        }, this.magFilter = void 0 !== o ? o : Rt, this.minFilter = void 0 !== a ? a : Rt, this.flipY = !1, this.generateMipmaps = !1
+        }, this.magFilter = void 0 !== o ? o : kt, this.minFilter = void 0 !== a ? a : kt, this.flipY = !1, this.generateMipmaps = !1
     }
 
-    function ks(t) {
+    function Rs(t) {
         $i.call(this), this.type = "WireframeGeometry";
         var e, i, n, r, s, o, a, c, l, p, h = [],
             u = [0, 0],
@@ -9705,7 +9705,7 @@
             var t = this.image;
             t.readyState >= t.HAVE_CURRENT_DATA && (this.needsUpdate = !0)
         }
-    }), As.prototype = Object.create(oi.prototype), As.prototype.constructor = As, As.prototype.isCompressedTexture = !0, Ls.prototype = Object.create(oi.prototype), Ls.prototype.constructor = Ls, Ls.prototype.isCanvasTexture = !0, Rs.prototype = Object.create(oi.prototype), Rs.prototype.constructor = Rs, Rs.prototype.isDepthTexture = !0, ks.prototype = Object.create($i.prototype), ks.prototype.constructor = ks, Ps.prototype = Object.create(Ui.prototype), Ps.prototype.constructor = Ps, Cs.prototype = Object.create($i.prototype), Cs.prototype.constructor = Cs, Is.prototype = Object.create(Ui.prototype), Is.prototype.constructor = Is, Os.prototype = Object.create($i.prototype), Os.prototype.constructor = Os, Ds.prototype = Object.create(Ui.prototype), Ds.prototype.constructor = Ds, Bs.prototype = Object.create(Os.prototype), Bs.prototype.constructor = Bs, Ns.prototype = Object.create(Ui.prototype), Ns.prototype.constructor = Ns, zs.prototype = Object.create(Os.prototype), zs.prototype.constructor = zs, Us.prototype = Object.create(Ui.prototype), Us.prototype.constructor = Us, Fs.prototype = Object.create(Os.prototype), Fs.prototype.constructor = Fs, Hs.prototype = Object.create(Ui.prototype), Hs.prototype.constructor = Hs, js.prototype = Object.create(Os.prototype), js.prototype.constructor = js, Gs.prototype = Object.create(Ui.prototype), Gs.prototype.constructor = Gs, Vs.prototype = Object.create($i.prototype), Vs.prototype.constructor = Vs, Ws.prototype = Object.create(Ui.prototype), Ws.prototype.constructor = Ws, Ys.prototype = Object.create($i.prototype), Ys.prototype.constructor = Ys, qs.prototype = Object.create(Ui.prototype), qs.prototype.constructor = qs, Xs.prototype = Object.create($i.prototype), Xs.prototype.constructor = Xs;
+    }), As.prototype = Object.create(oi.prototype), As.prototype.constructor = As, As.prototype.isCompressedTexture = !0, Ls.prototype = Object.create(oi.prototype), Ls.prototype.constructor = Ls, Ls.prototype.isCanvasTexture = !0, ks.prototype = Object.create(oi.prototype), ks.prototype.constructor = ks, ks.prototype.isDepthTexture = !0, Rs.prototype = Object.create($i.prototype), Rs.prototype.constructor = Rs, Ps.prototype = Object.create(Ui.prototype), Ps.prototype.constructor = Ps, Cs.prototype = Object.create($i.prototype), Cs.prototype.constructor = Cs, Is.prototype = Object.create(Ui.prototype), Is.prototype.constructor = Is, Os.prototype = Object.create($i.prototype), Os.prototype.constructor = Os, Ds.prototype = Object.create(Ui.prototype), Ds.prototype.constructor = Ds, Bs.prototype = Object.create(Os.prototype), Bs.prototype.constructor = Bs, Ns.prototype = Object.create(Ui.prototype), Ns.prototype.constructor = Ns, zs.prototype = Object.create(Os.prototype), zs.prototype.constructor = zs, Us.prototype = Object.create(Ui.prototype), Us.prototype.constructor = Us, Fs.prototype = Object.create(Os.prototype), Fs.prototype.constructor = Fs, Hs.prototype = Object.create(Ui.prototype), Hs.prototype.constructor = Hs, js.prototype = Object.create(Os.prototype), js.prototype.constructor = js, Gs.prototype = Object.create(Ui.prototype), Gs.prototype.constructor = Gs, Vs.prototype = Object.create($i.prototype), Vs.prototype.constructor = Vs, Ws.prototype = Object.create(Ui.prototype), Ws.prototype.constructor = Ws, Ys.prototype = Object.create($i.prototype), Ys.prototype.constructor = Ys, qs.prototype = Object.create(Ui.prototype), qs.prototype.constructor = qs, Xs.prototype = Object.create($i.prototype), Xs.prototype.constructor = Xs;
     var Zs = function(t, e, i) {
         i = i || 2;
         var n, r, s, o, a, c, l, p = e && e.length,
@@ -10014,10 +10014,10 @@
                 L = E;
             for (b = 0, M = T.length; b < M; b++) w = T[b], E = E.concat(w);
 
-            function R(t, e, i) {
+            function k(t, e, i) {
                 return e || console.error("THREE.ExtrudeGeometry: vec does not exist"), e.clone().multiplyScalar(i).add(t)
             }
-            var k, P, C, I, O, D, B = E.length,
+            var R, P, C, I, O, D, B = E.length,
                 N = A.length;
 
             function z(t, e, i) {
@@ -10049,18 +10049,18 @@
                 for (w = T[b], V = [], F = 0, j = (H = w.length) - 1, G = F + 1; F < H; F++, j++, G++) j === H && (j = 0), G === H && (G = 0), V[F] = z(w[F], w[j], w[G]);
                 Y.push(V), q = q.concat(V)
             }
-            for (k = 0; k < u; k++) {
-                for (C = k / u, I = p * Math.cos(C * Math.PI / 2), P = h * Math.sin(C * Math.PI / 2), F = 0, H = L.length; F < H; F++) Z((O = R(L[F], U[F], P)).x, O.y, -I);
+            for (R = 0; R < u; R++) {
+                for (C = R / u, I = p * Math.cos(C * Math.PI / 2), P = h * Math.sin(C * Math.PI / 2), F = 0, H = L.length; F < H; F++) Z((O = k(L[F], U[F], P)).x, O.y, -I);
                 for (b = 0, M = T.length; b < M; b++)
-                    for (w = T[b], V = Y[b], F = 0, H = w.length; F < H; F++) Z((O = R(w[F], V[F], P)).x, O.y, -I)
+                    for (w = T[b], V = Y[b], F = 0, H = w.length; F < H; F++) Z((O = k(w[F], V[F], P)).x, O.y, -I)
             }
-            for (P = h, F = 0; F < B; F++) O = l ? R(E[F], q[F], P) : E[F], _ ? (y.copy(g.normals[0]).multiplyScalar(O.x), v.copy(g.binormals[0]).multiplyScalar(O.y), x.copy(m[0]).add(y).add(v), Z(x.x, x.y, x.z)) : Z(O.x, O.y, 0);
+            for (P = h, F = 0; F < B; F++) O = l ? k(E[F], q[F], P) : E[F], _ ? (y.copy(g.normals[0]).multiplyScalar(O.x), v.copy(g.binormals[0]).multiplyScalar(O.y), x.copy(m[0]).add(y).add(v), Z(x.x, x.y, x.z)) : Z(O.x, O.y, 0);
             for (W = 1; W <= a; W++)
-                for (F = 0; F < B; F++) O = l ? R(E[F], q[F], P) : E[F], _ ? (y.copy(g.normals[W]).multiplyScalar(O.x), v.copy(g.binormals[W]).multiplyScalar(O.y), x.copy(m[W]).add(y).add(v), Z(x.x, x.y, x.z)) : Z(O.x, O.y, c / a * W);
-            for (k = u - 1; k >= 0; k--) {
-                for (C = k / u, I = p * Math.cos(C * Math.PI / 2), P = h * Math.sin(C * Math.PI / 2), F = 0, H = L.length; F < H; F++) Z((O = R(L[F], U[F], P)).x, O.y, c + I);
+                for (F = 0; F < B; F++) O = l ? k(E[F], q[F], P) : E[F], _ ? (y.copy(g.normals[W]).multiplyScalar(O.x), v.copy(g.binormals[W]).multiplyScalar(O.y), x.copy(m[W]).add(y).add(v), Z(x.x, x.y, x.z)) : Z(O.x, O.y, c / a * W);
+            for (R = u - 1; R >= 0; R--) {
+                for (C = R / u, I = p * Math.cos(C * Math.PI / 2), P = h * Math.sin(C * Math.PI / 2), F = 0, H = L.length; F < H; F++) Z((O = k(L[F], U[F], P)).x, O.y, c + I);
                 for (b = 0, M = T.length; b < M; b++)
-                    for (w = T[b], V = Y[b], F = 0, H = w.length; F < H; F++) O = R(w[F], V[F], P), _ ? Z(O.x, O.y + m[a - 1].y, m[a - 1].x + I) : Z(O.x, O.y, c + I)
+                    for (w = T[b], V = Y[b], F = 0, H = w.length; F < H; F++) O = k(w[F], V[F], P), _ ? Z(O.x, O.y + m[a - 1].y, m[a - 1].x + I) : Z(O.x, O.y, c + I)
             }
 
             function X(t, e) {
@@ -10231,7 +10231,7 @@
         this.setIndex(f), this.addAttribute("position", new Xi(m, 3)), this.addAttribute("normal", new Xi(g, 3)), this.addAttribute("uv", new Xi(v, 2))
     }
 
-    function Ro(t, e, i, n, r, s) {
+    function ko(t, e, i, n, r, s) {
         Ui.call(this), this.type = "RingGeometry", this.parameters = {
             innerRadius: t,
             outerRadius: e,
@@ -10239,10 +10239,10 @@
             phiSegments: n,
             thetaStart: r,
             thetaLength: s
-        }, this.fromBufferGeometry(new ko(t, e, i, n, r, s)), this.mergeVertices()
+        }, this.fromBufferGeometry(new Ro(t, e, i, n, r, s)), this.mergeVertices()
     }
 
-    function ko(t, e, i, n, r, s) {
+    function Ro(t, e, i, n, r, s) {
         $i.call(this), this.type = "RingBufferGeometry", this.parameters = {
             innerRadius: t,
             outerRadius: e,
@@ -10477,11 +10477,11 @@
             }
             for (s = 0; s < n; s++)
                 for (v = 0; v < r; v++) {
-                    var R = f[v][s],
-                        k = f[v + 1][s],
+                    var k = f[v][s],
+                        R = f[v + 1][s],
                         P = f[v + 1][s + 1],
                         C = f[v][s + 1];
-                    l.push(R, k, C), l.push(k, P, C), w += 6
+                    l.push(k, R, C), l.push(R, P, C), w += 6
                 }
             c.addGroup(g, w, 0), g += w
         }(), !1 === s && (t > 0 && v(!0), e > 0 && v(!1)), this.setIndex(l), this.addAttribute("position", new Xi(p, 3)), this.addAttribute("normal", new Xi(h, 3)), this.addAttribute("uv", new Xi(u, 2))
@@ -10540,7 +10540,7 @@
         for (r = 1; r <= e; r++) o.push(r, r + 1, 0);
         this.setIndex(o), this.addAttribute("position", new Xi(a, 3)), this.addAttribute("normal", new Xi(c, 3)), this.addAttribute("uv", new Xi(l, 2))
     }
-    Eo.prototype = Object.create(Ui.prototype), Eo.prototype.constructor = Eo, To.prototype = Object.create(Mo.prototype), To.prototype.constructor = To, Ao.prototype = Object.create(Ui.prototype), Ao.prototype.constructor = Ao, Lo.prototype = Object.create($i.prototype), Lo.prototype.constructor = Lo, Ro.prototype = Object.create(Ui.prototype), Ro.prototype.constructor = Ro, ko.prototype = Object.create($i.prototype), ko.prototype.constructor = ko, Po.prototype = Object.create(Ui.prototype), Po.prototype.constructor = Po, Co.prototype = Object.create($i.prototype), Co.prototype.constructor = Co, Io.prototype = Object.create(Ui.prototype), Io.prototype.constructor = Io, Io.prototype.toJSON = function() {
+    Eo.prototype = Object.create(Ui.prototype), Eo.prototype.constructor = Eo, To.prototype = Object.create(Mo.prototype), To.prototype.constructor = To, Ao.prototype = Object.create(Ui.prototype), Ao.prototype.constructor = Ao, Lo.prototype = Object.create($i.prototype), Lo.prototype.constructor = Lo, ko.prototype = Object.create(Ui.prototype), ko.prototype.constructor = ko, Ro.prototype = Object.create($i.prototype), Ro.prototype.constructor = Ro, Po.prototype = Object.create(Ui.prototype), Po.prototype.constructor = Po, Co.prototype = Object.create($i.prototype), Co.prototype.constructor = Co, Io.prototype = Object.create(Ui.prototype), Io.prototype.constructor = Io, Io.prototype.toJSON = function() {
         var t = Ui.prototype.toJSON.call(this);
         return Do(this.parameters.shapes, t)
     }, Oo.prototype = Object.create($i.prototype), Oo.prototype.constructor = Oo, Oo.prototype.toJSON = function() {
@@ -10548,7 +10548,7 @@
         return Do(this.parameters.shapes, t)
     }, Bo.prototype = Object.create($i.prototype), Bo.prototype.constructor = Bo, No.prototype = Object.create(Ui.prototype), No.prototype.constructor = No, zo.prototype = Object.create($i.prototype), zo.prototype.constructor = zo, Uo.prototype = Object.create(No.prototype), Uo.prototype.constructor = Uo, Fo.prototype = Object.create(zo.prototype), Fo.prototype.constructor = Fo, Ho.prototype = Object.create(Ui.prototype), Ho.prototype.constructor = Ho, jo.prototype = Object.create($i.prototype), jo.prototype.constructor = jo;
     var Go = Object.freeze({
-        WireframeGeometry: ks,
+        WireframeGeometry: Rs,
         ParametricGeometry: Ps,
         ParametricBufferGeometry: Cs,
         TetrahedronGeometry: Ds,
@@ -10571,8 +10571,8 @@
         TextBufferGeometry: To,
         SphereGeometry: Ao,
         SphereBufferGeometry: Lo,
-        RingGeometry: Ro,
-        RingBufferGeometry: ko,
+        RingGeometry: ko,
+        RingBufferGeometry: Ro,
         PlaneGeometry: nn,
         PlaneBufferGeometry: rn,
         LatheGeometry: Po,
@@ -11334,7 +11334,7 @@
         }
         return this
     };
-    var Ra = Object.freeze({
+    var ka = Object.freeze({
         ArcCurve: ua,
         CatmullRomCurve3: ya,
         CubicBezierCurve: Ma,
@@ -11347,12 +11347,12 @@
         SplineCurve: La
     });
 
-    function ka() {
+    function Ra() {
         pa.call(this), this.type = "CurvePath", this.curves = [], this.autoClose = !1
     }
 
     function Pa(t) {
-        ka.call(this), this.type = "Path", this.currentPoint = new Ze, t && this.setFromPoints(t)
+        Ra.call(this), this.type = "Path", this.currentPoint = new Ze, t && this.setFromPoints(t)
     }
 
     function Ca(t) {
@@ -11412,8 +11412,8 @@
     function ja(t, e, i, n) {
         Ia.call(this, t, e), this.type = "RectAreaLight", this.width = void 0 !== i ? i : 10, this.height = void 0 !== n ? n : 10
     }
-    ka.prototype = Object.assign(Object.create(pa.prototype), {
-        constructor: ka,
+    Ra.prototype = Object.assign(Object.create(pa.prototype), {
+        constructor: Ra,
         add: function(t) {
             this.curves.push(t)
         },
@@ -11482,11 +11482,11 @@
             pa.prototype.fromJSON.call(this, t), this.autoClose = t.autoClose, this.curves = [];
             for (var e = 0, i = t.curves.length; e < i; e++) {
                 var n = t.curves[e];
-                this.curves.push((new Ra[n.type]).fromJSON(n))
+                this.curves.push((new ka[n.type]).fromJSON(n))
             }
             return this
         }
-    }), Pa.prototype = Object.assign(Object.create(ka.prototype), {
+    }), Pa.prototype = Object.assign(Object.create(Ra.prototype), {
         constructor: Pa,
         setFromPoints: function(t) {
             this.moveTo(t[0].x, t[0].y);
@@ -11535,14 +11535,14 @@
             this.currentPoint.copy(p)
         },
         copy: function(t) {
-            return ka.prototype.copy.call(this, t), this.currentPoint.copy(t.currentPoint), this
+            return Ra.prototype.copy.call(this, t), this.currentPoint.copy(t.currentPoint), this
         },
         toJSON: function() {
-            var t = ka.prototype.toJSON.call(this);
+            var t = Ra.prototype.toJSON.call(this);
             return t.currentPoint = this.currentPoint.toArray(), t
         },
         fromJSON: function(t) {
-            return ka.prototype.fromJSON.call(this, t), this.currentPoint.fromArray(t.currentPoint), this
+            return Ra.prototype.fromJSON.call(this, t), this.currentPoint.fromArray(t.currentPoint), this
         }
     }), Ca.prototype = Object.assign(Object.create(Pa.prototype), {
         constructor: Ca,
@@ -11856,8 +11856,8 @@
         }), Wa.prototype = Object.assign(Object.create(Va.prototype), {
             constructor: Wa,
             DefaultSettings_: {
-                endingStart: ke,
-                endingEnd: ke
+                endingStart: Re,
+                endingEnd: Re
             },
             intervalChanged_: function(t, e, i) {
                 var n = this.parameterPositions,
@@ -11942,7 +11942,7 @@
                     case Le:
                         e = this.InterpolantFactoryMethodLinear;
                         break;
-                    case Re:
+                    case ke:
                         e = this.InterpolantFactoryMethodSmooth
                 }
                 if (void 0 === e) {
@@ -11962,7 +11962,7 @@
                     case this.InterpolantFactoryMethodLinear:
                         return Le;
                     case this.InterpolantFactoryMethodSmooth:
-                        return Re
+                        return ke
                 }
             },
             getValueSize: function() {
@@ -12021,7 +12021,7 @@
                 return t
             },
             optimize: function() {
-                for (var t = this.times, e = this.values, i = this.getValueSize(), n = this.getInterpolation() === Re, r = 1, s = t.length - 1, o = 1; o < s; ++o) {
+                for (var t = this.times, e = this.values, i = this.getValueSize(), n = this.getInterpolation() === ke, r = 1, s = t.length - 1, o = 1; o < s; ++o) {
                     var a = !1,
                         c = t[o];
                     if (c !== t[o + 1] && (1 !== o || c !== c[0]))
@@ -12498,8 +12498,8 @@
                             return t & 1 << e
                         }
                         var n, r, s, o, a, c, l, p, h, u, d, f, m, g, v, y, x, w, b, M, _, S, E, T, A, L = t.faces,
-                            R = t.vertices,
-                            k = t.normals,
+                            k = t.vertices,
+                            R = t.normals,
                             P = t.colors,
                             C = t.scale,
                             I = 0;
@@ -12507,14 +12507,14 @@
                             for (n = 0; n < t.uvs.length; n++) t.uvs[n].length && I++;
                             for (n = 0; n < I; n++) e.faceVertexUvs[n] = []
                         }
-                        for (o = 0, a = R.length; o < a;)(w = new Qe).x = R[o++] * C, w.y = R[o++] * C, w.z = R[o++] * C, e.vertices.push(w);
+                        for (o = 0, a = k.length; o < a;)(w = new Qe).x = k[o++] * C, w.y = k[o++] * C, w.z = k[o++] * C, e.vertices.push(w);
                         for (o = 0, a = L.length; o < a;)
                             if (d = i(u = L[o++], 0), f = i(u, 1), m = i(u, 3), g = i(u, 4), v = i(u, 5), y = i(u, 6), x = i(u, 7), d) {
                                 if ((M = new Di).a = L[o], M.b = L[o + 1], M.c = L[o + 3], (_ = new Di).a = L[o + 1], _.b = L[o + 2], _.c = L[o + 3], o += 4, f && (h = L[o++], M.materialIndex = h, _.materialIndex = h), s = e.faces.length, m)
                                     for (n = 0; n < I; n++)
                                         for (T = t.uvs[n], e.faceVertexUvs[n][s] = [], e.faceVertexUvs[n][s + 1] = [], r = 0; r < 4; r++) A = new Ze(T[2 * (p = L[o++])], T[2 * p + 1]), 2 !== r && e.faceVertexUvs[n][s].push(A), 0 !== r && e.faceVertexUvs[n][s + 1].push(A);
-                                if (g && (l = 3 * L[o++], M.normal.set(k[l++], k[l++], k[l]), _.normal.copy(M.normal)), v)
-                                    for (n = 0; n < 4; n++) l = 3 * L[o++], E = new Qe(k[l++], k[l++], k[l]), 2 !== n && M.vertexNormals.push(E), 0 !== n && _.vertexNormals.push(E);
+                                if (g && (l = 3 * L[o++], M.normal.set(R[l++], R[l++], R[l]), _.normal.copy(M.normal)), v)
+                                    for (n = 0; n < 4; n++) l = 3 * L[o++], E = new Qe(R[l++], R[l++], R[l]), 2 !== n && M.vertexNormals.push(E), 0 !== n && _.vertexNormals.push(E);
                                 if (y && (S = P[c = L[o++]], M.color.setHex(S), _.color.setHex(S)), x)
                                     for (n = 0; n < 4; n++) S = P[c = L[o++]], 2 !== n && M.vertexColors.push(new xi(S)), 0 !== n && _.vertexColors.push(new xi(S));
                                 e.faces.push(M), e.faces.push(_)
@@ -12522,8 +12522,8 @@
                                 if ((b = new Di).a = L[o++], b.b = L[o++], b.c = L[o++], f && (h = L[o++], b.materialIndex = h), s = e.faces.length, m)
                                     for (n = 0; n < I; n++)
                                         for (T = t.uvs[n], e.faceVertexUvs[n][s] = [], r = 0; r < 3; r++) A = new Ze(T[2 * (p = L[o++])], T[2 * p + 1]), e.faceVertexUvs[n][s].push(A);
-                                if (g && (l = 3 * L[o++], b.normal.set(k[l++], k[l++], k[l])), v)
-                                    for (n = 0; n < 3; n++) l = 3 * L[o++], E = new Qe(k[l++], k[l++], k[l]), b.vertexNormals.push(E);
+                                if (g && (l = 3 * L[o++], b.normal.set(R[l++], R[l++], R[l])), v)
+                                    for (n = 0; n < 3; n++) l = 3 * L[o++], E = new Qe(R[l++], R[l++], R[l]), b.vertexNormals.push(E);
                                 if (y && (c = L[o++], b.color.setHex(P[c])), x)
                                     for (n = 0; n < 3; n++) c = L[o++], b.vertexColors.push(new xi(P[c]));
                                 e.faces.push(b)
@@ -12705,7 +12705,7 @@
                                 l.push(u)
                             }
                             var d = c.options.extrudePath;
-                            void 0 !== d && (c.options.extrudePath = (new Ra[d.type]).fromJSON(d)), a = new Go[c.type](l, c.options);
+                            void 0 !== d && (c.options.extrudePath = (new ka[d.type]).fromJSON(d)), a = new Go[c.type](l, c.options);
                             break;
                         case "BufferGeometry":
                             a = r.parse(c);
@@ -12894,8 +12894,8 @@
             MirroredRepeatWrapping: Lt
         },
         yc = {
-            NearestFilter: Rt,
-            NearestMipMapNearestFilter: kt,
+            NearestFilter: kt,
+            NearestMipMapNearestFilter: Rt,
             NearestMipMapLinearFilter: Pt,
             LinearFilter: Ct,
             LinearMipMapNearestFilter: It,
@@ -13058,7 +13058,7 @@
             v = 0;
             for (var L = f.length; v < L; v++) {
                 c = f[v].s, l.push(c);
-                for (var R = 0, k = (u = m[v]).length; R < k; R++) c.holes.push(u[R].h)
+                for (var k = 0, R = (u = m[v]).length; k < R; k++) c.holes.push(u[k].h)
             }
             return l
         }
@@ -13101,7 +13101,7 @@
             return this.path = t, this
         }
     });
-    var Sc, Ec, Tc, Ac, Lc, Rc, kc, Pc, Cc, Ic, Oc = {
+    var Sc, Ec, Tc, Ac, Lc, kc, Rc, Pc, Cc, Ic, Oc = {
         getContext: function() {
             return void 0 === mc && (mc = new(window.AudioContext || window.webkitAudioContext)), mc
         },
@@ -13192,11 +13192,11 @@
         }
     }), Object.assign(Bc.prototype, {
         update: (Cc = new Ke, Ic = new Ke, function(t) {
-            if (Sc !== this || Ec !== t.focus || Tc !== t.fov || Ac !== t.aspect * this.aspect || Lc !== t.near || Rc !== t.far || kc !== t.zoom || Pc !== this.eyeSep) {
-                Sc = this, Ec = t.focus, Tc = t.fov, Ac = t.aspect * this.aspect, Lc = t.near, Rc = t.far, kc = t.zoom;
+            if (Sc !== this || Ec !== t.focus || Tc !== t.fov || Ac !== t.aspect * this.aspect || Lc !== t.near || kc !== t.far || Rc !== t.zoom || Pc !== this.eyeSep) {
+                Sc = this, Ec = t.focus, Tc = t.fov, Ac = t.aspect * this.aspect, Lc = t.near, kc = t.far, Rc = t.zoom;
                 var e, i, n = t.projectionMatrix.clone(),
                     r = (Pc = this.eyeSep / 2) * Lc / Ec,
-                    s = Lc * Math.tan(Xe.DEG2RAD * Tc * .5) / kc;
+                    s = Lc * Math.tan(Xe.DEG2RAD * Tc * .5) / Rc;
                 Ic.elements[12] = -Pc, Cc.elements[12] = Pc, e = -s * Ac + r, i = s * Ac + r, n.elements[0] = 2 * Lc / (i - e), n.elements[8] = (i + e) / (i - e), this.cameraL.projectionMatrix.copy(n), e = -s * Ac - r, i = s * Ac - r, n.elements[0] = 2 * Lc / (i - e), n.elements[8] = (i + e) / (i - e), this.cameraR.projectionMatrix.copy(n)
             }
             this.cameraL.matrixWorld.copy(t.matrixWorld).multiply(Ic), this.cameraR.matrixWorld.copy(t.matrixWorld).multiply(Cc)
@@ -13460,8 +13460,8 @@
     function al(t, e, i) {
         this._mixer = t, this._clip = e, this._localRoot = i || null;
         for (var n = e.tracks, r = n.length, s = new Array(r), o = {
-                endingStart: ke,
-                endingEnd: ke
+                endingStart: Re,
+                endingEnd: Re
             }, a = 0; a !== r; ++a) {
             var c = n[a].createInterpolant(null);
             s[a] = c, c.settings = o
@@ -13635,7 +13635,7 @@
         Ms.call(this, d, f)
     }
 
-    function Rl(t, e, i, n, r, s) {
+    function kl(t, e, i, n, r, s) {
         t = t || 10, e = e || 16, i = i || 8, n = n || 64, r = new xi(void 0 !== r ? r : 4473924), s = new xi(void 0 !== s ? s : 8947848);
         var o, a, c, l, p, h, u, d = [],
             f = [];
@@ -13650,7 +13650,7 @@
         Ms.call(this, m, g)
     }
 
-    function kl(t, e, i, n) {
+    function Rl(t, e, i, n) {
         this.object = t, this.size = void 0 !== e ? e : 1;
         var r = void 0 !== i ? i : 16776960,
             s = void 0 !== n ? n : 1,
@@ -14228,7 +14228,7 @@
             },
             _setEndings: function(t, e, i) {
                 var n = this._interpolantSettings;
-                i ? (n.endingStart = Pe, n.endingEnd = Pe) : (n.endingStart = t ? this.zeroSlopeAtStart ? Pe : ke : Ce, n.endingEnd = e ? this.zeroSlopeAtEnd ? Pe : ke : Ce)
+                i ? (n.endingStart = Pe, n.endingEnd = Pe) : (n.endingStart = t ? this.zeroSlopeAtStart ? Pe : Re : Ce, n.endingEnd = e ? this.zeroSlopeAtEnd ? Pe : Re : Ce)
             },
             _scheduleFading: function(t, e, i) {
                 var n = this._mixer,
@@ -14787,7 +14787,7 @@
                 }
                 n.lookAt(t.setFromMatrixPosition(this.light.matrixWorld).negate())
             }
-        }(), Ll.prototype = Object.create(Ms.prototype), Ll.prototype.constructor = Ll, Rl.prototype = Object.create(Ms.prototype), Rl.prototype.constructor = Rl, kl.prototype = Object.create(Ms.prototype), kl.prototype.constructor = kl, kl.prototype.update = function() {
+        }(), Ll.prototype = Object.create(Ms.prototype), Ll.prototype.constructor = Ll, kl.prototype = Object.create(Ms.prototype), kl.prototype.constructor = kl, Rl.prototype = Object.create(Ms.prototype), Rl.prototype.constructor = Rl, Rl.prototype.update = function() {
             var t = new Qe,
                 e = new Qe,
                 i = new $e;
@@ -14957,7 +14957,7 @@
     }
 
     function up(t, e) {
-        return console.warn("THREE.WireframeHelper has been removed. Use THREE.WireframeGeometry instead."), new Ms(new ks(t.geometry), new ws({
+        return console.warn("THREE.WireframeHelper has been removed. Use THREE.WireframeGeometry instead."), new Ms(new Rs(t.geometry), new ws({
             color: void 0 !== e ? e : 16777215
         }))
     }
@@ -14971,7 +14971,7 @@
     }
     pa.create = function(t, e) {
         return console.log("THREE.Curve.create() has been deprecated"), t.prototype = Object.create(pa.prototype), t.prototype.constructor = t, t.prototype.getPoint = e, t
-    }, Object.assign(ka.prototype, {
+    }, Object.assign(Ra.prototype, {
         createPointsGeometry: function(t) {
             console.warn("THREE.CurvePath: .createPointsGeometry() has been removed. Use new THREE.Geometry().setFromPoints( points ) instead.");
             var e = this.getPoints(t);
@@ -15420,7 +15420,7 @@
                 console.error("THREE." + this.type + ": .shading has been removed. Use the boolean .flatShading instead.")
             },
             set: function(t) {
-                console.warn("THREE." + this.type + ": .shading has been removed. Use the boolean .flatShading instead."), this.flatShading = t === R
+                console.warn("THREE." + this.type + ": .shading has been removed. Use the boolean .flatShading instead."), this.flatShading = t === k
             }
         }
     }), Object.defineProperties(Xo.prototype, {
@@ -16220,7 +16220,7 @@
                             "-" === i[0] && r++;
                             for (var c, l = r; r < s && 0 <= (c = parseInt(i[r++], n));) a = a * n + c, o = o * n + Math.floor(a / 4294967296), a %= 4294967296;
                             l && (o = ~o, a ? a = 4294967296 - a : o++), b(t, e + _, o), b(t, e + S, a)
-                        }(e, i, n, r || 10) : o(n, r) ? a(e, i, n, r) : "number" == typeof r ? (b(e, i + _, n), b(e, i + S, r)) : 0 < n ? R(e, i, n) : 0 > n ? k(e, i, n) : a(e, i, v, 0))
+                        }(e, i, n, r || 10) : o(n, r) ? a(e, i, n, r) : "number" == typeof r ? (b(e, i + _, n), b(e, i + S, r)) : 0 < n ? k(e, i, n) : 0 > n ? R(e, i, n) : a(e, i, v, 0))
                     }(this, t, e, i, n) : new x(t, e, i, n)
                 }
 
@@ -16245,8 +16245,8 @@
                     T = i ? 1 : 2,
                     A = i ? 2 : 1,
                     L = i ? 3 : 0,
-                    R = i ? l : h,
-                    k = i ? p : u,
+                    k = i ? l : h,
+                    R = i ? p : u,
                     P = x.prototype,
                     C = "is" + t,
                     I = "_" + C;
@@ -16691,7 +16691,7 @@
                 if ((i >>>= 0) <= (e >>>= 0)) return "";
                 for (t || (t = "utf8");;) switch (t) {
                     case "hex":
-                        return R(this, e, i);
+                        return k(this, e, i);
                     case "utf8":
                     case "utf-8":
                         return E(this, e, i);
@@ -16706,7 +16706,7 @@
                     case "ucs-2":
                     case "utf16le":
                     case "utf-16le":
-                        return k(this, e, i);
+                        return R(this, e, i);
                     default:
                         if (n) throw new TypeError("Unknown encoding: " + t);
                         t = (t + "").toLowerCase(), n = !0
@@ -16791,14 +16791,14 @@
             return n
         }
 
-        function R(t, e, i) {
+        function k(t, e, i) {
             var n = t.length;
             (!e || 0 > e) && (e = 0), (!i || 0 > i || i > n) && (i = n);
             for (var r = "", s = e; s < i; ++s) r += U(t[s]);
             return r
         }
 
-        function k(t, e, i) {
+        function R(t, e, i) {
             for (var n = t.slice(e, i), r = "", s = 0; s < n.length; s += 2) r += String.fromCharCode(n[s] + 256 * n[s + 1]);
             return r
         }
@@ -17218,8 +17218,8 @@
             int16: b,
             int32: _,
             int64: S(8, i ? L : T),
-            float32: S(4, R),
-            float64: S(8, k)
+            float32: S(4, k),
+            float64: S(8, R)
         }
     }, e.readUint8 = y;
     var a = i(0),
@@ -17337,11 +17337,11 @@
         return new o(this, t)
     }
 
-    function R(t) {
+    function k(t) {
         return n.read(this, t, !1, 23, 4)
     }
 
-    function k(t) {
+    function R(t) {
         return n.read(this, t, !1, 52, 8)
     }
 }, function(t, e, i) {
@@ -40323,14 +40323,14 @@
                                             }
                                         }
                                     }
-                                    var R = a.y + a.height > c.y + c.height,
-                                        k = a.y - a.height < c.y - c.height;
-                                    if ((R || k) && (S = n.boxCornerIntersection(a, c, "x", "z")))
+                                    var k = a.y + a.height > c.y + c.height,
+                                        R = a.y - a.height < c.y - c.height;
+                                    if ((k || R) && (S = n.boxCornerIntersection(a, c, "x", "z")))
                                         for (T = 0; T < S.length; ++T) {
                                             E = Math.sqrt(2) * _;
                                             var P = S[T].d - Math.PI / 4;
                                             for (A = 0; 2 > A; ++A)
-                                                if (y = c.y + (c.height + o.ambOff) * (A ? -1 : 1), (A || R) && (!A || k)) {
+                                                if (y = c.y + (c.height + o.ambOff) * (A ? -1 : 1), (A || k) && (!A || R)) {
                                                     var C = n.limitRect(S[T].x - E * Math.sin(P), S[T].z - E * Math.cos(P), _, _, S[T].d, c, "x", "z");
                                                     this.manager.addAmbient(C.x, y, C.z, S[T].d, Math.PI / 2, 0, C.width, C.length, 0)
                                                 }
@@ -40961,11 +40961,11 @@
                             T = [];
                         if (-1 === c.indexOf("/")) E = S;
                         else
-                            for (var A, L = 0, R = S.length; L < R; L++) "" !== (A = S[L].split("/"))[0] && E.push(A[0]), "" !== A[1] && T.push(A[1]);
+                            for (var A, L = 0, k = S.length; L < k; L++) "" !== (A = S[L].split("/"))[0] && E.push(A[0]), "" !== A[1] && T.push(A[1]);
                         o.addLineGeometry(E, T)
                     } else if ("p" === l) {
-                        var k = c.substr(1).trim().split(" ");
-                        o.addPointGeometry(k)
+                        var R = c.substr(1).trim().split(" ");
+                        o.addPointGeometry(R)
                     } else if (null !== (p = n.exec(c))) {
                         var P = (" " + p[0].substr(1).trim()).substr(1);
                         o.startObject(P)
@@ -41393,7 +41393,7 @@
         }
     }
 }, function(t) {
-    t.exports = 81853
+    t.exports = 81043
 }, function(t, e, i) {
     var n, r, s = 0,
         o = function(t) {
@@ -42021,17 +42021,17 @@
                             var T = i.weapon.dropStart || 0,
                                 A = Math.min(1, 1 - (1 - h.dst) * i.weapon.range / (i.weapon.range - T)),
                                 L = E - i.weapon.dmgDrop * A,
-                                R = !1,
-                                k = !1;
+                                k = !1,
+                                R = !1;
                             if (h.player) {
                                 var P = i.y + i.height - c.cameraHeight + S * Math.sin(y);
-                                R = h.obj.y + h.obj.height - P < c.headScale, k = h.obj.y + c.legHeight > P, L *= R && !i.weapon.noHeadShot ? 1.5 : 1, L *= k ? .5 : 1
+                                k = h.obj.y + h.obj.height - P < c.headScale, R = h.obj.y + c.legHeight > P, L *= k && !i.weapon.noHeadShot ? 1.5 : 1, L *= R ? .5 : 1
                             }
                             if (l && !t.waitTimers && h.obj.health && !h.player && (h.obj.health -= L, 0 >= h.obj.health && (h.obj.active = !1, h.obj.health = 0, t.destObjs.push(h.obj.uid), l.broadcast("game" + t.sid, "do", h.obj.uid))), h.player || h.obj.dummy) {
                                 if (this.changeHealth(h.obj, i, L)) {
                                     var C = {
                                         dst: h.dst,
-                                        headShot: R
+                                        headShot: k
                                     };
                                     this.kill(h.obj, i, C)
                                 }
@@ -42104,7 +42104,7 @@
         }, this.score = function(e, i, n) {
             l && (e.score += i, l.send(e.id, "5", i), this.syncLeaders(), t.mode.teams && e.team && t.teams && (!n || !t.mode.objective) && (t.teams[e.team] ? t.teams[e.team] += i : t.teams[e.team] = i, l.broadcast("game" + t.sid, "ts", e.team, t.teams[e.team])))
         }, this.tickPlayer = function(t, e) {
-            t.playTime += e, 0 < t.hitTimer && (t.hitTimer -= e), t.ticker -= e, 0 >= t.ticker && (t.ticker = 500, 0 >= t.hitTimer && this.changeHealth(t, null, -t.maxHealth * c.regenVal))
+            t.playTime += e, 0 < t.hitTimer && (t.hitTimer -= e), t.ticker -= e, 0 >= t.ticker && (t.ticker = 500, 0 >= t.hitTimer && !t.challMode && this.changeHealth(t, null, -t.maxHealth * c.regenVal))
         }, this.changeHealth = function(e, i, n, r) {
             if ((!t.waitTimers || t.waitTimers[0].canDMG) && !(0 > n && e.health == e.maxHealth) && (i && i.lastHack && 2e3 >= t.now - i.lastHack && (n *= .1), !(!r && e.team && i && e.team == i.team && 0 < n))) {
                 if (i && i != e && l.send(i.id, "4"), e.dummy) return !0;
@@ -42177,36 +42177,35 @@
     o.PING_REGION_CACHE_KEY = "pingRegion4";
     var a = new o("krunker.io"),
         c = null,
-        l = null,
-        p = null;
+        l = null;
 
-    function h(t) {
+    function p(t) {
         a.switchGame(t)
     }
 
-    function u(t, e) {
+    function h(t, e) {
         hostGameMsg && (hostGameMsg.innerHTML = t), e && function(t) {
             var e = a.generateHref(t);
             window.history.replaceState({}, "Krunker", e), windows[1].lastLoadTime = 0, c = t
-        }(e), Yt = null
+        }(e), qt = null
     }
-    window.switchServer = h, window.checkedSwitchServer = function(t, e) {
+    window.switchServer = p, window.checkedSwitchServer = function(t, e) {
         e.innerText = "...", a.fetchGameInfo(t).then(i => {
             i.clients >= i.maxClients ? (e.innerText = "FULL", setTimeout(() => {
                 e.innerText = `${Math.min(i.clients,i.maxClients)}/${i.maxClients}`
-            }, 1e3)) : h(t)
+            }, 1e3)) : p(t)
         })
     }, window.createPrivateRoom = function() {
-        for (var t = [], e = 0; e < R.length; e++) document.getElementById("gameMap" + e).checked && t.push(e);
-        if (0 != t.length || Yt || "" != rawMapData.value) {
+        for (var t = [], e = 0; e < L.length; e++) document.getElementById("gameMap" + e).checked && t.push(e);
+        if (0 != t.length || qt || "" != rawMapData.value) {
             var i = [];
             for (e = 0; e < k.length; e++) document.getElementById("gameMode" + e).checked && i.push(e);
             if (0 != i.length) {
                 var r = [];
-                for (e = 0; e < b.classes.length; e++) document.getElementById("gameClass" + e).checked && r.push(e);
+                for (e = 0; e < w.classes.length; e++) document.getElementById("gameClass" + e).checked && r.push(e);
                 if (0 != r.length) {
                     var s, o = {
-                        customMap: Yt,
+                        customMap: qt,
                         rawMapData: rawMapData.value,
                         private: makePrivate.checked,
                         maps: t,
@@ -42215,7 +42214,7 @@
                         classes: r
                     };
                     for (e = 0; e < n.serverConfig.length; e++) s = document.getElementById("customS" + n.serverConfig[e].varN), tmpV = n.serverConfig[e].bool ? s ? s.checked : 0 : s ? parseFloat(s.value) : 0, o[n.serverConfig[e].varN] = tmpV;
-                    w.send("custom", o), hostGameMsg.innerHTML = "Please wait..."
+                    x.send("custom", o), hostGameMsg.innerHTML = "Please wait..."
                 } else hostGameMsg.innerHTML = "<span class='error'>Select at least one class</span>"
             } else hostGameMsg.innerHTML = "<span class='error'>Select at least one Mode</span>"
         } else hostGameMsg.innerHTML = "<span class='error'>Select at least one Map</span>"
@@ -42224,45 +42223,48 @@
             throw ""
         }
     });
-    var d = i(2);
-    d.OBJLoader = i(45)(d), d.Shaders = i(80)(d);
-    var f = i(5),
-        m = new(i(46))(d, f, n),
-        g = window.SOUND = new(i(81))(f, n),
-        v = new(i(82))(m, n),
-        y = i(83),
-        x = new(i(84))(m, n),
-        w = i(47),
-        b = i(85).obj;
-    b = new b(!1, 0, null, m, g, v);
-    var M, _, S, E, T, A, L = new(i(93))(m, d, y, f, b, n, w),
-        R = i(42).maps,
+    var u = i(2);
+    u.OBJLoader = i(45)(u), u.Shaders = i(80)(u);
+    var d = i(5),
+        f = new(i(46))(u, d, n),
+        m = window.SOUND = new(i(81))(d, n),
+        g = new(i(82))(f, n),
+        v = i(83),
+        y = new(i(84))(f, n),
+        x = i(47),
+        w = i(85).obj;
+    w = new w(!1, 0, null, f, m, g);
+    var b, M, _, S, E, T, A = new(i(93))(f, u, v, d, w, n, x),
+        L = i(42).maps,
         k = i(42).modes,
-        P = i(94),
-        C = i(55).Player,
-        I = new(i(95)),
-        O = new d.Vector3,
-        D = !1,
-        B = !1;
+        R = i(94),
+        P = i(55).Player,
+        C = new(i(95)),
+        I = new u.Vector3,
+        O = !1,
+        D = !1;
     window.locked = !1;
-    var N = [],
-        z = !0,
+    var B = [],
+        N = !0,
+        z = 0,
         U = 0,
         F = 0,
         H = 0,
-        j = 0,
-        G = 0;
+        j = 0;
     window.idleTimer = 0;
-    var V, W, Y, q, X = 1,
+    var G, V, W, Y, q = 1,
+        X = 1,
         Z = 1700,
         K = 900;
 
     function J() {
         var t = window.innerWidth,
             e = window.innerHeight,
-            i = t / Z,
-            n = e / K;
-        n < i ? (X = n, uiBase.style.transform = "scale(" + n.toFixed(3) + ")", uiBase.style.width = (t / n).toFixed(3) + "px", uiBase.style.height = K + "px") : (X = i, uiBase.style.transform = "scale(" + i.toFixed(3) + ")", uiBase.style.width = Z + "px", uiBase.style.height = (e / i).toFixed(3) + "px")
+            i = Z * X,
+            n = K * X,
+            r = t / i,
+            s = e / n;
+        s < r ? (q = s, uiBase.style.transform = "scale(" + s.toFixed(3) + ")", uiBase.style.width = (t / s).toFixed(3) + "px", uiBase.style.height = n + "px") : (q = r, uiBase.style.transform = "scale(" + r.toFixed(3) + ")", uiBase.style.width = i + "px", uiBase.style.height = (e / r).toFixed(3) + "px")
     }
     window.addEventListener("resize", J), J(), window.checkTerms = function(t) {
         t ? (consentBlock.style.display = "none", saveVal("consent", 1)) : $("#consentShake").effect("shake")
@@ -42281,70 +42283,74 @@
     }, console.warn = function() {}, console.info = function() {};
     var et = "true" == getSavedVal("krunker_streamMode");
     window.toggleStrm = function(t, e = !1) {
-        et = t, streamCheckbox.checked = t, saveVal("krunker_streamMode", t), e || (t ? window.history.pushState(document.title, document.title, "/") : window.history.pushState(document.title, document.title, a.generateHref(c))), ti(Qe, $e)
+        et = t, streamCheckbox.checked = t, saveVal("krunker_streamMode", t), e || (t ? window.history.pushState(document.title, document.title, "/") : window.history.pushState(document.title, document.title, a.generateHref(c))), ei($e, ti)
     }, window.toggleStrm(et, !0);
     var it = !1;
     window.loading = !1;
-    var nt, rt, st = !1;
-
-    function ot() {
-        window.innerWidth, nt = window.innerHeight, rt = nt / X / 693, m.resize()
-    }
-
-    function at(t) {
-        return (n.enableHttps ? "https:" : "http:") + "//" + l + ":" + p + t
-    }
+    var nt = !1;
     window.spectating = !1, window.toggleSpect = function(t) {
-        st = t
-    }, window.enterGame = function() {
-        if (b.singlePlayer && !it) {
-            Le("0:00");
-            var t = b.getSpawnPoint(null, !0);
-            ze([w.socketId, 1, t.x, t.y, t.z, "TEST", kt, null]), it = !0, ti([1, "TEST", 0, 0, 0, 0]), y.toggleMenu(!1)
-        } else if (w.connected && (!it || window.spectating && !st)) {
-            it = !0, window.idleTimer = 0, y.toggleMenu(!1), instructions.innerHTML = "LOADING...", window.loading = !0;
-            var e = parseInt(kt),
-                i = b.classes[e].loadout,
-                n = [null == Rt[i[0]] ? -1 : Rt[i[0]], null == Rt[i[1]] ? -1 : Rt[i[1]]];
-            w.send("etrg", [e, parseInt(Oe), n, parseInt(At), parseInt(Tt), parseInt(Pt), st ? 1 : 0])
-        }
-    }, window.addEventListener("resize", ot), ot(), window.toggleAd = function() {};
-    var ct = 0;
+        nt = t
+    };
+    var rt, st, ot = !1;
 
-    function lt(t) {
-        _ && (_.funds = t), Mt()
+    function at() {
+        window.innerWidth, rt = window.innerHeight, st = rt / q / 693, f.resize()
     }
 
-    function pt(t, e) {
-        window.idleTimer = 0, t ? purchaseError() : (_ && (_.funds = e), Mt(), updateWindow(null, !0), y.toggleMenuHider(!0), purchaseLoad.style.display = "none")
+    function ct(t) {
+        return console.log(n.apiURL + t), n.apiURL + t
+    }
+    window.toggleChal = function(t) {
+        ot = t
+    }, window.enterGame = function() {
+        if (w.singlePlayer && !it) {
+            ke("0:00");
+            var t = w.getSpawnPoint(null, !0);
+            Ue([x.socketId, 1, t.x, t.y, t.z, "TEST", Pt, null]), it = !0, ei([1, "TEST", 0, 0, 0, 0]), v.toggleMenu(!1)
+        } else if (x.connected && (!it || window.spectating && !nt)) {
+            it = !0, window.idleTimer = 0, v.toggleMenu(!1), instructions.innerHTML = "LOADING...", window.loading = !0;
+            var e = parseInt(Pt),
+                i = w.classes[e].loadout,
+                n = [null == Rt[i[0]] ? -1 : Rt[i[0]], null == Rt[i[1]] ? -1 : Rt[i[1]]];
+            x.send("etrg", [e, parseInt(De), n, parseInt(Lt), parseInt(At), parseInt(Ct), nt ? 1 : 0, ot ? 1 : 0])
+        }
+    }, window.addEventListener("resize", at), at(), window.toggleAd = function() {};
+    var lt = 0;
+
+    function pt(t) {
+        M && (M.funds = t), _t()
+    }
+
+    function ht(t, e) {
+        window.idleTimer = 0, t ? purchaseError() : (M && (M.funds = e), _t(), updateWindow(null, !0), v.toggleMenuHider(!0), purchaseLoad.style.display = "none")
     }
     window.cancelPurchase = function() {
-        window.idleTimer = 0, showWindow(14), instructions.style.display = "block", ct = 0, context.toggleMenuHider(!0), purchaseLoad.style.display = "none"
+        window.idleTimer = 0, showWindow(14), instructions.style.display = "block", lt = 0, context.toggleMenuHider(!0), purchaseLoad.style.display = "none"
     }, window.showPurchase = function(t) {
-        window.idleTimer = 0, ct = t, purchaseHolder.style.display = "block";
+        window.idleTimer = 0, lt = t, purchaseHolder.style.display = "block";
         var e = document.getElementById("paypal-button");
-        e && (e.innerHTML = ""), _ && paypal.Button.render({
+        e && (e.innerHTML = ""), M && paypal.Button.render({
             style: {
                 size: "large"
             },
             env: "production",
             commit: !0,
             payment: function(t, e) {
-                return purchaseHolder.style.display = "none", e.request.post(at("/my-api/create-payment/"), {
-                    pIndex: ct,
-                    acID: _.id
+                return purchaseHolder.style.display = "none", e.request.post(ct("/my-api/create-payment/"), {
+                    pIndex: lt,
+                    acID: M.id
                 }).then(function(t) {
                     return t.id
                 })
             },
             onAuthorize: function(t, e) {
-                return e.request.post(at("/my-api/execute-payment/"), {
-                    pIndex: ct,
-                    acID: _.id,
+                return e.request.post(ct("/my-api/execute-payment/"), {
+                    pIndex: lt,
+                    acID: M.id,
                     paymentID: t.paymentID,
                     payerID: t.payerID
                 }).then(function(t) {
-                    t && null != t.funds && null != t.funds ? (_ && (_.funds = t.funds), Mt(), updateWindow(null, !0), y.toggleMenuHider(!0), purchaseLoad.style.display = "none") : purchaseError()
+                    t && null != t.funds && null != t.funds ? (M && (M.funds = t.funds), _t(), updateWindow(null, !0), v.toggleMenuHider(!0), purchaseLoad.style.display = "none") : purchaseError()
                 })
             },
             onError: function() {
@@ -42354,72 +42360,72 @@
     }, purchaseHolder.onclick = function() {
         purchaseHolder.style.display = "none"
     }, window.purchaseError = function() {
-        showWindow(), y.toggleMenuHider(!1), instructions.style.display = "none", purchaseLoad.style.display = "block", purchLoadRing.style.display = "none", purchaseLabel.innerHTML = "Error occurred <a href='javascript:;' onclick='cancelPurchase()'>click here</a> and try again!<div style='color:rgba(255,255,255,0.3);font-size:20px'>You may have exceeded your daily transaction limit</div>"
+        showWindow(), v.toggleMenuHider(!1), instructions.style.display = "none", purchaseLoad.style.display = "block", purchLoadRing.style.display = "none", purchaseLabel.innerHTML = "Error occurred <a href='javascript:;' onclick='cancelPurchase()'>click here</a> and try again!<div style='color:rgba(255,255,255,0.3);font-size:20px'>You may have exceeded your daily transaction limit</div>"
     };
-    const ht = new FileReader;
-    var ut, dt, ft = !1,
-        mt = 0,
-        gt = {};
+    const ut = new FileReader;
+    var dt, ft, mt = !1,
+        gt = 0,
+        vt = {};
 
-    function vt() {
-        it = !1, window.idleTimer = 0, y.toggleMenu(!0), L.toggle(!1), ye = {
+    function yt() {
+        it = !1, window.idleTimer = 0, v.toggleMenu(!0), A.toggle(!1), xe = {
             states: []
         }
     }
     window.voiceChat = function(t, e) {
-        if (mt) {
-            et && I && (e = f.scrambleS(e));
+        if (gt) {
+            et && C && (e = d.scrambleS(e));
             try {
                 var i = new Howl({
                     src: [t],
-                    volume: mt
+                    volume: gt
                 });
                 i.on("load", function() {
                     i.duration() <= n.voiceChatMaxLength && (i.on("end", function() {
-                        if (gt[e]--, 0 >= gt[e]) {
+                        if (vt[e]--, 0 >= vt[e]) {
                             var t = document.getElementById("speaker" + e);
-                            t && t.parentElement.removeChild(t), delete gt[e]
+                            t && t.parentElement.removeChild(t), delete vt[e]
                         }
-                    }), !gt[e] && (gt[e] = 0, speakerDisplay.innerHTML += "<div id='speaker" + e + "' class='voiceSpeaker'>" + e + " <i class='material-icons' style='color:#fff;font-size:35px;vertical-align:middle'>volume_down</i></div>"), gt[e]++, i.play())
+                    }), !vt[e] && (vt[e] = 0, speakerDisplay.innerHTML += "<div id='speaker" + e + "' class='voiceSpeaker'>" + e + " <i class='material-icons' style='color:#fff;font-size:35px;vertical-align:middle'>volume_down</i></div>"), vt[e]++, i.play())
                 })
             } catch (e) {}
         }
-    }, ht.addEventListener("loadend", function() {
-        var t = ht.result;
-        w.send("vc", t)
+    }, ut.addEventListener("loadend", function() {
+        var t = ut.result;
+        x.send("vc", t)
     }), window.toggleRecord = function(t) {
-        (M || window.spectating) && (t && !ft ? (voiceDisplay.style.opacity = .9, ft = !0, navigator.mediaDevices.getUserMedia({
+        (b || window.spectating) && (t && !mt ? (voiceDisplay.style.opacity = .9, mt = !0, navigator.mediaDevices.getUserMedia({
             audio: !0,
             video: !1
         }).then(function(t) {
-            (ut = new MediaRecorder(t, {
+            (dt = new MediaRecorder(t, {
                 mimetype: "audio/ogg",
                 bitsPerSecond: 6e3
             })).start();
             const e = [];
-            ut.addEventListener("dataavailable", function(t) {
+            dt.addEventListener("dataavailable", function(t) {
                 e.push(t.data)
-            }), ut.addEventListener("stop", function() {
+            }), dt.addEventListener("stop", function() {
                 recTimer.style.display = "none", voiceDisplay.style.opacity = .3;
                 var t = new Blob(e, {
                     type: "audio/ogg; codecs=opus"
                 });
-                ht.readAsDataURL(t)
+                ut.readAsDataURL(t)
             }), recTimer.style.display = "inline-block", recTimer.innerHTML = n.voiceChatMaxLength;
             var i = n.voiceChatMaxLength;
-            dt = setInterval(function() {
-                i--, recTimer.innerHTML = i, 0 >= i && (ft = !1, ut.stop(), clearInterval(dt))
+            ft = setInterval(function() {
+                i--, recTimer.innerHTML = i, 0 >= i && (mt = !1, dt.stop(), clearInterval(ft))
             }, 1e3)
         }).catch(function() {
-            ft = !1, dt && clearInterval(dt), voiceDisplay.style.opacity = .3
-        })) : !t && ft && ut && (ft = !1, ut.stop(), clearInterval(dt)))
+            mt = !1, ft && clearInterval(ft), voiceDisplay.style.opacity = .3
+        })) : !t && mt && dt && (mt = !1, dt.stop(), clearInterval(ft)))
     }, window.updateSliderLabel = function(t, e) {
         var i = document.getElementById("customSet" + t);
         i && (i.innerHTML = e)
     }, window.setSetting = function(t, e) {
-        document.getElementById("slid" + t) && (document.getElementById("slid" + t).innerHTML = e), yt[t].set(e), yt[t].val = e, saveVal("kro_setngss_" + t, e)
+        document.getElementById("slid" + t) && (document.getElementById("slid" + t).innerHTML = e), xt[t].set(e), xt[t].val = e, saveVal("kro_setngss_" + t, e)
     };
-    for (var yt = [{
+    for (var xt = [{
             name: "<div style='width:100%'><a href='javascript:;' onclick='showWindow(7);' class='menuLink'>Change Controls</a></div>",
             html: function() {
                 return ""
@@ -42429,35 +42435,35 @@
             pre: "<div class='setHed'>Quality</div>",
             val: .6,
             html: function() {
-                return "<span class='sliderVal' id='slid1'>" + yt[1].val + "</span><div class='slidecontainer'><input type='range' min='0.1' max='2' step='0.1' value='" + yt[1].val + "' class='sliderM' oninput='setSetting(1, this.value)'></div>"
+                return "<span class='sliderVal' id='slid1'>" + xt[1].val + "</span><div class='slidecontainer'><input type='range' min='0.1' max='2' step='0.1' value='" + xt[1].val + "' class='sliderM' oninput='setSetting(1, this.value)'></div>"
             },
             set: function(t) {
-                m.setResMlt(t)
+                f.setResMlt(t)
             }
         }, {
             name: "Particles",
             val: !0,
             html: function() {
-                return "<label class='switch'><input type='checkbox' onclick='setSetting(2, this.checked)' " + (yt[2].val ? "checked" : "") + "><span class='slider'></span></label>"
+                return "<label class='switch'><input type='checkbox' onclick='setSetting(2, this.checked)' " + (xt[2].val ? "checked" : "") + "><span class='slider'></span></label>"
             },
             set: function(t) {
-                v.active = t
+                g.active = t
             }
         }, {
             name: "Show UI",
             pre: "<div class='setHed'>Interface</div>",
             val: !0,
             html: function() {
-                return "<label class='switch'><input type='checkbox' onclick='setSetting(3, this.checked)' " + (yt[3].val ? "checked" : "") + "><span class='slider'></span></label>"
+                return "<label class='switch'><input type='checkbox' onclick='setSetting(3, this.checked)' " + (xt[3].val ? "checked" : "") + "><span class='slider'></span></label>"
             },
             set: function(t) {
-                y.hideGameUI = !t, chatUI.style.display = t ? "block" : "none"
+                v.hideGameUI = !t, chatUI.style.display = t ? "block" : "none"
             }
         }, {
             name: "Show Chat",
             val: !0,
             html: function() {
-                return "<label class='switch'><input type='checkbox' onclick='setSetting(4, this.checked)' " + (yt[4].val ? "checked" : "") + "><span class='slider'></span></label>"
+                return "<label class='switch'><input type='checkbox' onclick='setSetting(4, this.checked)' " + (xt[4].val ? "checked" : "") + "><span class='slider'></span></label>"
             },
             set: function(t) {
                 chatHolder.style.display = t ? "block" : "none"
@@ -42466,7 +42472,7 @@
             name: "Show Ping",
             val: !0,
             html: function() {
-                return "<label class='switch'><input type='checkbox' onclick='setSetting(5, this.checked)' " + (yt[5].val ? "checked" : "") + "><span class='slider'></span></label>"
+                return "<label class='switch'><input type='checkbox' onclick='setSetting(5, this.checked)' " + (xt[5].val ? "checked" : "") + "><span class='slider'></span></label>"
             },
             set: function(t) {
                 pingDisplay.style.display = t ? "inline-block" : "none"
@@ -42475,7 +42481,7 @@
             name: "Crosshair Color",
             val: "#ffffff",
             html: function() {
-                return "<input type='color' id='head' name='color' value='" + yt[6].val + "' oninput='setSetting(6, this.value)' style='float:right;margin-top:5px'/>"
+                return "<input type='color' id='head' name='color' value='" + xt[6].val + "' oninput='setSetting(6, this.value)' style='float:right;margin-top:5px'/>"
             },
             set: function(t) {
                 crosshairT.style.backgroundColor = t, crosshairB.style.backgroundColor = t, crosshairLL.style.backgroundColor = t, crosshairRL.style.backgroundColor = t
@@ -42485,260 +42491,275 @@
             pre: "<div class='setHed'>Gameplay</div>",
             val: 1,
             html: function() {
-                return "<span class='sliderVal' id='slid7'>" + yt[7].val + "</span><div class='slidecontainer'><input type='range' min='0.1' max='15' step='0.1' value='" + yt[7].val + "' class='sliderM' oninput='setSetting(7, this.value)'></div>"
+                return "<span class='sliderVal' id='slid7'>" + xt[7].val + "</span><div class='slidecontainer'><input type='range' min='0.1' max='15' step='0.1' value='" + xt[7].val + "' class='sliderM' oninput='setSetting(7, this.value)'></div>"
             },
             set: function(t) {
-                L.sensMlt = t
+                A.sensMlt = t
             }
         }, {
             name: "Aim Sensitivity",
             val: 1,
             html: function() {
-                return "<span class='sliderVal' id='slid8'>" + yt[8].val + "</span><div class='slidecontainer'><input type='range' min='0.1' max='15' step='0.1' value='" + yt[8].val + "' class='sliderM' oninput='setSetting(8, this.value)'></div>"
+                return "<span class='sliderVal' id='slid8'>" + xt[8].val + "</span><div class='slidecontainer'><input type='range' min='0.1' max='15' step='0.1' value='" + xt[8].val + "' class='sliderM' oninput='setSetting(8, this.value)'></div>"
             },
             set: function(t) {
-                L.sensAimMlt = t
+                A.sensAimMlt = t
             }
         }, {
             name: "Field of View",
             val: n.fov,
             html: function() {
-                return "<span class='sliderVal' id='slid9'>" + yt[9].val + "</span><div class='slidecontainer'><input type='range' min='60' max='120' step='5' value='" + yt[9].val + "' class='sliderM' oninput='setSetting(9, this.value)'></div>"
+                return "<span class='sliderVal' id='slid9'>" + xt[9].val + "</span><div class='slidecontainer'><input type='range' min='60' max='120' step='5' value='" + xt[9].val + "' class='sliderM' oninput='setSetting(9, this.value)'></div>"
             },
             set: function(t) {
-                m.setFov(t)
+                f.setFov(t)
             }
         }, {
             name: "Weapon FOV",
             val: n.fov,
             html: function() {
-                return "<span class='sliderVal' id='slid10'>" + yt[10].val + "</span><div class='slidecontainer'><input type='range' min='60' max='120' step='5' value='" + yt[10].val + "' class='sliderM' oninput='setSetting(10, this.value)'></div>"
+                return "<span class='sliderVal' id='slid10'>" + xt[10].val + "</span><div class='slidecontainer'><input type='range' min='60' max='120' step='5' value='" + xt[10].val + "' class='sliderM' oninput='setSetting(10, this.value)'></div>"
             },
             set: function(t) {
-                m.setFPSFov(t)
+                f.setFPSFov(t)
             }
         }, {
             name: "Invert Y-Axis",
             val: !1,
             html: function() {
-                return "<label class='switch'><input type='checkbox' onclick='setSetting(11, this.checked)' " + (yt[11].val ? "checked" : "") + "><span class='slider'></span></label>"
+                return "<label class='switch'><input type='checkbox' onclick='setSetting(11, this.checked)' " + (xt[11].val ? "checked" : "") + "><span class='slider'></span></label>"
             },
             set: function(t) {
-                L.invertY = t
+                A.invertY = t
             }
         }, {
             name: "Sound",
             pre: "<div class='setHed'>Audio</div>",
             val: 1,
             html: function() {
-                return "<span class='sliderVal' id='slid12'>" + yt[12].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.1' value='" + yt[12].val + "' class='sliderM' oninput='setSetting(12, this.value)'></div>"
+                return "<span class='sliderVal' id='slid12'>" + xt[12].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.1' value='" + xt[12].val + "' class='sliderM' oninput='setSetting(12, this.value)'></div>"
             },
             set: function(t) {
-                g.setVolume(t)
+                m.setVolume(t)
             }
         }, {
             name: "Voice Volume",
             val: 1,
             html: function() {
-                return "<span class='sliderVal' id='slid13'>" + yt[13].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.1' value='" + yt[13].val + "' class='sliderM' oninput='setSetting(13, this.value)'></div>"
+                return "<span class='sliderVal' id='slid13'>" + xt[13].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.1' value='" + xt[13].val + "' class='sliderM' oninput='setSetting(13, this.value)'></div>"
             },
             set: function(t) {
-                mt = t
+                gt = t
             }
         }, {
             name: "Weapon Bobbing",
             pre: "<div class='setHed'>Editing</div>",
             val: 1,
             html: function() {
-                return "<span class='sliderVal' id='slid14'>" + yt[14].val + "</span><div class='slidecontainer'><input type='range' min='0' max='2' step='0.1' value='" + yt[14].val + "' class='sliderM' oninput='setSetting(14, this.value)'></div>"
+                return "<span class='sliderVal' id='slid14'>" + xt[14].val + "</span><div class='slidecontainer'><input type='range' min='0' max='2' step='0.1' value='" + xt[14].val + "' class='sliderM' oninput='setSetting(14, this.value)'></div>"
             },
             set: function(t) {
-                m.weaponLean = t
+                f.weaponLean = t
             }
         }, {
             name: "Show Weapon",
             val: !0,
             html: function() {
-                return "<label class='switch'><input type='checkbox' onclick='setSetting(15, this.checked)' " + (yt[15].val ? "checked" : "") + "><span class='slider'></span></label>"
+                return "<label class='switch'><input type='checkbox' onclick='setSetting(15, this.checked)' " + (xt[15].val ? "checked" : "") + "><span class='slider'></span></label>"
             },
             set: function(t) {
-                b.hideWeapon = !t, M && M.weaponMeshes[M.weaponIndex] && (M.weaponMeshes[M.weaponIndex].visible = t)
+                w.hideWeapon = !t, b && b.weaponMeshes[b.weaponIndex] && (b.weaponMeshes[b.weaponIndex].visible = t)
             }
         }, {
             name: "Depth Map",
             val: 0,
             html: function() {
-                return "<span class='sliderVal' id='slid16'>" + yt[16].val + "</span><div class='slidecontainer'><input type='range' min='0' max='500' step='5' value='" + yt[16].val + "' class='sliderM' oninput='setSetting(16, this.value)'></div>"
+                return "<span class='sliderVal' id='slid16'>" + xt[16].val + "</span><div class='slidecontainer'><input type='range' min='0' max='500' step='5' value='" + xt[16].val + "' class='sliderM' oninput='setSetting(16, this.value)'></div>"
             },
             set: function(t) {
-                m.toggleDepthMap(t)
+                f.toggleDepthMap(t)
             }
         }, {
             name: "Green Screen",
             val: !1,
             html: function() {
-                return "<label class='switch'><input type='checkbox' onclick='setSetting(17, this.checked)' " + (yt[17].val ? "checked" : "") + "><span class='slider'></span></label>"
+                return "<label class='switch'><input type='checkbox' onclick='setSetting(17, this.checked)' " + (xt[17].val ? "checked" : "") + "><span class='slider'></span></label>"
             },
             set: function(t) {
-                m.toggleGreenscreen(t)
+                f.toggleGreenscreen(t)
             }
         }, {
             name: "Ambient Shading",
             pre: "<div class='setHed'>Shaders</div>",
             val: !0,
             html: function() {
-                return "<label class='switch'><input type='checkbox' onclick='setSetting(18, this.checked)' " + (yt[18].val ? "checked" : "") + "><span class='slider'></span></label>"
+                return "<label class='switch'><input type='checkbox' onclick='setSetting(18, this.checked)' " + (xt[18].val ? "checked" : "") + "><span class='slider'></span></label>"
             },
             set: function(t) {
-                m.toggleMeshGroup("ambient_0", t), m.toggleMeshGroup("ambient_1", t)
+                f.toggleMeshGroup("ambient_0", t), f.toggleMeshGroup("ambient_1", t)
             }
         }, {
             name: "Bloom",
             val: 0,
             html: function() {
-                return "<span class='sliderVal' id='slid19'>" + yt[19].val + "</span><div class='slidecontainer'><input type='range' min='0' max='3' step='0.1' value='" + yt[19].val + "' class='sliderM' oninput='setSetting(19, this.value)'></div>"
+                return "<span class='sliderVal' id='slid19'>" + xt[19].val + "</span><div class='slidecontainer'><input type='range' min='0' max='3' step='0.1' value='" + xt[19].val + "' class='sliderM' oninput='setSetting(19, this.value)'></div>"
             },
             set: function(t) {
-                m.bloomPass && (m.bloomPass.strength = t), m.postprocessing.bloomStrength = t, m.postprocessing.enabled = "0" != t
+                f.bloomPass && (f.bloomPass.strength = t), f.postprocessing.bloomStrength = t, f.postprocessing.enabled = "0" != t
             }
         }, {
             name: "Bloom Radius",
             val: .9,
             html: function() {
-                return "<span class='sliderVal' id='slid20'>" + yt[20].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.01' value='" + yt[20].val + "' class='sliderM' oninput='setSetting(20, this.value)'></div>"
+                return "<span class='sliderVal' id='slid20'>" + xt[20].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.01' value='" + xt[20].val + "' class='sliderM' oninput='setSetting(20, this.value)'></div>"
             },
             set: function(t) {
-                m.bloomPass && (m.bloomPass.radius = t), m.postprocessing.bloomRadius = t
+                f.bloomPass && (f.bloomPass.radius = t), f.postprocessing.bloomRadius = t
             }
         }, {
             name: "Bloom Treshold",
             val: .9,
             html: function() {
-                return "<span class='sliderVal' id='slid21'>" + yt[21].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.01' value='" + yt[21].val + "' class='sliderM' oninput='setSetting(21, this.value)'></div>"
+                return "<span class='sliderVal' id='slid21'>" + xt[21].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.01' value='" + xt[21].val + "' class='sliderM' oninput='setSetting(21, this.value)'></div>"
             },
             set: function(t) {
-                m.bloomPass && (m.bloomPass.threshold = t), m.postprocessing.bloomTresh = t
+                f.bloomPass && (f.bloomPass.threshold = t), f.postprocessing.bloomTresh = t
             }
         }, {
             name: "Load Mods",
             pre: "<div class='setHed'>Mods</div>",
             val: !0,
             html: function() {
-                return "<label class='switch'><input type='checkbox' onclick='setSetting(22, this.checked)' " + (yt[22].val ? "checked" : "") + "><span class='slider'></span></label>"
+                return "<label class='switch'><input type='checkbox' onclick='setSetting(22, this.checked)' " + (xt[22].val ? "checked" : "") + "><span class='slider'></span></label>"
             },
             set: function(t) {
-                z = t
+                N = t
             }
-        }], xt = 0; xt < yt.length; ++xt)
-        if (yt[xt].set) {
-            var wt = getSavedVal("kro_setngss_" + xt);
-            yt[xt].val = null === wt ? yt[xt].val : wt, "false" == yt[xt].val && (yt[xt].val = !1), yt[xt].set(yt[xt].val, !0)
+        }, {
+            name: "Default Region",
+            pre: "<div class='setHed'>Servers</div>",
+            get val() {
+                return localStorage[o.PING_REGION_CACHE_KEY]
+            },
+            set val(t) {},
+            html: function() {
+                var t = "<select onchange='setSetting(23, this.value)' style='float:right'>";
+                for (var e of Ri) t += "<option value='" + e + "' " + (e == xt[23].val ? "selected" : "") + ">", t += n.regionNames[e], t += "</option>";
+                return t += "</select>"
+            },
+            set: function(t) {
+                t && n.isProd && localStorage.setItem(o.PING_REGION_CACHE_KEY, t)
+            }
+        }], wt = 0; wt < xt.length; ++wt)
+        if (xt[wt].set) {
+            var bt = getSavedVal("kro_setngss_" + wt);
+            xt[wt].val = null === bt ? xt[wt].val : bt, "false" == xt[wt].val && (xt[wt].val = !1), xt[wt].set(xt[wt].val, !0)
         }
-    function bt(t) {
-        _ && _.setData(t), updateWindow(5), Mt()
+    function Mt(t) {
+        M && M.setData(t), updateWindow(5), _t()
     }
 
-    function Mt() {
-        if (_) {
-            signedOutHeaderBar.style.display = "none", signedInHeaderBar.style.display = null, menuAccountUsername.innerText = _.name, menuKRCount.innerText = _.funds, menuLevelText.innerText = "LVL " + _.level, menuLevelBar.style.width = _.levelProg + "%";
-            var t = f.levelIconId(_.level);
+    function _t() {
+        if (M) {
+            signedOutHeaderBar.style.display = "none", signedInHeaderBar.style.display = null, menuAccountUsername.innerText = M.name, menuKRCount.innerText = M.funds, menuLevelText.innerText = "LVL " + M.level, menuLevelBar.style.width = M.levelProg + "%";
+            var t = d.levelIconId(M.level);
             menuLevelIcon.style.backgroundImage = "url('/img/levels/" + t + ".png')"
         } else signedOutHeaderBar.style.display = null, signedInHeaderBar.style.display = "none"
     }
 
-    function _t(t) {
+    function St(t) {
         try {
             accResp.innerHTML = t || "", accResp.style.display = t ? "block" : "none"
         } catch (t) {}
     }
 
-    function St(t, e) {
-        0 <= t && _t("Please Wait..."), w.send("a", t, e)
+    function Et(t, e) {
+        0 <= t && St("Please Wait..."), x.send("a", t, e)
     }
 
-    function Et(t, e, i, r, s) {
-        t ? _t(t) : (_ = new P(e, i, null, n), saveVal("krunker_id", e), saveVal("krunker_username", i), bt(r), s && (saveVal("krunker_token", s), loginToken = s), updateWindow(null, !0))
+    function Tt(t, e, i, r, s) {
+        t ? St(t) : (M = new R(e, i, null, n), saveVal("krunker_id", e), saveVal("krunker_username", i), Mt(r), s && (saveVal("krunker_token", s), loginToken = s), updateWindow(null, !0))
     }
     window.changeCont = function(t, e) {
-        e || showWindow(7, !0), 3 >= t ? L.inputChanger = t : 4 == t ? L.inputChanger = "jumpKey" : 5 == t ? L.inputChanger = "crouchKey" : 6 == t ? L.inputChanger = "swapKeyD" : 7 == t ? L.inputChanger = "swapKeyU" : 8 == t ? L.inputChanger = "reloadKey" : 9 == t ? L.inputChanger = "sprayKey" : 10 == t ? L.inputChanger = "aimKey" : 11 == t ? L.inputChanger = "chatKey" : 12 == t ? L.inputChanger = "voiceKey" : 13 == t ? L.inputChanger = "recordKey" : 14 == t && (L.inputChanger = "inspKey"), document.getElementById("cont" + t).innerHTML = "Press any Key"
+        e || showWindow(7, !0), 3 >= t ? A.inputChanger = t : 4 == t ? A.inputChanger = "jumpKey" : 5 == t ? A.inputChanger = "crouchKey" : 6 == t ? A.inputChanger = "swapKeyD" : 7 == t ? A.inputChanger = "swapKeyU" : 8 == t ? A.inputChanger = "reloadKey" : 9 == t ? A.inputChanger = "sprayKey" : 10 == t ? A.inputChanger = "aimKey" : 11 == t ? A.inputChanger = "chatKey" : 12 == t ? A.inputChanger = "voiceKey" : 13 == t ? A.inputChanger = "recordKey" : 14 == t && (A.inputChanger = "inspKey"), document.getElementById("cont" + t).innerHTML = "Press any Key"
     }, window.registerAcc = function() {
-        St(0, [accName.value, accPass.value])
+        Et(0, [accName.value, accPass.value])
     }, window.loginAcc = function() {
-        St(1, [accName.value, accPass.value, null])
+        Et(1, [accName.value, accPass.value, null])
     }, window.logoutAcc = function() {
-        St(-1), _t(), s("krunker_id"), s("krunker_username"), s("krunker_token"), s("skins"), s("hatIndex"), s("backIndex"), At = -1, Tt = -1, Rt = {}, selectSecondary(2), windows[12].clanData = null, loginToken = null, _ = null, bt(), showWindow(5), Ut()
+        Et(-1), St(), s("krunker_id"), s("krunker_username"), s("krunker_token"), s("skins"), s("hatIndex"), s("backIndex"), Lt = -1, At = -1, Rt = {}, selectSecondary(2), windows[12].clanData = null, loginToken = null, M = null, Mt(), showWindow(5), Ft()
     };
-    var Tt = getSavedVal("backIndex") || -1,
-        At = getSavedVal("hatIndex") || -1,
-        Lt = getSavedVal("skins"),
-        Rt = Lt ? JSON.parse(Lt) : {},
-        kt = getSavedVal("classindex") || 0,
-        Pt = getSavedVal("secondaryInd") || 2,
-        Ct = 0;
+    var At = getSavedVal("backIndex") || -1,
+        Lt = getSavedVal("hatIndex") || -1,
+        kt = getSavedVal("skins"),
+        Rt = kt ? JSON.parse(kt) : {},
+        Pt = getSavedVal("classindex") || 0,
+        Ct = getSavedVal("secondaryInd") || 2,
+        It = 0;
     window.selectHat = function(t) {
-        saveVal("hatIndex", t), At = t, Ut(), showWindow(3)
+        saveVal("hatIndex", t), Lt = t, Ft(), showWindow(3)
     }, window.selectBack = function(t) {
-        saveVal("backIndex", t), Tt = t, Ut(), showWindow(3)
+        saveVal("backIndex", t), At = t, Ft(), showWindow(3)
     }, window.selectSecondary = function(t) {
-        saveVal("secondaryInd", t), Pt = t, Ut(), showWindow(3)
+        saveVal("secondaryInd", t), Ct = t, Ft(), showWindow(3)
     }, window.selectClass = function(t) {
-        saveVal("classindex", t), kt = t, Ut(), showWindow(3)
+        saveVal("classindex", t), Pt = t, Ft(), showWindow(3)
     }, window.skinSelector = function(t) {
-        Ct = t, Ut(), showWindow(15)
+        It = t, Ft(), showWindow(15)
     }, window.selectSkin = function(t, e) {
-        S = b.store.skins[t], Rt[e] = S ? t : void 0, saveVal("skins", JSON.stringify(Rt)), Ut(), showWindow(3)
+        _ = w.store.skins[t], Rt[e] = _ ? t : void 0, saveVal("skins", JSON.stringify(Rt)), Ft(), showWindow(3)
     };
-    var It, Ot, Dt = 660,
-        Bt = 350,
-        Nt = new d.PerspectiveCamera(15, 1, .1, 100),
-        zt = new d.WebGLRenderer({
+    var Ot, Dt, Bt = 660,
+        Nt = 350,
+        zt = new u.PerspectiveCamera(15, 1, .1, 100),
+        Ut = new u.WebGLRenderer({
             canvas: classPreviewCanvas,
             precision: "mediump",
             antialias: !1,
             alpha: !0
         });
 
-    function Ut() {
+    function Ft() {
         function t(t, e = !0) {
             i && (i += " - ");
             var n = "inherit",
-                r = b.weapons[t].name;
+                r = w.weapons[t].name;
             if (null != Rt[t]) {
-                var s = b.store.skins[Rt[t]];
-                s && (n = b.store.rarities[s.rarity].color, r = s.name)
+                var s = w.store.skins[Rt[t]];
+                s && (n = w.store.rarities[s.rarity].color, r = s.name)
             }
             i += "<span style='color:" + (e ? n : "inherit") + "'>" + r + "</span>"
         }
-        var e = b.classes[kt];
+        var e = w.classes[Pt];
         menuClassName.innerText = e.name;
         var i = "";
         for (var r of e.loadout) t(r);
-        e.secondary && t(Pt, !1), menuClassSubtext.innerHTML = i, (It = new d.Scene).add(new d.AmbientLight(9937064));
-        var s = new d.DirectionalLight(15923452, .5);
-        s.position.set(10, 17, -10), It.add(s);
+        e.secondary && t(Ct, !1), menuClassSubtext.innerHTML = i, (Ot = new u.Scene).add(new u.AmbientLight(9937064));
+        var s = new u.DirectionalLight(15923452, .5);
+        s.position.set(10, 17, -10), Ot.add(s);
         var o = [null == Rt[e.loadout[0]] ? -1 : Rt[e.loadout[0]], null == Rt[e.loadout[1]] ? -1 : Rt[e.loadout[1]]];
-        (Ot = new C(-1, this, f, n, b)).sid = -1, Ot.init(0, 0, 0, "preview", !1), Ot.skins = o, Ot.hatIndex = At, Ot.backIndex = Tt, Ot.secIndex = Pt, Ot.setClass(b, kt, Pt, !0), b.players.swapWeapon(Ot, 0, !0), It.add(b.players.generateMeshes(Ot, !1)), Ot.swapTime = 0, Ot.weaponMeshes[0].visible = !0, Nt.lookAt(new d.Vector3(0, .8 * n.playerHeight, 0))
+        (Dt = new P(-1, this, d, n, w)).sid = -1, Dt.init(0, 0, 0, "preview", !1), Dt.skins = o, Dt.hatIndex = Lt, Dt.backIndex = At, Dt.secIndex = Ct, Dt.setClass(w, Pt, Ct, !0), w.players.swapWeapon(Dt, 0, !0), Ot.add(w.players.generateMeshes(Dt, !1)), Dt.swapTime = 0, Dt.weaponMeshes[0].visible = !0, zt.lookAt(new u.Vector3(0, .8 * n.playerHeight, 0))
     }
 
-    function Ft(t, e) {
+    function Ht(t, e) {
         for (var i = "", n = "map" == e ? "selectHostMap" : "loadUserMod", r = 0; r < t.length; ++r) i += "<div class='mapListItem'><img class='mapListThumb' src='" + (t[r][e + "_image"] ? t[r][e + "_image"] : "./img/noimg.png") + "' onclick='" + n + "(&quot;" + t[r][e + "_name"] + "&quot;,&quot;" + t[r].mod_url + "&quot;,&quot;" + t[r].mod_id + "&quot;)'/><div style='margin-top:-3px'><a href='javascript:;' onclick='" + n + "(&quot;" + t[r][e + "_name"] + "&quot;,&quot;" + t[r].mod_url + "&quot;,&quot;" + t[r].mod_id + "&quot;)'/>" + t[r][e + "_name"] + "</a></div><div style='display: flex'><span style='color:rgba(0,0,0,0.2);font-size:15px'> by <a target='_blank' class='grey' href='/social.html?p=profile&q=" + t[r].creatorname + "'>" + t[r].creatorname + "</a></span><div style='font-size:15px;text-align:right;flex-grow:1'>" + t[r][e + "_votes"] + "</div></div></div>";
         return i
     }
 
-    function Ht(t, e) {
+    function jt(t, e) {
         var i = "<div class='selItem'><div class='equipBtn' onclick='" + t + "(-1)'><i class='material-icons'>&#xE037</i></div><div class='itemIcon'><img class='itemIconImg' src=''/></div><div class='itemInfo'><div class='itemName'>None</div><div class='itemCat'>Default</div></div></div>";
-        if (_)
-            for (var n = _.skins.slice().sort(function(t, e) {
-                    return b.store.skins[e.ind] && b.store.skins[t.ind] ? b.store.skins[e.ind].rarity - b.store.skins[t.ind].rarity : 0
-                }), r = 0; r < n.length; ++r)(S = b.store.skins[n[r].ind]) && S.type == e && (i += "<div class='selItem' style='margin-top:10px'><div class='equipBtn' onclick='" + t + "(" + n[r].ind + ")'><i class='material-icons'>&#xE037</i></div><div class='itemIcon'><img class='itemIconImg' src=''/></div><div class='itemInfo'><div class='itemName' style='color:" + b.store.rarities[S.rarity].color + "'>" + S.name + "<span style='color:rgba(0,0,0,0.3)'> x" + n[r].cnt + "</span></div><div class='itemCat'>by " + (S.creator || "Krunker.io") + "</div></div></div>");
+        if (M)
+            for (var n = M.skins.slice().sort(function(t, e) {
+                    return w.store.skins[e.ind] && w.store.skins[t.ind] ? w.store.skins[e.ind].rarity - w.store.skins[t.ind].rarity : 0
+                }), r = 0; r < n.length; ++r)(_ = w.store.skins[n[r].ind]) && _.type == e && (i += "<div class='selItem' style='margin-top:10px'><div class='equipBtn' onclick='" + t + "(" + n[r].ind + ")'><i class='material-icons'>&#xE037</i></div><div class='itemIcon'><img class='itemIconImg' src=''/></div><div class='itemInfo'><div class='itemName' style='color:" + w.store.rarities[_.rarity].color + "'>" + _.name + "<span style='color:rgba(0,0,0,0.3)'> x" + n[r].cnt + "</span></div><div class='itemCat'>by " + (_.creator || "Krunker.io") + "</div></div></div>");
         return i
     }
-    Nt.position.x = -10, Nt.position.y = 17, Nt.position.z = -29, Ut(), setInterval(() => {
-        window.kiH(w)
+    zt.position.x = -10, zt.position.y = 17, zt.position.z = -29, Ft(), setInterval(() => {
+        window.kiH(x)
     }, 12e3), window.windows = [{
         header: "Game Settings",
         gen: function() {
-            for (var t = "", e = 0; e < yt.length; ++e) yt[e].pre && (t += yt[e].pre), t += "<div class='settName'>" + yt[e].name + " " + yt[e].html() + "</div>";
+            for (var t = "", e = 0; e < xt.length; ++e) xt[e].pre && (t += xt[e].pre), t += "<div class='settName'>" + xt[e].name + " " + xt[e].html() + "</div>";
             return t
         }
     }, {
@@ -42827,20 +42848,20 @@
     }, {
         header: "Change Loadout",
         gen: function() {
-            var t = b.classes[kt];
-            0 > b.config.classes.indexOf(parseInt(kt)) && (kt = b.config.classes[0], t = b.classes[kt]);
-            var e = b.weapons[t.loadout[0]].name,
+            var t = w.classes[Pt];
+            0 > w.config.classes.indexOf(parseInt(Pt)) && (Pt = w.config.classes[0], t = w.classes[Pt]);
+            var e = w.weapons[t.loadout[0]].name,
                 i = "#2196F3",
-                n = t.secondary ? b.weapons[Pt].name : "None",
+                n = t.secondary ? w.weapons[Ct].name : "None",
                 r = t.secondary ? "#2196F3" : "rgba(0,0,0,0.3)",
                 s = "rgba(0,0,0,0.3)",
                 o = s;
-            return _ && (null != Rt[t.loadout[0]] && ((e = b.store.skins[Rt[t.loadout[0]]]) && (i = b.store.rarities[e.rarity].color, e = e.name)), t.loadout[1] && null != Rt[t.loadout[1]] && ((n = b.store.skins[Rt[t.loadout[1]]]) && (r = b.store.rarities[n.rarity].color, n = n.name)), 0 <= At && b.store.skins[At] && (s = b.store.rarities[b.store.skins[At].rarity].color), 0 <= Tt && b.store.skins[Tt] && (o = b.store.rarities[b.store.skins[Tt].rarity].color)), "<div class='settName'>Class<span class='settText floatR' onclick='showWindow(6)'>" + t.name + "</span></div><div class='settName'>Primary<span class='settLabel wepLink' style='color:" + i + "' onclick='skinSelector(" + t.loadout[0] + ")'>" + e + "</span></div><div class='settName'>Secondary<span class='settLabel" + (t.secondary ? " wepLink" : "") + "' " + (t.secondary ? "onclick='showWindow(20)'" : "") + " style='color:" + r + "'>" + n + "</span></div><div class='settName'>Hat<span onclick='showWindow(16)' class='settText floatR' style='color:" + s + "'>" + (b.store.skins[At] ? b.store.skins[At].name : "None") + "</span></div><div class='settName'>Back<span onclick='showWindow(17)' class='settText floatR' style='color:" + o + "'>" + (b.store.skins[Tt] ? b.store.skins[Tt].name : "None") + "</span></div><div class='settName'>Spray<span onclick='showWindow(9)' class='settText floatR'>" + b.sprays[Oe].name + "</span></div>"
+            return M && (null != Rt[t.loadout[0]] && ((e = w.store.skins[Rt[t.loadout[0]]]) && (i = w.store.rarities[e.rarity].color, e = e.name)), t.loadout[1] && null != Rt[t.loadout[1]] && ((n = w.store.skins[Rt[t.loadout[1]]]) && (r = w.store.rarities[n.rarity].color, n = n.name)), 0 <= Lt && w.store.skins[Lt] && (s = w.store.rarities[w.store.skins[Lt].rarity].color), 0 <= At && w.store.skins[At] && (o = w.store.rarities[w.store.skins[At].rarity].color)), "<div class='settName'>Class<span class='settText floatR' onclick='showWindow(6)'>" + t.name + "</span></div><div class='settName'>Primary<span class='settLabel wepLink' style='color:" + i + "' onclick='skinSelector(" + t.loadout[0] + ")'>" + e + "</span></div><div class='settName'>Secondary<span class='settLabel" + (t.secondary ? " wepLink" : "") + "' " + (t.secondary ? "onclick='showWindow(20)'" : "") + " style='color:" + r + "'>" + n + "</span></div><div class='settName'>Hat<span onclick='showWindow(16)' class='settText floatR' style='color:" + s + "'>" + (w.store.skins[Lt] ? w.store.skins[Lt].name : "None") + "</span></div><div class='settName'>Back<span onclick='showWindow(17)' class='settText floatR' style='color:" + o + "'>" + (w.store.skins[At] ? w.store.skins[At].name : "None") + "</span></div><div class='settName'>Spray<span onclick='showWindow(9)' class='settText floatR'>" + w.sprays[De].name + "</span></div>"
         }
     }, {
         header: "Mod Manager",
         openList: function() {
-            B = !1, showWindow(18)
+            D = !1, showWindow(18)
         },
         gen: function() {
             return "<div id='modLinks'><a href='https://goo.gl/dPAxfr' class='menuLink'>Mod Guide</a> | <a href='javascript:;' onclick='windows[3].openList()' class='menuLink'>Mods List</a> | <a href='javascript:;' onclick='showWindow(19)' class='menuLink'>Publish Mod</a></div><form id='modDropper'><input onchange='loadMod()' id='modInput'type='file'><p id='modLInfo'>drop mod file here or click</p></form><input type='text' id='modURL' class='accountInput' style='width:78%' placeholder='Paste Mod Url'><a class='menuLink' style='display:inline-block;margin-left:10px' onclick='loadModURL()'>Load Mod</a>"
@@ -42848,49 +42869,49 @@
     }, {
         header: "Account",
         gen: function() {
-            return _ ? "<div class='settName' style='width:100%'>Name<a href='/social.html?p=profile&q=" + _.name + "' class='floatR'>" + _.name + "</a></div><div class='settName' style='width:100%'>Clan<a class='floatR' class='menuLink' onclick='showWindow(13)'>" + (_.clan ? "[" + _.clan + "]" : "None") + "</a></div><div class='settName'>Level<span class='floatR'>" + _.level + "</span></div><div class='xpBar'><div class='xpBarB' style='width:" + _.levelProg + "%'></div></div><div class='settName'>Score<span class='floatR'>" + _.score + "</span></div><div class='settName'>KR<span class='floatR'>" + _.funds + "KR</span></div><div class='settName'>Kills<span class='floatR'>" + _.kills + "</span></div><div class='settName'>Deaths<span class='floatR'>" + _.deaths + "</span></div><div class='settName'>KDR<span class='floatR'>" + (_.kills / Math.max(_.deaths, 1)).toFixed(2) + "</span></div><div class='settName'>Games Played<span class='floatR'>" + _.games + "</span></div><div class='settName'>Games Won<span class='floatR'>" + _.wins + "</span></div><div class='settName'>W/L<span class='floatR'>" + (_.wins / Math.max(_.games, 1)).toFixed(2) + "</span></div><div class='settName'>Time Played<span class='floatR'>" + f.getReadableTime(_.timePlayed) + "</span></div><div style='height:10px'></div><a class='menuLink' onclick='logoutAcc()'>Logout</a>" : "<input id='accName' type='text' placeholder='Enter Username' class='accountInput' style='margin-top:0' value='" + (getSavedVal("krunker_username") || "") + "'></input><input id='accPass' type='password' placeholder='Enter Password' class='accountInput'></input><div id='accResp' style='margin-top:10px;color:rgba(0,0,0,0.5);display:none'></div><div style='margin-top:10px;color:rgba(0,0,0,0.3)'>To recover an account contact <a>krunker@yendis.ch</a></div><div class='accountButton' onclick='registerAcc()'>Register</div><div class='accountButton' onclick='loginAcc()' style='margin-left: 20px'>Login</div>"
+            return M ? "<div class='settName' style='width:100%'>Name<a href='/social.html?p=profile&q=" + M.name + "' class='floatR'>" + M.name + "</a></div><div class='settName' style='width:100%'>Clan<a class='floatR' class='menuLink' onclick='showWindow(13)'>" + (M.clan ? "[" + M.clan + "]" : "None") + "</a></div><div class='settName'>Level<span class='floatR'>" + M.level + "</span></div><div class='xpBar'><div class='xpBarB' style='width:" + M.levelProg + "%'></div></div><div class='settName'>Score<span class='floatR'>" + M.score + "</span></div><div class='settName'>KR<span class='floatR'>" + M.funds + "KR</span></div><div class='settName'>Kills<span class='floatR'>" + M.kills + "</span></div><div class='settName'>Deaths<span class='floatR'>" + M.deaths + "</span></div><div class='settName'>KDR<span class='floatR'>" + (M.kills / Math.max(M.deaths, 1)).toFixed(2) + "</span></div><div class='settName'>Games Played<span class='floatR'>" + M.games + "</span></div><div class='settName'>Games Won<span class='floatR'>" + M.wins + "</span></div><div class='settName'>W/L<span class='floatR'>" + (M.wins / Math.max(M.games, 1)).toFixed(2) + "</span></div><div class='settName'>Time Played<span class='floatR'>" + d.getReadableTime(M.timePlayed) + "</span></div><div style='height:10px'></div><a class='menuLink' onclick='logoutAcc()'>Logout</a>" : "<input id='accName' type='text' placeholder='Enter Username' class='accountInput' style='margin-top:0' value='" + (getSavedVal("krunker_username") || "") + "'></input><input id='accPass' type='password' placeholder='Enter Password' class='accountInput'></input><div id='accResp' style='margin-top:10px;color:rgba(0,0,0,0.5);display:none'></div><div style='margin-top:10px;color:rgba(0,0,0,0.3)'>To recover an account contact <a>krunker@yendis.ch</a></div><div class='accountButton' onclick='registerAcc()'>Register</div><div class='accountButton' onclick='loginAcc()' style='margin-left: 20px'>Login</div>"
         }
     }, {
         header: "Select Class",
         gen: function() {
-            for (var t = "", e = 0; e < b.classes.length; ++e) 0 <= b.config.classes.indexOf(e) && !b.classes[e].hide && (t += "<div class='selItem' style='margin-top:" + (0 < e ? "10px" : "") + "'><div class='equipBtn' onclick='selectClass(" + e + ")'><i class='material-icons'>&#xE037</i></div><div class='itemIcon'><img class='itemIconImg' src='./textures/classes/icon_" + e + ".png'/></div><div class='itemInfo'><div class='itemName'>" + b.classes[e].name + "</div><div class='itemCat'>" + b.weapons[b.classes[e].loadout[0]].name + "</div></div></div>");
+            for (var t = "", e = 0; e < w.classes.length; ++e) 0 <= w.config.classes.indexOf(e) && !w.classes[e].hide && (t += "<div class='selItem' style='margin-top:" + (0 < e ? "10px" : "") + "'><div class='equipBtn' onclick='selectClass(" + e + ")'><i class='material-icons'>&#xE037</i></div><div class='itemIcon'><img class='itemIconImg' src='./textures/classes/icon_" + e + ".png'/></div><div class='itemInfo'><div class='itemName'>" + w.classes[e].name + "</div><div class='itemCat'>" + w.weapons[w.classes[e].loadout[0]].name + "</div></div></div>");
             return t
         }
     }, {
         header: "Change Controls",
         gen: function() {
             var t = "";
-            return t += "<div class='settName'>Forward<span class='settText floatR' id='cont0' onclick='changeCont(0)'>" + f.getKeyName(L.moveKeys[0]) + "</span></div>", t += "<div class='settName'>Backward<span class='settText floatR' id='cont1' onclick='changeCont(1)'>" + f.getKeyName(L.moveKeys[1]) + "</span></div>", t += "<div class='settName'>Left<span class='settText floatR' id='cont2' onclick='changeCont(2)'>" + f.getKeyName(L.moveKeys[2]) + "</span></div>", t += "<div class='settName'>Right<span class='settText floatR' id='cont3' onclick='changeCont(3)'>" + f.getKeyName(L.moveKeys[3]) + "</span></div>", t += "<div class='settName'>Reload<span class='settText floatR' id='cont8' onclick='changeCont(8)'>" + f.getKeyName(L.reloadKey) + "</span></div>", t += "<div class='settName'>Aim<span class='settText floatR' id='cont10' onclick='changeCont(10)'>" + f.getKeyName(L.aimKey) + "</span></div>", t += "<div class='settName'>Inspect<span class='settText floatR' id='cont14' onclick='changeCont(14)'>" + f.getKeyName(L.inspKey) + "</span></div>", t += "<div class='settName'>Spray<span class='settText floatR' id='cont9' onclick='changeCont(9)'>" + f.getKeyName(L.sprayKey) + "</span></div>", t += "<div class='settName'>Jump<span class='settText floatR' id='cont4' onclick='changeCont(4)'>" + f.getKeyName(L.jumpKey) + "</span></div>", t += "<div class='settName'>Crouch<span class='settText floatR' id='cont5' onclick='changeCont(5)'>" + f.getKeyName(L.crouchKey) + "</span></div>", t += "<div class='settName'>Next Weapon<span class='settText floatR' id='cont6' onclick='changeCont(6)'>" + f.getKeyName(L.swapKeyD) + "</span></div>", t += "<div class='settName'>Previous Weapon<span class='settText floatR' id='cont7' onclick='changeCont(7)'>" + f.getKeyName(L.swapKeyU) + "</span></div>", t += "<div class='settName'>Chat<span class='settText floatR' id='cont11' onclick='changeCont(11)'>" + f.getKeyName(L.chatKey) + "</span></div>", t += "<div class='settName'>Voice<span class='settText floatR' id='cont12' onclick='changeCont(12)'>" + f.getKeyName(L.voiceKey) + "</span></div>"
+            return t += "<div class='settName'>Forward<span class='settText floatR' id='cont0' onclick='changeCont(0)'>" + d.getKeyName(A.moveKeys[0]) + "</span></div>", t += "<div class='settName'>Backward<span class='settText floatR' id='cont1' onclick='changeCont(1)'>" + d.getKeyName(A.moveKeys[1]) + "</span></div>", t += "<div class='settName'>Left<span class='settText floatR' id='cont2' onclick='changeCont(2)'>" + d.getKeyName(A.moveKeys[2]) + "</span></div>", t += "<div class='settName'>Right<span class='settText floatR' id='cont3' onclick='changeCont(3)'>" + d.getKeyName(A.moveKeys[3]) + "</span></div>", t += "<div class='settName'>Reload<span class='settText floatR' id='cont8' onclick='changeCont(8)'>" + d.getKeyName(A.reloadKey) + "</span></div>", t += "<div class='settName'>Aim<span class='settText floatR' id='cont10' onclick='changeCont(10)'>" + d.getKeyName(A.aimKey) + "</span></div>", t += "<div class='settName'>Inspect<span class='settText floatR' id='cont14' onclick='changeCont(14)'>" + d.getKeyName(A.inspKey) + "</span></div>", t += "<div class='settName'>Spray<span class='settText floatR' id='cont9' onclick='changeCont(9)'>" + d.getKeyName(A.sprayKey) + "</span></div>", t += "<div class='settName'>Jump<span class='settText floatR' id='cont4' onclick='changeCont(4)'>" + d.getKeyName(A.jumpKey) + "</span></div>", t += "<div class='settName'>Crouch<span class='settText floatR' id='cont5' onclick='changeCont(5)'>" + d.getKeyName(A.crouchKey) + "</span></div>", t += "<div class='settName'>Next Weapon<span class='settText floatR' id='cont6' onclick='changeCont(6)'>" + d.getKeyName(A.swapKeyD) + "</span></div>", t += "<div class='settName'>Previous Weapon<span class='settText floatR' id='cont7' onclick='changeCont(7)'>" + d.getKeyName(A.swapKeyU) + "</span></div>", t += "<div class='settName'>Chat<span class='settText floatR' id='cont11' onclick='changeCont(11)'>" + d.getKeyName(A.chatKey) + "</span></div>", t += "<div class='settName'>Voice<span class='settText floatR' id='cont12' onclick='changeCont(12)'>" + d.getKeyName(A.voiceKey) + "</span></div>"
         }
     }, {
         header: "Host Custom Game",
         gen: function() {
             var t = "";
-            B = !0, t += "<div class='settName b'>Select Maps</div>", t += "<div style='margin-top:5px'>";
-            for (var e = 0; e < R.length; e++) {
-                var i = R[e],
+            D = !0, t += "<div class='settName b'>Select Maps</div>", t += "<div style='margin-top:5px'>";
+            for (var e = 0; e < L.length; e++) {
+                var i = L[e],
                     r = "<label class='switch'><input id='gameMap" + e + "' type='checkbox' checked=''><span class='slider'></span></label>";
-                t += "<div class='settNameSmall' style='margin:0'>" + f.capFirst(i.name) + r + "</div>"
+                t += "<div class='settNameSmall' style='margin:0'>" + d.capFirst(i.name) + r + "</div>"
             }
-            t += "<div class='settNameSmall' style='margin:0;margin-top:10px'>Community Maps <a href='javascript:;' onclick='showWindow(11);' class='menuLink' style='float:right;font-size:18px'>" + (Yt || "Select") + "</a></div><br/>", t += "<div class='settNameSmall' style='margin:0;margin-top:-24px;'>Raw Map Data<input id='rawMapData' type='text' class='formInput' placeholder='Map Data' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'></div><br/>", t += "</div>", t += "<div class='settName b'>Add Mod Pack</div>", t += "<div class='settNameSmall' style='margin:0;margin-top:10px'>Community Mods <a href='javascript:;' onclick='showWindow(18);' class='menuLink' style='float:right;font-size:18px'>Select</a></div><br/>", t += "<div class='settNameSmall' style='margin:0;margin-top:-24px;'>Mod URL<input id='hostModURL' type='text' class='formInput' placeholder='URL' autocomplete='off' value='" + (qt || "") + "' autocorrect='off' autocapitalize='off' spellcheck='false'></div><br/>", t += "<div class='settName b'>Select Modes</div>", t += "<div style='margin-top:5px'>";
+            t += "<div class='settNameSmall' style='margin:0;margin-top:10px'>Community Maps <a href='javascript:;' onclick='showWindow(11);' class='menuLink' style='float:right;font-size:18px'>" + (qt || "Select") + "</a></div><br/>", t += "<div class='settNameSmall' style='margin:0;margin-top:-24px;'>Raw Map Data<input id='rawMapData' type='text' class='formInput' placeholder='Map Data' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'></div><br/>", t += "</div>", t += "<div class='settName b'>Add Mod Pack</div>", t += "<div class='settNameSmall' style='margin:0;margin-top:10px'>Community Mods <a href='javascript:;' onclick='showWindow(18);' class='menuLink' style='float:right;font-size:18px'>Select</a></div><br/>", t += "<div class='settNameSmall' style='margin:0;margin-top:-24px;'>Mod URL<input id='hostModURL' type='text' class='formInput' placeholder='URL' autocomplete='off' value='" + (Xt || "") + "' autocorrect='off' autocapitalize='off' spellcheck='false'></div><br/>", t += "<div class='settName b'>Select Modes</div>", t += "<div style='margin-top:5px'>";
             for (e = 0; e < k.length; e++) {
                 var s = k[e];
                 r = "<label class='switch'><input id='gameMode" + e + "' type='checkbox' " + (e ? "" : "checked") + "><span class='slider'></span></label>";
-                t += "<div class='settNameSmall' style='margin:0'>" + f.capFirst(s.name) + r + "</div>"
+                t += "<div class='settNameSmall' style='margin:0'>" + d.capFirst(s.name) + r + "</div>"
             }
             t += "<div class='settName b' style='margin-top:20px'>Select Classes</div>", t += "<div style='margin-top:5px'>";
-            for (e = 0; e < b.classes.length; e++) {
+            for (e = 0; e < w.classes.length; e++) {
                 r = "<label class='switch'><input id='gameClass" + e + "' type='checkbox' checked><span class='slider'></span></label>";
-                t += "<div class='settNameSmall' style='margin:0'>" + b.classes[e].name + r + "</div>"
+                t += "<div class='settNameSmall' style='margin:0'>" + w.classes[e].name + r + "</div>"
             }
             t += "<div class='settName b' style='margin-top:25px'>Settings</div>";
-            for (e = 0; e < n.serverConfig.length; e++) t += (S = n.serverConfig[e]).bool ? "<div class='settNameSmall' style='margin:0;margin-bottom:5px;'>" + S.name + " <label class='switch'><input type='checkbox' id='customS" + S.varN + "' " + (S.def ? "checked" : "") + "><span class='slider'></span></label></div>" : "<div class='settNameSmall' style='margin-left:0'>" + S.name + "<span class='sliderVal' id='customSet" + e + "'>" + S.def + "</span><div class='slidecontainer'><input type='range' min='" + S.min + "' max='" + (_ && _.featured && S.maxF || S.max) + "' step='" + S.step + "' id='customS" + S.varN + "' value='" + S.def + "' oninput='updateSliderLabel(" + e + ",this.value)' class='sliderM'></div></div>";
+            for (e = 0; e < n.serverConfig.length; e++) t += (_ = n.serverConfig[e]).bool ? "<div class='settNameSmall' style='margin:0;margin-bottom:5px;'>" + _.name + " <label class='switch'><input type='checkbox' id='customS" + _.varN + "' " + (_.def ? "checked" : "") + "><span class='slider'></span></label></div>" : "<div class='settNameSmall' style='margin-left:0'>" + _.name + "<span class='sliderVal' id='customSet" + e + "'>" + _.def + "</span><div class='slidecontainer'><input type='range' min='" + _.min + "' max='" + (M && M.featured && _.maxF || _.max) + "' step='" + _.step + "' id='customS" + _.varN + "' value='" + _.def + "' oninput='updateSliderLabel(" + e + ",this.value)' class='sliderM'></div></div>";
             return t += "<div class='settNameSmall' style='margin:0'>Private <label class='switch'><input id='makePrivate' type='checkbox'><span class='slider'></span></label></div>", t += "<div style='text-align:left;margin-top:30px'>", t += "<div style='color:#919191;margin-bottom:5px' id='hostGameMsg'></div>", t += "<a class='menuLink' onclick='createPrivateRoom()'>Start Game</a><br/>", t += "</div>"
         }
     }, {
         header: "Select Spray",
         gen: function() {
-            for (var t = "", e = 0; e < b.sprays.length; ++e) t += "<div class='selItem' style='margin-top:" + (0 < e ? "10px" : "") + "'><div class='equipBtn' onclick='selectSpray(" + e + ")'><i class='material-icons'>&#xE037</i></div><div class='itemIcon'><img class='itemIconImg' src='./textures/sprays/" + e + ".png'/></div><div class='itemInfo'><div class='itemName'>" + b.sprays[e].name + "</div><div class='itemCat'>Default Spray</div></div></div>";
+            for (var t = "", e = 0; e < w.sprays.length; ++e) t += "<div class='selItem' style='margin-top:" + (0 < e ? "10px" : "") + "'><div class='equipBtn' onclick='selectSpray(" + e + ")'><i class='material-icons'>&#xE037</i></div><div class='itemIcon'><img class='itemIconImg' src='./textures/sprays/" + e + ".png'/></div><div class='itemInfo'><div class='itemName'>" + w.sprays[e].name + "</div><div class='itemCat'>Default Spray</div></div></div>";
             return t
         }
     }, {
@@ -42900,47 +42921,47 @@
                 if (t && t.length)
                     if (e) mapsList.innerHTML = e;
                     else {
-                        var i = Ft(t, "map");
+                        var i = Ht(t, "map");
                         yourMaps.innerHTML = i
                     }
             else yourMaps.innerHTML = "No Maps found"
         },
         gen: function() {
-            var t = _ ? "<div style='margin-top:30px;font-size:24px;margin-bottom:10px' class='setHed'>Your Maps</div><div style='color:rgba(0,0,0,0.3)' id='yourMaps'>Loading...</div><div style='margin-top:30px;margin-bottom:10px' class='setHed'>Publish Map</div><div style='color:rgba(0,0,0,0.4);font-size:18px'><input onclick='selectMapThumb()' type='button' id='thumbBtn' style='cursor:pointer' value='Select' /><input id='mapThumb' type='file' accept='image/*' style='width:1px;visibility:hidden;' onchange='updateMapThumb()'><span style='color:rgba(0,0,0,0.4);margin-left:10px' id='mapThumbName'>No Thumbnail</span></div><input id='mapDataNew' type='text' placeholder='Paste Map Data' class='mapInput' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'/><div id='mapUpResp' style='color:rgba(0,0,0,0.3);margin-top:8px;margin-bottom:5px'></div><div class='mapLoadButton' style='margin-top:6px' onclick='uploadCustomMap()'>Publish/Update</div>" : "<div style='color:rgba(0,0,0,0.3);margin-top:20px'><a href='javascript:;' onclick='showWindow(5);' class='menuLink'>Login</a> to create and upload maps!</div>";
-            return _ && w.send("getMaps", !0), "<a href='./editor.html' class='menuLink'>Map Editor</a> | <a href='/social.html?p=maps' target='_blank' class='menuLink'>Map List</a><a href='https://discord.gg/3vVuv5X' class='menuLink' style='float:right'>Map Community</a><br/>" + t
+            var t = M ? "<div style='margin-top:30px;font-size:24px;margin-bottom:10px' class='setHed'>Your Maps</div><div style='color:rgba(0,0,0,0.3)' id='yourMaps'>Loading...</div><div style='margin-top:30px;margin-bottom:10px' class='setHed'>Publish Map</div><div style='color:rgba(0,0,0,0.4);font-size:18px'><input onclick='selectMapThumb()' type='button' id='thumbBtn' style='cursor:pointer' value='Select' /><input id='mapThumb' type='file' accept='image/*' style='width:1px;visibility:hidden;' onchange='updateMapThumb()'><span style='color:rgba(0,0,0,0.4);margin-left:10px' id='mapThumbName'>No Thumbnail</span></div><input id='mapDataNew' type='text' placeholder='Paste Map Data' class='mapInput' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'/><div id='mapUpResp' style='color:rgba(0,0,0,0.3);margin-top:8px;margin-bottom:5px'></div><div class='mapLoadButton' style='margin-top:6px' onclick='uploadCustomMap()'>Publish/Update</div>" : "<div style='color:rgba(0,0,0,0.3);margin-top:20px'><a href='javascript:;' onclick='showWindow(5);' class='menuLink'>Login</a> to create and upload maps!</div>";
+            return M && x.send("getMaps", !0), "<a href='./editor.html' class='menuLink'>Map Editor</a> | <a href='/social.html?p=maps' target='_blank' class='menuLink'>Map List</a><a href='https://discord.gg/3vVuv5X' class='menuLink' style='float:right'>Map Community</a><br/>" + t
         }
     }, {
         header: "Community Maps",
         searchMaps: function() {
-            searchResults.innerHTML = "Loading...", w.send("srchM", mpSrch.value)
+            searchResults.innerHTML = "Loading...", x.send("srchM", mpSrch.value)
         },
         searchResp: function(t) {
             var e = "";
-            t.length ? (e += "<div style='height:10px'></div>", e += Ft(t, "map")) : e = "No maps found!", document.getElementById("searchResults") && (document.getElementById("searchResults").innerHTML = e)
+            t.length ? (e += "<div style='height:10px'></div>", e += Ht(t, "map")) : e = "No maps found!", document.getElementById("searchResults") && (document.getElementById("searchResults").innerHTML = e)
         },
         mapsLoaded: function(t, e) {
             if (mapsList)
                 if (t && t.length)
                     if (e) mapsList.innerHTML = e;
                     else {
-                        for (var i = "<div style='margin-bottom:-5px;margin-top:-5px;'>Search More Maps</div><input type='text' id='mpSrch' class='smlInput' placeholder='Map Name' /><a class='menuLink' style='margin-left:20px' onclick='windows[10].searchMaps()'>Search</a><div style='color:rgba(0,0,0,0.5);margin-top:5px' id='searchResults'></div>", n = ["<div style='margin-bottom:8px;margin-top:15px;font-size:25px'>Hot</div>", "<div style='margin-top:25px;margin-bottom:8px;font-size:25px'>New Maps</div>", "<div style='margin-top:25px;margin-bottom:8px;font-size:25px'>Your Favorites</div>"], r = 0; r < t.length; ++r) t[r] && (t[r].length && (i += n[r]), i += Ft(t[r], "map"));
+                        for (var i = "<div style='margin-bottom:-5px;margin-top:-5px;'>Search More Maps</div><input type='text' id='mpSrch' class='smlInput' placeholder='Map Name' /><a class='menuLink' style='margin-left:20px' onclick='windows[10].searchMaps()'>Search</a><div style='color:rgba(0,0,0,0.5);margin-top:5px' id='searchResults'></div>", n = ["<div style='margin-bottom:8px;margin-top:15px;font-size:25px'>Hot</div>", "<div style='margin-top:25px;margin-bottom:8px;font-size:25px'>New Maps</div>", "<div style='margin-top:25px;margin-bottom:8px;font-size:25px'>Your Favorites</div>"], r = 0; r < t.length; ++r) t[r] && (t[r].length && (i += n[r]), i += Ht(t[r], "map"));
                         mapsList.innerHTML = i
                     }
             else mapsList.innerHTML = "No Maps found"
         },
         gen: function() {
-            return w.send("getMaps"), "<div style='color:rgba(0,0,0,0.3)' id='mapsList'>Loading...</div>"
+            return x.send("getMaps"), "<div style='color:rgba(0,0,0,0.3)' id='mapsList'>Loading...</div>"
         }
     }, {
         header: "Theatre Mode",
         gen: function() {
-            return "<div class='setHed' style='margin-top:0'>Settings</div><div class='settName'>Enable Recording<label class='switch'><input type='checkbox' onclick='enableRecord(this.checked)' " + (we ? "checked" : "") + "><span class='slider'></span></label></div><div class='settName'>Record Key<span class='settText floatR' id='cont13' onclick='changeCont(13, true)'>" + f.getKeyName(L.recordKey) + "</span></div><div style='height:20px'></div><a href='./theatre.html' class='menuLink'>Theatre Mode</a>"
+            return "<div class='setHed' style='margin-top:0'>Settings</div><div class='settName'>Enable Recording<label class='switch'><input type='checkbox' onclick='enableRecord(this.checked)' " + (be ? "checked" : "") + "><span class='slider'></span></label></div><div class='settName'>Record Key<span class='settText floatR' id='cont13' onclick='changeCont(13, true)'>" + d.getKeyName(A.recordKey) + "</span></div><div style='height:20px'></div><a href='./theatre.html' class='menuLink'>Theatre Mode</a>"
         }
     }, {
         header: "Clans",
         clanData: null,
         kickReq: function(t) {
-            if (w.send("cln", 5, t), this.clanData && this.clanData.members) {
+            if (x.send("cln", 5, t), this.clanData && this.clanData.members) {
                 for (var e = this.clanData.members.length - 1; 0 <= e; --e) this.clanData.members[e].player_id == t && this.clanData.members.splice(e, 1);
                 updateWindow(13)
             }
@@ -42949,25 +42970,25 @@
             var i = document.getElementById("clanErr");
             i && (i.style.color = "rgba(0,0,0,0.6)", i.innerHTML = "Loading...");
             var n = (i = document.getElementById("clanInp" + t)) ? i.value : null;
-            w.send("cln", t, e || n || 1)
+            x.send("cln", t, e || n || 1)
         },
         updReq: function(t, e, i) {
-            w.send("clnR", e, i), this.clanData.members && 1 == i && this.clanData.members.push({
+            x.send("clnR", e, i), this.clanData.members && 1 == i && this.clanData.members.push({
                 player_name: this.clanData.requests[t].player_name
             }), this.clanData.requests.splice(t, 1), updateWindow(13)
         },
         delReq: function() {
-            this.clanData = null, _ && (_.clan = null), w.send("cln", 4, 1), showWindow(5)
+            this.clanData = null, M && (M.clan = null), x.send("cln", 4, 1), showWindow(5)
         },
         resp: function(t, e, i) {
             var n = document.getElementById("clanErr");
-            t && n ? (n.style.color = i ? "rgba(0,0,0,0.6)" : "rgba(255,0,0,0.6)", n.innerHTML = t) : e && (_ && (_.clan = e.clan_name), this.clanData = e, updateWindow(13))
+            t && n ? (n.style.color = i ? "rgba(0,0,0,0.6)" : "rgba(255,0,0,0.6)", n.innerHTML = t) : e && (M && (M.clan = e.clan_name), this.clanData = e, updateWindow(13))
         },
         gen: function() {
             var t = "",
                 e = "";
             if (this.clanData && this.clanData.members) {
-                var i = _ && this.clanData.clan_playerid == _.id;
+                var i = M && this.clanData.clan_playerid == M.id;
                 t = "<div class='setHed' style='margin-top:10px'>Members (" + this.clanData.members.length + ")</div>";
                 for (var r = 0; r < this.clanData.members.length; ++r) t += "<div class='settName'><a target='_blank'href='/social.html?p=profile&q=" + this.clanData.members[r].player_name + "'>" + this.clanData.members[r].player_name + "</a>" + (i && this.clanData.clan_playerid != this.clanData.members[r].player_id ? "<i style='font-size:40px;float:right;color:rgba(255,0,0,0.6)'  class='material-icons h' onclick='windows[12].kickReq(" + this.clanData.members[r].player_id + ")'>clear</i>" : "") + "</div>"
             }
@@ -42976,72 +42997,72 @@
                 for (r = 0; r < this.clanData.requests.length; ++r) e += "<div class='settName'><a  target='_blank' href='/social.html?p=profile&q=" + this.clanData.requests[r].player_name + "'>" + this.clanData.requests[r].player_name + "</a><span style='float:right'><i style='font-size:40px;color:rgba(255,0,0,0.6)'  class='material-icons h' onclick='windows[12].updReq(" + r + "," + this.clanData.requests[r].cr_playerid + ", 0)'>clear</i><i style='font-size:40px;color:rgba(0,255,0,0.6);margin-left:10px' class='material-icons h' onclick='windows[12].updReq(" + r + "," + this.clanData.requests[r].cr_playerid + ", 1)'>done</i></span></div>";
                 this.clanData.requests.length || (e += "<div style='color:rgba(0,0,0,0.4)'>No Requests</div>")
             }
-            var s = _ ? _.clan ? "<div class='setHed' style='margin-top:0px'>[" + _.clan + "] Clan Page<a style='float:right' href='javascript:;' onclick='windows[12].delReq()' class='menuLink'>" + (this.clanData ? _ && this.clanData.clan_playerid == _.id ? "Delete" : "Leave" : "") + "</a></div><div id='clanErr' style='margin-top:0px;color:rgba(0,0,0,0.5)'>" + (this.clanData ? "<div class='settName'>Level<span class='floatR'>" + Math.max(1, Math.floor(n.rankVar * Math.sqrt(this.clanData.clan_score || 0))) + "</span></div><div class='settName'>Score<span class='floatR'>" + (this.clanData.clan_score || 0) + "</span></div>" + t + e : "Loading...") + "</div>" : "<div class='setHed' style='margin-top:-5px'>Create Clan</div><input id='clanInp1' type='text' class='smlInput' maxlength='4' placeholder='Clan Name' /><a class='menuLink' style='margin-left:20px' onclick='windows[12].sendReq(1)'>Create</a><div style='margin-top:0px' class='setHed'>Join Clan <a href='./social.html?q=clan' class='menuLink' style='margin-top:10px;display:inline-block'>View Clans</a></div><input id='clanInp2' type='text' class='smlInput' maxlength='4' placeholder='Clan Name' /><a class='menuLink' style='margin-left:20px' onclick='windows[12].sendReq(2)'>Submit</a><div id='clanErr' style='margin-top:10px'></div>" : "<div style='color:rgba(0,0,0,0.3);margin-top:20px'><a href='javascript:;' onclick='showWindow(5);' class='menuLink'>Login</a> to create and join a clan!</div>";
-            return _ && _.clan && !this.clanData && this.sendReq(3), s
+            var s = M ? M.clan ? "<div class='setHed' style='margin-top:0px'>[" + M.clan + "] Clan Page<a style='float:right' href='javascript:;' onclick='windows[12].delReq()' class='menuLink'>" + (this.clanData ? M && this.clanData.clan_playerid == M.id ? "Delete" : "Leave" : "") + "</a></div><div id='clanErr' style='margin-top:0px;color:rgba(0,0,0,0.5)'>" + (this.clanData ? "<div class='settName'>Level<span class='floatR'>" + Math.max(1, Math.floor(n.rankVar * Math.sqrt(this.clanData.clan_score || 0))) + "</span></div><div class='settName'>Score<span class='floatR'>" + (this.clanData.clan_score || 0) + "</span></div>" + t + e : "Loading...") + "</div>" : "<div class='setHed' style='margin-top:-5px'>Create Clan</div><input id='clanInp1' type='text' class='smlInput' maxlength='4' placeholder='Clan Name' /><a class='menuLink' style='margin-left:20px' onclick='windows[12].sendReq(1)'>Create</a><div style='margin-top:0px' class='setHed'>Join Clan <a href='./social.html?q=clan' class='menuLink' style='margin-top:10px;display:inline-block'>View Clans</a></div><input id='clanInp2' type='text' class='smlInput' maxlength='4' placeholder='Clan Name' /><a class='menuLink' style='margin-left:20px' onclick='windows[12].sendReq(2)'>Submit</a><div id='clanErr' style='margin-top:10px'></div>" : "<div style='color:rgba(0,0,0,0.3);margin-top:20px'><a href='javascript:;' onclick='showWindow(5);' class='menuLink'>Login</a> to create and join a clan!</div>";
+            return M && M.clan && !this.clanData && this.sendReq(3), s
         }
     }, {
         header: "Store",
         gen: function() {
-            g.play("store", .4);
-            for (var t = "", e = 0; e < b.store.wheels.length; ++e) t += "<div><a href='javascript:;' class='menuLink' onclick='prizeWheel(" + e + ")'>" + (S = b.store.wheels[e]).name + " Spin</a> <span style='color:#fff;margin-left:5px;background-color:" + S.lab.col + ";font-size:15px;padding:3px;padding-left:8px;padding-right:8px'> " + S.lab.nm + " </span><span style='float:right;color:rgba(0,0,0,0.3)'>" + S.price + "<span style='color:rgba(0,0,0,0.6)'> KR</span></span></div>";
+            m.play("store", .4);
+            for (var t = "", e = 0; e < w.store.wheels.length; ++e) t += "<div><a href='javascript:;' class='menuLink' onclick='prizeWheel(" + e + ")'>" + (_ = w.store.wheels[e]).name + " Spin</a> <span style='color:#fff;margin-left:5px;background-color:" + _.lab.col + ";font-size:15px;padding:3px;padding-left:8px;padding-right:8px'> " + _.lab.nm + " </span><span style='float:right;color:rgba(0,0,0,0.3)'>" + _.price + "<span style='color:rgba(0,0,0,0.6)'> KR</span></span></div>";
             var i = "<div style='color:rgba(0,0,0,0.3);font-size:19px;margin-bottom:20px'>By purchasing you agree to the <a href='./docs/terms.txt'>Terms</a></div>";
-            for (e = 0; e < b.store.purchases.length; ++e) i += "<div><a href='javascript:;' class='menuLink' onclick='showPurchase(" + e + ")'>" + (S = b.store.purchases[e]).val + " KR </a><span style='float:right;color:rgba(0,0,0,0.3)'>" + (S.tag ? "<span style='color:#fff;font-size:15px;padding:10px;padding-top:2px;vertical-align:middle;padding-bottom:2px;background-color:" + S.tagCol + "'>" + S.tag + "</span> " : "") + S.price + "<span style='color:rgba(0,0,0,0.6)'> USD</span></span></div>";
-            return _ ? "<b style='font-size:26px'>Prize Wheels</b><div style='color:rgba(0,0,0,0.3);margin-bottom:10px'>Unlock new weapon skins and items</div>" + t + ("<div style='height:10px;'></div><b style='font-size:26px;margin-bottom:10px'>Purchase KR</b>" + i) + "<div style='float:right;margin-top:10px'>" + _.funds + " KR in account</div>" : "<div style='color:rgba(0,0,0,0.3)'><a href='javascript:;' onclick='showWindow(5);' class='menuLink'>Login</a> to buy and unlock items from the store!</div>"
+            for (e = 0; e < w.store.purchases.length; ++e) i += "<div><a href='javascript:;' class='menuLink' onclick='showPurchase(" + e + ")'>" + (_ = w.store.purchases[e]).val + " KR </a><span style='float:right;color:rgba(0,0,0,0.3)'>" + (_.tag ? "<span style='color:#fff;font-size:15px;padding:10px;padding-top:2px;vertical-align:middle;padding-bottom:2px;background-color:" + _.tagCol + "'>" + _.tag + "</span> " : "") + _.price + "<span style='color:rgba(0,0,0,0.6)'> USD</span></span></div>";
+            return M ? "<b style='font-size:26px'>Prize Wheels</b><div style='color:rgba(0,0,0,0.3);margin-bottom:10px'>Unlock new weapon skins and items</div>" + t + ("<div style='height:10px;'></div><b style='font-size:26px;margin-bottom:10px'>Purchase KR</b>" + i) + "<div style='float:right;margin-top:10px'>" + M.funds + " KR in account</div>" : "<div style='color:rgba(0,0,0,0.3)'><a href='javascript:;' onclick='showWindow(5);' class='menuLink'>Login</a> to buy and unlock items from the store!</div>"
         }
     }, {
         header: "Select Skin",
         gen: function() {
-            var t = "<div class='selItem'><div class='equipBtn' onclick='selectSkin(-1," + Ct + ")'><i class='material-icons'>&#xE037</i></div><div class='itemIcon'><img class='itemIconImg' src=''/></div><div class='itemInfo'><div class='itemName'>Default</div><div class='itemCat'>Default Skin</div></div></div>";
-            if (_)
-                for (var e = _.skins.slice().sort(function(t, e) {
-                        return b.store.skins[e.ind] && b.store.skins[t.ind] ? b.store.skins[e.ind].rarity - b.store.skins[t.ind].rarity : 0
-                    }), i = 0; i < e.length; ++i)(S = b.store.skins[e[i].ind]) && !S.type && S.weapon == Ct + 1 && (t += "<div class='selItem' style='margin-top:10px'><div class='equipBtn' onclick='selectSkin(" + e[i].ind + "," + (S.weapon - 1) + ")'><i class='material-icons'>&#xE037</i></div><div class='itemIcon'><img class='itemIconImg' src=''/></div><div class='itemInfo'><div class='itemName' style='color:" + b.store.rarities[S.rarity].color + "'>" + S.name + "<span style='color:rgba(0,0,0,0.3)'> x" + e[i].cnt + "</span></div><div class='itemCat'>by " + (S.creator || "Krunker.io") + "</div></div></div>");
+            var t = "<div class='selItem'><div class='equipBtn' onclick='selectSkin(-1," + It + ")'><i class='material-icons'>&#xE037</i></div><div class='itemIcon'><img class='itemIconImg' src=''/></div><div class='itemInfo'><div class='itemName'>Default</div><div class='itemCat'>Default Skin</div></div></div>";
+            if (M)
+                for (var e = M.skins.slice().sort(function(t, e) {
+                        return w.store.skins[e.ind] && w.store.skins[t.ind] ? w.store.skins[e.ind].rarity - w.store.skins[t.ind].rarity : 0
+                    }), i = 0; i < e.length; ++i)(_ = w.store.skins[e[i].ind]) && !_.type && _.weapon == It + 1 && (t += "<div class='selItem' style='margin-top:10px'><div class='equipBtn' onclick='selectSkin(" + e[i].ind + "," + (_.weapon - 1) + ")'><i class='material-icons'>&#xE037</i></div><div class='itemIcon'><img class='itemIconImg' src=''/></div><div class='itemInfo'><div class='itemName' style='color:" + w.store.rarities[_.rarity].color + "'>" + _.name + "<span style='color:rgba(0,0,0,0.3)'> x" + e[i].cnt + "</span></div><div class='itemCat'>by " + (_.creator || "Krunker.io") + "</div></div></div>");
             return t
         }
     }, {
         header: "Select Hat",
         gen: function() {
-            return Ht("selectHat", 1)
+            return jt("selectHat", 1)
         }
     }, {
         header: "Select Back",
         gen: function() {
-            return Ht("selectBack", 2)
+            return jt("selectBack", 2)
         }
     }, {
         header: "Community Mods",
         searchMods: function() {
-            searchResults.innerHTML = "Loading...", w.send("srchM", moSrch.value, 1)
+            searchResults.innerHTML = "Loading...", x.send("srchM", moSrch.value, 1)
         },
         searchResp: function(t) {
             var e = "";
-            t.length ? (e += "<div style='height:10px'></div>", e += Ft(t, "mod")) : e = "No mods found!", document.getElementById("searchResults") && (document.getElementById("searchResults").innerHTML = e)
+            t.length ? (e += "<div style='height:10px'></div>", e += Ht(t, "mod")) : e = "No mods found!", document.getElementById("searchResults") && (document.getElementById("searchResults").innerHTML = e)
         },
         resp: function(t, e) {
             if (modsList)
                 if (t && t.length)
                     if (e) modsList.innerHTML = e;
                     else {
-                        for (var i = "<div style='margin-bottom:-5px;margin-top:-5px;'>Search</div><input type='text' id='moSrch' class='smlInput' placeholder='Mod Name' /><a class='menuLink' style='margin-left:20px' onclick='windows[17].searchMods()'>Search</a><div style='color:rgba(0,0,0,0.5);margin-top:5px' id='searchResults'></div>", n = ["<div style='margin-bottom:5px;margin-top:15px'>Hot</div>", "<div style='margin-top:20px;margin-bottom:5px'>New Mods</div>", "<div style='margin-top:20px;margin-bottom:5px'>Your Favorites</div>"], r = 0; r < t.length; ++r) t[r] && (t[r].length && (i += n[r]), i += Ft(t[r], "mod"));
+                        for (var i = "<div style='margin-bottom:-5px;margin-top:-5px;'>Search</div><input type='text' id='moSrch' class='smlInput' placeholder='Mod Name' /><a class='menuLink' style='margin-left:20px' onclick='windows[17].searchMods()'>Search</a><div style='color:rgba(0,0,0,0.5);margin-top:5px' id='searchResults'></div>", n = ["<div style='margin-bottom:5px;margin-top:15px'>Hot</div>", "<div style='margin-top:20px;margin-bottom:5px'>New Mods</div>", "<div style='margin-top:20px;margin-bottom:5px'>Your Favorites</div>"], r = 0; r < t.length; ++r) t[r] && (t[r].length && (i += n[r]), i += Ht(t[r], "mod"));
                         modsList.innerHTML = i
                     }
             else modsList.innerHTML = "No Mods found"
         },
         gen: function() {
-            return w.send("getMods"), "<div style='color:rgba(0,0,0,0.3)' id='modsList'>Loading...</div>"
+            return x.send("getMods"), "<div style='color:rgba(0,0,0,0.3)' id='modsList'>Loading...</div>"
         }
     }, {
         header: "Publish Mod",
         gen: function() {
-            return _ ? "<div style='margin-top:0px' class='setHed'>Publish Mod</div><div style='color:rgba(0,0,0,0.4);font-size:18px'><input onclick='selectModThumb()' type='button' id='thumbBtn' style='cursor:pointer' value='Select' /><input id='modThumb' type='file' accept='image/*' style='width:1px;visibility:hidden;' onchange='updateModThumb()'><span style='color:rgba(0,0,0,0.4);margin-left:10px' id='modThumbName'>No Thumbnail</span></div><input id='pubModName' type='text' placeholder='Mod Name' class='mapInput' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'/><input id='pubModURL' type='text' placeholder='Mod URL' class='mapInput' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'/><div id='modUpResp' style='color:rgba(0,0,0,0.3);margin-top:8px'></div><div class='mapLoadButton' style='margin-top:6px' onclick='uploadCustomMod()'>Publish/Update</div>" : "<div style='color:rgba(0,0,0,0.3);'><a href='javascript:;' onclick='showWindow(5)' class='menuLink'>Login</a> to publish mods!</div>"
+            return M ? "<div style='margin-top:0px' class='setHed'>Publish Mod</div><div style='color:rgba(0,0,0,0.4);font-size:18px'><input onclick='selectModThumb()' type='button' id='thumbBtn' style='cursor:pointer' value='Select' /><input id='modThumb' type='file' accept='image/*' style='width:1px;visibility:hidden;' onchange='updateModThumb()'><span style='color:rgba(0,0,0,0.4);margin-left:10px' id='modThumbName'>No Thumbnail</span></div><input id='pubModName' type='text' placeholder='Mod Name' class='mapInput' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'/><input id='pubModURL' type='text' placeholder='Mod URL' class='mapInput' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'/><div id='modUpResp' style='color:rgba(0,0,0,0.3);margin-top:8px'></div><div class='mapLoadButton' style='margin-top:6px' onclick='uploadCustomMod()'>Publish/Update</div>" : "<div style='color:rgba(0,0,0,0.3);'><a href='javascript:;' onclick='showWindow(5)' class='menuLink'>Login</a> to publish mods!</div>"
         }
     }, {
         header: "Select Secondary",
         gen: function() {
-            for (var t = "", e = 0; e < b.weapons.length; ++e)
-                if ((S = b.weapons[e]) && S.secondary) {
-                    var i = !S.minRec || _ && _.level >= S.minRec;
-                    t += "<div class='selItem' style='margin-top:10px'><div class='equipBtn" + (i ? "" : " gr") + "' " + (i ? "onclick='selectSecondary(" + e + ")" : "") + "'><i class='material-icons'>&#xE037</i></div><div class='itemIcon'><img class='itemIconImg' src='./img/prev/" + S.src + ".png'/></div><div class='itemInfo'><div class='itemName'>" + S.name + "</div><div class='itemCat'>" + (S.minRec ? i ? "Unlocked at lvl " + S.minRec : "Req lvl " + S.minRec : "Default") + "</div></div></div>"
+            for (var t = "", e = 0; e < w.weapons.length; ++e)
+                if ((_ = w.weapons[e]) && _.secondary) {
+                    var i = !_.minRec || M && M.level >= _.minRec;
+                    t += "<div class='selItem' style='margin-top:10px'><div class='equipBtn" + (i ? "" : " gr") + "' " + (i ? "onclick='selectSecondary(" + e + ")" : "") + "'><i class='material-icons'>&#xE037</i></div><div class='itemIcon'><img class='itemIconImg' src='./img/prev/" + _.src + ".png'/></div><div class='itemInfo'><div class='itemName'>" + _.name + "</div><div class='itemCat'>" + (_.minRec ? i ? "Unlocked at lvl " + _.minRec : "Req lvl " + _.minRec : "Default") + "</div></div></div>"
                 } return t
         }
     }, {
@@ -43055,107 +43076,107 @@
             return "TODO"
         }
     }];
-    for (xt = 0; xt < windows.length; ++xt) windows[xt].html = "";
-    var jt = 0;
+    for (wt = 0; wt < windows.length; ++wt) windows[wt].html = "";
+    var Gt = 0;
     window.updateWindow = function(t, e) {
-        "block" == windowHolder.style.display && (jt == t && null != t ? showWindow(t, !0) : e && showWindow(jt, !0))
+        "block" == windowHolder.style.display && (Gt == t && null != t ? showWindow(t, !0) : e && showWindow(Gt, !0))
     }, window.showWindow = function(t, e) {
-        window.idleTimer = 0, e || t && ("block" != windowHolder.style.display || t != jt) ? (y.toggleMenu(!0), menuWindow.innerHTML = windows[t - 1].gen ? windows[t - 1].gen() : windows[t - 1].html, jt = t, windowHeader.innerHTML = windows[t - 1].header, y.toggleWindow(!0)) : (y.toggleWindow(!1), L.inputChanger = null)
+        window.idleTimer = 0, e || t && ("block" != windowHolder.style.display || t != Gt) ? (v.toggleMenu(!0), menuWindow.innerHTML = windows[t - 1].gen ? windows[t - 1].gen() : windows[t - 1].html, Gt = t, windowHeader.innerHTML = windows[t - 1].header, v.toggleWindow(!0)) : (v.toggleWindow(!1), A.inputChanger = null)
     }, window.playTick = function() {
-        g.play("tick_0", .2)
+        m.play("tick_0", .2)
     }, window.copyInviteLink = function() {
-        f.copyToClipboard(`https://${location.host}/?game=${c}`), inviteButton.innerText = "Copied", setTimeout(() => inviteButton.innerText = "Invite", 1250)
+        d.copyToClipboard(`https://${location.host}/?game=${c}`), inviteButton.innerText = "Copied", setTimeout(() => inviteButton.innerText = "Invite", 1250)
     };
-    var Gt, Vt, Wt, Yt, qt, Xt = spinWindow,
-        Zt = Xt.getContext("2d"),
-        Kt = .95,
-        Jt = .6,
-        Qt = null,
-        $t = !1,
-        te = 0,
+    var Vt, Wt, Yt, qt, Xt, Zt = spinWindow,
+        Kt = Zt.getContext("2d"),
+        Jt = .95,
+        Qt = .6,
+        $t = null,
+        te = !1,
         ee = 0,
         ie = 0,
         ne = 0,
         re = 0,
-        se = 30,
-        oe = 300,
-        ae = !0,
-        ce = 0,
+        se = 0,
+        oe = 30,
+        ae = 300,
+        ce = !0,
         le = 0,
-        pe = new d.PerspectiveCamera(45, 1, .1, 100),
-        he = new d.WebGLRenderer({
+        pe = 0,
+        he = new u.PerspectiveCamera(45, 1, .1, 100),
+        ue = new u.WebGLRenderer({
             precision: "mediump",
             antialias: !1,
             alpha: !0
         });
 
-    function ue(t, e) {
-        var i = b.store.skins[e];
-        i && vi(null, "<span style='color:#fff'>" + t + "</span> unboxed <span style='color:" + b.store.rarities[i.rarity].color + "'>" + i.name + "</span>", !0)
+    function de(t, e) {
+        var i = w.store.skins[e];
+        i && yi(null, "<span style='color:#fff'>" + t + "</span> unboxed <span style='color:" + w.store.rarities[i.rarity].color + "'>" + i.name + "</span>", !0)
     }
 
-    function de(t, e, i, n) {
-        if ($t = !1, n);
+    function fe(t, e, i, n) {
+        if (te = !1, n);
         else {
-            if (Qt = b.store.skins[e], spinItemName.innerHTML = Qt.name + "<div style='color:rgba(255,255,255,0.5)'>by " + (Qt.creator || "Krunker.io") + "</div>", ee = 2 * Math.PI * (t / 100 + 13) + Math.PI / 2, _)
-                if (_.funds = i, Mt(), spinKR.innerHTML = _.funds + " KR", _.skins.some(t => t.ind === e)) {
-                    var r = _.skins.find(t => t.ind === e);
+            if ($t = w.store.skins[e], spinItemName.innerHTML = $t.name + "<div style='color:rgba(255,255,255,0.5)'>by " + ($t.creator || "Krunker.io") + "</div>", ie = 2 * Math.PI * (t / 100 + 13) + Math.PI / 2, M)
+                if (M.funds = i, _t(), spinKR.innerHTML = M.funds + " KR", M.skins.some(t => t.ind === e)) {
+                    var r = M.skins.find(t => t.ind === e);
                     r && r.cnt++
-                } else _.skins.push({
+                } else M.skins.push({
                     ind: e,
                     cnt: 1
                 });
-            spinRotation = 0, ce = 0, spinCost.innerHTML = "", (Gt = new d.Scene).add(new d.AmbientLight(5197647));
-            var s = new d.DirectionalLight(16777215, .5);
-            s.position.set(3, 1, 0), Gt.add(s);
-            var o = Qt.type ? Qt : b.store.previews[Qt.weapon] || {};
-            (Vt = m.genObj3D(0, 1 + (o.yOff || 0), o.xOff || 0)).rotateX(-Math.PI / 7), Vt.rotateY(Math.PI + .5), Vt.rotateZ(-.5), m.loadMesh({
-                src: b.store.types[Qt.type || 0] + (Qt.type ? Qt.id : Qt.weapon),
-                texSrc: Qt.type ? Qt.tex ? (1 == Qt.type ? "hats/hat_" : "body/body_") + Qt.id + "_" + Qt.tex : null : "weapons/skins/weapon_" + Qt.weapon + "_" + Qt.id,
-                glowText: !Qt.type && Qt.glow,
-                emissive: Qt.glow ? 16777215 : null,
+            spinRotation = 0, le = 0, spinCost.innerHTML = "", (Vt = new u.Scene).add(new u.AmbientLight(5197647));
+            var s = new u.DirectionalLight(16777215, .5);
+            s.position.set(3, 1, 0), Vt.add(s);
+            var o = $t.type ? $t : w.store.previews[$t.weapon] || {};
+            (Wt = f.genObj3D(0, 1 + (o.yOff || 0), o.xOff || 0)).rotateX(-Math.PI / 7), Wt.rotateY(Math.PI + .5), Wt.rotateZ(-.5), f.loadMesh({
+                src: w.store.types[$t.type || 0] + ($t.type ? $t.id : $t.weapon),
+                texSrc: $t.type ? $t.tex ? (1 == $t.type ? "hats/hat_" : "body/body_") + $t.id + "_" + $t.tex : null : "weapons/skins/weapon_" + $t.weapon + "_" + $t.id,
+                glowText: !$t.type && $t.glow,
+                emissive: $t.glow ? 16777215 : null,
                 noGreen: !0,
                 uv2: !0,
                 fillScale: 60,
                 centerZ: !0
-            }, 0, 0, 0, (Qt.type ? Math.PI : Math.PI / 2) + (o.xRot || 0), 2.2 * (o.scl || 1), Vt), Gt.add(Vt), pe.lookAt(Gt.position)
+            }, 0, 0, 0, ($t.type ? Math.PI : Math.PI / 2) + (o.xRot || 0), 2.2 * (o.scl || 1), Wt), Vt.add(Wt), he.lookAt(Vt.position)
         }
     }
 
-    function fe(t, e, i) {
+    function me(t, e, i) {
         windows[12].resp(t, e, i)
     }
 
-    function me(t, e) {
+    function ge(t, e) {
         windows[17].resp(t, e)
     }
 
-    function ge(t, e, i) {
+    function ve(t, e, i) {
         windows[t].mapsLoaded(e, i)
     }
 
-    function ve(t, e) {
+    function ye(t, e) {
         windows[t].searchResp(e)
     }
-    he.setPixelRatio(.6 * window.devicePixelRatio), pe.position.y = 10, spinItemCanvas.appendChild(he.domElement), window.prizeWheel = function(t) {
-        Wt = b.store.wheels[t], ie = t, showWindow(0), te = 0, ae = !$t, ee = 0, le = 0, spinRotation = 0, ne = re = 0, y.toggleMenuHider(!1), spinItem.style.display = "none", spinItemName.style.display = "none", spinUI.style.display = "block", pe.position.x = oe, spinButton.style.opacity = 1, spinText.style.display = "table-cell", spinHeader.innerHTML = "SPIN", spinCost.innerHTML = "-" + Wt.price + "KR";
-        for (var e = "<div style='font-size:50px;color:#fff'>" + Wt.name.toUpperCase() + "</div>", i = 0; i < b.store.rarities.length; ++i) e += "<div style='margin-top:5px;color:#fff'>" + (S = b.store.rarities[i]).name + "<span style='color:rgba(255,255,255,0.5)'>&emsp;" + Wt.rarities[i] + "%</span><div class='colCub' style='background-color:" + S.color + "'></div></div>";
-        spinInfo.innerHTML = e, _ && (spinKR.innerHTML = _.funds + " KR")
+    ue.setPixelRatio(.6 * window.devicePixelRatio), he.position.y = 10, spinItemCanvas.appendChild(ue.domElement), window.prizeWheel = function(t) {
+        Yt = w.store.wheels[t], ne = t, showWindow(0), ee = 0, ce = !te, ie = 0, pe = 0, spinRotation = 0, re = se = 0, v.toggleMenuHider(!1), spinItem.style.display = "none", spinItemName.style.display = "none", spinUI.style.display = "block", he.position.x = ae, spinButton.style.opacity = 1, spinText.style.display = "table-cell", spinHeader.innerHTML = "SPIN", spinCost.innerHTML = "-" + Yt.price + "KR";
+        for (var e = "<div style='font-size:50px;color:#fff'>" + Yt.name.toUpperCase() + "</div>", i = 0; i < w.store.rarities.length; ++i) e += "<div style='margin-top:5px;color:#fff'>" + (_ = w.store.rarities[i]).name + "<span style='color:rgba(255,255,255,0.5)'>&emsp;" + Yt.rarities[i] + "%</span><div class='colCub' style='background-color:" + _.color + "'></div></div>";
+        spinInfo.innerHTML = e, M && (spinKR.innerHTML = M.funds + " KR")
     }, spinButton.onclick = function(t) {
-        t.stopPropagation(), t.preventDefault(), window.idleTimer = 0, w && !$t && ae && _ && _.funds >= Wt.price && ($t = !0, ae = !1, w.send("spin", ie), spinHeader.innerHTML = "", spinCost.innerHTML = "Purchasing...", g.play("buy_1", .1))
+        t.stopPropagation(), t.preventDefault(), window.idleTimer = 0, x && !te && ce && M && M.funds >= Yt.price && (te = !0, ce = !1, x.send("spin", ne), spinHeader.innerHTML = "", spinCost.innerHTML = "Purchasing...", m.play("buy_1", .1))
     }, spinUI.onclick = function() {
-        showWindow(0), y.toggleMenuHider(!0), spinUI.style.display = "none", w && w.send("unbx")
+        showWindow(0), v.toggleMenuHider(!0), spinUI.style.display = "none", x && x.send("unbx")
     }, window.selectHostMap = function(t) {
-        Yt = t, showWindow(8)
-    }, window.selectHostMod = function(t) {
         qt = t, showWindow(8)
+    }, window.selectHostMod = function(t) {
+        Xt = t, showWindow(8)
     }, window.openHostWindow = function() {
-        Yt = null, qt = null, showWindow(8)
+        qt = null, Xt = null, showWindow(8)
     };
-    var ye, xe = 1e4,
-        we = !("true" != getSavedVal("krk_record"));
+    var xe, we = 1e4,
+        be = !("true" != getSavedVal("krk_record"));
 
-    function be(t, e) {
+    function Me(t, e) {
         try {
             mapUpResp && !e && (mapUpResp.innerHTML = t)
         } catch (e) {}
@@ -43164,8 +43185,8 @@
         } catch (e) {}
     }
     window.enableRecord = function(t) {
-        we = t, saveVal("krk_record", t)
-    }, enableRecord(we), window.updateMapThumb = function() {
+        be = t, saveVal("krk_record", t)
+    }, enableRecord(be), window.updateMapThumb = function() {
         var t = null;
         try {
             t = document.getElementById("mapThumb").files[0]
@@ -43182,11 +43203,11 @@
         if (t) {
             var e = new FileReader;
             e.readAsDataURL(t), e.onload = function() {
-                w.send("uploadM", mapDataNew.value, e.result)
+                x.send("uploadM", mapDataNew.value, e.result)
             }, e.onerror = function() {
                 mapUpResp.innerHTML = "Thumbnail Error"
             }
-        } else w.send("uploadM", mapDataNew.value)
+        } else x.send("uploadM", mapDataNew.value)
     }, window.updateModThumb = function() {
         var t = null;
         try {
@@ -43204,29 +43225,29 @@
         if (t) {
             var e = new FileReader;
             e.readAsDataURL(t), e.onload = function() {
-                w.send("uploadMo", pubModName.value, pubModURL.value, e.result)
+                x.send("uploadMo", pubModName.value, pubModURL.value, e.result)
             }, e.onerror = function() {
                 modUpResp.innerHTML = "Thumbnail Error"
             }
-        } else w.send("uploadMo", pubModName.value, pubModURL.value)
+        } else x.send("uploadMo", pubModName.value, pubModURL.value)
     }, zip.workerScriptsPath = "./libs/";
-    var Me = new FileReader;
+    var _e = new FileReader;
 
-    function _e(t) {
+    function Se(t) {
         this.imgAsDataURL = "", this.process = function(e) {
             if (this.imgAsDataURL = URL.createObjectURL(e), this.imgAsDataURL && t) {
                 try {
                     var i = new Image;
                     i.onload = function() {
-                        m.updateTexture(t.replace("textures/", "").replace(".png", ""), this)
+                        f.updateTexture(t.replace("textures/", "").replace(".png", ""), this)
                     }, i.src = this.imgAsDataURL
                 } catch (e) {}
-                Ae.close()
+                Le.close()
             }
         }
     }
 
-    function Se(t) {
+    function Ee(t) {
         this.filename = t;
         var e = this;
         this.process = function(t) {
@@ -43234,23 +43255,23 @@
             if (i) {
                 try {
                     var n = e.filename.split("/")[1];
-                    "ambient_1" == n && g.stop("ambient_1"), g.sounds[n] = new Howl({
+                    "ambient_1" == n && m.stop("ambient_1"), m.sounds[n] = new Howl({
                         src: [i],
                         format: "mp3"
-                    }), g.sounds[n + "3d"] = new Howl({
+                    }), m.sounds[n + "3d"] = new Howl({
                         src: [i],
                         format: "mp3"
-                    }), "ambient_1" == n && g.play("ambient_1", .12, !0)
+                    }), "ambient_1" == n && m.play("ambient_1", .12, !0)
                 } catch (t) {}
-                Ae.close()
+                Le.close()
             }
         }
     }
-    Me.onload = function(t) {
+    _e.onload = function(t) {
         var e = t.target.result;
         loadModPack(e)
     };
-    var Ee, Te, Ae = new function() {
+    var Te, Ae, Le = new function() {
         this.init = function(t, e) {
             this.numFiles = e, this.progress = 0, this.reader = t
         }, this.close = function() {
@@ -43258,18 +43279,18 @@
         }
     };
 
-    function Le(t, e, i) {
-        H = e, window.spectating = i, !H && i && (H = 1), Ve(), Ne(t), y.toggleMenu(!1),
+    function ke(t, e, i, n) {
+        F = e, window.spectating = i, !F && i && (F = 1), We(), ze(t), v.toggleMenu(!1),
             function() {
-                ci.length = 0, mi.length = 0, y.toggleGameUI(!0), x.reset(), L.reset(), ke(!1), b.players.forcePos(), N.length = 0, window.loading = !1, window.idleTimer = 0, teamName.innerHTML = "", instructions.innerHTML = "CLICK TO PLAY", A = null;
+                li.length = 0, gi.length = 0, v.toggleGameUI(!0), y.reset(), A.reset(), Pe(!1), w.players.forcePos(), B.length = 0, window.loading = !1, window.idleTimer = 0, teamName.innerHTML = "", instructions.innerHTML = "CLICK TO PLAY", T = null;
                 for (var t = 0; t < playerInfos.children.length; t++) playerInfos.children[t].style.display = "none"
-            }(), y.toggleControlUI(L.enabled), b.updateUI()
+            }(), v.toggleControlUI(A.enabled), w.updateUI(), challIcon.style.display = n ? "inline-block" : "none"
     }
 
     function Re(t, e, i, n, r, s, o, a, c, l) {
-        if (a ? a.data && b.customMap(a.data, a.id, a.creator, null, !0) : b.map.setMaps(), D = r && r == w.socketId, mapVote.innerHTML = "", Te = 0, r && a && null != a.id && (mapVote.innerHTML = "<i id='mapVoteD' onclick='voteMap(" + a.id + ",-1)' class='material-icons vote'>thumb_down</i><i id='mapVoteU' onclick='voteMap(" + a.id + ",1)' class='material-icons vote'>thumb_up</i>"), b.applyConfig(s, a && a.featured), b.init(t, e, l), b.setObjective(n), c)
-            for (var p = 0; p < c.length; ++p) b.destroyObj(c[p]);
-        if (teamScores.style.display = "none", b.mode.teams && i) {
+        if (a ? a.data && w.customMap(a.data, a.id, a.creator, null, !0) : w.map.setMaps(), O = r && r == x.socketId, mapVote.innerHTML = "", Ae = 0, r && a && null != a.id && (mapVote.innerHTML = "<i id='mapVoteD' onclick='voteMap(" + a.id + ",-1)' class='material-icons vote'>thumb_down</i><i id='mapVoteU' onclick='voteMap(" + a.id + ",1)' class='material-icons vote'>thumb_up</i>"), w.applyConfig(s, a && a.featured), w.init(t, e, l), w.setObjective(n), c)
+            for (var p = 0; p < c.length; ++p) w.destroyObj(c[p]);
+        if (teamScores.style.display = "none", w.mode.teams && i) {
             teamScores.style.display = "inline-block";
             var h = "";
             for (p = 0; p < i.length; ++p) h += "<div class='tScore'><div id='tScoreC" + i[p][0] + "' class='tScoreC'></div><span class='tScoreT' id='tScoreV" + i[p][0] + "'>" + i[p][1] + "</span></div>";
@@ -43277,32 +43298,32 @@
         }
         o && "" != o && loadModPack(o, !0);
         var u = 0;
-        for (p = 0; p < b.map.manager.objects.length; ++p) b.map.manager.objects[p].score && u++;
-        u ? (scoreZoneCount.style.display = "inline-block", scoreZoneCount.innerHTML = "<i class='material-icons' style='color:#fff;font-size:35px'>flag</i> " + u) : scoreZoneCount.style.display = "none", b.config.lives ? (livesCount.style.display = "inline-block", livesCount.innerHTML = "<i class='material-icons' style='color:#fff;font-size:35px'>favorite</i> <span id='livesDisp' style='color:rgba(255,255,255,0.6)'>" + b.config.lives + "</span>") : livesCount.style.display = "none", y.setShowSpect(b.config.allowSpect), q = null, L.reset();
-        var d = b.map.maps[t];
-        L.moveCam(d.camPos[0], d.camPos[1], d.camPos[2]), L.rotateCam(0, 0, 0), m.clearSprays(), m.scene.add(L.object), M = null, playerInfos.innerHTML = "", b.mode.objective && 0 < b.map.manager.objectives.length && (playerInfos.innerHTML += "<img id='objectiveIcon' src='./textures/objective_1.png'/>"), killStreakHolder.innerHTML = "", bloodDisplay.style.display = "none", killsVal.innerHTML = 0, F = 0, vt(), L.masterLock = !1, instructions.innerHTML = "CLICK TO PLAY"
+        for (p = 0; p < w.map.manager.objects.length; ++p) w.map.manager.objects[p].score && u++;
+        u ? (scoreZoneCount.style.display = "inline-block", scoreZoneCount.innerHTML = "<i class='material-icons' style='color:#fff;font-size:35px'>flag</i> " + u) : scoreZoneCount.style.display = "none", w.config.lives ? (livesCount.style.display = "inline-block", livesCount.innerHTML = "<i class='material-icons' style='color:#fff;font-size:35px'>favorite</i> <span id='livesDisp' style='color:rgba(255,255,255,0.6)'>" + w.config.lives + "</span>") : livesCount.style.display = "none", v.setShowSpect(w.config.allowSpect), Y = null, A.reset();
+        var d = w.map.maps[t];
+        A.moveCam(d.camPos[0], d.camPos[1], d.camPos[2]), A.rotateCam(0, 0, 0), f.clearSprays(), f.scene.add(A.object), b = null, playerInfos.innerHTML = "", w.mode.objective && 0 < w.map.manager.objectives.length && (playerInfos.innerHTML += "<img id='objectiveIcon' src='./textures/objective_1.png'/>"), killStreakHolder.innerHTML = "", bloodDisplay.style.display = "none", killsVal.innerHTML = 0, U = 0, yt(), A.masterLock = !1, instructions.innerHTML = "CLICK TO PLAY"
     }
 
-    function ke(t) {
+    function Pe(t) {
         window.locked = t, blocker.style.display = t ? "block" : "none"
     }
 
-    function Pe(t, e, i) {
-        instructions.innerHTML = "CLICK TO PLAY", victoryText.innerHTML = e ? "VICTORY" : "DEFEAT", victorySub.src = "./img/" + (e ? "sub" : "defeat") + ".png", M && M.active || window.spectating ? (y.showEndScreen(), q = n.endAnim, setTimeout(function() {
-            w.connected && (L.disable(), Ce(i))
-        }, n.endAnim)) : t && (L.disable(), y.showEndScreen(), Ce(i))
+    function Ce(t, e, i) {
+        instructions.innerHTML = "CLICK TO PLAY", victoryText.innerHTML = e ? "VICTORY" : "DEFEAT", victorySub.src = "./img/" + (e ? "sub" : "defeat") + ".png", b && b.active || window.spectating ? (v.showEndScreen(), Y = n.endAnim, setTimeout(function() {
+            x.connected && (A.disable(), Ie(i))
+        }, n.endAnim)) : t && (A.disable(), v.showEndScreen(), Ie(i))
     }
 
-    function Ce(t) {
+    function Ie(t) {
         if (t && t.length) {
             endTable.style.display = "inline-block";
-            for (var e = "<tr><th>Rank</th>", i = b.mode.endStats || n.endStats, r = i.length, s = 1; s < r; ++s) e += "<th>" + f.capFirst(i[s]) + "</th>";
+            for (var e = "<tr><th>Rank</th>", i = w.mode.endStats || n.endStats, r = i.length, s = 1; s < r; ++s) e += "<th>" + d.capFirst(i[s]) + "</th>";
             e += "</tr>";
             var o = 1;
             for (s = 0; s < t.length;) {
-                if (S = b.players.findBySid(t[s])) {
+                if (_ = w.players.findBySid(t[s])) {
                     e += "<tr style='" + (s + r >= t.length ? "border-bottom:none" : "") + "'><td style='color:#fff'>" + o + ".</td>";
-                    for (var a = 1; a < r; ++a) e += "<td " + (1 == a ? "style='color:" + (M && M.sid == S.sid ? "#fff'" : M && M.team && M.team == S.team ? "rgba(255,255,255,0.6)'" : "#eb5656'") : "") + ">" + (et && 1 == a && I ? f.scrambleS(t[s + a] || 0) : t[s + a] || 0) + (1 == a && S.clan ? "<span style='color:#fff'> [" + S.clan + "]<span>" : "") + "</td>"
+                    for (var a = 1; a < r; ++a) e += "<td " + (1 == a ? "style='color:" + (b && b.sid == _.sid ? "#fff'" : b && b.team && b.team == _.team ? "rgba(255,255,255,0.6)'" : "#eb5656'") : "") + ">" + (et && 1 == a && C ? d.scrambleS(t[s + a] || 0) : t[s + a] || 0) + (1 == a && _.clan ? "<span style='color:#fff'> [" + _.clan + "]<span>" : "") + "</td>"
                 }
                 e += "</tr>", o++, s += r
             }
@@ -43310,16 +43331,16 @@
         } else endTable.style.display = "none"
     }
 
-    function Ie(t, e, i) {
-        b.playerSound(t, e, i)
+    function Oe(t, e, i) {
+        w.playerSound(t, e, i)
     }
     window.loadUserMod = function(t, e, i) {
-        B ? (B = !1, selectHostMod(e)) : (showWindow(4), document.getElementById("modLInfo") && (document.getElementById("modLInfo").innerHTML = "loading..."), loadModPack(e, !0, t, i))
+        D ? (D = !1, selectHostMod(e)) : (showWindow(4), document.getElementById("modLInfo") && (document.getElementById("modLInfo").innerHTML = "loading..."), loadModPack(e, !0, t, i))
     }, window.loadModURL = function() {
         modURL.value && loadModPack(modURL.value, !0)
     }, window.loadModPack = function(t, e, i, n) {
-        if (z) {
-            modVote.innerHTML = "", null != i && null != n && (Ee = 0, modVote.innerHTML = "<i id='modVoteD' onclick='voteMod(" + n + ",-1)' class='material-icons vote'>thumb_down</i><i id='modVoteU' onclick='voteMod(" + n + ",1)' class='material-icons vote'>thumb_up</i></br>" + i + " Mod");
+        if (N) {
+            modVote.innerHTML = "", null != i && null != n && (Te = 0, modVote.innerHTML = "<i id='modVoteD' onclick='voteMod(" + n + ",-1)' class='material-icons vote'>thumb_down</i><i id='modVoteU' onclick='voteMod(" + n + ",1)' class='material-icons vote'>thumb_up</i></br>" + i + " Mod");
             try {
                 t = t.replace("dropbox.com", "dl.dropboxusercontent.com");
                 var r = "",
@@ -43327,8 +43348,8 @@
                 zip.createReader(s, function(t) {
                     t.getEntries(function(e) {
                         if (e.length) {
-                            Ae.init(t, e.length);
-                            for (var i, n = 0; n < e.length; n++)(i = e[n]).directory ? Ae.close() : "textures" == (r = i.filename.split("/")[0]) ? i.getData(new zip.BlobWriter("image/png"), new _e(i.filename).process, function() {}) : "sound" == r && i.getData(new zip.BlobWriter("audio/mp3"), new Se(i.filename.replace(".mp3", "")).process, function() {})
+                            Le.init(t, e.length);
+                            for (var i, n = 0; n < e.length; n++)(i = e[n]).directory ? Le.close() : "textures" == (r = i.filename.split("/")[0]) ? i.getData(new zip.BlobWriter("image/png"), new Se(i.filename).process, function() {}) : "sound" == r && i.getData(new zip.BlobWriter("audio/mp3"), new Ee(i.filename.replace(".mp3", "")).process, function() {})
                         }
                     })
                 }, function() {
@@ -43341,382 +43362,381 @@
     }, window.loadMod = function() {
         if (modInput.files && modInput.files[0]) {
             var t = modInput.files[0];
-            "zip" == t.name.split(".").pop().toLowerCase() ? (document.getElementById("modLInfo") && (document.getElementById("modLInfo").innerHTML = "loading mod..."), Me.readAsDataURL(t)) : document.getElementById("modLInfo") && (document.getElementById("modLInfo").innerHTML = "invalid mod file!")
+            "zip" == t.name.split(".").pop().toLowerCase() ? (document.getElementById("modLInfo") && (document.getElementById("modLInfo").innerHTML = "loading mod..."), _e.readAsDataURL(t)) : document.getElementById("modLInfo") && (document.getElementById("modLInfo").innerHTML = "invalid mod file!")
         }
     }, window.voteMod = function(t, e) {
-        if (_) {
+        if (M) {
             var i = document.getElementById("modVoteU"),
                 n = document.getElementById("modVoteD"),
                 r = 0;
-            1 == e ? (r = 1, 1 == Ee && (r = 0)) : -1 == e && (r = -1, -1 == Ee && (r = 0)), Ee = r, i.className = 1 == Ee ? "material-icons vote a" : "material-icons vote", n.className = -1 == Ee ? "material-icons vote a" : "material-icons vote", w.send("vote", _.id, loginToken, t, r, 1)
+            1 == e ? (r = 1, 1 == Te && (r = 0)) : -1 == e && (r = -1, -1 == Te && (r = 0)), Te = r, i.className = 1 == Te ? "material-icons vote a" : "material-icons vote", n.className = -1 == Te ? "material-icons vote a" : "material-icons vote", x.send("vote", M.id, loginToken, t, r, 1)
         }
     }, window.voteMap = function(t, e) {
-        if (_) {
+        if (M) {
             var i = document.getElementById("mapVoteU"),
                 n = document.getElementById("mapVoteD"),
                 r = 0;
-            1 == e ? (r = 1, 1 == Te && (r = 0)) : -1 == e && (r = -1, -1 == Te && (r = 0)), Te = r, i.className = 1 == Te ? "material-icons vote a" : "material-icons vote", n.className = -1 == Te ? "material-icons vote a" : "material-icons vote", w.send("vote", _.id, loginToken, t, r)
+            1 == e ? (r = 1, 1 == Ae && (r = 0)) : -1 == e && (r = -1, -1 == Ae && (r = 0)), Ae = r, i.className = 1 == Ae ? "material-icons vote a" : "material-icons vote", n.className = -1 == Ae ? "material-icons vote a" : "material-icons vote", x.send("vote", M.id, loginToken, t, r)
         }
     };
-    var Oe = getSavedVal("sprayindex") || 0;
+    var De = getSavedVal("sprayindex") || 0;
 
-    function De(t, e, i, n, r, s, o) {
-        m.addSpray(t, e, i, n, r, s, o, b.sprays[e].opacity)
+    function Be(t, e, i, n, r, s, o) {
+        f.addSpray(t, e, i, n, r, s, o, w.sprays[e].opacity)
     }
 
-    function Be(t) {
-        0 == t ? g.play("siren_0") : 1 == t && (g.play("nuke_0"), nukeFlash.style.display = "block", nukeFlash.style.opacity = 1, m.shake(1))
+    function Ne(t) {
+        0 == t ? m.play("siren_0") : 1 == t && (m.play("nuke_0"), nukeFlash.style.display = "block", nukeFlash.style.opacity = 1, f.shake(1))
     }
 
-    function Ne(t, e) {
+    function ze(t, e) {
         e ? endTimer.innerHTML = "Next Round in " + t : (timerVal.innerHTML = t, timerDisplay.style.display = "0:00" == t ? "none" : "inline-block")
     }
 
-    function ze(t) {
+    function Ue(t) {
         for (var e, i = 0; i < t.length;) {
-            if (e = t[i] == w.socketId, (S = b.players.add(t[i], t[i + 1], t[i + 2], t[i + 3], t[i + 4], t[i + 5], t[i + 6], t[i + 11], t[i + 12], t[i + 13], t[i + 14], e)).health = null == t[i + 7] ? S.maxHealth : t[i + 7], S.team = t[i + 8], S.level = t[i + 9], S.clan = t[i + 10], e) {
-                if (M = S, b.mode.showTeam && (teamName.innerHTML = M.team), M.team) {
-                    var n = document.getElementById("tScoreC" + M.team);
+            if (e = t[i] == x.socketId, (_ = w.players.add(t[i], t[i + 1], t[i + 2], t[i + 3], t[i + 4], t[i + 5], t[i + 6], t[i + 12], t[i + 13], t[i + 14], t[i + 15], e)).health = null == t[i + 7] ? _.maxHealth : t[i + 7], _.maxHealth = t[i + 8], _.team = t[i + 9], _.level = t[i + 10], _.clan = t[i + 11], e) {
+                if (b = _, w.mode.showTeam && (teamName.innerHTML = b.team), b.team) {
+                    var n = document.getElementById("tScoreC" + b.team);
                     n && (n.className = "tScoreC you")
                 }
-            } else playerInfos.innerHTML += "<div id='pInfo" + S.sid + "' class='playerInfo'>" + (S.level ? "<div class='playerRank' id='pInfoR" + S.sid + "'>" + S.level + "</div>" : "") + "<div class='pInfoH' id='pInfoH" + S.sid + "'>" + S.name + (S.clan ? "<span style='color:rgba(255,255,255,0.4)'> [" + S.clan + "]</span>" : "") + "</div><div></div><div class='playerHealth' id='pInfoHB" + S.sid + "'><div class='healthBar" + (H && H == S.team ? "" : "E") + "' id='healthBarE" + S.sid + "'></div></div></div>";
-            di(S.health, S.sid, null, null), i += 15
+            } else playerInfos.innerHTML += "<div id='pInfo" + _.sid + "' class='playerInfo'>" + (_.level ? "<div class='playerRank' id='pInfoR" + _.sid + "'>" + _.level + "</div>" : "") + "<div class='pInfoH' id='pInfoH" + _.sid + "'>" + _.name + (_.clan ? "<span style='color:rgba(255,255,255,0.4)'> [" + _.clan + "]</span>" : "") + "</div><div></div><div class='playerHealth' id='pInfoHB" + _.sid + "'><div class='healthBar" + (F && F == _.team ? "" : "E") + "' id='healthBarE" + _.sid + "'></div></div></div>";
+            fi(_.health, _.sid, null, null), i += 16
         }
     }
 
-    function Ue(t) {
-        if (w.send("p"), M) {
-            M.x = t[1], M.y = t[2], M.z = t[3], M.xVel = t[4], M.yVel = t[5], M.zVel = t[6], M.onGround = t[7], M.didJump = t[8], M.onLadder = t[9], M.aimVal = t[10], M.crouchVal = t[11], b.players.swapWeapon(M, 0, !1, t[12]), M.slideTimer = t[13], M.canSlide = t[14], j = t[15];
-            for (var e = 0; e < L.tmpInputs.length;) L.tmpInputs[e][0] <= t[0] ? L.tmpInputs.splice(e, 1) : (M.procInputs(L.tmpInputs[e], b, !0), e++)
+    function Fe(t) {
+        if (x.send("p"), b) {
+            b.x = t[1], b.y = t[2], b.z = t[3], b.xVel = t[4], b.yVel = t[5], b.zVel = t[6], b.onGround = t[7], b.didJump = t[8], b.onLadder = t[9], b.aimVal = t[10], b.crouchVal = t[11], w.players.swapWeapon(b, 0, !1, t[12]), b.slideTimer = t[13], b.canSlide = t[14], H = t[15];
+            for (var e = 0; e < A.tmpInputs.length;) A.tmpInputs[e][0] <= t[0] ? A.tmpInputs.splice(e, 1) : (b.procInputs(A.tmpInputs[e], w, !0), e++)
         }
     }
 
-    function Fe() {
-        w.send("po")
+    function He() {
+        x.send("po")
     }
 
-    function He(t) {
-        G = t,
+    function je(t) {
+        j = t,
             function() {
                 var t = "#9eeb56";
-                150 <= G ? t = "#ff4b42" : 50 <= j && (t = "#ffd542"), pingDisplay.innerHTML = (G || 0) + "<i class='material-icons' style='color:" + t + ";font-size:30px'>signal_cellular_alt</i>", menuPingDisplay.innerHTML = "<i class='material-icons' style='color:" + t + "'>signal_cellular_alt</i>" + (G || 0)
+                150 <= j ? t = "#ff4b42" : 50 <= H && (t = "#ffd542"), pingDisplay.innerHTML = (j || 0) + "<i class='material-icons' style='color:" + t + ";font-size:30px'>signal_cellular_alt</i>", menuPingDisplay.innerHTML = "<i class='material-icons' style='color:" + t + "'>signal_cellular_alt</i>" + (j || 0)
             }()
     }
 
-    function je() {
-        window.players = b.players.list;
-        if (!b.singlePlayer && (M && M.active || spectating))
-            for (var t = 0; t < b.players.list.length; ++t)(S = b.players.list[t]).active && S.objInstances && S != M && (S.inView = !0, !spectating && !(H && H == S.team) && (b.config.nameTags || b.mode.hideNames || null != b.canSee(M, S.x, S.y, S.z)) && (S.inView = !1), b.players.toggleLOD(S, null == b.canSee(m.camera.getWorldPosition(), S.x, S.y, S.z, 10)))
+    function Ge() {
+        if (!w.singlePlayer && (b && b.active || spectating))
+            for (var t = 0; t < w.players.list.length; ++t)(_ = w.players.list[t]).active && _.objInstances && _ != b && (_.inView = !0, !spectating && !(F && F == _.team) && (w.config.nameTags || w.mode.hideNames || null != w.canSee(b, _.x, _.y, _.z)) && (_.inView = !1), w.players.toggleLOD(_, null == w.canSee(f.camera.getWorldPosition(), _.x, _.y, _.z, 10)))
     }
 
-    function Ge(t) {
+    function Ve(t) {
         "wt" == t && (t = "waiting for players"), gameMessage.innerHTML = t || ""
     }
 
-    function Ve() {
-        for (var t = 0; t < b.players.list.length; ++t) {
-            S = b.players.list[t];
-            var e = document.getElementById("healthBarE" + S.sid);
-            e && (e.className = "healthBar" + (H && H == S.team ? "" : "E"))
+    function We() {
+        for (var t = 0; t < w.players.list.length; ++t) {
+            _ = w.players.list[t];
+            var e = document.getElementById("healthBarE" + _.sid);
+            e && (e.className = "healthBar" + (F && F == _.team ? "" : "E"))
         }
     }
 
-    function We(t, e) {
-        if (S = b.players.findBySid(t))
-            if (S.team = e, S == M) H = e, b.mode.showTeam && (teamName.innerHTML = H), Ve();
+    function Ye(t, e) {
+        if (_ = w.players.findBySid(t))
+            if (_.team = e, _ == b) F = e, w.mode.showTeam && (teamName.innerHTML = F), We();
             else {
                 var i = document.getElementById("healthBarE" + t);
-                i && (i.className = "healthBar" + (H && H == S.team ? "" : "E"))
+                i && (i.className = "healthBar" + (F && F == _.team ? "" : "E"))
             }
-    }
-
-    function Ye(t) {
-        b.players.hideAll();
-        for (var e = 0; e < t.length;)(S = b.players.findBySid(t[e])) && S != M && (S.objInstances.visible = !S.lodActive, S.latestData = !0, S.forcePos ? (S.x = t[e + 1], S.y = t[e + 2], S.z = t[e + 3], S.xDire = t[e + 4], S.yDire = t[e + 5], S.interpolate = !1, S.forcePos = !1) : (S.dt = 0, S.x1 = S.x, S.x2 = t[e + 1], S.y1 = S.y, S.y2 = t[e + 2], S.z1 = S.z, S.z2 = t[e + 3], S.xDir1 = S.xDire, S.xDir2 = t[e + 4], S.yDir1 = S.yDire, S.yDir2 = t[e + 5], S.interpolate = !0), S.onGround = t[e + 6], S.crouchVal = t[e + 7], b.players.swapWeapon(S, 0, !1, t[e + 8])), e += 9
     }
 
     function qe(t) {
-        b.players.remove(t)
+        w.players.hideAll();
+        for (var e = 0; e < t.length;)(_ = w.players.findBySid(t[e])) && _ != b && (_.objInstances.visible = !_.lodActive, _.latestData = !0, _.forcePos ? (_.x = t[e + 1], _.y = t[e + 2], _.z = t[e + 3], _.xDire = t[e + 4], _.yDire = t[e + 5], _.interpolate = !1, _.forcePos = !1) : (_.dt = 0, _.x1 = _.x, _.x2 = t[e + 1], _.y1 = _.y, _.y2 = t[e + 2], _.z1 = _.z, _.z2 = t[e + 3], _.xDir1 = _.xDire, _.xDir2 = t[e + 4], _.yDir1 = _.yDire, _.yDir2 = t[e + 5], _.interpolate = !0), _.onGround = t[e + 6], _.crouchVal = t[e + 7], w.players.swapWeapon(_, 0, !1, t[e + 8])), e += 9
     }
 
-    function Xe(t, e, i, r) {
-        if (S = b.players.findBySid(t), E = b.players.findBySid(e), S) {
-            if (b.players.kill(S), S.isYou) {
+    function Xe(t) {
+        w.players.remove(t)
+    }
+
+    function Ze(t, e, i, r) {
+        if (_ = w.players.findBySid(t), S = w.players.findBySid(e), _) {
+            if (w.players.kill(_), _.isYou) {
                 var s = "";
-                if (E) {
-                    S != E && (L.camLookAt(E.x, E.y + E.height - n.cameraHeight, E.z), E.interpolate = !1, E.inView = !0), s = "<img id='kCProfile' src='./textures/classes/icon_" + E.classIndex + ".png' />", s += "<div id='kCName'>" + (E ? et && I ? f.scrambleS(E.name) : E.name : "You") + (E.clan ? "<span style='color:rgba(255,255,255,0.3)'> [" + E.clan + "]</span>" : "") + "</div>";
-                    var o = E.loadout.indexOf(i[0]),
-                        a = null == E.skins[o] ? null : E.skins[o];
-                    null != a && (a = b.store.skins[a]), s += "<br/><div id='kCInfo' style='color:" + (a ? b.store.rarities[a.rarity].color : "rgba(255,255,255,0.7)") + "'>[" + (a ? a.name : b.weapons[i[0]].name) + "] <span id='kCInfoS'>+" + i[1] + "</span></div>"
+                if (S) {
+                    _ != S && (A.camLookAt(S.x, S.y + S.height - n.cameraHeight, S.z), S.interpolate = !1, S.inView = !0), s = "<img id='kCProfile' src='./textures/classes/icon_" + S.classIndex + ".png' />", s += "<div id='kCName'>" + (S ? et && C ? d.scrambleS(S.name) : S.name : "You") + (S.clan ? "<span style='color:rgba(255,255,255,0.3)'> [" + S.clan + "]</span>" : "") + "</div>";
+                    var o = S.loadout.indexOf(i[0]),
+                        a = null == S.skins[o] ? null : S.skins[o];
+                    null != a && (a = w.store.skins[a]), s += "<br/><div id='kCInfo' style='color:" + (a ? w.store.rarities[a.rarity].color : "rgba(255,255,255,0.7)") + "'>[" + (a ? a.name : w.weapons[i[0]].name) + "] <span id='kCInfoS'>+" + i[1] + "</span></div>"
                 }
-                killCard.innerHTML = s, y.toggleGameUI(!1), setTimeout(function() {
-                    vt()
+                killCard.innerHTML = s, v.toggleGameUI(!1), setTimeout(function() {
+                    yt()
                 }, n.deathDelay)
             }
             if (!r) {
-                var c = S == M ? "<span style='color:#fff'>You</span>" : "<span style='color:" + (H && H == S.team ? "#9eeb56" : "#eb5656") + "'>" + (et && I ? f.scrambleS(S.name) : S.name) + "</span>",
-                    l = E == M ? "<span style='color:#fff'>You</span>" : E ? "<span style='color:" + (H && H == E.team ? "#9eeb56" : "#eb5656") + "'>" + (et && I ? f.scrambleS(E.name) : E.name) + "</span>" : "";
-                vi(null, E ? l + " killed " + c : c + " committed " + n.suicides[f.randInt(0, n.suicides.length - 1)], !0)
+                var c = _ == b ? "<span style='color:#fff'>You</span>" : "<span style='color:" + (F && F == _.team ? "#9eeb56" : "#eb5656") + "'>" + (et && C ? d.scrambleS(_.name) : _.name) + "</span>",
+                    l = S == b ? "<span style='color:#fff'>You</span>" : S ? "<span style='color:" + (F && F == S.team ? "#9eeb56" : "#eb5656") + "'>" + (et && C ? d.scrambleS(S.name) : S.name) + "</span>" : "";
+                yi(null, S ? l + " killed " + c : c + " committed " + n.suicides[d.randInt(0, n.suicides.length - 1)], !0)
             }
-        }
-    }
-
-    function Ze(t, e) {
-        if (M) {
-            M.streaks[t] = e ? null : b.streaks[t];
-            for (var i = "", n = 0; n < b.streaks.length; ++n) M.streaks[n] && (i += "<div class='killStreakItem' style='background-image: url(&quot;./img/streaks/" + n + ".png&quot;)'><span>[" + (n + 1) + "]</span></div>");
-            killStreakHolder.innerHTML = i
         }
     }
 
     function Ke(t, e) {
-        (S = b.players.findBySid(t)) && vi(null, (S == M ? "<span style='color:#fff'>You're</span>" : "<span style='color:" + (H && H == S.team ? "#9eeb56" : "#eb5656") + "'>" + S.name + "</span> is") + " on a " + e + " Kill Streak", !0)
+        if (b) {
+            b.streaks[t] = e ? null : w.streaks[t];
+            for (var i = "", n = 0; n < w.streaks.length; ++n) b.streaks[n] && (i += "<div class='killStreakItem' style='background-image: url(&quot;./img/streaks/" + n + ".png&quot;)'><span>[" + (n + 1) + "]</span></div>");
+            killStreakHolder.innerHTML = i
+        }
     }
 
-    function Je(t, e, i) {
-        (S = b.players.findBySid(t), E = b.players.findBySid(e), S) && vi(null, (S == M ? "<span style='color:#fff'>You</span>" : "<span style='color:" + (H && H == S.team ? "#9eeb56" : "#eb5656") + "'>" + S.name + "</span>") + " " + i + " " + (E == M ? "<span style='color:#fff'>You</span>" : E ? "<span style='color:" + (H && H == E.team ? "#9eeb56" : "#eb5656") + "'>" + E.name + "</span>" : ""), !0)
+    function Je(t, e) {
+        (_ = w.players.findBySid(t)) && yi(null, (_ == b ? "<span style='color:#fff'>You're</span>" : "<span style='color:" + (F && F == _.team ? "#9eeb56" : "#eb5656") + "'>" + _.name + "</span> is") + " on a " + e + " Kill Streak", !0)
+    }
+
+    function Qe(t, e, i) {
+        (_ = w.players.findBySid(t), S = w.players.findBySid(e), _) && yi(null, (_ == b ? "<span style='color:#fff'>You</span>" : "<span style='color:" + (F && F == _.team ? "#9eeb56" : "#eb5656") + "'>" + _.name + "</span>") + " " + i + " " + (S == b ? "<span style='color:#fff'>You</span>" : S ? "<span style='color:" + (F && F == S.team ? "#9eeb56" : "#eb5656") + "'>" + S.name + "</span>" : ""), !0)
     }
     window.selectSpray = function(t) {
-        saveVal("sprayindex", t), Oe = t, showWindow(3)
+        saveVal("sprayindex", t), De = t, showWindow(3)
     };
-    var Qe = null,
-        $e = 0;
+    var $e = null,
+        ti = 0;
 
-    function ti(t, e) {
-        if (Qe = t, $e = e, t) {
-            for (var i = 1, n = "", r = 0; r < t.length; r += 6) n += "<div class='leaderItem'>", n += "<div class='leaderCounter'>" + i + ".</div>", n += t[r + 5] ? " <i class='material-icons' style='color:#40C4FF;margin-top:4px;font-size:25px'>check_circle</i>" : "", n += "<div class='leaderName" + (M && t[r] == M.sid ? "M" : H && H == t[r + 2] ? "F" : "") + "'>" + `<span style="color: yellow;">[${(window.players && window.players.filter(x=>x.sid==t[r])[0]) ? window.players.filter(x=>x.sid==t[r])[0].kdval : ""}] </span>` + (et ? f.scrambleS(t[r + 1]) : t[r + 1]) + (t[r + 4] ? "<span style='color:#fff'> [" + t[r + 4] + "]</span>" : "") + "</div>", n += "<div class='leaderScore'>" + f.formatNum(t[r + 3]) + "</div>", n += "</div>", i++;
+    function ei(t, e) {
+        if ($e = t, ti = e, t) {
+            for (var i = 1, n = "", r = 0; r < t.length; r += 6) n += "<div class='leaderItem'>", n += "<div class='leaderCounter'>" + i + ".</div>", n += t[r + 5] ? " <i class='material-icons' style='color:#40C4FF;margin-top:4px;font-size:25px'>check_circle</i>" : "", n += "<div class='leaderName" + (b && t[r] == b.sid ? "M" : F && F == t[r + 2] ? "F" : "") + "'>" + `<span style="color: yellow;">[${(window.players && window.players.filter(x=>x.sid==t[r])[0]) ? window.players.filter(x=>x.sid==t[r])[0].kdval : ""}] </span>` + (et ? d.scrambleS(t[r + 1]) : t[r + 1]) + (t[r + 4] ? "<span style='color:#fff'> [" + t[r + 4] + "]</span>" : "") + "</div>", n += "<div class='leaderScore'>" + d.formatNum(t[r + 3]) + "</div>", n += "</div>", i++;
             leaderContainer && (leaderContainer.innerHTML = n), 1 >= i && (leaderContainer.innerHTML = "Empty Lobby"), spectCount.style.display = e ? "inline-block" : "none", spectCount.innerHTML = "<i class='material-icons' style='color:#fff;font-size:35px;margin-right:8px'>visibility</i>" + e
         }
     }
 
-    function ei(t, e, i, r, s, o) {
-        if (M && M.active || window.spectating) {
-            if (S = b.players.findBySid(t)) {
-                var a = S.y + S.height - n.cameraHeight - S.crouchVal * n.crouchDst,
-                    c = f.getDistance3D(S.x, a, S.z, e, i, r),
-                    l = f.getDirection(S.z, S.x, r, e),
-                    p = f.getDirection(f.getDistance(S.x, S.z, e, r), i, 0, a);
-                v.physObj(S.x, a, S.z, l, p, c, 0)
+    function ii(t, e, i, r, s, o) {
+        if (b && b.active || window.spectating) {
+            if (_ = w.players.findBySid(t)) {
+                var a = _.y + _.height - n.cameraHeight - _.crouchVal * n.crouchDst,
+                    c = d.getDistance3D(_.x, a, _.z, e, i, r),
+                    l = d.getDirection(_.z, _.x, r, e),
+                    p = d.getDirection(d.getDistance(_.x, _.z, e, r), i, 0, a);
+                g.physObj(_.x, a, _.z, l, p, c, 0)
             }
-            null != s && null == b.canSee(M, e, i, r) && v.effect(e, i, r, s, o, 0)
+            null != s && null == w.canSee(b, e, i, r) && g.effect(e, i, r, s, o, 0)
         }
     }
 
-    function ii(t, e, i, n, r, s, o) {
-        var a = b.projectiles.types[s];
-        v.physObj(t, e, i, n, r, b.projectiles.types[s].range, null, null, a, o)
+    function ni(t, e, i, n, r, s, o) {
+        var a = w.projectiles.types[s];
+        g.physObj(t, e, i, n, r, w.projectiles.types[s].range, null, null, a, o)
     }
 
-    function ni(t) {
-        v.disablePhys(t)
+    function ri(t) {
+        g.disablePhys(t)
     }
 
-    function ri(t, e, i, r) {
-        if (M || window.spectating) {
-            S = m.camera.getWorldPosition();
-            var s = 1 - f.getDistance3D(t, e, i, S.x, S.y, S.z) / n.explosionRange;
-            0 < s && m.shake(.14 * s), g.play3D("explosion", t, e, i, 1, f.randFloat(.9, 1.1)), v.ExplosionManager.explodeAt(t, e, i, .08 * r)
+    function si(t, e, i, r) {
+        if (b || window.spectating) {
+            _ = f.camera.getWorldPosition();
+            var s = 1 - d.getDistance3D(t, e, i, _.x, _.y, _.z) / n.explosionRange;
+            0 < s && f.shake(.14 * s), m.play3D("explosion", t, e, i, 1, d.randFloat(.9, 1.1)), g.ExplosionManager.explodeAt(t, e, i, .08 * r)
         }
     }
 
-    function si(t, e) {
+    function oi(t, e) {
         var i = document.getElementById("tScoreV" + t);
         i && (i.innerHTML = e)
     }
 
-    function oi(t) {
-        F += t, x.animateText(scoreText, "+" + F, 100, .38, 1100, 100, 0, function() {
-            F = 0
-        }), M.score += t
-    }
-
     function ai(t) {
-        (S = document.getElementById("livesDisp")) && (S.innerHTML = t)
-    }
-    var ci = [];
-
-    function li(t, e, i) {
-        hi(t), e && g.play("headshot_0"), killsVal.innerHTML = i
+        U += t, y.animateText(scoreText, "+" + U, 100, .38, 1100, 100, 0, function() {
+            U = 0
+        }), b.score += t
     }
 
-    function pi() {
-        hi(["Assist", n.assistScore])
+    function ci(t) {
+        (_ = document.getElementById("livesDisp")) && (_.innerHTML = t)
+    }
+    var li = [];
+
+    function pi(t, e, i) {
+        ui(t), e && m.play("headshot_0"), killsVal.innerHTML = i
     }
 
-    function hi(t) {
+    function hi() {
+        ui(["Assist", n.assistScore])
+    }
+
+    function ui(t) {
         if (t) {
-            for (var e = 0 == ci.length, i = 0; i < t.length; ++i) "" == t[i] ? i++ : ci.push(t[i]);
+            for (var e = 0 == li.length, i = 0; i < t.length; ++i) "" == t[i] ? i++ : li.push(t[i]);
             e && function t(e) {
-                0 < ci.length && x.animateText(chalName, "<span class='cTxt'>" + ci[0] + "</span><div id='chalScore'>+" + ci[1] + "</div>", 130, .4, n.medalAnim, 100, e, function() {
-                    ci.splice(0, 2), t(0)
+                0 < li.length && y.animateText(chalName, "<span class='cTxt'>" + li[0] + "</span><div id='chalScore'>+" + li[1] + "</div>", 130, .4, n.medalAnim, 100, e, function() {
+                    li.splice(0, 2), t(0)
                 })
             }(n.medalDelay)
         }
     }
-    var ui = 0;
+    var di = 0;
 
-    function di(t, e, i, r) {
-        if ((M || spectating) && (S = null == e || null == e ? M : b.players.findBySid(e))) {
-            S.health = t, S.health > S.maxHealth && (S.maxHealth = S.health);
-            var s = t / S.maxHealth * 100;
-            if (S == M) healthValue.innerHTML = t + " <span id='maxHP'>|" + S.maxHealth + "</span>", healthBarH.style.width = s + "%", healthBarH.style.backgroundColor = 35 >= s ? "#eb5656" : "#9eeb56", bloodDisplay.style.display = 90 >= s ? "block" : "none", bloodDisplay.style.opacity = 1 - s / 90, t < ui && (null != i && null != i && function(t, e) {
-                for (var i = null, r = 0; r < mi.length; ++r)
-                    if (!mi[r].life) {
-                        i = mi[r];
+    function fi(t, e, i, r) {
+        if ((b || spectating) && (_ = null == e || null == e ? b : w.players.findBySid(e))) {
+            _.health = t, _.health > _.maxHealth && (_.maxHealth = _.health);
+            var s = t / _.maxHealth * 100;
+            if (_ == b) healthValue.innerHTML = t + " <span id='maxHP'>|" + _.maxHealth + "</span>", healthBarH.style.width = s + "%", healthBarH.style.backgroundColor = 35 >= s ? "#eb5656" : "#9eeb56", bloodDisplay.style.display = 90 >= s ? "block" : "none", bloodDisplay.style.opacity = 1 - s / 90, t < di && (null != i && null != i && function(t, e) {
+                for (var i = null, r = 0; r < gi.length; ++r)
+                    if (!gi[r].life) {
+                        i = gi[r];
                         break
-                    } i || (i = {}, mi.push(i)), i.life = n.hitLife, i.x = t, i.z = e
-            }(i, r), g.play("impact_0", .8)), ui = t;
+                    } i || (i = {}, gi.push(i)), i.life = n.hitLife, i.x = t, i.z = e
+            }(i, r), m.play("impact_0", .8)), di = t;
             else document.getElementById("healthBarE" + e).style.width = s + "%"
         }
     }
-    var fi, mi = [];
+    var mi, gi = [];
 
-    function gi() {
-        g.play("hit_0", 3.1), x.animateDiv(hitmarker, 350, 100, 105, null, {
+    function vi() {
+        m.play("hit_0", 3.1), y.animateDiv(hitmarker, 350, 100, 105, null, {
             src: "hitmarker",
             tim: 120,
             cnt: 5
         })
     }
 
-    function vi(t, e, i) {
-        for (et && I && (e = I.clean(e), t = f.scrambleS(t)), chatList.innerHTML += i ? "<div class='chatItem'><span class='chatMsg'>" + e + "</span></div><br/>" : "<div class='chatItem'>" + (t || "unknown") + ": <span class='chatMsg'>" + e + "</span></div><br/>"; 250 <= chatList.scrollHeight;) chatList.removeChild(chatList.childNodes[0])
+    function yi(t, e, i) {
+        for (et && C && (e = C.clean(e), t = d.scrambleS(t)), chatList.innerHTML += i ? "<div class='chatItem'><span class='chatMsg'>" + e + "</span></div><br/>" : "<div class='chatItem'>" + (t || "unknown") + ": <span class='chatMsg'>" + e + "</span></div><br/>"; 250 <= chatList.scrollHeight;) chatList.removeChild(chatList.childNodes[0])
     }
 
-    function yi() {
-        V = Date.now(), W = V - Y, W = Math.min(W, n.dltMx), Y = V, 0 < q && (0 >= (q -= W) && (q = 0)), g.rate = b.config.deltaMlt, null != q && (W *= q / n.endAnim, g.rate = b.config.deltaMlt * (q / n.endAnim)), M || window.spectating || (U += 1e-4 * W, U %= 2 * Math.PI, L.rotateCam(U, 0, 0)), It && 0 < classPreviewCanvas.offsetWidth && 0 < classPreviewCanvas.offsetHeight && (b.players.playerStep(Ot, .015 * W, !0), b.players.updateMesh(Ot, !0), Nt.aspect = Dt / Bt, Nt.updateProjectionMatrix(), zt.setSize(Dt, Bt), zt.setPixelRatio(window.devicePixelRatio * yt[1].val * X), zt.render(It, Nt)),
+    function xi() {
+        G = Date.now(), V = G - W, V = Math.min(V, n.dltMx), W = G, 0 < Y && (0 >= (Y -= V) && (Y = 0)), m.rate = w.config.deltaMlt, null != Y && (V *= Y / n.endAnim, m.rate = w.config.deltaMlt * (Y / n.endAnim)), b || window.spectating || (z += 1e-4 * V, z %= 2 * Math.PI, A.rotateCam(z, 0, 0)), Ot && 0 < classPreviewCanvas.offsetWidth && 0 < classPreviewCanvas.offsetHeight && (w.players.playerStep(Dt, .015 * V, !0), w.players.updateMesh(Dt, !0), zt.aspect = Bt / Nt, zt.updateProjectionMatrix(), Ut.setSize(Bt, Nt), Ut.setPixelRatio(window.devicePixelRatio * xt[1].val * q), Ut.render(Ot, zt)),
             function(t) {
-                if ("block" == spinUI.style.display && (Xt.width = Xt.clientWidth, Xt.height = Xt.clientHeight, spinItemCanvas.style.width = 1.5 * Xt.clientWidth + "px", spinItemCanvas.style.height = 1.5 * Xt.clientWidth + "px", he.setSize(1.5 * Xt.clientWidth, 1.5 * Xt.clientWidth), 0 < Xt.width)) {
-                    1 > te && 1 <= (te += .008 * t) && (te = 1), ne < re && ((ne += .4 * t) >= re && (ne = re), spinItem.style.display = "block", spinItemName.style.display = "inline-block"), spinRotation != ee && (spinRotation += .024 * (ee - spinRotation), 0 >= (le -= .024 * (ee - spinRotation)) && (le += Math.PI / 1.5, g.play("tick_0", .2)), .002 >= ee - spinRotation && (spinRotation = ee, re = 100 - Wt.rarities[Qt.rarity], g.play("reward", .3), w && w.send("unbx"), 1 <= Qt.rarity && g.play("cheer_0", .1)));
-                    var e = 1 - (re ? ne / re : 0);
-                    Zt.translate(2, 2);
-                    var i = Xt.width / 2 * Kt * te;
+                if ("block" == spinUI.style.display && (Zt.width = Zt.clientWidth, Zt.height = Zt.clientHeight, spinItemCanvas.style.width = 1.5 * Zt.clientWidth + "px", spinItemCanvas.style.height = 1.5 * Zt.clientWidth + "px", ue.setSize(1.5 * Zt.clientWidth, 1.5 * Zt.clientWidth), 0 < Zt.width)) {
+                    1 > ee && 1 <= (ee += .008 * t) && (ee = 1), re < se && ((re += .4 * t) >= se && (re = se), spinItem.style.display = "block", spinItemName.style.display = "inline-block"), spinRotation != ie && (spinRotation += .024 * (ie - spinRotation), 0 >= (pe -= .024 * (ie - spinRotation)) && (pe += Math.PI / 1.5, m.play("tick_0", .2)), .002 >= ie - spinRotation && (spinRotation = ie, se = 100 - Yt.rarities[$t.rarity], m.play("reward", .3), x && x.send("unbx"), 1 <= $t.rarity && m.play("cheer_0", .1)));
+                    var e = 1 - (se ? re / se : 0);
+                    Kt.translate(2, 2);
+                    var i = Zt.width / 2 * Jt * ee;
                     spinButton.style.opacity = e;
                     var n = .3 * i * (1 - e);
-                    spinButton.style.width = 2 * i * Jt * .8 + n + "px", spinButton.style.height = 2 * i * Jt * .8 + n + "px", spinText.style.fontSize = 2 * i * Jt * .15 + n + "px", spinCost.style.fontSize = 2 * i * Jt * .08 + n + "px", Zt.fillStyle = "#fff", Zt.beginPath(), Zt.arc(Xt.width / 2, Xt.height / 2, i, 0, 2 * Math.PI), Zt.closePath(), Zt.fill();
+                    spinButton.style.width = 2 * i * Qt * .8 + n + "px", spinButton.style.height = 2 * i * Qt * .8 + n + "px", spinText.style.fontSize = 2 * i * Qt * .15 + n + "px", spinCost.style.fontSize = 2 * i * Qt * .08 + n + "px", Kt.fillStyle = "#fff", Kt.beginPath(), Kt.arc(Zt.width / 2, Zt.height / 2, i, 0, 2 * Math.PI), Kt.closePath(), Kt.fill();
                     var r = 0;
-                    if (Zt.save(), Zt.translate(Xt.width / 2, Xt.height / 2), re) {
-                        for (var s = 0, o = 0; o < b.store.rarities.length; o++) {
-                            if (Qt.rarity == o) {
-                                s += Wt.rarities[o] / 2;
+                    if (Kt.save(), Kt.translate(Zt.width / 2, Zt.height / 2), se) {
+                        for (var s = 0, o = 0; o < w.store.rarities.length; o++) {
+                            if ($t.rarity == o) {
+                                s += Yt.rarities[o] / 2;
                                 break
                             }
-                            s += Wt.rarities[o]
+                            s += Yt.rarities[o]
                         }
-                        s /= 100, s = 2 * Math.PI * s * (ne / re) % (2 * Math.PI), Zt.rotate(s - Math.PI * (ne / re))
+                        s /= 100, s = 2 * Math.PI * s * (re / se) % (2 * Math.PI), Kt.rotate(s - Math.PI * (re / se))
                     }
-                    for (o = 0; o < b.store.rarities.length; o++) {
-                        S = b.store.rarities[o], Zt.fillStyle = S.color, Zt.beginPath();
-                        var a = Wt.rarities[o];
-                        re && (Qt.rarity == o ? a += ne : a -= ne * (Wt.rarities[o] / re)), 0 < a && (Zt.moveTo(0, 0), Zt.arc(0, 0, .95 * i, r, r + 2 * Math.PI * (a / 100), !1), Zt.lineTo(0, 0), Zt.fill()), r += 2 * Math.PI * (a / 100)
+                    for (o = 0; o < w.store.rarities.length; o++) {
+                        _ = w.store.rarities[o], Kt.fillStyle = _.color, Kt.beginPath();
+                        var a = Yt.rarities[o];
+                        se && ($t.rarity == o ? a += re : a -= re * (Yt.rarities[o] / se)), 0 < a && (Kt.moveTo(0, 0), Kt.arc(0, 0, .95 * i, r, r + 2 * Math.PI * (a / 100), !1), Kt.lineTo(0, 0), Kt.fill()), r += 2 * Math.PI * (a / 100)
                     }
-                    Zt.restore(), Zt.fillStyle = "#F44336", Zt.save(), Zt.translate(Xt.width / 2, Xt.height / 2), Zt.rotate(spinRotation), Zt.beginPath();
-                    var c = (spinButton.getBoundingClientRect().width / spinButton.offsetWidth - 1) * (i * Jt) * .3;
-                    if (Zt.moveTo(0, (i * Jt * -1.2 - c) * e), Zt.lineTo(i * Jt * e, 0), Zt.lineTo(-i * Jt * e, 0), Zt.closePath(), Zt.fill(), Zt.restore(), Zt.fillStyle = "#fff", Zt.beginPath(), Zt.arc(Xt.width / 2, Xt.height / 2, i * Jt, 0, 2 * Math.PI), Zt.closePath(), Zt.fill(), "block" == spinItem.style.display && Gt) {
-                        var l = 1 - Math.abs(pe.position.x - se) / (oe - se);
-                        spinItemName.style.opacity = l, spinItemName.style.marginTop = .6 * i + "px", spinItemName.style.fontSize = i / 6.5 * l + "px", spinItemName.children[0].style.fontSize = i / 12 * l + "px", spinItemName.style.padding = i / 20 * l + "px", spinItemName.style.paddingLeft = i / 2 * l + "px", spinItemName.style.paddingRight = i / 2 * l + "px", pe.position.x != se && (pe.position.x -= .2 * (pe.position.x - se), .05 >= Math.abs(se - pe.position.x) && (pe.position.x = se), pe.lookAt(Gt.position)), ce += .0018 * t, Vt.position.y += .012 * Math.sin(ce), Vt.rotation.x -= 7e-4 * Math.sin(.85 * ce), he.render(Gt, pe)
+                    Kt.restore(), Kt.fillStyle = "#F44336", Kt.save(), Kt.translate(Zt.width / 2, Zt.height / 2), Kt.rotate(spinRotation), Kt.beginPath();
+                    var c = (spinButton.getBoundingClientRect().width / spinButton.offsetWidth - 1) * (i * Qt) * .3;
+                    if (Kt.moveTo(0, (i * Qt * -1.2 - c) * e), Kt.lineTo(i * Qt * e, 0), Kt.lineTo(-i * Qt * e, 0), Kt.closePath(), Kt.fill(), Kt.restore(), Kt.fillStyle = "#fff", Kt.beginPath(), Kt.arc(Zt.width / 2, Zt.height / 2, i * Qt, 0, 2 * Math.PI), Kt.closePath(), Kt.fill(), "block" == spinItem.style.display && Vt) {
+                        var l = 1 - Math.abs(he.position.x - oe) / (ae - oe);
+                        spinItemName.style.opacity = l, spinItemName.style.marginTop = .6 * i + "px", spinItemName.style.fontSize = i / 6.5 * l + "px", spinItemName.children[0].style.fontSize = i / 12 * l + "px", spinItemName.style.padding = i / 20 * l + "px", spinItemName.style.paddingLeft = i / 2 * l + "px", spinItemName.style.paddingRight = i / 2 * l + "px", he.position.x != oe && (he.position.x -= .2 * (he.position.x - oe), .05 >= Math.abs(oe - he.position.x) && (he.position.x = oe), he.lookAt(Vt.position)), le += .0018 * t, Wt.position.y += .012 * Math.sin(le), Wt.rotation.x -= 7e-4 * Math.sin(.85 * le), ue.render(Vt, he)
                     }
                 }
-            }(W), L.update(W * b.config.deltaMlt), M && M.active && !window.locked ? (b.config.thirdPerson ? m.camera.position.set(n.thirdPX, 2, n.thirdPZ) : m.camera.position.set(0, 0, 0), L.skipScroll = !1, T = [L.getISN(), W * b.config.deltaMlt, L.xDr, L.yDr, n.movDirs.indexOf(L.moveDir), L.mouseDownL, L.mouseDownR || L.keys[L.aimKey] ? 1 : 0, L.keys[L.jumpKey] ? 1 : 0, L.keys[L.crouchKey] ? 1 : 0, L.keys[L.reloadKey] ? 1 : 0, L.scrollDelta], L.scrollDelta && (L.skipScroll = !0), L.scrollDelta = 0, L.tmpInputs.push(T), function(t) {
+            }(V), A.update(V * w.config.deltaMlt), b && b.active && !window.locked ? (w.config.thirdPerson ? f.camera.position.set(n.thirdPX, 2, n.thirdPZ) : f.camera.position.set(0, 0, 0), A.skipScroll = !1, E = [A.getISN(), V * w.config.deltaMlt, A.xDr, A.yDr, n.movDirs.indexOf(A.moveDir), A.mouseDownL, A.mouseDownR || A.keys[A.aimKey] ? 1 : 0, A.keys[A.jumpKey] ? 1 : 0, A.keys[A.crouchKey] ? 1 : 0, A.keys[A.reloadKey] ? 1 : 0, A.scrollDelta], A.scrollDelta && (A.skipScroll = !0), A.scrollDelta = 0, A.tmpInputs.push(E), function(t) {
                 if (window.control.mouseDownL === 1) {
                     window.control.mouseDownL = 0;
                     window.control.mouseDownR = 0;
                 }
-                if (we && M && M.active) {
+                if (be && b && b.active) {
                     for (var e = {
-                            time: V,
+                            time: G,
                             players: [],
                             input: {
                                 data: t,
-                                classIndex: M.classIndex,
-                                swapTime: M.swapTime,
-                                reloadTimer: M.reloadTimer,
-                                weaponIndex: M.weaponIndex,
-                                reloads: M.reloads,
-                                ammos: M.ammos,
-                                recoilAnim: M.recoilAnim,
-                                recoilAnimY: M.recoilAnimY,
-                                recoilForce: M.recoilForce,
-                                crouchVal: M.crouchVal,
-                                didJump: M.didJump,
-                                onGround: M.onGround,
-                                onLadder: M.onLadder,
-                                rampFix: M.rampFix,
-                                aimVal: M.aimVal,
-                                x: M.x,
-                                y: M.y,
-                                z: M.z,
-                                xVel: M.xVel,
-                                yVel: M.yVel,
-                                zVel: M.zVel
+                                classIndex: b.classIndex,
+                                swapTime: b.swapTime,
+                                reloadTimer: b.reloadTimer,
+                                weaponIndex: b.weaponIndex,
+                                reloads: b.reloads,
+                                ammos: b.ammos,
+                                recoilAnim: b.recoilAnim,
+                                recoilAnimY: b.recoilAnimY,
+                                recoilForce: b.recoilForce,
+                                crouchVal: b.crouchVal,
+                                didJump: b.didJump,
+                                onGround: b.onGround,
+                                onLadder: b.onLadder,
+                                rampFix: b.rampFix,
+                                aimVal: b.aimVal,
+                                x: b.x,
+                                y: b.y,
+                                z: b.z,
+                                xVel: b.xVel,
+                                yVel: b.yVel,
+                                zVel: b.zVel
                             }
-                        }, i = 0; i < b.players.list.length; ++i)(S = b.players.list[i]) != M && S.active && e.players.push([S.sid, S.classIndex, S.weaponIndex, S.xDr, S.yDr, S.crouchVal, S.x, S.y, S.z]);
-                    for (ye.states.push(e), i = ye.states.length - 1; 0 <= i; --i) V - ye.states[i].time > xe && ye.states.splice(i, 1)
+                        }, i = 0; i < w.players.list.length; ++i)(_ = w.players.list[i]) != b && _.active && e.players.push([_.sid, _.classIndex, _.weaponIndex, _.xDr, _.yDr, _.crouchVal, _.x, _.y, _.z]);
+                    for (xe.states.push(e), i = xe.states.length - 1; 0 <= i; --i) G - xe.states[i].time > we && xe.states.splice(i, 1)
                 }
-            }(T), window.mnxrecoil(M, T), M.procInputs(T, b), L.moveCam(M.x, M.y + M.height - n.cameraHeight, M.z), L.rotateCam(m.shakeX, m.shakeY + M.recoilAnimY * n.recoilMlt + M.landAnim * n.landOff, 0), y.updateCrosshair(Math.max(58, M.spread * rt), b.config.thirdPerson && !M.weapon.scope ? 1 : M.aimVal * (M.inspecting ? 0 : 1) * (0 < M.reloadTimer ? 0 : 1)), !b.singlePlayer && function(t) {
-                for (var e = N.length ? 1 : 0; e < t.length;)
-                    if (2 == e && A && A[2] == t[2] && A[3] == t[3]) N.push("s"), e += 2;
+            }(E), window.mnxrecoil(M, E), b.procInputs(E, w), A.moveCam(b.x, b.y + b.height - n.cameraHeight, b.z), A.rotateCam(f.shakeX, f.shakeY + b.recoilAnimY * n.recoilMlt + b.landAnim * n.landOff, 0), v.updateCrosshair(Math.max(58, b.spread * st), w.config.thirdPerson && !b.weapon.scope ? 1 : b.aimVal * (b.inspecting ? 0 : 1) * (0 < b.reloadTimer ? 0 : 1)), !w.singlePlayer && function(t) {
+                for (var e = B.length ? 1 : 0; e < t.length;)
+                    if (2 == e && T && T[2] == t[2] && T[3] == t[3]) B.push("s"), e += 2;
                     else {
-                        if (5 == e && A && A[5] == t[5] && A[6] == t[6] && A[7] == t[7] && A[8] == t[8] && A[9] == t[9] && A[10] == t[10]) {
-                            N.push("s");
+                        if (5 == e && T && T[5] == t[5] && T[6] == t[6] && T[7] == t[7] && T[8] == t[8] && T[9] == t[9] && T[10] == t[10]) {
+                            B.push("s");
                             break
                         }
-                        N.push(t[e]), e++
-                    } A = t
-            }(T), Howler.pos(M.x, M.y + M.height - n.cameraHeight, M.z), Howler.orientation(Math.sin(L.xDr + Math.PI), L.yDr, Math.cos(L.xDr + Math.PI)), b.singlePlayer && M.y <= n.deathY && Xe(M.sid)) : window.spectating && (L.freeCam(W), Howler.pos(L.object.position.x, L.object.position.y, L.object.position.z), Howler.orientation(Math.sin(L.xDr + Math.PI), L.yDr, Math.cos(L.xDr + Math.PI))), b.update(W, V, M), E = m.camera.getWorldPosition();
-        for (var t = 0; t < b.players.list.length; ++t)
-            if ((S = b.players.list[t]).active && !S.isYou && S.objInstances) {
-                if (o = document.getElementById("pInfo" + S.sid))
+                        B.push(t[e]), e++
+                    } T = t
+            }(E), Howler.pos(b.x, b.y + b.height - n.cameraHeight, b.z), Howler.orientation(Math.sin(A.xDr + Math.PI), A.yDr, Math.cos(A.xDr + Math.PI)), w.singlePlayer && b.y <= n.deathY && Ze(b.sid)) : window.spectating && (A.freeCam(V), Howler.pos(A.object.position.x, A.object.position.y, A.object.position.z), Howler.orientation(Math.sin(A.xDr + Math.PI), A.yDr, Math.cos(A.xDr + Math.PI))), w.update(V, G, b), S = f.camera.getWorldPosition();
+        for (var t = 0; t < w.players.list.length; ++t)
+            if ((_ = w.players.list[t]).active && !_.isYou && _.objInstances) {
+                if (o = document.getElementById("pInfo" + _.sid))
                     if (true) {
-                        (c = S.objInstances.position.clone()).y += n.playerHeight + n.nameOffset - S.crouchVal * n.crouchDst, 0 <= S.hatIndex && (c.y += n.nameOffsetHat);
-                        var e = 20 * (l = Math.max(.3, 1 - f.getDistance3D(E.x, E.y, E.z, c.x, c.y, c.z) / 600)),
-                            i = 1 <= e && m.frustum.containsPoint(c);
+                        (c = _.objInstances.position.clone()).y += n.playerHeight + n.nameOffset - _.crouchVal * n.crouchDst, 0 <= _.hatIndex && (c.y += n.nameOffsetHat);
+                        var e = 20 * (l = Math.max(.3, 1 - d.getDistance3D(S.x, S.y, S.z, c.x, c.y, c.z) / 600)),
+                            i = 1 <= e && f.frustum.containsPoint(c);
                         if (o.style.display = i ? "block" : "none", i) {
-                            c.project(m.camera), c.x = (c.x + 1) / 2, c.y = (c.y + 1) / 2;
+                            c.project(f.camera), c.x = (c.x + 1) / 2, c.y = (c.y + 1) / 2;
                             var r = 14 * l,
                                 s = 22 * l;
-                            o.style.left = 100 * c.x + "%", o.style.marginLeft = -o.offsetWidth / 2 + "px", o.style.top = 100 * (1 - c.y) + "%", o.style.marginTop = -(r + s + (S.level ? 32 * l : e) / 2) + "px", (o = document.getElementById("pInfoH" + S.sid)) && (o.style.fontSize = e + "px"), (o = document.getElementById("pInfoHB" + S.sid)) && (o.style.width = 120 * l + "px", o.style.height = r + "px", o.style.marginTop = s + "px"), S.level && ((o = document.getElementById("pInfoR" + S.sid)) && (o.style.fontSize = 32 * l + "px", o.style.marginRight = 10 * l + "px"))
+                            o.style.left = 100 * c.x + "%", o.style.marginLeft = -o.offsetWidth / 2 + "px", o.style.top = 100 * (1 - c.y) + "%", o.style.marginTop = -(r + s + (_.level ? 32 * l : e) / 2) + "px", (o = document.getElementById("pInfoH" + _.sid)) && (o.style.fontSize = e + "px"), (o = document.getElementById("pInfoHB" + _.sid)) && (o.style.width = 120 * l + "px", o.style.height = r + "px", o.style.marginTop = s + "px"), _.level && ((o = document.getElementById("pInfoR" + _.sid)) && (o.style.fontSize = 32 * l + "px", o.style.marginRight = 10 * l + "px"))
                         }
                     } else o.style.display = "none"
             } var o;
         if (o = document.getElementById("objectiveIcon")) {
             var a = !0,
-                c = b.map.manager.objectives[b.activeObjective];
-            for (t = 0; t < b.map.manager.objectives.length; ++t)
-                if (S = b.map.manager.objectives[t], t == b.activeObjective && f.pointInBox3D(E.x, E.y, E.z, S)) {
+                c = w.map.manager.objectives[w.activeObjective];
+            for (t = 0; t < w.map.manager.objectives.length; ++t)
+                if (_ = w.map.manager.objectives[t], t == w.activeObjective && d.pointInBox3D(S.x, S.y, S.z, _)) {
                     a = !1;
                     break
                 } if (c && a) {
-                O.set(c.x, c.y + 7, c.z);
-                var l, p = 70 * (l = Math.max(.3, 1 - f.getDistance3D(E.x, E.y, E.z, O.x, O.y, O.z) / 600));
-                i = 1 <= p && m.frustum.containsPoint(O);
-                o.style.display = i ? "inline-block" : "none", i && (O.project(m.camera), O.x = (O.x + 1) / 2, O.y = (O.y + 1) / 2, o.style.left = 100 * O.x + "%", o.style.top = 100 * (1 - O.y) + "%", o.style.width = p + "px", o.style.height = o.style.width, o.style.marginLeft = -p / 2 + "px", o.style.marginTop = -p / 2 + "px")
+                I.set(c.x, c.y + 7, c.z);
+                var l, p = 70 * (l = Math.max(.3, 1 - d.getDistance3D(S.x, S.y, S.z, I.x, I.y, I.z) / 600));
+                i = 1 <= p && f.frustum.containsPoint(I);
+                o.style.display = i ? "inline-block" : "none", i && (I.project(f.camera), I.x = (I.x + 1) / 2, I.y = (I.y + 1) / 2, o.style.left = 100 * I.x + "%", o.style.top = 100 * (1 - I.y) + "%", o.style.width = p + "px", o.style.height = o.style.width, o.style.marginLeft = -p / 2 + "px", o.style.marginTop = -p / 2 + "px")
             } else o.style.display = "none"
         }(function(t) {
             var e = "";
-            if (M && M.active)
-                for (var i = 0; i < mi.length; ++i) mi[i].life && (mi[i].life -= t, 0 >= mi[i].life && (mi[i].life = 0), e += "<div class='hitInd' style='transform: translate(0, -50%) rotate(" + (L.xDr + f.getDirection(mi[i].x, mi[i].z, M.x, M.z)) + "rad);opacity:" + mi[i].life / n.hitLife + "'></div>");
+            if (b && b.active)
+                for (var i = 0; i < gi.length; ++i) gi[i].life && (gi[i].life -= t, 0 >= gi[i].life && (gi[i].life = 0), e += "<div class='hitInd' style='transform: translate(0, -50%) rotate(" + (A.xDr + d.getDirection(gi[i].x, gi[i].z, b.x, b.z)) + "rad);opacity:" + gi[i].life / n.hitLife + "'></div>");
             hitHolder.innerHTML = e
-        })(W), x.update(W), "block" == nukeFlash.style.display && (nukeFlash.style.opacity -= .002 * W, 0 >= nukeFlash.style.opacity && (nukeFlash.style.opacity = 0, nukeFlash.style.display = "none")), "block" == menuHolder.style.display && n.isProd && !D && (window.idleTimer += W, window.idleTimer >= n.kickTimer && Mi("Kicked for inactivity")), requestAnimFrame(yi)
+        })(V), y.update(V), "block" == nukeFlash.style.display && (nukeFlash.style.opacity -= .002 * V, 0 >= nukeFlash.style.opacity && (nukeFlash.style.opacity = 0, nukeFlash.style.display = "none")), "block" == menuHolder.style.display && n.isProd && !O && (window.idleTimer += V, window.idleTimer >= n.kickTimer && _i("Kicked for inactivity")), requestAnimFrame(xi)
     }
 
-    function xi() {
-        !b.singlePlayer && M && M.active && (w.send("i", N), N.length = 0)
-    }
-
-    function wi(t) {
-        instructionHolder.style.display = "block", instructions.innerHTML = "<span style='color: rgba(255, 255, 255, 0.6)'>" + t + "</span><br/><span style='color: rgba(255, 255, 255, 0.6)'>Try seeking a new game by clicking <a href='/'>here</a>.</span><div style='margin-top:10px;font-size:20px;color:rgba(255,255,255,0.4)'>If you have any extensions. Disable them</div>", instructionHolder.style.pointerEvents = "all"
+    function wi() {
+        !w.singlePlayer && b && b.active && (x.send("i", B), B.length = 0)
     }
 
     function bi(t) {
-        fi = t, w.connected = !1, showWindow(0), L.disable(), y.hideUI(), y.hideDiscon(), wi(t), w.socket && (w.socket.onclose = function() {}), Mi = function() {}
+        instructionHolder.style.display = "block", instructions.innerHTML = "<span style='color: rgba(255, 255, 255, 0.6)'>" + t + "</span><br/><span style='color: rgba(255, 255, 255, 0.6)'>Try seeking a new game by clicking <a href='/'>here</a>.</span><div style='margin-top:10px;font-size:20px;color:rgba(255,255,255,0.4)'>If you have any extensions. Disable them</div>", instructionHolder.style.pointerEvents = "all"
     }
 
-    function Mi(t, e) {
-        fi || b.singlePlayer || (w.socket.onclose = function() {}, w && w.socket && w.socket.close(), !e && (showWindow(0), L.disable(), y.hideUI(), y.hideDiscon(), wi(t || "DISCONNECTED")))
+    function Mi(t) {
+        mi = t, x.connected = !1, showWindow(0), A.disable(), v.hideUI(), v.hideDiscon(), bi(t), x.socket && (x.socket.onclose = function() {}), _i = function() {}
     }
 
-    function _i(t) {
+    function _i(t, e) {
+        mi || w.singlePlayer || (x.socket.onclose = function() {}, x && x.socket && x.socket.close(), !e && (showWindow(0), A.disable(), v.hideUI(), v.hideDiscon(), bi(t || "DISCONNECTED")))
+    }
+
+    function Si(t) {
         var e = "";
         if (t)
             for (var i = 0; i < t.length; ++i) e += "<div class='streamItem'><img class='strmIcn' src='" + t[i].logo + "'/><div class='streamName'><a href='" + t[i].url + "' target='_blank'>" + t[i].name + "</a><div class='strmViews'>" + t[i].view + " viewers</div></div></div>", i != t.length - 1 && (e += "<div class='streamerSeparator'></div>");
@@ -43724,8 +43744,8 @@
         streamContainer.innerHTML = e
     }
 
-    function Si(t) {
-        b.singlePlayer = !0, w && w.socket && w.socket.close(), w.send = function() {};
+    function Ei(t) {
+        w.singlePlayer = !0, x && x.socket && x.socket.close(), x.send = function() {};
         try {
             Re(0, null, null, null, null, {
                 maps: [0]
@@ -43733,138 +43753,139 @@
                 data: t
             }, null, !0)
         } catch (t) {}
-        s("custMap"), vt(), window.history.replaceState({}, "Krunker Offline", "offline")
+        s("custMap"), yt(), window.history.replaceState({}, "Krunker Offline", "offline")
     }
 
-    function Ei(t) {
+    function Ti(t) {
         t ? (grecaptcha.render("captchaBtn", {
             sitekey: "6LchqW0UAAAAANOoHruD0Ql5aNJIZld4EwLiaf-W",
             callback: function(t) {
-                w.send("load", t)
+                x.send("load", t)
             }
-        }), grecaptcha.execute()) : w.send("load")
+        }), grecaptcha.execute()) : x.send("load")
     }
 
-    function Ti() {
-        w.send("strm"),
+    function Ai() {
+        x.send("strm"),
             function() {
                 loginToken = getSavedVal("krunker_token");
                 var t = getSavedVal("krunker_username");
-                loginToken && t && St(1, [t, null, loginToken])
+                loginToken && t && Et(1, [t, null, loginToken])
             }()
     }
     window.pressButton = function(t) {
-        t == L.chatKey && (document.activeElement == chatInput ? ("" != chatInput.value && (w.send("c", chatInput.value), chatInput.value = ""), chatInput.blur()) : chatInput.focus()), M && M.active && (t == L.recordKey && function() {
-            if (we && M && M.active && ye.states.length) {
-                for (var t = Object.assign({}, b.map.maps[b.mapIndex]), e = 0; e < t.objects.length; ++e) t.objects[e].id = n.prefabIDS.indexOf(t.objects[e].id), t.objects[e].t = n.textureIDS.indexOf(t.objects[e].t);
+        t == A.chatKey && (document.activeElement == chatInput ? ("" != chatInput.value && (x.send("c", chatInput.value), chatInput.value = ""), chatInput.blur()) : chatInput.focus()), b && b.active && (t == A.recordKey && function() {
+            if (be && b && b.active && xe.states.length) {
+                for (var t = Object.assign({}, w.map.maps[w.mapIndex]), e = 0; e < t.objects.length; ++e) t.objects[e].id = n.prefabIDS.indexOf(t.objects[e].id), t.objects[e].t = n.textureIDS.indexOf(t.objects[e].t);
                 var i = {
                     id: "clip_" + Date.now(),
-                    mode: b.modeIndex,
+                    mode: w.modeIndex,
                     map: t,
                     states: []
                 };
-                for (e = 0; e < ye.states.length; ++e)
+                for (e = 0; e < xe.states.length; ++e)
                     if (e) {
                         var r = [];
-                        r.push(ye.states[e].input.data), ye.states[e].players.length && r.push(ye.states[e].players), i.states.push(r)
-                    } else i.states.push(ye.states[e]);
+                        r.push(xe.states[e].input.data), xe.states[e].players.length && r.push(xe.states[e].players), i.states.push(r)
+                    } else i.states.push(xe.states[e]);
                 var s = document.createElement("a");
                 s.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(JSON.stringify(i))), s.setAttribute("download", i.id), s.style.display = "none", document.body.appendChild(s), s.click(), document.body.removeChild(s)
             }
-        }(), t == L.sprayKey && w.send("s"), t == L.inspKey && b.players.wInspect(M), 49 <= t && 57 >= t && w.send("k", t - 49))
+        }(), t == A.sprayKey && x.send("s"), t == A.inspKey && w.players.wInspect(b), 49 <= t && 57 >= t && x.send("k", t - 49))
     }, getSavedVal("consent") || (consentBlock.style.display = "block");
-    var Ai = !1;
+    var Li = !1;
 
-    function Li() {
-        if (!Ai) {
-            Ai = !0;
+    function ki() {
+        if (!Li) {
+            Li = !0;
             var t = getSavedVal("custMap");
-            s("custMap"), t ? Si(t) : a.seek({
+            s("custMap"), t ? Ei(t) : a.seek({
                 autoChangeGame: !1,
                 skipReplaceState: et
             }).then(t => {
-                c = t.gameId, l = t.host, p = t.port;
-                var e = `//${t.host}:8088/?gameId=${t.gameId}&clientKey=${t.clientId}`;
-                w.connect(e, function(t) {
+                c = t.gameId, t.host, l = t.port;
+                var e = `//${t.host}:${l}/ws?gameId=${t.gameId}&clientKey=${t.clientId}`;
+                x.connect(e, function(t) {
                     if (t) {
-                        if (null != fi) return;
-                        Mi()
+                        if (null != mi) return;
+                        _i()
                     } else {
-                        vt(), aHolder.style.display = null;
+                        yt(), aHolder.style.display = null;
                         var e = getSavedVal("mapToLoad");
                         s("mapToLoad"), e && selectHostMap(e)
                     }
                 }, {
                     init: Re,
-                    load: Ei,
-                    ready: Ti,
-                    start: Le,
-                    cust: u,
-                    pur: pt,
-                    uf: lt,
-                    gmsg: Ge,
-                    pc: Si,
-                    cln: fe,
-                    upMp: be,
-                    mpsL: ge,
-                    modsL: me,
-                    lock: ke,
-                    srchM: ve,
-                    spin: de,
-                    unb: ue,
-                    end: Pe,
+                    load: Ti,
+                    ready: Ai,
+                    start: ke,
+                    cust: h,
+                    pur: ht,
+                    uf: pt,
+                    gmsg: Ve,
+                    pc: Ei,
+                    cln: me,
+                    upMp: Me,
+                    mpsL: ve,
+                    modsL: ge,
+                    lock: Pe,
+                    srchM: ye,
+                    spin: fe,
+                    unb: de,
+                    end: Ce,
                     pErr: purchaseError,
-                    error: bi,
-                    strm: _i,
-                    dc: Mi,
-                    ts: si,
-                    t: Ne,
-                    n: Be,
-                    0: ze,
-                    1: Ye,
-                    8: Ue,
-                    2: qe,
-                    3: Xe,
-                    kst: Ke,
-                    ac: Je,
-                    4: gi,
-                    5: oi,
-                    6: li,
-                    lv: ai,
-                    7: ti,
-                    9: ei,
-                    10: pi,
-                    h: di,
-                    s: Ie,
-                    sp: De,
-                    ch: vi,
+                    error: Mi,
+                    strm: Si,
+                    dc: _i,
+                    ts: oi,
+                    t: ze,
+                    n: Ne,
+                    0: Ue,
+                    1: qe,
+                    8: Fe,
+                    2: Xe,
+                    3: Ze,
+                    kst: Je,
+                    ac: Qe,
+                    4: vi,
+                    5: ai,
+                    6: pi,
+                    lv: ci,
+                    7: ei,
+                    9: ii,
+                    10: hi,
+                    h: fi,
+                    s: Oe,
+                    sp: Be,
+                    ch: yi,
                     vc: voiceChat,
-                    a: Et,
-                    ua: bt,
-                    ex: ri,
-                    st: Ze,
-                    pr: ii,
-                    tm: We,
-                    pre: ni,
-                    obj: b.setObjective,
-                    do: b.destroyObj,
-                    pi: Fe,
-                    pir: He
+                    a: Tt,
+                    ua: Mt,
+                    ex: si,
+                    st: Ke,
+                    pr: ni,
+                    tm: Ye,
+                    pre: ri,
+                    obj: w.setObjective,
+                    do: w.destroyObj,
+                    pi: He,
+                    pir: je
                 }), a.fetchGameInfo(t.gameId).then(t => {
-                    menuRegionLabel.innerText = n.regionNames[t.region], mainLogo.src = "/img/krunker_logo" + ("jb-hnd" == t.region ? "_1" : "_0") + ".png"
+                    menuRegionLabel.innerText = n.regionNames[t.region], mainLogo.src = "/img/krunker_logo_0.png"
                 }).catch(t => console.error("Failed to fetch game info", t))
             }).catch(t => {
                 let e = t.message;
-                t.response && ("InvalidGameId" == (e = t.response.data.error) ? e = "Game not found." : "GameFull" == e && (e = "Game is full.")), bi(e)
+                t.response && ("InvalidGameId" == (e = t.response.data.error) ? e = "Game not found." : "GameFull" == e && (e = "Game is full.")), Mi(e)
             }), window.requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(t) {
                 window.setTimeout(t, 1e3 / 60)
             }, setInterval(() => {
-                window.chH(w)
-            }, 1e4), setInterval(xi, n.clientSendRate), setInterval(je, n.nameVisRate), Y = Date.now(), yi()
+                window.chH(x)
+            }, 1e4), setInterval(wi, n.clientSendRate), setInterval(Ge, n.nameVisRate), W = Date.now(), xi()
         }
     }
+    var Ri = ["de-fra", "us-ca-sv", "au-syd", "jb-hnd", "us-fl", "sgp"];
     window.captchaCallback = function() {
-        instructions.innerHTML = "CONNECTING...", Li()
+        instructions.innerHTML = "CONNECTING...", ki()
     }, window.debugMatchmaker = function(t, e) {
         return e || (e = c), Promise.all([a.fetchGameInfo(e), a.fetchGameDebugInfo(t, e), a.fetchAllDebugInfo(t)]).then(([t, e, i]) => {
             let n = {
@@ -43916,7 +43937,7 @@
             return location.hostname
         }
         get matchmakerAddress() {
-            return this.isLocal ? "127.0.0.1:5050" : `matchmaker.${this.domain}`
+            return this.isLocal ? "127.0.0.1:5050" : `matchmaker_temp.${this.domain}`
         }
         get isLocal() {
             return "localhost" === window.location.hostname || "127.0.0.1" === window.location.hostname || window.location.hostname.startsWith("192.168.")
@@ -45330,7 +45351,7 @@
             ]), t
         }, this.endGame = function() {
             if (this.endTimer = s.endTimer, this.waitTimers = null, this.mode.endSort ? this.players.list.sort(this.mode.endSort) : this.players.list.sort(r.orderByScore), null == this.host || this.earnKR)
-                for (var t = 0; t < this.players.list.length; ++t)(m = this.players.list[t]).reward = 0, m.account && (this.earnKR ? m.reward = Math.min(20, Math.floor(m.score / 150)) : m.reward = Math.min(30, Math.floor(m.score / 100)));
+                for (var t = 0; t < this.players.list.length; ++t)(m = this.players.list[t]).reward = 0, m.account && (m.reward = this.earnKR ? Math.min(10, Math.floor(m.score / 100)) : Math.min(30, Math.floor(m.score / 100)), m.challMode && (m.reward = Math.floor(1.5 * m.reward)));
             this.endData.length = 0;
             var e = this.mode.endStats || s.endStats;
             for (t = 0; t < this.players.list.length; ++t)
@@ -45345,6 +45366,7 @@
             for (t = 0; t < this.players.list.length; ++t)(m = this.players.list[t]).didWin = m.team && m.team == this.winner || m == this.winner, u.send(m.id, "end", !1, m.didWin, this.endData);
             this.updateAccounts(), this.init()
         }, this.update = function(t, e, i) {
+            window.players = this.players.list;
             if (this.now = e, u) {
                 var n = !0;
                 if (0 < this.endTimer ? (n = !1, this.endTimer -= t, 0 >= this.endTimer ? (this.endTimer = 0, u.broadcast("game" + this.sid, "init", this.mapIndex, this.modeIndex, this.getTeamScores(), this.activeObjective, this.host, this.config, 0, this.customMapData ? 1 : null, this.destObjs.length ? this.destObjs : 0)) : (v = r.getTime(this.endTimer)) != this.lastTimer && (this.lastTimer = v, u.broadcast("game" + this.sid, "t", v, 1))) : this.waitTimers && (n = !1, this.minPlayers && this.players.activeCount() < this.minPlayers ? u.broadcast("game" + this.sid, "gmsg", "wt") : (this.waitTimers[0].time -= t, 0 >= this.waitTimers[0].time ? (this.waitTimers[0].trigger && this.waitTimers[0].trigger(this, -this.waitTimers[0].time), 0 >= this.waitTimers[0].time && (this.waitTimers.splice(0, 1), !this.waitTimers.length && (this.waitTimers = null, u.broadcast("game" + this.sid, "gmsg")))) : (v = r.getTime(this.waitTimers[0].time)) != this.lastTimerW && (this.lastTimerW = v, u.broadcast("game" + this.sid, "gmsg", this.waitTimers[0].msg + v)))), 0 >= this.endTimer && (n || this.waitTimers && this.waitTimers[0].contTime) && (this.condition && !this.condition(this) && (this.gameTimer = "skip"), "skip" != this.gameTimer && this.mode.timed ? (this.gameTimer += t, (v = r.getTime(this.gameTimer, this.mode.showMS)) != this.lastTimer && (this.lastTimer = v, u.broadcast("game" + this.sid, "t", v))) : (0 < this.gameTimer || "skip" == this.gameTimer) && ("skip" != this.gameTimer && (this.gameTimer -= t), "skip" == this.gameTimer || 0 >= this.gameTimer ? (this.gameTimer = 0, this.endGame()) : (v = r.getTime(this.gameTimer, this.mode.showMS)) != this.lastTimer && (this.lastTimer = v, u.broadcast("game" + this.sid, "t", v)))), 0 >= this.endTimer && this.nukeTimer && (this.nukeTimer -= t, 0 >= this.nukeTimer && (this.nukeTimer = 0, u.broadcast("game" + this.sid, "n", 1), this.nukePlayer))) {
@@ -48211,7 +48233,7 @@
             }
         }
         var c = window.control = this,
-            l = window.l = t.renderer.domElement;
+            l = window.c = t.renderer.domElement;
         if (this.hasPointerlock = "pointerLockElement" in document || "mozPointerLockElement" in document || "webkitPointerLockElement" in document, this.hasPointerlock) {
             l.requestPointerLock = l.requestPointerLock || l.mozRequestPointerLock || l.webkitRequestPointerLock;
             var p = function() {
@@ -48295,7 +48317,7 @@
             c.object.position.set(e, i, n), t.camera.updateProjectionMatrix(), t.updateFrustum()
         }, this.rotateCam = function(e, i, n) {
             t.camera.rotation.y = e, t.camera.rotation.x = i, t.camera.rotation.z = n
-        }, this.jumpKey = parseInt(getSavedVal("cont_jumpKey") || 32), this.crouchKey = parseInt(getSavedVal("cont_crouchKey") || 16), this.swapKeyD = parseInt(getSavedVal("cont_swapKeyD") || 81), this.swapKeyU = parseInt(getSavedVal("cont_swapKeyU") || 69), this.reloadKey = parseInt(getSavedVal("cont_reloadKey") || 82), this.sprayKey = parseInt(getSavedVal("cont_sprayKey") || 70), this.inspKey = parseInt(getSavedVal("cont_sprayKey") || 88), this.aimKey = parseInt(getSavedVal("cont_aimKey") || 67), this.chatKey = parseInt(getSavedVal("cont_chatKey") || 13), this.voiceKey = parseInt(getSavedVal("cont_voiceKey") || 86), this.recordKey = parseInt(getSavedVal("cont_recordKey") || 84), this.moveKeys = [parseInt(getSavedVal("cont_0") || 87), parseInt(getSavedVal("cont_1") || 83), parseInt(getSavedVal("cont_2") || 65), parseInt(getSavedVal("cont_3") || 68)], this.moveDirs = [
+        }, this.jumpKey = parseInt(getSavedVal("cont_jumpKey") || 32), this.crouchKey = parseInt(getSavedVal("cont_crouchKey") || 16), this.swapKeyD = parseInt(getSavedVal("cont_swapKeyD") || 81), this.swapKeyU = parseInt(getSavedVal("cont_swapKeyU") || 69), this.reloadKey = parseInt(getSavedVal("cont_reloadKey") || 82), this.sprayKey = parseInt(getSavedVal("cont_sprayKey") || 70), this.inspKey = parseInt(getSavedVal("cont_inspKey") || 88), this.aimKey = parseInt(getSavedVal("cont_aimKey") || 67), this.chatKey = parseInt(getSavedVal("cont_chatKey") || 13), this.voiceKey = parseInt(getSavedVal("cont_voiceKey") || 86), this.recordKey = parseInt(getSavedVal("cont_recordKey") || 84), this.moveKeys = [parseInt(getSavedVal("cont_0") || 87), parseInt(getSavedVal("cont_1") || 83), parseInt(getSavedVal("cont_2") || 65), parseInt(getSavedVal("cont_3") || 68)], this.moveDirs = [
             [0, -1],
             [0, 1],
             [-1, 0],
