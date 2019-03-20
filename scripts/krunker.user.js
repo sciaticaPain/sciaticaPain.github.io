@@ -95,7 +95,7 @@ socialWS.onmessage = (msg) => {
 
 var past = new Date().getTime();
 
-unsafeWindow.Ze2 = (t, e, i) => {
+unsafeWindow.Ze2 = unsafeWindow.Ze = (t, e, i) => {
     for (chatList.innerHTML += i ? "<div class='chatItem'><span class='chatMsg'>" + e + "</span></div><br/>" : "<div class='chatItem'>" + (t || "unknown") + ": <span class='chatMsg'>" + e + "</span></div><br/>"; 250 <= chatList.scrollHeight;) chatList.removeChild(chatList.childNodes[0])
 }
 
@@ -105,6 +105,9 @@ unsafeWindow.mdlsettings = {screenaim: false};
 function handleMessage(m){}
 
 unsafeWindow.mnxrecoil = (me, inputs) => {
+    if (!unsafeWindow.players) return;
+
+    me = unsafeWindow.players.filter(x=>x.isYou)[0];
 
     for (let player of unsafeWindow.players)
     {
