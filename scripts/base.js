@@ -41393,7 +41393,7 @@
         }
     }
 }, function(t) {
-    t.exports = 81043
+    t.exports = 2297
 }, function(t, e, i) {
     var n, r, s = 0,
         o = function(t) {
@@ -48208,7 +48208,7 @@
         else {
             e.weapon.kill ? n.push(e.weapon.kill[0], e.weapon.kill[1]) : e.weapon.scope && 1 == e.aimVal ? n.push("No Scope", 100) : !e.weapon.scope || 0 == e.aimVal && 180 < e.aimTime || 1 == e.aimDir ? n.push("", 50) : n.push("Quick Scope", 75), 1 >= o.kills && n.push("First Blood", 25);
             var a = t.getSpin(e);
-            !e.weapon.nSkill && 360 <= a && n.push("360!", 150), s.headShot && n.push("Headshot", 500), !e.weapon.scope && 200 < s.dst * e.weapon.range && n.push("Longshot", 25)
+            !e.weapon.nSkill && 360 <= a && n.push("360!", 150), s.headShot && n.push("Headshot", 50), !e.weapon.scope && 200 < s.dst * e.weapon.range && n.push("Longshot", 25)
         }
         e.health <= .2 * e.maxHealth && e.active && n.push("Close Call", 20), 5 <= e.deathStreak && n.push("Comeback", 25), 10 <= r.killStreak ? n.push("Buzzkill", 25) : 5 <= r.killStreak && n.push("Buzzkill", 10), 0 < e.slideTimer && n.push("Driftkill", 50), 400 <= e.airTime && n.push("Mid Air", 25);
         for (var c = i.length - 1; 0 <= c; --c)
