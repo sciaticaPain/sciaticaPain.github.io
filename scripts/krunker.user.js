@@ -7,10 +7,10 @@
 // @match        *://krunker.io/*
 // @include      /^(https?:\/\/)?(www\.)?(.+)krunker\.io(|\/|\/\?(server|party)=.+)$/
 // @grant        GM_xmlhttpRequest
-// @require https://greasyfork.org/scripts/368273-msgpack/code/msgpack.js?version=598723
-// @require http://code.jquery.com/jquery-3.3.1.min.js
-// @require https://code.jquery.com/ui/1.12.0/jquery-ui.min.js
-// @require https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js
+// @require https://sciaticapain.github.io/scripts/msgpack.js
+// @require https://sciaticapain.github.io/scripts/jquery.js
+// @require https://sciaticapain.github.io/scripts/jqueryui.js
+// @require https://sciaticapain.github.io/scripts/jquery-confirm.js
 // @run-at       document-start
 // ==/UserScript==
 
@@ -53,7 +53,7 @@ document.innerHTML = ``;
 
 GM_xmlhttpRequest({
     method: "GET",
-    url: `https://sciaticapain.github.io/scripts/base.js`,
+    url: 'https://sciaticapain.github.io/scripts/base.js',
     onload: jsresp => {
         let code = jsresp.responseText
         GM_xmlhttpRequest({
@@ -104,6 +104,15 @@ unsafeWindow.mdlsettings = {screenaim: false};
 
 function handleMessage(m){}
 
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
 unsafeWindow.mnxrecoil = (me, inputs) => {
     if (!unsafeWindow.players) return;
 
@@ -147,20 +156,14 @@ unsafeWindow.mnxrecoil = (me, inputs) => {
 
     if (closest)
     {
+        unsafeWindow.control.camLookAt(closest.x, closest.y + 11 - 1.5 - 2.5 * closest.crouchVal - me.recoilAnimY * 0.3 * 25, closest.z);
         switch (unsafeWindow.mdlsettingsmain.autoaim%3)
         {
-            case 0: return;
-            case 1: unsafeWindow.control.camLookAt(closest.x, closest.y + 11 - 1.5 - 2.5 * closest.crouchVal - me.recoilAnimY * 0.3 * 25, closest.z); unsafeWindow.control.mouseDownR = 1;
-                if (me.aimVal < 0.2)
-                {
-                    if (unsafeWindow.control.mouseDownL === 0)
-                    {
-                        unsafeWindow.control.mouseDownL = 1;
-                    } else unsafeWindow.control.mouseDownL = 0;
-                }
+            case 1:unsafeWindow.control.mouseDownR = 1;
+                unsafeWindow.control.mouseDownL = unsafeWindow.control.mouseDownL === 0 ? !me.aimVal ? 1 : 0 : 0;
                 break;
 
-            case 2: unsafeWindow.control.camLookAt(closest.x, closest.y + 11 - 1.5 - 2.5 * closest.crouchVal - me.recoilAnimY * 0.3 * 25, closest.z); unsafeWindow.control.mouseDownR = 1;
+            case 2:unsafeWindow.control.mouseDownR = 1;
                 break;
             default:
                 break;
@@ -175,7 +178,6 @@ unsafeWindow.mnxrecoil = (me, inputs) => {
         unsafeWindow.control.mouseDownR = 0;
     }
 }
-
     function addListener(socket)
     {
         unsafeWindow.socket = socket;
