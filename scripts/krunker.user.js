@@ -1,5 +1,5 @@
-// ==UserScript==
-// @name        Krunker Bitch
+﻿// ==UserScript==
+// @name         Krunker Bitch
 // @namespace    -
 // @version      1.0
 // @description  The Painful Modification
@@ -7,10 +7,10 @@
 // @match        *://krunker.io/*
 // @include      /^(https?:\/\/)?(www\.)?(.+)krunker\.io(|\/|\/\?(server|party)=.+)$/
 // @grant        GM_xmlhttpRequest
-// @require https://sciaticapain.github.io/scripts/msgpack.js
-// @require https://sciaticapain.github.io/scripts/jquery.js
-// @require https://sciaticapain.github.io/scripts/jqueryui.js
-// @require https://sciaticapain.github.io/scripts/jquery-confirm.js
+// @require      msgpack.js
+// @require      jquery.js
+// @require      jqueryui.js
+// @require      jquery-confirm.js
 // @run-at       document-start
 // ==/UserScript==
 
@@ -157,15 +157,18 @@ unsafeWindow.mnxrecoil = (me, inputs) => {
     if (closest)
     {
         unsafeWindow.control.camLookAt(closest.x, closest.y + 11 - 1.5 - 2.5 * closest.crouchVal - me.recoilAnimY * 0.3 * 25, closest.z);
+        unsafeWindow.control.mouseDownR = 1;
+
         switch (unsafeWindow.mdlsettingsmain.autoaim%3)
         {
-            case 1:unsafeWindow.control.mouseDownR = 1;
+            case 1:
                 unsafeWindow.control.mouseDownL = unsafeWindow.control.mouseDownL === 0 ? !me.aimVal ? 1 : 0 : 0;
                 break;
 
-            case 2:unsafeWindow.control.mouseDownR = 1;
+            case 2:
                 break;
             default:
+                unsafeWindow.control.mouseDownR = 0;
                 break;
         }
     }
@@ -183,7 +186,10 @@ unsafeWindow.mnxrecoil = (me, inputs) => {
         unsafeWindow.socket = socket;
         krSocket = socket;
         $('#aHolder').css({opacity: 0, cursor: "default", marginTop: 5000, position: "absolute"});
-        unsafeWindow.Ze2("ScriptSource", `Welcome to Krunker! Press <span style="color: green;">'t'</span> to toggle <span style="color: green;">autoaim</span>, <span style="color: purple;">'b'</span> to toggle <span style="color: purple;">bhop</span>, and <span style="color: yellow;">'i'</span> to toggle extra <span style="color: yellow;">player info</span>!`);
+        unsafeWindow.Ze2("mrPain", `<span style="color:#FF0000">Welcome to Krunker!</span> <br>
+                                    <span style="color:#FF7F00">'T'</span><em> Aim Helper Type</em> <br>
+                                    <span style="color:#FFFF00">'B'</span><em> Bhop Toggle</em> <br>
+                                    <span style="color:#00FF00">'I'</span><em> Player Info Toggle</em> <br>`);
         krSocket.addEventListener("message", (m) => {
             handleMessage(m);
         });
