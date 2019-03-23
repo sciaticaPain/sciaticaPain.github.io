@@ -48327,30 +48327,32 @@
         }, !1), window.addEventListener("keyup", function(t) {
             //<edit>
             if (document.activeElement != chatInput) {
-                if (t.keyCode == 84) {
+                if (t.keyCode == 112) {
                     window.mdlsettingsmain.autoaim += 1;
                     var aoptions = ["Off", "TriggerBot", "AimBot"];
-                    window.Ze("Aim Style", `Changed to ${ aoptions[window.mdlsettingsmain.autoaim%3] }`)
+                    window.Ze("Aim Style", `${ aoptions[window.mdlsettingsmain.autoaim%3] }`)
                 }
 
-                if (t.keyCode == 66) {
+                if (t.keyCode == 113) {
                     window.mdlsettingsmain.bhop = !window.mdlsettingsmain.bhop;
-                    window.Ze("BHop", `Changed to ${ window.mdlsettingsmain.bhop ? "on" : "off" }`)
+                    window.Ze("BHop", `${ window.mdlsettingsmain.bhop ? "on" : "off" }`)
                 }
 
-                if (t.keyCode == 73) {
+                if (t.keyCode == 114) {
                     window.mdlsettingsmain.info = !window.mdlsettingsmain.info;
-                    window.Ze("Player Info", `Changed to ${ window.mdlsettingsmain.info ? "on" : "off" }`)
-                    if (!window.mdlsettingsmain.info) {
+                    window.Ze("Player Info", `${ window.mdlsettingsmain.info ? "on" : "off" }`)
+                    var last_info;
+                    
+                    if (last_info != window.mdlsettingsmain.info) 
+                    {
                         for (let playerInfo of playerInfos.children) {
                             let pname = playerInfo.querySelectorAll(".pInfoH")[0];
                             if (!pname) continue;
                             let pid = parseInt(playerInfo.id.replace("pInfo", ""));
                             let playerObj = window.players.filter(x => x.sid == pid)[0];
-
                             pname.innerHTML = `${playerObj.name}`;
                         }
-
+						            last_info = window.mdlsettingsmain.info;
                     }
                 }
             }
