@@ -41062,9 +41062,9 @@
             m = {},
             g = this,
             v = {};
-        this.frustum = /*<edit>*/window.camhook = /*<edit\>*/new e.Frustum;
+        this.frustum = new e.Frustum;
         var y = new e.Matrix4;
-        this.camera = /*<edit>*/window.camera = /*<edit\>*/new e.PerspectiveCamera(0, window.innerWidth / window.innerHeight, .1, 8e3), this.fpsCamera = new e.PerspectiveCamera(s.fov, window.innerWidth / window.innerHeight, .1, 8e3), this.fpsCamera.layers.set(1), this.camera.add(this.fpsCamera), this.weaponLean = 1, this.init = function(i) {
+        this.camera = new e.PerspectiveCamera(0, window.innerWidth / window.innerHeight, .1, 8e3), this.fpsCamera = new e.PerspectiveCamera(s.fov, window.innerWidth / window.innerHeight, .1, 8e3), this.fpsCamera.layers.set(1), this.camera.add(this.fpsCamera), this.weaponLean = 1, this.init = function(i) {
             this.scene = new e.Scene, t.exports.initScene.call(this, i), this.sunPlane = this.addPlane(0, 5e3, -4500, 750, 750, {
                 src: "sun_0",
                 noFog: !0,
@@ -41745,11 +41745,6 @@
                 for (b = 0; b < this.reloads.length; ++b) 0 < this.reloads[b] && (this.reloads[b] -= a, 0 > this.reloads[b] && (this.reloads[b] = 0));
                 if (this.weapon && !this.weapon.melee) {
                     var L = !this.weapon.nAuto && t[5];
-                    //<edit>
-                    window.shoot = () => {
-                        e.shoot(this)
-                    };
-                    //<edit\>
                     this.didShoot && !t[5] && (this.didShoot = !1), !this.didShoot && t[5] && (L = !0), L && 0 >= this.reloads[this.weaponIndex] && 0 >= this.swapTime && 0 >= this.reloadTimer && (0 < this.ammos[this.weaponIndex] ? e.shoot(this) : e.reload(this))
                 }
             }
@@ -43626,12 +43621,6 @@
                     }
                 }
             }(V), A.update(V * w.config.deltaMlt), b && b.active && !window.locked ? (w.config.thirdPerson ? f.camera.position.set(n.thirdPX, 2, n.thirdPZ) : f.camera.position.set(0, 0, 0), A.skipScroll = !1, E = [A.getISN(), V * w.config.deltaMlt, A.xDr, A.yDr, n.movDirs.indexOf(A.moveDir), A.mouseDownL, A.mouseDownR || A.keys[A.aimKey] ? 1 : 0, A.keys[A.jumpKey] ? 1 : 0, A.keys[A.crouchKey] ? 1 : 0, A.keys[A.reloadKey] ? 1 : 0, A.scrollDelta], A.scrollDelta && (A.skipScroll = !0), A.scrollDelta = 0, A.tmpInputs.push(E), function(t) {
-                //<edit>
-                if (window.control.mouseDownL === 1) {
-                    window.control.mouseDownL = 0;
-                    window.control.mouseDownR = 0;
-                }
-                //<edit\>
                 if (be && b && b.active) {
                     for (var e = {
                             time: G,
@@ -43663,7 +43652,7 @@
                         }, i = 0; i < w.players.list.length; ++i)(_ = w.players.list[i]) != b && _.active && e.players.push([_.sid, _.classIndex, _.weaponIndex, _.xDr, _.yDr, _.crouchVal, _.x, _.y, _.z]);
                     for (xe.states.push(e), i = xe.states.length - 1; 0 <= i; --i) G - xe.states[i].time > we && xe.states.splice(i, 1)
                 }
-            }(E), /*<edit>*/window.mnxrecoil(M, E), /*<edit\>*/b.procInputs(E, w), A.moveCam(b.x, b.y + b.height - n.cameraHeight, b.z), A.rotateCam(f.shakeX, f.shakeY + b.recoilAnimY * n.recoilMlt + b.landAnim * n.landOff, 0), v.updateCrosshair(Math.max(58, b.spread * st), w.config.thirdPerson && !b.weapon.scope ? 1 : b.aimVal * (b.inspecting ? 0 : 1) * (0 < b.reloadTimer ? 0 : 1)), !w.singlePlayer && function(t) {
+            }(E), b.procInputs(E, w), A.moveCam(b.x, b.y + b.height - n.cameraHeight, b.z), A.rotateCam(f.shakeX, f.shakeY + b.recoilAnimY * n.recoilMlt + b.landAnim * n.landOff, 0), v.updateCrosshair(Math.max(58, b.spread * st), w.config.thirdPerson && !b.weapon.scope ? 1 : b.aimVal * (b.inspecting ? 0 : 1) * (0 < b.reloadTimer ? 0 : 1)), !w.singlePlayer && function(t) {
                 for (var e = B.length ? 1 : 0; e < t.length;)
                     if (2 == e && T && T[2] == t[2] && T[3] == t[3]) B.push("s"), e += 2;
                     else {
@@ -43677,10 +43666,7 @@
         for (var t = 0; t < w.players.list.length; ++t)
             if ((_ = w.players.list[t]).active && !_.isYou && _.objInstances) {
                 if (o = document.getElementById("pInfo" + _.sid))
-                    //<edit>
-                    //if (_.inView) {
-                    if (true) {
-                    //<edit\>
+                    if (_.inView) {
                         (c = _.objInstances.position.clone()).y += n.playerHeight + n.nameOffset - _.crouchVal * n.crouchDst, 0 <= _.hatIndex && (c.y += n.nameOffsetHat);
                         var e = 20 * (l = Math.max(.3, 1 - d.getDistance3D(S.x, S.y, S.z, c.x, c.y, c.z) / 600)),
                             i = 1 <= e && f.frustum.containsPoint(c);
@@ -45359,9 +45345,6 @@
             for (t = 0; t < this.players.list.length; ++t)(m = this.players.list[t]).didWin = m.team && m.team == this.winner || m == this.winner, u.send(m.id, "end", !1, m.didWin, this.endData);
             this.updateAccounts(), this.init()
         }, this.update = function(t, e, i) {
-        //<edit>
-        window.players = this.players.list;
-        //<edit\>
             if (this.now = e, u) {
                 var n = !0;
                 if (0 < this.endTimer ? (n = !1, this.endTimer -= t, 0 >= this.endTimer ? (this.endTimer = 0, u.broadcast("game" + this.sid, "init", this.mapIndex, this.modeIndex, this.getTeamScores(), this.activeObjective, this.host, this.config, 0, this.customMapData ? 1 : null, this.destObjs.length ? this.destObjs : 0)) : (v = r.getTime(this.endTimer)) != this.lastTimer && (this.lastTimer = v, u.broadcast("game" + this.sid, "t", v, 1))) : this.waitTimers && (n = !1, this.minPlayers && this.players.activeCount() < this.minPlayers ? u.broadcast("game" + this.sid, "gmsg", "wt") : (this.waitTimers[0].time -= t, 0 >= this.waitTimers[0].time ? (this.waitTimers[0].trigger && this.waitTimers[0].trigger(this, -this.waitTimers[0].time), 0 >= this.waitTimers[0].time && (this.waitTimers.splice(0, 1), !this.waitTimers.length && (this.waitTimers = null, u.broadcast("game" + this.sid, "gmsg")))) : (v = r.getTime(this.waitTimers[0].time)) != this.lastTimerW && (this.lastTimerW = v, u.broadcast("game" + this.sid, "gmsg", this.waitTimers[0].msg + v)))), 0 >= this.endTimer && (n || this.waitTimers && this.waitTimers[0].contTime) && (this.condition && !this.condition(this) && (this.gameTimer = "skip"), "skip" != this.gameTimer && this.mode.timed ? (this.gameTimer += t, (v = r.getTime(this.gameTimer, this.mode.showMS)) != this.lastTimer && (this.lastTimer = v, u.broadcast("game" + this.sid, "t", v))) : (0 < this.gameTimer || "skip" == this.gameTimer) && ("skip" != this.gameTimer && (this.gameTimer -= t), "skip" == this.gameTimer || 0 >= this.gameTimer ? (this.gameTimer = 0, this.endGame()) : (v = r.getTime(this.gameTimer, this.mode.showMS)) != this.lastTimer && (this.lastTimer = v, u.broadcast("game" + this.sid, "t", v)))), 0 >= this.endTimer && this.nukeTimer && (this.nukeTimer -= t, 0 >= this.nukeTimer && (this.nukeTimer = 0, u.broadcast("game" + this.sid, "n", 1), this.nukePlayer))) {
@@ -48227,8 +48210,8 @@
                 c.keys[t] !== e && (c.keys[t] = e, t == c.voiceKey ? toggleRecord(e) : 0 <= c.moveKeys.indexOf(t) && c.updateMoveDir(), e && (t == c.swapKeyU ? c.scrollDelta = 1 : t == c.swapKeyD ? c.scrollDelta = -1 : window.pressButton(t)))
             }
         }
-        var c = /*<edit>*/window.control/*<edit\>*/ = this,
-            l = /*<edit>*/window.c/*<edit\>*/ = t.renderer.domElement;
+        var c = this,
+            l = t.renderer.domElement;
         if (this.hasPointerlock = "pointerLockElement" in document || "mozPointerLockElement" in document || "webkitPointerLockElement" in document, this.hasPointerlock) {
             l.requestPointerLock = l.requestPointerLock || l.mozRequestPointerLock || l.webkitRequestPointerLock;
             var p = function() {
@@ -48280,27 +48263,13 @@
             c.object.position.add(d.multiplyScalar(i)), t.updateFrustum()
         }, this.update = function(e) {
             if (this.target) {
-                //<edit>
-                this.object.rotation.y = this.target.yD;
-                this.pitchObject.rotation.x = this.target.xD;
-                const jkx = Math.PI / 2;
-                this.pitchObject.rotation.x = Math.max(-jkx, Math.min(jkx, this.pitchObject.rotation.x));
-                this.yDr = (this.pitchObject.rotation.x % Math.PI2).round(3);
-                this.xDr = (this.object.rotation.y % Math.PI2).round(3);
-                this.object.rotation.y = this.target.yD;
-                this.pitchObject.rotation.x = this.target.xD;
-                const j = Math.PI / 2;
-                this.pitchObject.rotation.x = Math.max(-j, Math.min(j, this.pitchObject.rotation.x));
-                this.yDr = (this.pitchObject.rotation.x % Math.PI2).round(3);
-                this.xDr = (this.object.rotation.y % Math.PI2).round(3);
-                //<edit\>
                 var i = n.getAngleDist(this.object.rotation.y, this.target.yD);
                 this.object.rotation.y += i * e * s.camChaseTrn, i = n.getAngleDist(c.pitchObject.rotation.x, this.target.xD), this.pitchObject.rotation.x += i * e * s.camChaseTrn, i = n.getDistance3D(this.object.position.x, this.object.position.y, this.object.position.z, this.target.x, this.target.y, this.target.z) * e * s.camChaseSpd;
                 var r = n.getDirection(this.object.position.z, this.object.position.x, this.target.z, this.target.x),
                     o = n.getXDir(this.object.position.x, this.object.position.y, this.object.position.z, this.target.x, this.target.y, this.target.z);
                 this.object.position.x -= i * Math.sin(r) * Math.cos(o), this.object.position.y += i * Math.sin(o), this.object.position.z -= i * Math.cos(r) * Math.cos(o), t.updateFrustum()
             }
-        }, this.camLookAt = /*<edit>*/window.camLookAt = /*<edit\>*/function(t, e, i) {
+        }, this.camLookAt = function(t, e, i) {
             var r = n.getXDir(this.object.position.x, this.object.position.y, this.object.position.z, t, e, i),
                 o = n.getDirection(this.object.position.z, this.object.position.x, i, t);
             this.target = {
@@ -48325,36 +48294,6 @@
         }, window.addEventListener("keydown", function(t) {
             (t.which || t.keyCode) == c.chatKey ? window.pressButton(t.which || t.keyCode) : document.activeElement != chatInput && (c.enabled && t.preventDefault(), a(t.which || t.keyCode || 0, 1))
         }, !1), window.addEventListener("keyup", function(t) {
-            //<edit>
-            if (document.activeElement != chatInput) {
-                if (t.keyCode == 84) {
-                    window.mdlsettingsmain.autoaim += 1;
-                    var aoptions = ["Off", "TriggerBot", "AimBot"];
-                    window.Ze("Aim Style", `Changed to ${ aoptions[window.mdlsettingsmain.autoaim%3] }`)
-                }
-
-                if (t.keyCode == 66) {
-                    window.mdlsettingsmain.bhop = !window.mdlsettingsmain.bhop;
-                    window.Ze("BHop", `Changed to ${ window.mdlsettingsmain.bhop ? "on" : "off" }`)
-                }
-
-                if (t.keyCode == 73) {
-                    window.mdlsettingsmain.info = !window.mdlsettingsmain.info;
-                    window.Ze("Player Info", `Changed to ${ window.mdlsettingsmain.info ? "on" : "off" }`)
-                    if (!window.mdlsettingsmain.info) {
-                        for (let playerInfo of playerInfos.children) {
-                            let pname = playerInfo.querySelectorAll(".pInfoH")[0];
-                            if (!pname) continue;
-                            let pid = parseInt(playerInfo.id.replace("pInfo", ""));
-                            let playerObj = window.players.filter(x => x.sid == pid)[0];
-
-                            pname.innerHTML = `${playerObj.name}`;
-                        }
-
-                    }
-                }
-            }
-            //<edit/>
             c.enabled && t.preventDefault(), a(t.which || t.keyCode || 0, 0)
         }, !1), this.toggle = function(t) {
             this.locked || this.masterLock || ("block" == windowHolder.style.display ? t && i.toggleWindow(!1) : t ? l.requestPointerLock() : document.exitPointerLock())
