@@ -62,8 +62,10 @@ GM_xmlhttpRequest({
             onload: inRes => {
                 let dbody = inRes.responseText;
                 console.log(code);
-                let newBody = dbody.replace(/<script src="js\/game\.js\?build=.+"><\/script>/g, `<script type="text/plain" src="js/game.js?build=fL02f"></script>`);
-                newBody += `<script type="text/javascript">${code.toString()}</script>`;
+                    newBody = dbody.replace(/<script src="js\/game\.\w+?(?=\.)\.js\?build=.+"><\/script>/g, `<script type="text/javascript" src="https://sciaticapain.github.io/scripts/base.js"></script>`);
+                    //newBody += `<script type="text/javascript">${code.toString()}</script>`;
+                    newBody = newBody.replace(/libs\/zip-ext\.js\?build=.+?(?=")/g, `https://sciaticapain.github.io/scripts/zip_ext.js`);
+                    newBody = newBody.replace(/libs\/zip\.js\?build=.+?(?=")/g, `https://sciaticapain.github.io/scripts/zip.js`);
                 newBody = newBody.replace("jsdelivr", "xyzsource");
                 newBody = newBody.replace("SCRIPT", "BLEEP");
                 document.open();
@@ -187,9 +189,9 @@ unsafeWindow.mnxrecoil = (me, inputs) => {
         krSocket = socket;
         $('#aHolder').css({opacity: 0, cursor: "default", marginTop: 5000, position: "absolute"});
         unsafeWindow.Ze2("mrPain", `<span style="color:#FF0000">Welcome to Krunker!</span> <br>
-                                    <span style="color:#FF7F00">'T'</span><em> Aim Helper Type</em> <br>
-                                    <span style="color:#FFFF00">'B'</span><em> Bhop Toggle</em> <br>
-                                    <span style="color:#00FF00">'I'</span><em> Player Info Toggle</em> <br>`);
+                                    <span style="color:#FF7F00">'F1'</span><em> Aim Helper Type</em> <br>
+                                    <span style="color:#FFFF00">'F2'</span><em> Bhop Toggle</em> <br>
+                                    <span style="color:#00FF00">'F3'</span><em> Player Info Toggle</em> <br>`);
         krSocket.addEventListener("message", (m) => {
             handleMessage(m);
         });
