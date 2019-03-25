@@ -1,4 +1,4 @@
-﻿! function(t) {
+! function(t) {
     var e = {};
 
     function i(n) {
@@ -197,10 +197,10 @@
             bool: !0
         }], t.exports.prefabIDS = ["CUBE", "CRATE", "BARREL", "LADDER", "PLANE", "SPAWN_POINT", "CAMERA_POSITION", "VEHICLE", "STACK", "RAMP", "SCORE_ZONE", "BILLBOARD", "DEATH_ZONE", "PARTICLES", "OBJECTIVE", "TREE", "CONE", "CONTAINER", "GRASS", "CONTAINERR", "ACIDBARREL", "DOOR", "WINDOW"], t.exports.textureIDS = ["WALL", "DIRT", "FLOOR", "GRID", "GREY", "DEFAULT", "ROOF", "FLAG", "GRASS", "CHECK", "LINES", "BRICK"], t.exports.objectLimit = 3500, t.exports.objectLimitF = 6e3, t.exports.spawnLimit = 20, t.exports.gravity = 15e-5, t.exports.deathY = -100, t.exports.skyScale = 18e3, t.exports.shadowDst = 1200, t.exports.shadowRes = 1024, t.exports.shadowOff = .004, t.exports.lightDistance = 500, t.exports.cornerPad = 1, t.exports.cornerScl = 2.5, t.exports.cornerH = 7, t.exports.wallH = 5, t.exports.wallW = .8, t.exports.crateScale = 6, t.exports.stackScale = 6, t.exports.barrelScale = 4, t.exports.acidbarrelScale = t.exports.barrelScale, t.exports.treeScale = 10, t.exports.doorScale = 5, t.exports.windowScale = 6, t.exports.coneScale = 4, t.exports.containerScale = 7, t.exports.containerrScale = t.exports.containerScale, t.exports.grassScale = 32, t.exports.vehicleScale = 20, t.exports.barrelMlt = 1, t.exports.ladderWidth = 3.2, t.exports.ladderScale = .5, t.exports.terrainGrid = 8, t.exports.otherSoundMlt = .55, t.exports.maxParticles = 100, t.exports.explosionRange = 200, t.exports.chatMaxLength = 70, t.exports.chatInterval = 800, t.exports.voiceChatInterval = 2e3, t.exports.voiceChatMaxLength = 5, t.exports.movDirs = [];
         for (var i = 0; 8 > i; ++i) t.exports.movDirs.push(-Math.PI + (i + 1) * Math.PI / 4);
-        t.exports.interpolation = 1.1, t.exports.stateHistory = 1e3, t.exports.syncFreq = 800, t.exports.pingCount = 10, t.exports.mouseSens = .0024, t.exports.camChaseTrn = .0022, t.exports.camChaseSpd = .0012, t.exports.camChaseSen = .2, t.exports.camChaseDst = 24, t.exports.menuCamDist = 200, t.exports.menuCamAngle = -.5, t.exports.menuCamSpeed = .1, t.exports.animMult = 1.2, t.exports.leanPull = .99, t.exports.leanSens = .05, t.exports.leanMax = .16, t.exports.leanPullZ = .99, t.exports.leanMltZ = .03, t.exports.bobMltY = .024, t.exports.bobMltZ = .02, t.exports.bobPullY = .985, t.exports.bobPullZ = .99, t.exports.landPull = .994, t.exports.landPullV = .985, t.exports.landOff = .15, t.exports.aimAnimMlt = .18, t.exports.aimSlow = .55, t.exports.aimJumpSlow = .85, t.exports.stepAnim = .075, t.exports.stepMlt = .25, t.exports.stepPull = .995, t.exports.maxHealth = 100, t.exports.passiveInc = 500, t.exports.cameraHeight = 1.5, t.exports.playerSpeed = 42e-5, t.exports.ladderSpeed = .035, t.exports.ladderDecel = .97, t.exports.slideDecel = .999, t.exports.groundDecel = .99, t.exports.airSpeed = 47e-6, t.exports.airDecel = .9996, t.exports.jumpVel = .072, t.exports.jumpPush = .1, t.exports.decelMin = 1e-4, t.exports.climbHeight = 3, t.exports.wpnSpin = .018, t.exports.materialDens = {
+        t.exports.interpolation = 1.1, t.exports.stateHistory = 1e3, t.exports.syncFreq = 800, t.exports.pingCount = 10, t.exports.mouseSens = .0024, t.exports.camChaseTrn = .0022, t.exports.camChaseSpd = .0012, t.exports.camChaseSen = .2, t.exports.camChaseDst = 24, t.exports.menuCamDist = 200, t.exports.menuCamAngle = -.5, t.exports.menuCamSpeed = .1, t.exports.animMult = 1.2, t.exports.leanPull = .99, t.exports.leanSens = .04, t.exports.leanMax = .16, t.exports.leanPullZ = .99, t.exports.leanMltZ = .03, t.exports.bobMltY = .035, t.exports.bobMltZ = .05, t.exports.bobPullY = .985, t.exports.bobPullZ = .99, t.exports.landPull = .994, t.exports.landPullV = .985, t.exports.landOff = .15, t.exports.aimAnimMlt = .12, t.exports.aimSlow = .55, t.exports.aimJumpSlow = .85, t.exports.stepAnim = .075, t.exports.stepMlt = .25, t.exports.stepPull = .995, t.exports.maxHealth = 100, t.exports.passiveInc = 500, t.exports.cameraHeight = 1.5, t.exports.playerSpeed = 42e-5, t.exports.ladderSpeed = .035, t.exports.ladderDecel = .97, t.exports.slideDecel = .999, t.exports.groundDecel = .99, t.exports.airSpeed = 47e-6, t.exports.airDecel = .9996, t.exports.jumpVel = .072, t.exports.jumpPush = .1, t.exports.decelMin = 1e-4, t.exports.climbHeight = 3, t.exports.wpnSpin = .018, t.exports.materialDens = {
             flesh: .2,
             default: .5
-        }, t.exports.nameOffset = .6, t.exports.nameOffsetHat = .8, t.exports.maxNameLength = 14, t.exports.maxPassLength = 16, t.exports.playerHeight = 11, t.exports.chestWidth = 2.6, t.exports.chestScale = 1.3, t.exports.armScale = 1.3, t.exports.legScale = 1.3, t.exports.uArmLength = 2.7, t.exports.armInset = -.1, t.exports.lArmLength = 2.7, t.exports.headScale = 2, t.exports.armOff = -.8, t.exports.legHeight = 4.2, t.exports.playerScale = (2 * t.exports.armScale + t.exports.chestWidth + t.exports.armInset) / 2, t.exports.hitBoxPad = 1, t.exports.tracerMinDst = 20, t.exports.tracerMaxDst = 500, t.exports.tracerChance = 1, t.exports.crouchLean = -.1 * Math.PI, t.exports.crouchDst = 3, t.exports.crouchSlow = .3, t.exports.crouchSpeed = .007, t.exports.crouchJump = .25, t.exports.crouchSpread = .4, t.exports.crouchAnim = 8e-4, t.exports.crouchAnimMlt = .5, t.exports.spreadMove = 30, t.exports.spreadFall = 35, t.exports.spreadRecover = .985, t.exports.spreadAdj = 63e-5, t.exports.spreadMlt = 400, t.exports.recoilMlt = .3, t.exports.maxLevel = 102, t.exports.assistTime = 5e3, t.exports.assistScore = 25, t.exports.assistMin = 20, t.exports.medalAnim = 1e3, t.exports.medalDelay = 900, t.exports.scoreStreak = 2e3, t.exports.feedTimer = 2e3, t.exports.spinTimer = 1800, t.exports.endStats = ["sid", "name", "score", "kills", "deaths", "reward"], t.exports.endForm = {
+        }, t.exports.nameOffset = .6, t.exports.nameOffsetHat = .8, t.exports.maxNameLength = 14, t.exports.maxPassLength = 16, t.exports.playerHeight = 11, t.exports.chestWidth = 2.6, t.exports.chestScale = 1.3, t.exports.armScale = 1.3, t.exports.legScale = 1.3, t.exports.uArmLength = 2.7, t.exports.armInset = -.1, t.exports.lArmLength = 2.7, t.exports.headScale = 2, t.exports.armOff = -.8, t.exports.legHeight = 4.2, t.exports.playerScale = (2 * t.exports.armScale + t.exports.chestWidth + t.exports.armInset) / 2, t.exports.hitBoxPad = 1, t.exports.tracerMinDst = 20, t.exports.tracerMaxDst = 500, t.exports.tracerChance = 1, t.exports.crouchLean = -.1 * Math.PI, t.exports.crouchDst = 2.5, t.exports.crouchSlow = .3, t.exports.crouchSpeed = .007, t.exports.crouchJump = .25, t.exports.crouchSpread = .4, t.exports.crouchAnim = 8e-4, t.exports.crouchAnimMlt = .5, t.exports.spreadMove = 30, t.exports.spreadFall = 35, t.exports.spreadRecover = .985, t.exports.spreadAdj = 63e-5, t.exports.spreadMlt = 400, t.exports.recoilMlt = .3, t.exports.maxLevel = 102, t.exports.assistTime = 5e3, t.exports.assistScore = 25, t.exports.assistMin = 20, t.exports.medalAnim = 1e3, t.exports.medalDelay = 900, t.exports.scoreStreak = 2e3, t.exports.feedTimer = 2e3, t.exports.spinTimer = 1800, t.exports.endStats = ["sid", "name", "score", "kills", "deaths", "reward"], t.exports.endForm = {
             reward: function(t) {
                 return t ? "<span style='color:#F8C55C'>+" + t + "</span> KR" : "NONE"
             },
@@ -312,7 +312,7 @@
     }), i.d(e, "CanvasTexture", function() {
         return Ls
     }), i.d(e, "DepthTexture", function() {
-        return Rs
+        return ks
     }), i.d(e, "Texture", function() {
         return oi
     }), i.d(e, "CompressedTextureLoader", function() {
@@ -512,9 +512,9 @@
     }), i.d(e, "GridHelper", function() {
         return Ll
     }), i.d(e, "PolarGridHelper", function() {
-        return Rl
-    }), i.d(e, "FaceNormalsHelper", function() {
         return kl
+    }), i.d(e, "FaceNormalsHelper", function() {
+        return Rl
     }), i.d(e, "DirectionalLightHelper", function() {
         return Pl
     }), i.d(e, "CameraHelper", function() {
@@ -538,7 +538,7 @@
     }), i.d(e, "Font", function() {
         return bc
     }), i.d(e, "CurvePath", function() {
-        return ka
+        return Ra
     }), i.d(e, "Curve", function() {
         return pa
     }), i.d(e, "ImageUtils", function() {
@@ -548,7 +548,7 @@
     }), i.d(e, "WebGLUtils", function() {
         return is
     }), i.d(e, "WireframeGeometry", function() {
-        return ks
+        return Rs
     }), i.d(e, "ParametricGeometry", function() {
         return Ps
     }), i.d(e, "ParametricBufferGeometry", function() {
@@ -594,9 +594,9 @@
     }), i.d(e, "SphereBufferGeometry", function() {
         return Lo
     }), i.d(e, "RingGeometry", function() {
-        return Ro
-    }), i.d(e, "RingBufferGeometry", function() {
         return ko
+    }), i.d(e, "RingBufferGeometry", function() {
+        return Ro
     }), i.d(e, "PlaneGeometry", function() {
         return nn
     }), i.d(e, "PlaneBufferGeometry", function() {
@@ -734,9 +734,9 @@
     }), i.d(e, "DoubleSide", function() {
         return L
     }), i.d(e, "FlatShading", function() {
-        return R
-    }), i.d(e, "SmoothShading", function() {
         return k
+    }), i.d(e, "SmoothShading", function() {
+        return R
     }), i.d(e, "NoColors", function() {
         return P
     }), i.d(e, "FaceColors", function() {
@@ -842,9 +842,9 @@
     }), i.d(e, "MirroredRepeatWrapping", function() {
         return Lt
     }), i.d(e, "NearestFilter", function() {
-        return Rt
-    }), i.d(e, "NearestMipMapNearestFilter", function() {
         return kt
+    }), i.d(e, "NearestMipMapNearestFilter", function() {
+        return Rt
     }), i.d(e, "NearestMipMapLinearFilter", function() {
         return Pt
     }), i.d(e, "LinearFilter", function() {
@@ -950,9 +950,9 @@
     }), i.d(e, "InterpolateLinear", function() {
         return Le
     }), i.d(e, "InterpolateSmooth", function() {
-        return Re
-    }), i.d(e, "ZeroCurvatureEnding", function() {
         return ke
+    }), i.d(e, "ZeroCurvatureEnding", function() {
+        return Re
     }), i.d(e, "ZeroSlopeEnding", function() {
         return Pe
     }), i.d(e, "WrapAroundEnding", function() {
@@ -1124,8 +1124,8 @@
         T = 0,
         A = 1,
         L = 2,
-        R = 1,
-        k = 2,
+        k = 1,
+        R = 2,
         P = 0,
         C = 1,
         I = 2,
@@ -1178,8 +1178,8 @@
         Tt = 1e3,
         At = 1001,
         Lt = 1002,
-        Rt = 1003,
-        kt = 1004,
+        kt = 1003,
+        Rt = 1004,
         Pt = 1005,
         Ct = 1006,
         It = 1007,
@@ -1232,8 +1232,8 @@
         Te = 2202,
         Ae = 2300,
         Le = 2301,
-        Re = 2302,
-        ke = 2400,
+        ke = 2302,
+        Re = 2400,
         Pe = 2401,
         Ce = 2402,
         Ie = 0,
@@ -1637,15 +1637,15 @@
                 T = n[5],
                 A = n[9],
                 L = n[13],
-                R = n[2],
-                k = n[6],
+                k = n[2],
+                R = n[6],
                 P = n[10],
                 C = n[14],
                 I = n[3],
                 O = n[7],
                 D = n[11],
                 B = n[15];
-            return r[0] = s * b + o * E + a * R + c * I, r[4] = s * M + o * T + a * k + c * O, r[8] = s * _ + o * A + a * P + c * D, r[12] = s * S + o * L + a * C + c * B, r[1] = l * b + p * E + h * R + u * I, r[5] = l * M + p * T + h * k + u * O, r[9] = l * _ + p * A + h * P + u * D, r[13] = l * S + p * L + h * C + u * B, r[2] = d * b + f * E + m * R + g * I, r[6] = d * M + f * T + m * k + g * O, r[10] = d * _ + f * A + m * P + g * D, r[14] = d * S + f * L + m * C + g * B, r[3] = v * b + y * E + x * R + w * I, r[7] = v * M + y * T + x * k + w * O, r[11] = v * _ + y * A + x * P + w * D, r[15] = v * S + y * L + x * C + w * B, this
+            return r[0] = s * b + o * E + a * k + c * I, r[4] = s * M + o * T + a * R + c * O, r[8] = s * _ + o * A + a * P + c * D, r[12] = s * S + o * L + a * C + c * B, r[1] = l * b + p * E + h * k + u * I, r[5] = l * M + p * T + h * R + u * O, r[9] = l * _ + p * A + h * P + u * D, r[13] = l * S + p * L + h * C + u * B, r[2] = d * b + f * E + m * k + g * I, r[6] = d * M + f * T + m * R + g * O, r[10] = d * _ + f * A + m * P + g * D, r[14] = d * S + f * L + m * C + g * B, r[3] = v * b + y * E + x * k + w * I, r[7] = v * M + y * T + x * R + w * O, r[11] = v * _ + y * A + x * P + w * D, r[15] = v * S + y * L + x * C + w * B, this
         },
         multiplyScalar: function(t) {
             var e = this.elements;
@@ -2494,7 +2494,7 @@
             data: t,
             width: e,
             height: i
-        }, this.magFilter = void 0 !== c ? c : Rt, this.minFilter = void 0 !== l ? l : Rt, this.generateMipmaps = !1, this.flipY = !1, this.unpackAlignment = 1
+        }, this.magFilter = void 0 !== c ? c : kt, this.minFilter = void 0 !== l ? l : kt, this.generateMipmaps = !1, this.flipY = !1, this.unpackAlignment = 1
     }
 
     function hi(t, e) {
@@ -4215,7 +4215,7 @@
             return 0 != (this.mask & t.mask)
         }
     });
-    var Ai, Li, Ri, ki, Pi = 0;
+    var Ai, Li, ki, Ri, Pi = 0;
 
     function Ci() {
         Object.defineProperty(this, "id", {
@@ -4289,8 +4289,8 @@
         setRotationFromQuaternion: function(t) {
             this.quaternion.copy(t)
         },
-        rotateOnAxis: (ki = new Je, function(t, e) {
-            return ki.setFromAxisAngle(t, e), this.quaternion.multiply(ki), this
+        rotateOnAxis: (Ri = new Je, function(t, e) {
+            return Ri.setFromAxisAngle(t, e), this.quaternion.multiply(Ri), this
         }),
         rotateOnWorldAxis: function() {
             var t = new Je;
@@ -4343,8 +4343,8 @@
         localToWorld: function(t) {
             return t.applyMatrix4(this.matrixWorld)
         },
-        worldToLocal: (Ri = new Ke, function(t) {
-            return t.applyMatrix4(Ri.getInverse(this.matrixWorld))
+        worldToLocal: (ki = new Ke, function(t) {
+            return t.applyMatrix4(ki.getInverse(this.matrixWorld))
         }),
         lookAt: function() {
             var t = new Ke,
@@ -5200,12 +5200,12 @@
                 T = g + 1,
                 A = 0,
                 L = 0,
-                R = new Qe;
+                k = new Qe;
             for (x = 0; x < T; x++) {
-                var k = x * b - _;
+                var R = x * b - _;
                 for (y = 0; y < E; y++) {
                     var P = y * w - M;
-                    R[t] = P * n, R[e] = k * r, R[i] = S, c.push(R.x, R.y, R.z), R[t] = 0, R[e] = 0, R[i] = f > 0 ? 1 : -1, l.push(R.x, R.y, R.z), p.push(y / m), p.push(1 - x / g), A += 1
+                    k[t] = P * n, k[e] = R * r, k[i] = S, c.push(k.x, k.y, k.z), k[t] = 0, k[e] = 0, k[i] = f > 0 ? 1 : -1, l.push(k.x, k.y, k.z), p.push(y / m), p.push(1 - x / g), A += 1
                 }
             }
             for (x = 0; x < g; x++)
@@ -5842,7 +5842,7 @@
         }
     }
 
-    function Rn(t, e, i, n) {
+    function kn(t, e, i, n) {
         var r, s, o;
         this.setMode = function(t) {
             r = t
@@ -5858,7 +5858,7 @@
         }
     }
 
-    function kn(t) {
+    function Rn(t) {
         var e = {
             frame: 0,
             calls: 0,
@@ -5973,7 +5973,7 @@
                         if ("shading" !== e) {
                             var n = this[e];
                             void 0 !== n ? n && n.isColor ? n.set(i) : n && n.isVector3 && i && i.isVector3 ? n.copy(i) : this[e] = "overdraw" === e ? Number(i) : i : console.warn("THREE." + this.type + ": '" + e + "' is not a property of this material.")
-                        } else console.warn("THREE." + this.type + ": .shading has been removed. Use the boolean .flatShading instead."), this.flatShading = i === R;
+                        } else console.warn("THREE." + this.type + ": .shading has been removed. Use the boolean .flatShading instead."), this.flatShading = i === k;
                     else console.warn("THREE.Material: '" + e + "' parameter is undefined.")
                 }
         },
@@ -6332,7 +6332,7 @@
                     b = this.matrixWorld;
                 if (void 0 !== w && (null === x.boundingSphere && x.computeBoundingSphere(), i.copy(x.boundingSphere), i.applyMatrix4(b), !1 !== u.ray.intersectsSphere(i) && (t.getInverse(b), e.copy(u.ray).applyMatrix4(t), null === x.boundingBox || !1 !== e.intersectsBox(x.boundingBox))))
                     if (x.isBufferGeometry) {
-                        var M, _, S, E, T, A, L, R, k, P = x.index,
+                        var M, _, S, E, T, A, L, k, R, P = x.index,
                             C = x.attributes.position,
                             I = x.attributes.uv,
                             O = x.groups,
@@ -6340,13 +6340,13 @@
                         if (null !== P)
                             if (Array.isArray(w))
                                 for (E = 0, A = O.length; E < A; E++)
-                                    for (k = w[(R = O[E]).materialIndex], T = Math.max(R.start, D.start), L = Math.min(R.start + R.count, D.start + D.count); T < L; T += 3) M = P.getX(T), _ = P.getX(T + 1), S = P.getX(T + 2), (y = v(this, k, u, e, C, I, M, _, S)) && (y.faceIndex = Math.floor(T / 3), f.push(y));
+                                    for (R = w[(k = O[E]).materialIndex], T = Math.max(k.start, D.start), L = Math.min(k.start + k.count, D.start + D.count); T < L; T += 3) M = P.getX(T), _ = P.getX(T + 1), S = P.getX(T + 2), (y = v(this, R, u, e, C, I, M, _, S)) && (y.faceIndex = Math.floor(T / 3), f.push(y));
                             else
                                 for (E = Math.max(0, D.start), A = Math.min(P.count, D.start + D.count); E < A; E += 3) M = P.getX(E), _ = P.getX(E + 1), S = P.getX(E + 2), (y = v(this, w, u, e, C, I, M, _, S)) && (y.faceIndex = Math.floor(E / 3), f.push(y));
                         else if (void 0 !== C)
                             if (Array.isArray(w))
                                 for (E = 0, A = O.length; E < A; E++)
-                                    for (k = w[(R = O[E]).materialIndex], T = Math.max(R.start, D.start), L = Math.min(R.start + R.count, D.start + D.count); T < L; T += 3)(y = v(this, k, u, e, C, I, M = T, _ = T + 1, S = T + 2)) && (y.faceIndex = Math.floor(T / 3), f.push(y));
+                                    for (R = w[(k = O[E]).materialIndex], T = Math.max(k.start, D.start), L = Math.min(k.start + k.count, D.start + D.count); T < L; T += 3)(y = v(this, R, u, e, C, I, M = T, _ = T + 1, S = T + 2)) && (y.faceIndex = Math.floor(T / 3), f.push(y));
                             else
                                 for (E = Math.max(0, D.start), A = Math.min(C.count, D.start + D.count); E < A; E += 3)(y = v(this, w, u, e, C, I, M = E, _ = E + 1, S = E + 2)) && (y.faceIndex = Math.floor(E / 3), f.push(y))
                     } else if (x.isGeometry) {
@@ -6798,11 +6798,11 @@
         return "" !== t
     }
 
-    function Rr(t, e) {
+    function kr(t, e) {
         return t.replace(/NUM_DIR_LIGHTS/g, e.numDirLights).replace(/NUM_SPOT_LIGHTS/g, e.numSpotLights).replace(/NUM_RECT_AREA_LIGHTS/g, e.numRectAreaLights).replace(/NUM_POINT_LIGHTS/g, e.numPointLights).replace(/NUM_HEMI_LIGHTS/g, e.numHemiLights)
     }
 
-    function kr(t, e) {
+    function Rr(t, e) {
         return t.replace(/NUM_CLIPPING_PLANES/g, e.numClippingPlanes).replace(/UNION_CLIPPING_PLANES/g, e.numClippingPlanes - e.numClipIntersection)
     }
 
@@ -6877,18 +6877,18 @@
                 return e.join("\n")
             }(c),
             _ = a.createProgram();
-        if (n.isRawShaderMaterial ? ((m = [M].filter(Lr).join("\n")).length > 0 && (m += "\n"), (g = [b, M].filter(Lr).join("\n")).length > 0 && (g += "\n")) : (m = ["precision " + s.precision + " float;", "precision " + s.precision + " int;", "#define SHADER_NAME " + r.name, M, s.supportsVertexTextures ? "#define VERTEX_TEXTURES" : "", "#define GAMMA_FACTOR " + w, "#define MAX_BONES " + s.maxBones, s.useFog && s.fog ? "#define USE_FOG" : "", s.useFog && s.fogExp ? "#define FOG_EXP2" : "", s.map ? "#define USE_MAP" : "", s.envMap ? "#define USE_ENVMAP" : "", s.envMap ? "#define " + d : "", s.lightMap ? "#define USE_LIGHTMAP" : "", s.aoMap ? "#define USE_AOMAP" : "", s.emissiveMap ? "#define USE_EMISSIVEMAP" : "", s.bumpMap ? "#define USE_BUMPMAP" : "", s.normalMap ? "#define USE_NORMALMAP" : "", s.normalMap && s.objectSpaceNormalMap ? "#define OBJECTSPACE_NORMALMAP" : "", s.displacementMap && s.supportsVertexTextures ? "#define USE_DISPLACEMENTMAP" : "", s.specularMap ? "#define USE_SPECULARMAP" : "", s.roughnessMap ? "#define USE_ROUGHNESSMAP" : "", s.metalnessMap ? "#define USE_METALNESSMAP" : "", s.alphaMap ? "#define USE_ALPHAMAP" : "", s.vertexColors ? "#define USE_COLOR" : "", s.flatShading ? "#define FLAT_SHADED" : "", s.skinning ? "#define USE_SKINNING" : "", s.useVertexTexture ? "#define BONE_TEXTURE" : "", s.morphTargets ? "#define USE_MORPHTARGETS" : "", s.morphNormals && !1 === s.flatShading ? "#define USE_MORPHNORMALS" : "", s.doubleSided ? "#define DOUBLE_SIDED" : "", s.flipSided ? "#define FLIP_SIDED" : "", s.shadowMapEnabled ? "#define USE_SHADOWMAP" : "", s.shadowMapEnabled ? "#define " + h : "", s.sizeAttenuation ? "#define USE_SIZEATTENUATION" : "", s.logarithmicDepthBuffer ? "#define USE_LOGDEPTHBUF" : "", s.logarithmicDepthBuffer && (o.isWebGL2 || e.get("EXT_frag_depth")) ? "#define USE_LOGDEPTHBUF_EXT" : "", "uniform mat4 modelMatrix;", "uniform mat4 modelViewMatrix;", "uniform mat4 projectionMatrix;", "uniform mat4 viewMatrix;", "uniform mat3 normalMatrix;", "uniform vec3 cameraPosition;", "attribute vec3 position;", "attribute vec3 normal;", "attribute vec2 uv;", "#ifdef USE_COLOR", "\tattribute vec3 color;", "#endif", "#ifdef USE_MORPHTARGETS", "\tattribute vec3 morphTarget0;", "\tattribute vec3 morphTarget1;", "\tattribute vec3 morphTarget2;", "\tattribute vec3 morphTarget3;", "\t#ifdef USE_MORPHNORMALS", "\t\tattribute vec3 morphNormal0;", "\t\tattribute vec3 morphNormal1;", "\t\tattribute vec3 morphNormal2;", "\t\tattribute vec3 morphNormal3;", "\t#else", "\t\tattribute vec3 morphTarget4;", "\t\tattribute vec3 morphTarget5;", "\t\tattribute vec3 morphTarget6;", "\t\tattribute vec3 morphTarget7;", "\t#endif", "#endif", "#ifdef USE_SKINNING", "\tattribute vec4 skinIndex;", "\tattribute vec4 skinWeight;", "#endif", "\n"].filter(Lr).join("\n"), g = [b, "precision " + s.precision + " float;", "precision " + s.precision + " int;", "#define SHADER_NAME " + r.name, M, s.alphaTest ? "#define ALPHATEST " + s.alphaTest + (s.alphaTest % 1 ? "" : ".0") : "", "#define GAMMA_FACTOR " + w, s.useFog && s.fog ? "#define USE_FOG" : "", s.useFog && s.fogExp ? "#define FOG_EXP2" : "", s.map ? "#define USE_MAP" : "", s.envMap ? "#define USE_ENVMAP" : "", s.envMap ? "#define " + u : "", s.envMap ? "#define " + d : "", s.envMap ? "#define " + f : "", s.lightMap ? "#define USE_LIGHTMAP" : "", s.aoMap ? "#define USE_AOMAP" : "", s.emissiveMap ? "#define USE_EMISSIVEMAP" : "", s.bumpMap ? "#define USE_BUMPMAP" : "", s.normalMap ? "#define USE_NORMALMAP" : "", s.normalMap && s.objectSpaceNormalMap ? "#define OBJECTSPACE_NORMALMAP" : "", s.specularMap ? "#define USE_SPECULARMAP" : "", s.roughnessMap ? "#define USE_ROUGHNESSMAP" : "", s.metalnessMap ? "#define USE_METALNESSMAP" : "", s.alphaMap ? "#define USE_ALPHAMAP" : "", s.vertexColors ? "#define USE_COLOR" : "", s.gradientMap ? "#define USE_GRADIENTMAP" : "", s.flatShading ? "#define FLAT_SHADED" : "", s.doubleSided ? "#define DOUBLE_SIDED" : "", s.flipSided ? "#define FLIP_SIDED" : "", s.shadowMapEnabled ? "#define USE_SHADOWMAP" : "", s.shadowMapEnabled ? "#define " + h : "", s.premultipliedAlpha ? "#define PREMULTIPLIED_ALPHA" : "", s.physicallyCorrectLights ? "#define PHYSICALLY_CORRECT_LIGHTS" : "", s.logarithmicDepthBuffer ? "#define USE_LOGDEPTHBUF" : "", s.logarithmicDepthBuffer && (o.isWebGL2 || e.get("EXT_frag_depth")) ? "#define USE_LOGDEPTHBUF_EXT" : "", s.envMap && (o.isWebGL2 || e.get("EXT_shader_texture_lod")) ? "#define TEXTURE_LOD_EXT" : "", "uniform mat4 viewMatrix;", "uniform vec3 cameraPosition;", s.toneMapping !== dt ? "#define TONE_MAPPING" : "", s.toneMapping !== dt ? gi.tonemapping_pars_fragment : "", s.toneMapping !== dt ? Ar("toneMapping", s.toneMapping) : "", s.dithering ? "#define DITHERING" : "", s.outputEncoding || s.mapEncoding || s.envMapEncoding || s.emissiveMapEncoding ? gi.encodings_pars_fragment : "", s.mapEncoding ? Tr("mapTexelToLinear", s.mapEncoding) : "", s.envMapEncoding ? Tr("envMapTexelToLinear", s.envMapEncoding) : "", s.emissiveMapEncoding ? Tr("emissiveMapTexelToLinear", s.emissiveMapEncoding) : "", s.outputEncoding ? (v = "linearToOutputTexel", y = s.outputEncoding, x = Er(y), "vec4 " + v + "( vec4 value ) { return LinearTo" + x[0] + x[1] + "; }") : "", s.depthPacking ? "#define DEPTH_PACKING " + n.depthPacking : "", "\n"].filter(Lr).join("\n")), l = kr(l = Rr(l = Pr(l), s), s), p = kr(p = Rr(p = Pr(p), s), s), l = Cr(l), p = Cr(p), o.isWebGL2 && !n.isRawShaderMaterial) {
+        if (n.isRawShaderMaterial ? ((m = [M].filter(Lr).join("\n")).length > 0 && (m += "\n"), (g = [b, M].filter(Lr).join("\n")).length > 0 && (g += "\n")) : (m = ["precision " + s.precision + " float;", "precision " + s.precision + " int;", "#define SHADER_NAME " + r.name, M, s.supportsVertexTextures ? "#define VERTEX_TEXTURES" : "", "#define GAMMA_FACTOR " + w, "#define MAX_BONES " + s.maxBones, s.useFog && s.fog ? "#define USE_FOG" : "", s.useFog && s.fogExp ? "#define FOG_EXP2" : "", s.map ? "#define USE_MAP" : "", s.envMap ? "#define USE_ENVMAP" : "", s.envMap ? "#define " + d : "", s.lightMap ? "#define USE_LIGHTMAP" : "", s.aoMap ? "#define USE_AOMAP" : "", s.emissiveMap ? "#define USE_EMISSIVEMAP" : "", s.bumpMap ? "#define USE_BUMPMAP" : "", s.normalMap ? "#define USE_NORMALMAP" : "", s.normalMap && s.objectSpaceNormalMap ? "#define OBJECTSPACE_NORMALMAP" : "", s.displacementMap && s.supportsVertexTextures ? "#define USE_DISPLACEMENTMAP" : "", s.specularMap ? "#define USE_SPECULARMAP" : "", s.roughnessMap ? "#define USE_ROUGHNESSMAP" : "", s.metalnessMap ? "#define USE_METALNESSMAP" : "", s.alphaMap ? "#define USE_ALPHAMAP" : "", s.vertexColors ? "#define USE_COLOR" : "", s.flatShading ? "#define FLAT_SHADED" : "", s.skinning ? "#define USE_SKINNING" : "", s.useVertexTexture ? "#define BONE_TEXTURE" : "", s.morphTargets ? "#define USE_MORPHTARGETS" : "", s.morphNormals && !1 === s.flatShading ? "#define USE_MORPHNORMALS" : "", s.doubleSided ? "#define DOUBLE_SIDED" : "", s.flipSided ? "#define FLIP_SIDED" : "", s.shadowMapEnabled ? "#define USE_SHADOWMAP" : "", s.shadowMapEnabled ? "#define " + h : "", s.sizeAttenuation ? "#define USE_SIZEATTENUATION" : "", s.logarithmicDepthBuffer ? "#define USE_LOGDEPTHBUF" : "", s.logarithmicDepthBuffer && (o.isWebGL2 || e.get("EXT_frag_depth")) ? "#define USE_LOGDEPTHBUF_EXT" : "", "uniform mat4 modelMatrix;", "uniform mat4 modelViewMatrix;", "uniform mat4 projectionMatrix;", "uniform mat4 viewMatrix;", "uniform mat3 normalMatrix;", "uniform vec3 cameraPosition;", "attribute vec3 position;", "attribute vec3 normal;", "attribute vec2 uv;", "#ifdef USE_COLOR", "\tattribute vec3 color;", "#endif", "#ifdef USE_MORPHTARGETS", "\tattribute vec3 morphTarget0;", "\tattribute vec3 morphTarget1;", "\tattribute vec3 morphTarget2;", "\tattribute vec3 morphTarget3;", "\t#ifdef USE_MORPHNORMALS", "\t\tattribute vec3 morphNormal0;", "\t\tattribute vec3 morphNormal1;", "\t\tattribute vec3 morphNormal2;", "\t\tattribute vec3 morphNormal3;", "\t#else", "\t\tattribute vec3 morphTarget4;", "\t\tattribute vec3 morphTarget5;", "\t\tattribute vec3 morphTarget6;", "\t\tattribute vec3 morphTarget7;", "\t#endif", "#endif", "#ifdef USE_SKINNING", "\tattribute vec4 skinIndex;", "\tattribute vec4 skinWeight;", "#endif", "\n"].filter(Lr).join("\n"), g = [b, "precision " + s.precision + " float;", "precision " + s.precision + " int;", "#define SHADER_NAME " + r.name, M, s.alphaTest ? "#define ALPHATEST " + s.alphaTest + (s.alphaTest % 1 ? "" : ".0") : "", "#define GAMMA_FACTOR " + w, s.useFog && s.fog ? "#define USE_FOG" : "", s.useFog && s.fogExp ? "#define FOG_EXP2" : "", s.map ? "#define USE_MAP" : "", s.envMap ? "#define USE_ENVMAP" : "", s.envMap ? "#define " + u : "", s.envMap ? "#define " + d : "", s.envMap ? "#define " + f : "", s.lightMap ? "#define USE_LIGHTMAP" : "", s.aoMap ? "#define USE_AOMAP" : "", s.emissiveMap ? "#define USE_EMISSIVEMAP" : "", s.bumpMap ? "#define USE_BUMPMAP" : "", s.normalMap ? "#define USE_NORMALMAP" : "", s.normalMap && s.objectSpaceNormalMap ? "#define OBJECTSPACE_NORMALMAP" : "", s.specularMap ? "#define USE_SPECULARMAP" : "", s.roughnessMap ? "#define USE_ROUGHNESSMAP" : "", s.metalnessMap ? "#define USE_METALNESSMAP" : "", s.alphaMap ? "#define USE_ALPHAMAP" : "", s.vertexColors ? "#define USE_COLOR" : "", s.gradientMap ? "#define USE_GRADIENTMAP" : "", s.flatShading ? "#define FLAT_SHADED" : "", s.doubleSided ? "#define DOUBLE_SIDED" : "", s.flipSided ? "#define FLIP_SIDED" : "", s.shadowMapEnabled ? "#define USE_SHADOWMAP" : "", s.shadowMapEnabled ? "#define " + h : "", s.premultipliedAlpha ? "#define PREMULTIPLIED_ALPHA" : "", s.physicallyCorrectLights ? "#define PHYSICALLY_CORRECT_LIGHTS" : "", s.logarithmicDepthBuffer ? "#define USE_LOGDEPTHBUF" : "", s.logarithmicDepthBuffer && (o.isWebGL2 || e.get("EXT_frag_depth")) ? "#define USE_LOGDEPTHBUF_EXT" : "", s.envMap && (o.isWebGL2 || e.get("EXT_shader_texture_lod")) ? "#define TEXTURE_LOD_EXT" : "", "uniform mat4 viewMatrix;", "uniform vec3 cameraPosition;", s.toneMapping !== dt ? "#define TONE_MAPPING" : "", s.toneMapping !== dt ? gi.tonemapping_pars_fragment : "", s.toneMapping !== dt ? Ar("toneMapping", s.toneMapping) : "", s.dithering ? "#define DITHERING" : "", s.outputEncoding || s.mapEncoding || s.envMapEncoding || s.emissiveMapEncoding ? gi.encodings_pars_fragment : "", s.mapEncoding ? Tr("mapTexelToLinear", s.mapEncoding) : "", s.envMapEncoding ? Tr("envMapTexelToLinear", s.envMapEncoding) : "", s.emissiveMapEncoding ? Tr("emissiveMapTexelToLinear", s.emissiveMapEncoding) : "", s.outputEncoding ? (v = "linearToOutputTexel", y = s.outputEncoding, x = Er(y), "vec4 " + v + "( vec4 value ) { return LinearTo" + x[0] + x[1] + "; }") : "", s.depthPacking ? "#define DEPTH_PACKING " + n.depthPacking : "", "\n"].filter(Lr).join("\n")), l = Rr(l = kr(l = Pr(l), s), s), p = Rr(p = kr(p = Pr(p), s), s), l = Cr(l), p = Cr(p), o.isWebGL2 && !n.isRawShaderMaterial) {
             var T = !1,
                 A = /^\s*#version\s+300\s+es\s*\n/;
             n.isShaderMaterial && null !== l.match(A) && null !== p.match(A) && (T = !0, l = l.replace(A, ""), p = p.replace(A, "")), m = ["#version 300 es\n", "#define attribute in", "#define varying out", "#define texture2D texture"].join("\n") + "\n" + m, g = ["#version 300 es\n", "#define varying in", T ? "" : "out highp vec4 pc_fragColor;", T ? "" : "#define gl_FragColor pc_fragColor", "#define gl_FragDepthEXT gl_FragDepth", "#define texture2D texture", "#define textureCube texture", "#define texture2DProj textureProj", "#define texture2DLodEXT textureLod", "#define texture2DProjLodEXT textureProjLod", "#define textureCubeLodEXT textureLod", "#define texture2DGradEXT textureGrad", "#define texture2DProjGradEXT textureProjGrad", "#define textureCubeGradEXT textureGrad"].join("\n") + "\n" + g
         }
         var L = m + l,
-            R = g + p,
-            k = _r(a, a.VERTEX_SHADER, L),
-            P = _r(a, a.FRAGMENT_SHADER, R);
-        a.attachShader(_, k), a.attachShader(_, P), void 0 !== n.index0AttributeName ? a.bindAttribLocation(_, 0, n.index0AttributeName) : !0 === s.morphTargets && a.bindAttribLocation(_, 0, "position"), a.linkProgram(_);
+            k = g + p,
+            R = _r(a, a.VERTEX_SHADER, L),
+            P = _r(a, a.FRAGMENT_SHADER, k);
+        a.attachShader(_, R), a.attachShader(_, P), void 0 !== n.index0AttributeName ? a.bindAttribLocation(_, 0, n.index0AttributeName) : !0 === s.morphTargets && a.bindAttribLocation(_, 0, "position"), a.linkProgram(_);
         var C, I, O = a.getProgramInfoLog(_).trim(),
-            D = a.getShaderInfoLog(k).trim(),
+            D = a.getShaderInfoLog(R).trim(),
             B = a.getShaderInfoLog(P).trim(),
             N = !0,
             z = !0;
@@ -6904,7 +6904,7 @@
                 log: B,
                 prefix: g
             }
-        }), a.deleteShader(k), a.deleteShader(P), this.getUniforms = function() {
+        }), a.deleteShader(R), a.deleteShader(P), this.getUniforms = function() {
             return void 0 === C && (C = new Mr(a, _, t)), C
         }, this.getAttributes = function() {
             return void 0 === I && (I = function(t, e) {
@@ -6927,7 +6927,7 @@
                     return console.warn("THREE.WebGLProgram: .attributes is now .getAttributes()."), this.getAttributes()
                 }
             }
-        }), this.name = r.name, this.id = Sr++, this.code = i, this.usedTimes = 1, this.program = _, this.vertexShader = k, this.fragmentShader = P, this
+        }), this.name = r.name, this.id = Sr++, this.code = i, this.usedTimes = 1, this.program = _, this.vertexShader = R, this.fragmentShader = P, this
     }
 
     function Or(t, e, i) {
@@ -7311,7 +7311,7 @@
         }
         var E = this;
 
-        function R(e, i, n, r, s, o) {
+        function k(e, i, n, r, s, o) {
             var a = e.geometry,
                 c = null,
                 h = u,
@@ -7335,7 +7335,7 @@
             return c.visible = i.visible, c.wireframe = i.wireframe, c.side = null != i.shadowSide ? i.shadowSide : m[i.side], c.clipShadows = i.clipShadows, c.clippingPlanes = i.clippingPlanes, c.clipIntersection = i.clipIntersection, c.wireframeLinewidth = i.wireframeLinewidth, c.linewidth = i.linewidth, n && c.isMeshDistanceMaterial && (c.referencePosition.copy(r), c.nearDistance = s, c.farDistance = o), c
         }
 
-        function k(i, r, s, o) {
+        function R(i, r, s, o) {
             if (!1 !== i.visible) {
                 if (i.layers.test(r.layers) && (i.isMesh || i.isLine || i.isPoints) && i.castShadow && (!i.frustumCulled || n.intersectsObject(i))) {
                     i.modelViewMatrix.multiplyMatrices(s.matrixWorldInverse, i.matrixWorld);
@@ -7346,15 +7346,15 @@
                             var d = p[h],
                                 f = l[d.materialIndex];
                             if (f && f.visible) {
-                                var m = R(i, f, o, c, s.near, s.far);
+                                var m = k(i, f, o, c, s.near, s.far);
                                 t.renderBufferDirect(s, null, a, m, i, d)
                             }
                         } else if (l.visible) {
-                            m = R(i, l, o, c, s.near, s.far);
+                            m = k(i, l, o, c, s.near, s.far);
                             t.renderBufferDirect(s, null, a, m, i, null)
                         }
                 }
-                for (var g = i.children, v = 0, y = g.length; v < y; v++) k(g[v], r, s, o)
+                for (var g = i.children, v = 0, y = g.length; v < y; v++) R(g[v], r, s, o)
             }
         }
         this.enabled = !1, this.autoUpdate = !0, this.needsUpdate = !1, this.type = S, this.render = function(e, i, l) {
@@ -7375,8 +7375,8 @@
                         }
                         if (null === x.map) {
                             var S = {
-                                minFilter: Rt,
-                                magFilter: Rt,
+                                minFilter: kt,
+                                magFilter: kt,
                                 format: Zt
                             };
                             x.map = new ci(s.x, s.y, S), x.map.texture.name = m.name + ".shadowMap", b.updateProjectionMatrix()
@@ -7388,10 +7388,10 @@
                         for (var L = 0; L < p; L++) {
                             if (w) {
                                 a.copy(b.position), a.add(g[L]), b.up.copy(v[L]), b.lookAt(a), b.updateMatrixWorld();
-                                var R = y[L];
-                                u.viewport(R)
+                                var k = y[L];
+                                u.viewport(k)
                             }
-                            r.multiplyMatrices(b.projectionMatrix, b.matrixWorldInverse), n.setFromMatrix(r), k(i, l, b, w)
+                            r.multiplyMatrices(b.projectionMatrix, b.matrixWorldInverse), n.setFromMatrix(r), R(i, l, b, w)
                         }
                     } else console.warn("THREE.WebGLShadowMap:", m, "has no shadow.")
                 }
@@ -7528,8 +7528,8 @@
             S = !1,
             E = null,
             T = null,
-            R = null,
             k = null,
+            R = null,
             P = null,
             C = t.getParameter(t.MAX_COMBINED_TEXTURE_IMAGE_UNITS),
             I = !1,
@@ -7590,7 +7590,7 @@
         }
 
         function tt(e, i, n) {
-            e ? (Z(t.POLYGON_OFFSET_FILL), k === i && P === n || (t.polygonOffset(i, n), k = i, P = n)) : K(t.POLYGON_OFFSET_FILL)
+            e ? (Z(t.POLYGON_OFFSET_FILL), R === i && P === n || (t.polygonOffset(i, n), R = i, P = n)) : K(t.POLYGON_OFFSET_FILL)
         }
 
         function et(e) {
@@ -7631,7 +7631,7 @@
             setFlipSided: Q,
             setCullFace: $,
             setLineWidth: function(e) {
-                e !== R && (I && t.lineWidth(e), R = e)
+                e !== k && (I && t.lineWidth(e), k = e)
             },
             setPolygonOffset: tt,
             setScissorTest: function(e) {
@@ -7691,7 +7691,7 @@
         }
 
         function h(t, e) {
-            return t.generateMipmaps && e && t.minFilter !== Rt && t.minFilter !== Ct
+            return t.generateMipmaps && e && t.minFilter !== kt && t.minFilter !== Ct
         }
 
         function u(e, i, r, s) {
@@ -7714,7 +7714,7 @@
         }
 
         function f(e) {
-            return e === Rt || e === kt || e === Pt ? t.NEAREST : t.LINEAR
+            return e === kt || e === Rt || e === Pt ? t.NEAREST : t.LINEAR
         }
 
         function m(e) {
@@ -7763,7 +7763,7 @@
                         i.activeTexture(t.TEXTURE0 + c), i.bindTexture(t.TEXTURE_2D, e.__webglTexture), t.pixelStorei(t.UNPACK_FLIP_Y_WEBGL, n.flipY), t.pixelStorei(t.UNPACK_PREMULTIPLY_ALPHA_WEBGL, n.premultiplyAlpha), t.pixelStorei(t.UNPACK_ALIGNMENT, n.unpackAlignment);
                         var f = l(n.image, r.maxTextureSize);
                         (function(t) {
-                            return !r.isWebGL2 && (t.wrapS !== At || t.wrapT !== At || t.minFilter !== Rt && t.minFilter !== Ct)
+                            return !r.isWebGL2 && (t.wrapS !== At || t.wrapT !== At || t.minFilter !== kt && t.minFilter !== Ct)
                         })(n) && !1 === p(f) && (f = function(t) {
                             return t instanceof HTMLImageElement || t instanceof HTMLCanvasElement || t instanceof ImageBitmap ? (void 0 === a && (a = document.createElementNS("http://www.w3.org/1999/xhtml", "canvas")), a.width = Xe.floorPowerOfTwo(t.width), a.height = Xe.floorPowerOfTwo(t.height), a.getContext("2d").drawImage(t, 0, 0, a.width, a.height), console.warn("THREE.WebGLRenderer: image is not power of two (" + t.width + "x" + t.height + "). Resized to " + a.width + "x" + a.height), a) : t
                         }(f));
@@ -7802,7 +7802,7 @@
 
         function y(i, o, a) {
             var c;
-            if (a ? (t.texParameteri(i, t.TEXTURE_WRAP_S, s.convert(o.wrapS)), t.texParameteri(i, t.TEXTURE_WRAP_T, s.convert(o.wrapT)), t.texParameteri(i, t.TEXTURE_MAG_FILTER, s.convert(o.magFilter)), t.texParameteri(i, t.TEXTURE_MIN_FILTER, s.convert(o.minFilter))) : (t.texParameteri(i, t.TEXTURE_WRAP_S, t.CLAMP_TO_EDGE), t.texParameteri(i, t.TEXTURE_WRAP_T, t.CLAMP_TO_EDGE), o.wrapS === At && o.wrapT === At || console.warn("THREE.WebGLRenderer: Texture is not power of two. Texture.wrapS and Texture.wrapT should be set to THREE.ClampToEdgeWrapping."), t.texParameteri(i, t.TEXTURE_MAG_FILTER, f(o.magFilter)), t.texParameteri(i, t.TEXTURE_MIN_FILTER, f(o.minFilter)), o.minFilter !== Rt && o.minFilter !== Ct && console.warn("THREE.WebGLRenderer: Texture is not power of two. Texture.minFilter should be set to THREE.NearestFilter or THREE.LinearFilter.")), c = e.get("EXT_texture_filter_anisotropic")) {
+            if (a ? (t.texParameteri(i, t.TEXTURE_WRAP_S, s.convert(o.wrapS)), t.texParameteri(i, t.TEXTURE_WRAP_T, s.convert(o.wrapT)), t.texParameteri(i, t.TEXTURE_MAG_FILTER, s.convert(o.magFilter)), t.texParameteri(i, t.TEXTURE_MIN_FILTER, s.convert(o.minFilter))) : (t.texParameteri(i, t.TEXTURE_WRAP_S, t.CLAMP_TO_EDGE), t.texParameteri(i, t.TEXTURE_WRAP_T, t.CLAMP_TO_EDGE), o.wrapS === At && o.wrapT === At || console.warn("THREE.WebGLRenderer: Texture is not power of two. Texture.wrapS and Texture.wrapT should be set to THREE.ClampToEdgeWrapping."), t.texParameteri(i, t.TEXTURE_MAG_FILTER, f(o.magFilter)), t.texParameteri(i, t.TEXTURE_MIN_FILTER, f(o.minFilter)), o.minFilter !== kt && o.minFilter !== Ct && console.warn("THREE.WebGLRenderer: Texture is not power of two. Texture.minFilter should be set to THREE.NearestFilter or THREE.LinearFilter.")), c = e.get("EXT_texture_filter_anisotropic")) {
                 if (o.type === Ht && null === e.get("OES_texture_float_linear")) return;
                 if (o.type === jt && null === (r.isWebGL2 || e.get("OES_texture_half_float_linear"))) return;
                 (o.anisotropy > 1 || n.get(o).__currentAnisotropy) && (t.texParameterf(i, c.TEXTURE_MAX_ANISOTROPY_EXT, Math.min(o.anisotropy, r.getMaxAnisotropy())), n.get(o).__currentAnisotropy = o.anisotropy)
@@ -7893,8 +7893,8 @@
                 if (n === Tt) return t.REPEAT;
                 if (n === At) return t.CLAMP_TO_EDGE;
                 if (n === Lt) return t.MIRRORED_REPEAT;
-                if (n === Rt) return t.NEAREST;
-                if (n === kt) return t.NEAREST_MIPMAP_NEAREST;
+                if (n === kt) return t.NEAREST;
+                if (n === Rt) return t.NEAREST_MIPMAP_NEAREST;
                 if (n === Pt) return t.NEAREST_MIPMAP_LINEAR;
                 if (n === Ct) return t.LINEAR;
                 if (n === It) return t.LINEAR_MIPMAP_NEAREST;
@@ -8180,7 +8180,7 @@
             p = null,
             h = null;
         this.domElement = e, this.context = null, this.autoClear = !0, this.autoClearColor = !0, this.autoClearDepth = !0, this.autoClearStencil = !0, this.sortObjects = !0, this.clippingPlanes = [], this.localClippingEnabled = !1, this.gammaFactor = 2, this.gammaInput = !1, this.gammaOutput = !1, this.physicallyCorrectLights = !1, this.toneMapping = ft, this.toneMappingExposure = 1, this.toneMappingWhitePoint = 1, this.maxMorphTargets = 8, this.maxMorphNormals = 4;
-        var u, d, f, g, v, y, x, w, b, M, _, S, E, T, L, R, k, P, C = this,
+        var u, d, f, g, v, y, x, w, b, M, _, S, E, T, L, k, R, P, C = this,
             I = !1,
             O = null,
             D = null,
@@ -8236,7 +8236,7 @@
         }
 
         function st() {
-            d = new An(u), (f = new En(u, d, t)).isWebGL2 || (d.get("WEBGL_depth_texture"), d.get("OES_texture_float"), d.get("OES_texture_half_float"), d.get("OES_texture_half_float_linear"), d.get("OES_standard_derivatives"), d.get("OES_element_index_uint"), d.get("ANGLE_instanced_arrays")), d.get("OES_texture_float_linear"), P = new is(u, d, f), (g = new ts(u, d, P, f)).scissor(j.copy(Z).multiplyScalar(q)), g.viewport(H.copy(X).multiplyScalar(q)), v = new kn(u), y = new Dr, x = new es(u, d, g, y, f, P, v), w = new Si(u), b = new Ln(u, w, v), M = new In(b, v), L = new Cn(u), _ = new Or(C, d, f), S = new Ur, E = new Kr, T = new _n(C, g, M, a), R = new Sn(u, d, v, f), k = new Rn(u, d, v, f), v.programs = _.programs, C.context = u, C.capabilities = f, C.extensions = d, C.properties = y, C.renderLists = S, C.state = g, C.info = v
+            d = new An(u), (f = new En(u, d, t)).isWebGL2 || (d.get("WEBGL_depth_texture"), d.get("OES_texture_float"), d.get("OES_texture_half_float"), d.get("OES_texture_half_float_linear"), d.get("OES_standard_derivatives"), d.get("OES_element_index_uint"), d.get("ANGLE_instanced_arrays")), d.get("OES_texture_float_linear"), P = new is(u, d, f), (g = new ts(u, d, P, f)).scissor(j.copy(Z).multiplyScalar(q)), g.viewport(H.copy(X).multiplyScalar(q)), v = new Rn(u), y = new Dr, x = new es(u, d, g, y, f, P, v), w = new Si(u), b = new Ln(u, w, v), M = new In(b, v), L = new Cn(u), _ = new Or(C, d, f), S = new Ur, E = new Kr, T = new _n(C, g, M, a), k = new Sn(u, d, v, f), R = new kn(u, d, v, f), v.programs = _.programs, C.context = u, C.capabilities = f, C.extensions = d, C.properties = y, C.renderLists = S, C.state = g, C.info = v
         }
         st();
         var ot = "xr" in navigator ? new as(C) : new os(C);
@@ -8336,8 +8336,8 @@
                 h = i.attributes.position,
                 m = 1;
             !0 === n.wireframe && (p = b.getWireframeAttribute(i), m = 2);
-            var v = R;
-            null !== p && (l = w.get(p), (v = k).setIndex(l)), c && (! function(t, e, i) {
+            var v = k;
+            null !== p && (l = w.get(p), (v = R).setIndex(l)), c && (! function(t, e, i) {
                 if (i && i.isInstancedBufferGeometry & !f.isWebGL2 && null === d.get("ANGLE_instanced_arrays")) return void console.error("THREE.WebGLRenderer.setupVertexAttributes: using THREE.InstancedBufferGeometry but hardware does not support extension ANGLE_instanced_arrays.");
                 g.initAttributes();
                 var n = i.attributes,
@@ -8809,15 +8809,15 @@
         oi.call(this, t, e, i, n, r, s, o, a, c), this.needsUpdate = !0
     }
 
-    function Rs(t, e, i, n, r, s, o, a, c, l) {
+    function ks(t, e, i, n, r, s, o, a, c, l) {
         if ((l = void 0 !== l ? l : $t) !== $t && l !== te) throw new Error("DepthTexture format must be either THREE.DepthFormat or THREE.DepthStencilFormat");
         void 0 === i && l === $t && (i = zt), void 0 === i && l === te && (i = Yt), oi.call(this, null, n, r, s, o, a, l, i, c), this.image = {
             width: t,
             height: e
-        }, this.magFilter = void 0 !== o ? o : Rt, this.minFilter = void 0 !== a ? a : Rt, this.flipY = !1, this.generateMipmaps = !1
+        }, this.magFilter = void 0 !== o ? o : kt, this.minFilter = void 0 !== a ? a : kt, this.flipY = !1, this.generateMipmaps = !1
     }
 
-    function ks(t) {
+    function Rs(t) {
         $i.call(this), this.type = "WireframeGeometry";
         var e, i, n, r, s, o, a, c, l, p, h = [],
             u = [0, 0],
@@ -9705,7 +9705,7 @@
             var t = this.image;
             t.readyState >= t.HAVE_CURRENT_DATA && (this.needsUpdate = !0)
         }
-    }), As.prototype = Object.create(oi.prototype), As.prototype.constructor = As, As.prototype.isCompressedTexture = !0, Ls.prototype = Object.create(oi.prototype), Ls.prototype.constructor = Ls, Ls.prototype.isCanvasTexture = !0, Rs.prototype = Object.create(oi.prototype), Rs.prototype.constructor = Rs, Rs.prototype.isDepthTexture = !0, ks.prototype = Object.create($i.prototype), ks.prototype.constructor = ks, Ps.prototype = Object.create(Ui.prototype), Ps.prototype.constructor = Ps, Cs.prototype = Object.create($i.prototype), Cs.prototype.constructor = Cs, Is.prototype = Object.create(Ui.prototype), Is.prototype.constructor = Is, Os.prototype = Object.create($i.prototype), Os.prototype.constructor = Os, Ds.prototype = Object.create(Ui.prototype), Ds.prototype.constructor = Ds, Bs.prototype = Object.create(Os.prototype), Bs.prototype.constructor = Bs, Ns.prototype = Object.create(Ui.prototype), Ns.prototype.constructor = Ns, zs.prototype = Object.create(Os.prototype), zs.prototype.constructor = zs, Us.prototype = Object.create(Ui.prototype), Us.prototype.constructor = Us, Fs.prototype = Object.create(Os.prototype), Fs.prototype.constructor = Fs, Hs.prototype = Object.create(Ui.prototype), Hs.prototype.constructor = Hs, js.prototype = Object.create(Os.prototype), js.prototype.constructor = js, Gs.prototype = Object.create(Ui.prototype), Gs.prototype.constructor = Gs, Vs.prototype = Object.create($i.prototype), Vs.prototype.constructor = Vs, Ws.prototype = Object.create(Ui.prototype), Ws.prototype.constructor = Ws, Ys.prototype = Object.create($i.prototype), Ys.prototype.constructor = Ys, qs.prototype = Object.create(Ui.prototype), qs.prototype.constructor = qs, Xs.prototype = Object.create($i.prototype), Xs.prototype.constructor = Xs;
+    }), As.prototype = Object.create(oi.prototype), As.prototype.constructor = As, As.prototype.isCompressedTexture = !0, Ls.prototype = Object.create(oi.prototype), Ls.prototype.constructor = Ls, Ls.prototype.isCanvasTexture = !0, ks.prototype = Object.create(oi.prototype), ks.prototype.constructor = ks, ks.prototype.isDepthTexture = !0, Rs.prototype = Object.create($i.prototype), Rs.prototype.constructor = Rs, Ps.prototype = Object.create(Ui.prototype), Ps.prototype.constructor = Ps, Cs.prototype = Object.create($i.prototype), Cs.prototype.constructor = Cs, Is.prototype = Object.create(Ui.prototype), Is.prototype.constructor = Is, Os.prototype = Object.create($i.prototype), Os.prototype.constructor = Os, Ds.prototype = Object.create(Ui.prototype), Ds.prototype.constructor = Ds, Bs.prototype = Object.create(Os.prototype), Bs.prototype.constructor = Bs, Ns.prototype = Object.create(Ui.prototype), Ns.prototype.constructor = Ns, zs.prototype = Object.create(Os.prototype), zs.prototype.constructor = zs, Us.prototype = Object.create(Ui.prototype), Us.prototype.constructor = Us, Fs.prototype = Object.create(Os.prototype), Fs.prototype.constructor = Fs, Hs.prototype = Object.create(Ui.prototype), Hs.prototype.constructor = Hs, js.prototype = Object.create(Os.prototype), js.prototype.constructor = js, Gs.prototype = Object.create(Ui.prototype), Gs.prototype.constructor = Gs, Vs.prototype = Object.create($i.prototype), Vs.prototype.constructor = Vs, Ws.prototype = Object.create(Ui.prototype), Ws.prototype.constructor = Ws, Ys.prototype = Object.create($i.prototype), Ys.prototype.constructor = Ys, qs.prototype = Object.create(Ui.prototype), qs.prototype.constructor = qs, Xs.prototype = Object.create($i.prototype), Xs.prototype.constructor = Xs;
     var Zs = function(t, e, i) {
         i = i || 2;
         var n, r, s, o, a, c, l, p = e && e.length,
@@ -10014,10 +10014,10 @@
                 L = E;
             for (b = 0, M = T.length; b < M; b++) w = T[b], E = E.concat(w);
 
-            function R(t, e, i) {
+            function k(t, e, i) {
                 return e || console.error("THREE.ExtrudeGeometry: vec does not exist"), e.clone().multiplyScalar(i).add(t)
             }
-            var k, P, C, I, O, D, B = E.length,
+            var R, P, C, I, O, D, B = E.length,
                 N = A.length;
 
             function z(t, e, i) {
@@ -10049,18 +10049,18 @@
                 for (w = T[b], V = [], F = 0, j = (H = w.length) - 1, G = F + 1; F < H; F++, j++, G++) j === H && (j = 0), G === H && (G = 0), V[F] = z(w[F], w[j], w[G]);
                 Y.push(V), q = q.concat(V)
             }
-            for (k = 0; k < u; k++) {
-                for (C = k / u, I = p * Math.cos(C * Math.PI / 2), P = h * Math.sin(C * Math.PI / 2), F = 0, H = L.length; F < H; F++) Z((O = R(L[F], U[F], P)).x, O.y, -I);
+            for (R = 0; R < u; R++) {
+                for (C = R / u, I = p * Math.cos(C * Math.PI / 2), P = h * Math.sin(C * Math.PI / 2), F = 0, H = L.length; F < H; F++) Z((O = k(L[F], U[F], P)).x, O.y, -I);
                 for (b = 0, M = T.length; b < M; b++)
-                    for (w = T[b], V = Y[b], F = 0, H = w.length; F < H; F++) Z((O = R(w[F], V[F], P)).x, O.y, -I)
+                    for (w = T[b], V = Y[b], F = 0, H = w.length; F < H; F++) Z((O = k(w[F], V[F], P)).x, O.y, -I)
             }
-            for (P = h, F = 0; F < B; F++) O = l ? R(E[F], q[F], P) : E[F], _ ? (y.copy(g.normals[0]).multiplyScalar(O.x), v.copy(g.binormals[0]).multiplyScalar(O.y), x.copy(m[0]).add(y).add(v), Z(x.x, x.y, x.z)) : Z(O.x, O.y, 0);
+            for (P = h, F = 0; F < B; F++) O = l ? k(E[F], q[F], P) : E[F], _ ? (y.copy(g.normals[0]).multiplyScalar(O.x), v.copy(g.binormals[0]).multiplyScalar(O.y), x.copy(m[0]).add(y).add(v), Z(x.x, x.y, x.z)) : Z(O.x, O.y, 0);
             for (W = 1; W <= a; W++)
-                for (F = 0; F < B; F++) O = l ? R(E[F], q[F], P) : E[F], _ ? (y.copy(g.normals[W]).multiplyScalar(O.x), v.copy(g.binormals[W]).multiplyScalar(O.y), x.copy(m[W]).add(y).add(v), Z(x.x, x.y, x.z)) : Z(O.x, O.y, c / a * W);
-            for (k = u - 1; k >= 0; k--) {
-                for (C = k / u, I = p * Math.cos(C * Math.PI / 2), P = h * Math.sin(C * Math.PI / 2), F = 0, H = L.length; F < H; F++) Z((O = R(L[F], U[F], P)).x, O.y, c + I);
+                for (F = 0; F < B; F++) O = l ? k(E[F], q[F], P) : E[F], _ ? (y.copy(g.normals[W]).multiplyScalar(O.x), v.copy(g.binormals[W]).multiplyScalar(O.y), x.copy(m[W]).add(y).add(v), Z(x.x, x.y, x.z)) : Z(O.x, O.y, c / a * W);
+            for (R = u - 1; R >= 0; R--) {
+                for (C = R / u, I = p * Math.cos(C * Math.PI / 2), P = h * Math.sin(C * Math.PI / 2), F = 0, H = L.length; F < H; F++) Z((O = k(L[F], U[F], P)).x, O.y, c + I);
                 for (b = 0, M = T.length; b < M; b++)
-                    for (w = T[b], V = Y[b], F = 0, H = w.length; F < H; F++) O = R(w[F], V[F], P), _ ? Z(O.x, O.y + m[a - 1].y, m[a - 1].x + I) : Z(O.x, O.y, c + I)
+                    for (w = T[b], V = Y[b], F = 0, H = w.length; F < H; F++) O = k(w[F], V[F], P), _ ? Z(O.x, O.y + m[a - 1].y, m[a - 1].x + I) : Z(O.x, O.y, c + I)
             }
 
             function X(t, e) {
@@ -10231,7 +10231,7 @@
         this.setIndex(f), this.addAttribute("position", new Xi(m, 3)), this.addAttribute("normal", new Xi(g, 3)), this.addAttribute("uv", new Xi(v, 2))
     }
 
-    function Ro(t, e, i, n, r, s) {
+    function ko(t, e, i, n, r, s) {
         Ui.call(this), this.type = "RingGeometry", this.parameters = {
             innerRadius: t,
             outerRadius: e,
@@ -10239,10 +10239,10 @@
             phiSegments: n,
             thetaStart: r,
             thetaLength: s
-        }, this.fromBufferGeometry(new ko(t, e, i, n, r, s)), this.mergeVertices()
+        }, this.fromBufferGeometry(new Ro(t, e, i, n, r, s)), this.mergeVertices()
     }
 
-    function ko(t, e, i, n, r, s) {
+    function Ro(t, e, i, n, r, s) {
         $i.call(this), this.type = "RingBufferGeometry", this.parameters = {
             innerRadius: t,
             outerRadius: e,
@@ -10477,11 +10477,11 @@
             }
             for (s = 0; s < n; s++)
                 for (v = 0; v < r; v++) {
-                    var R = f[v][s],
-                        k = f[v + 1][s],
+                    var k = f[v][s],
+                        R = f[v + 1][s],
                         P = f[v + 1][s + 1],
                         C = f[v][s + 1];
-                    l.push(R, k, C), l.push(k, P, C), w += 6
+                    l.push(k, R, C), l.push(R, P, C), w += 6
                 }
             c.addGroup(g, w, 0), g += w
         }(), !1 === s && (t > 0 && v(!0), e > 0 && v(!1)), this.setIndex(l), this.addAttribute("position", new Xi(p, 3)), this.addAttribute("normal", new Xi(h, 3)), this.addAttribute("uv", new Xi(u, 2))
@@ -10540,7 +10540,7 @@
         for (r = 1; r <= e; r++) o.push(r, r + 1, 0);
         this.setIndex(o), this.addAttribute("position", new Xi(a, 3)), this.addAttribute("normal", new Xi(c, 3)), this.addAttribute("uv", new Xi(l, 2))
     }
-    Eo.prototype = Object.create(Ui.prototype), Eo.prototype.constructor = Eo, To.prototype = Object.create(Mo.prototype), To.prototype.constructor = To, Ao.prototype = Object.create(Ui.prototype), Ao.prototype.constructor = Ao, Lo.prototype = Object.create($i.prototype), Lo.prototype.constructor = Lo, Ro.prototype = Object.create(Ui.prototype), Ro.prototype.constructor = Ro, ko.prototype = Object.create($i.prototype), ko.prototype.constructor = ko, Po.prototype = Object.create(Ui.prototype), Po.prototype.constructor = Po, Co.prototype = Object.create($i.prototype), Co.prototype.constructor = Co, Io.prototype = Object.create(Ui.prototype), Io.prototype.constructor = Io, Io.prototype.toJSON = function() {
+    Eo.prototype = Object.create(Ui.prototype), Eo.prototype.constructor = Eo, To.prototype = Object.create(Mo.prototype), To.prototype.constructor = To, Ao.prototype = Object.create(Ui.prototype), Ao.prototype.constructor = Ao, Lo.prototype = Object.create($i.prototype), Lo.prototype.constructor = Lo, ko.prototype = Object.create(Ui.prototype), ko.prototype.constructor = ko, Ro.prototype = Object.create($i.prototype), Ro.prototype.constructor = Ro, Po.prototype = Object.create(Ui.prototype), Po.prototype.constructor = Po, Co.prototype = Object.create($i.prototype), Co.prototype.constructor = Co, Io.prototype = Object.create(Ui.prototype), Io.prototype.constructor = Io, Io.prototype.toJSON = function() {
         var t = Ui.prototype.toJSON.call(this);
         return Do(this.parameters.shapes, t)
     }, Oo.prototype = Object.create($i.prototype), Oo.prototype.constructor = Oo, Oo.prototype.toJSON = function() {
@@ -10548,7 +10548,7 @@
         return Do(this.parameters.shapes, t)
     }, Bo.prototype = Object.create($i.prototype), Bo.prototype.constructor = Bo, No.prototype = Object.create(Ui.prototype), No.prototype.constructor = No, zo.prototype = Object.create($i.prototype), zo.prototype.constructor = zo, Uo.prototype = Object.create(No.prototype), Uo.prototype.constructor = Uo, Fo.prototype = Object.create(zo.prototype), Fo.prototype.constructor = Fo, Ho.prototype = Object.create(Ui.prototype), Ho.prototype.constructor = Ho, jo.prototype = Object.create($i.prototype), jo.prototype.constructor = jo;
     var Go = Object.freeze({
-        WireframeGeometry: ks,
+        WireframeGeometry: Rs,
         ParametricGeometry: Ps,
         ParametricBufferGeometry: Cs,
         TetrahedronGeometry: Ds,
@@ -10571,8 +10571,8 @@
         TextBufferGeometry: To,
         SphereGeometry: Ao,
         SphereBufferGeometry: Lo,
-        RingGeometry: Ro,
-        RingBufferGeometry: ko,
+        RingGeometry: ko,
+        RingBufferGeometry: Ro,
         PlaneGeometry: nn,
         PlaneBufferGeometry: rn,
         LatheGeometry: Po,
@@ -11334,7 +11334,7 @@
         }
         return this
     };
-    var Ra = Object.freeze({
+    var ka = Object.freeze({
         ArcCurve: ua,
         CatmullRomCurve3: ya,
         CubicBezierCurve: Ma,
@@ -11347,12 +11347,12 @@
         SplineCurve: La
     });
 
-    function ka() {
+    function Ra() {
         pa.call(this), this.type = "CurvePath", this.curves = [], this.autoClose = !1
     }
 
     function Pa(t) {
-        ka.call(this), this.type = "Path", this.currentPoint = new Ze, t && this.setFromPoints(t)
+        Ra.call(this), this.type = "Path", this.currentPoint = new Ze, t && this.setFromPoints(t)
     }
 
     function Ca(t) {
@@ -11412,8 +11412,8 @@
     function ja(t, e, i, n) {
         Ia.call(this, t, e), this.type = "RectAreaLight", this.width = void 0 !== i ? i : 10, this.height = void 0 !== n ? n : 10
     }
-    ka.prototype = Object.assign(Object.create(pa.prototype), {
-        constructor: ka,
+    Ra.prototype = Object.assign(Object.create(pa.prototype), {
+        constructor: Ra,
         add: function(t) {
             this.curves.push(t)
         },
@@ -11482,11 +11482,11 @@
             pa.prototype.fromJSON.call(this, t), this.autoClose = t.autoClose, this.curves = [];
             for (var e = 0, i = t.curves.length; e < i; e++) {
                 var n = t.curves[e];
-                this.curves.push((new Ra[n.type]).fromJSON(n))
+                this.curves.push((new ka[n.type]).fromJSON(n))
             }
             return this
         }
-    }), Pa.prototype = Object.assign(Object.create(ka.prototype), {
+    }), Pa.prototype = Object.assign(Object.create(Ra.prototype), {
         constructor: Pa,
         setFromPoints: function(t) {
             this.moveTo(t[0].x, t[0].y);
@@ -11535,14 +11535,14 @@
             this.currentPoint.copy(p)
         },
         copy: function(t) {
-            return ka.prototype.copy.call(this, t), this.currentPoint.copy(t.currentPoint), this
+            return Ra.prototype.copy.call(this, t), this.currentPoint.copy(t.currentPoint), this
         },
         toJSON: function() {
-            var t = ka.prototype.toJSON.call(this);
+            var t = Ra.prototype.toJSON.call(this);
             return t.currentPoint = this.currentPoint.toArray(), t
         },
         fromJSON: function(t) {
-            return ka.prototype.fromJSON.call(this, t), this.currentPoint.fromArray(t.currentPoint), this
+            return Ra.prototype.fromJSON.call(this, t), this.currentPoint.fromArray(t.currentPoint), this
         }
     }), Ca.prototype = Object.assign(Object.create(Pa.prototype), {
         constructor: Ca,
@@ -11856,8 +11856,8 @@
         }), Wa.prototype = Object.assign(Object.create(Va.prototype), {
             constructor: Wa,
             DefaultSettings_: {
-                endingStart: ke,
-                endingEnd: ke
+                endingStart: Re,
+                endingEnd: Re
             },
             intervalChanged_: function(t, e, i) {
                 var n = this.parameterPositions,
@@ -11942,7 +11942,7 @@
                     case Le:
                         e = this.InterpolantFactoryMethodLinear;
                         break;
-                    case Re:
+                    case ke:
                         e = this.InterpolantFactoryMethodSmooth
                 }
                 if (void 0 === e) {
@@ -11962,7 +11962,7 @@
                     case this.InterpolantFactoryMethodLinear:
                         return Le;
                     case this.InterpolantFactoryMethodSmooth:
-                        return Re
+                        return ke
                 }
             },
             getValueSize: function() {
@@ -12021,7 +12021,7 @@
                 return t
             },
             optimize: function() {
-                for (var t = this.times, e = this.values, i = this.getValueSize(), n = this.getInterpolation() === Re, r = 1, s = t.length - 1, o = 1; o < s; ++o) {
+                for (var t = this.times, e = this.values, i = this.getValueSize(), n = this.getInterpolation() === ke, r = 1, s = t.length - 1, o = 1; o < s; ++o) {
                     var a = !1,
                         c = t[o];
                     if (c !== t[o + 1] && (1 !== o || c !== c[0]))
@@ -12498,8 +12498,8 @@
                             return t & 1 << e
                         }
                         var n, r, s, o, a, c, l, p, h, u, d, f, m, g, v, y, x, w, b, M, _, S, E, T, A, L = t.faces,
-                            R = t.vertices,
-                            k = t.normals,
+                            k = t.vertices,
+                            R = t.normals,
                             P = t.colors,
                             C = t.scale,
                             I = 0;
@@ -12507,14 +12507,14 @@
                             for (n = 0; n < t.uvs.length; n++) t.uvs[n].length && I++;
                             for (n = 0; n < I; n++) e.faceVertexUvs[n] = []
                         }
-                        for (o = 0, a = R.length; o < a;)(w = new Qe).x = R[o++] * C, w.y = R[o++] * C, w.z = R[o++] * C, e.vertices.push(w);
+                        for (o = 0, a = k.length; o < a;)(w = new Qe).x = k[o++] * C, w.y = k[o++] * C, w.z = k[o++] * C, e.vertices.push(w);
                         for (o = 0, a = L.length; o < a;)
                             if (d = i(u = L[o++], 0), f = i(u, 1), m = i(u, 3), g = i(u, 4), v = i(u, 5), y = i(u, 6), x = i(u, 7), d) {
                                 if ((M = new Di).a = L[o], M.b = L[o + 1], M.c = L[o + 3], (_ = new Di).a = L[o + 1], _.b = L[o + 2], _.c = L[o + 3], o += 4, f && (h = L[o++], M.materialIndex = h, _.materialIndex = h), s = e.faces.length, m)
                                     for (n = 0; n < I; n++)
                                         for (T = t.uvs[n], e.faceVertexUvs[n][s] = [], e.faceVertexUvs[n][s + 1] = [], r = 0; r < 4; r++) A = new Ze(T[2 * (p = L[o++])], T[2 * p + 1]), 2 !== r && e.faceVertexUvs[n][s].push(A), 0 !== r && e.faceVertexUvs[n][s + 1].push(A);
-                                if (g && (l = 3 * L[o++], M.normal.set(k[l++], k[l++], k[l]), _.normal.copy(M.normal)), v)
-                                    for (n = 0; n < 4; n++) l = 3 * L[o++], E = new Qe(k[l++], k[l++], k[l]), 2 !== n && M.vertexNormals.push(E), 0 !== n && _.vertexNormals.push(E);
+                                if (g && (l = 3 * L[o++], M.normal.set(R[l++], R[l++], R[l]), _.normal.copy(M.normal)), v)
+                                    for (n = 0; n < 4; n++) l = 3 * L[o++], E = new Qe(R[l++], R[l++], R[l]), 2 !== n && M.vertexNormals.push(E), 0 !== n && _.vertexNormals.push(E);
                                 if (y && (S = P[c = L[o++]], M.color.setHex(S), _.color.setHex(S)), x)
                                     for (n = 0; n < 4; n++) S = P[c = L[o++]], 2 !== n && M.vertexColors.push(new xi(S)), 0 !== n && _.vertexColors.push(new xi(S));
                                 e.faces.push(M), e.faces.push(_)
@@ -12522,8 +12522,8 @@
                                 if ((b = new Di).a = L[o++], b.b = L[o++], b.c = L[o++], f && (h = L[o++], b.materialIndex = h), s = e.faces.length, m)
                                     for (n = 0; n < I; n++)
                                         for (T = t.uvs[n], e.faceVertexUvs[n][s] = [], r = 0; r < 3; r++) A = new Ze(T[2 * (p = L[o++])], T[2 * p + 1]), e.faceVertexUvs[n][s].push(A);
-                                if (g && (l = 3 * L[o++], b.normal.set(k[l++], k[l++], k[l])), v)
-                                    for (n = 0; n < 3; n++) l = 3 * L[o++], E = new Qe(k[l++], k[l++], k[l]), b.vertexNormals.push(E);
+                                if (g && (l = 3 * L[o++], b.normal.set(R[l++], R[l++], R[l])), v)
+                                    for (n = 0; n < 3; n++) l = 3 * L[o++], E = new Qe(R[l++], R[l++], R[l]), b.vertexNormals.push(E);
                                 if (y && (c = L[o++], b.color.setHex(P[c])), x)
                                     for (n = 0; n < 3; n++) c = L[o++], b.vertexColors.push(new xi(P[c]));
                                 e.faces.push(b)
@@ -12705,7 +12705,7 @@
                                 l.push(u)
                             }
                             var d = c.options.extrudePath;
-                            void 0 !== d && (c.options.extrudePath = (new Ra[d.type]).fromJSON(d)), a = new Go[c.type](l, c.options);
+                            void 0 !== d && (c.options.extrudePath = (new ka[d.type]).fromJSON(d)), a = new Go[c.type](l, c.options);
                             break;
                         case "BufferGeometry":
                             a = r.parse(c);
@@ -12894,8 +12894,8 @@
             MirroredRepeatWrapping: Lt
         },
         yc = {
-            NearestFilter: Rt,
-            NearestMipMapNearestFilter: kt,
+            NearestFilter: kt,
+            NearestMipMapNearestFilter: Rt,
             NearestMipMapLinearFilter: Pt,
             LinearFilter: Ct,
             LinearMipMapNearestFilter: It,
@@ -13058,7 +13058,7 @@
             v = 0;
             for (var L = f.length; v < L; v++) {
                 c = f[v].s, l.push(c);
-                for (var R = 0, k = (u = m[v]).length; R < k; R++) c.holes.push(u[R].h)
+                for (var k = 0, R = (u = m[v]).length; k < R; k++) c.holes.push(u[k].h)
             }
             return l
         }
@@ -13101,7 +13101,7 @@
             return this.path = t, this
         }
     });
-    var Sc, Ec, Tc, Ac, Lc, Rc, kc, Pc, Cc, Ic, Oc = {
+    var Sc, Ec, Tc, Ac, Lc, kc, Rc, Pc, Cc, Ic, Oc = {
         getContext: function() {
             return void 0 === mc && (mc = new(window.AudioContext || window.webkitAudioContext)), mc
         },
@@ -13192,11 +13192,11 @@
         }
     }), Object.assign(Bc.prototype, {
         update: (Cc = new Ke, Ic = new Ke, function(t) {
-            if (Sc !== this || Ec !== t.focus || Tc !== t.fov || Ac !== t.aspect * this.aspect || Lc !== t.near || Rc !== t.far || kc !== t.zoom || Pc !== this.eyeSep) {
-                Sc = this, Ec = t.focus, Tc = t.fov, Ac = t.aspect * this.aspect, Lc = t.near, Rc = t.far, kc = t.zoom;
+            if (Sc !== this || Ec !== t.focus || Tc !== t.fov || Ac !== t.aspect * this.aspect || Lc !== t.near || kc !== t.far || Rc !== t.zoom || Pc !== this.eyeSep) {
+                Sc = this, Ec = t.focus, Tc = t.fov, Ac = t.aspect * this.aspect, Lc = t.near, kc = t.far, Rc = t.zoom;
                 var e, i, n = t.projectionMatrix.clone(),
                     r = (Pc = this.eyeSep / 2) * Lc / Ec,
-                    s = Lc * Math.tan(Xe.DEG2RAD * Tc * .5) / kc;
+                    s = Lc * Math.tan(Xe.DEG2RAD * Tc * .5) / Rc;
                 Ic.elements[12] = -Pc, Cc.elements[12] = Pc, e = -s * Ac + r, i = s * Ac + r, n.elements[0] = 2 * Lc / (i - e), n.elements[8] = (i + e) / (i - e), this.cameraL.projectionMatrix.copy(n), e = -s * Ac - r, i = s * Ac - r, n.elements[0] = 2 * Lc / (i - e), n.elements[8] = (i + e) / (i - e), this.cameraR.projectionMatrix.copy(n)
             }
             this.cameraL.matrixWorld.copy(t.matrixWorld).multiply(Ic), this.cameraR.matrixWorld.copy(t.matrixWorld).multiply(Cc)
@@ -13460,8 +13460,8 @@
     function al(t, e, i) {
         this._mixer = t, this._clip = e, this._localRoot = i || null;
         for (var n = e.tracks, r = n.length, s = new Array(r), o = {
-                endingStart: ke,
-                endingEnd: ke
+                endingStart: Re,
+                endingEnd: Re
             }, a = 0; a !== r; ++a) {
             var c = n[a].createInterpolant(null);
             s[a] = c, c.settings = o
@@ -13635,7 +13635,7 @@
         Ms.call(this, d, f)
     }
 
-    function Rl(t, e, i, n, r, s) {
+    function kl(t, e, i, n, r, s) {
         t = t || 10, e = e || 16, i = i || 8, n = n || 64, r = new xi(void 0 !== r ? r : 4473924), s = new xi(void 0 !== s ? s : 8947848);
         var o, a, c, l, p, h, u, d = [],
             f = [];
@@ -13650,7 +13650,7 @@
         Ms.call(this, m, g)
     }
 
-    function kl(t, e, i, n) {
+    function Rl(t, e, i, n) {
         this.object = t, this.size = void 0 !== e ? e : 1;
         var r = void 0 !== i ? i : 16776960,
             s = void 0 !== n ? n : 1,
@@ -14228,7 +14228,7 @@
             },
             _setEndings: function(t, e, i) {
                 var n = this._interpolantSettings;
-                i ? (n.endingStart = Pe, n.endingEnd = Pe) : (n.endingStart = t ? this.zeroSlopeAtStart ? Pe : ke : Ce, n.endingEnd = e ? this.zeroSlopeAtEnd ? Pe : ke : Ce)
+                i ? (n.endingStart = Pe, n.endingEnd = Pe) : (n.endingStart = t ? this.zeroSlopeAtStart ? Pe : Re : Ce, n.endingEnd = e ? this.zeroSlopeAtEnd ? Pe : Re : Ce)
             },
             _scheduleFading: function(t, e, i) {
                 var n = this._mixer,
@@ -14787,7 +14787,7 @@
                 }
                 n.lookAt(t.setFromMatrixPosition(this.light.matrixWorld).negate())
             }
-        }(), Ll.prototype = Object.create(Ms.prototype), Ll.prototype.constructor = Ll, Rl.prototype = Object.create(Ms.prototype), Rl.prototype.constructor = Rl, kl.prototype = Object.create(Ms.prototype), kl.prototype.constructor = kl, kl.prototype.update = function() {
+        }(), Ll.prototype = Object.create(Ms.prototype), Ll.prototype.constructor = Ll, kl.prototype = Object.create(Ms.prototype), kl.prototype.constructor = kl, Rl.prototype = Object.create(Ms.prototype), Rl.prototype.constructor = Rl, Rl.prototype.update = function() {
             var t = new Qe,
                 e = new Qe,
                 i = new $e;
@@ -14957,7 +14957,7 @@
     }
 
     function up(t, e) {
-        return console.warn("THREE.WireframeHelper has been removed. Use THREE.WireframeGeometry instead."), new Ms(new ks(t.geometry), new ws({
+        return console.warn("THREE.WireframeHelper has been removed. Use THREE.WireframeGeometry instead."), new Ms(new Rs(t.geometry), new ws({
             color: void 0 !== e ? e : 16777215
         }))
     }
@@ -14971,7 +14971,7 @@
     }
     pa.create = function(t, e) {
         return console.log("THREE.Curve.create() has been deprecated"), t.prototype = Object.create(pa.prototype), t.prototype.constructor = t, t.prototype.getPoint = e, t
-    }, Object.assign(ka.prototype, {
+    }, Object.assign(Ra.prototype, {
         createPointsGeometry: function(t) {
             console.warn("THREE.CurvePath: .createPointsGeometry() has been removed. Use new THREE.Geometry().setFromPoints( points ) instead.");
             var e = this.getPoints(t);
@@ -15420,7 +15420,7 @@
                 console.error("THREE." + this.type + ": .shading has been removed. Use the boolean .flatShading instead.")
             },
             set: function(t) {
-                console.warn("THREE." + this.type + ": .shading has been removed. Use the boolean .flatShading instead."), this.flatShading = t === R
+                console.warn("THREE." + this.type + ": .shading has been removed. Use the boolean .flatShading instead."), this.flatShading = t === k
             }
         }
     }), Object.defineProperties(Xo.prototype, {
@@ -16220,7 +16220,7 @@
                             "-" === i[0] && r++;
                             for (var c, l = r; r < s && 0 <= (c = parseInt(i[r++], n));) a = a * n + c, o = o * n + Math.floor(a / 4294967296), a %= 4294967296;
                             l && (o = ~o, a ? a = 4294967296 - a : o++), b(t, e + _, o), b(t, e + S, a)
-                        }(e, i, n, r || 10) : o(n, r) ? a(e, i, n, r) : "number" == typeof r ? (b(e, i + _, n), b(e, i + S, r)) : 0 < n ? R(e, i, n) : 0 > n ? k(e, i, n) : a(e, i, v, 0))
+                        }(e, i, n, r || 10) : o(n, r) ? a(e, i, n, r) : "number" == typeof r ? (b(e, i + _, n), b(e, i + S, r)) : 0 < n ? k(e, i, n) : 0 > n ? R(e, i, n) : a(e, i, v, 0))
                     }(this, t, e, i, n) : new x(t, e, i, n)
                 }
 
@@ -16245,8 +16245,8 @@
                     T = i ? 1 : 2,
                     A = i ? 2 : 1,
                     L = i ? 3 : 0,
-                    R = i ? l : h,
-                    k = i ? p : u,
+                    k = i ? l : h,
+                    R = i ? p : u,
                     P = x.prototype,
                     C = "is" + t,
                     I = "_" + C;
@@ -16691,7 +16691,7 @@
                 if ((i >>>= 0) <= (e >>>= 0)) return "";
                 for (t || (t = "utf8");;) switch (t) {
                     case "hex":
-                        return R(this, e, i);
+                        return k(this, e, i);
                     case "utf8":
                     case "utf-8":
                         return E(this, e, i);
@@ -16706,7 +16706,7 @@
                     case "ucs-2":
                     case "utf16le":
                     case "utf-16le":
-                        return k(this, e, i);
+                        return R(this, e, i);
                     default:
                         if (n) throw new TypeError("Unknown encoding: " + t);
                         t = (t + "").toLowerCase(), n = !0
@@ -16791,14 +16791,14 @@
             return n
         }
 
-        function R(t, e, i) {
+        function k(t, e, i) {
             var n = t.length;
             (!e || 0 > e) && (e = 0), (!i || 0 > i || i > n) && (i = n);
             for (var r = "", s = e; s < i; ++s) r += U(t[s]);
             return r
         }
 
-        function k(t, e, i) {
+        function R(t, e, i) {
             for (var n = t.slice(e, i), r = "", s = 0; s < n.length; s += 2) r += String.fromCharCode(n[s] + 256 * n[s + 1]);
             return r
         }
@@ -17218,8 +17218,8 @@
             int16: b,
             int32: _,
             int64: S(8, i ? L : T),
-            float32: S(4, R),
-            float64: S(8, k)
+            float32: S(4, k),
+            float64: S(8, R)
         }
     }, e.readUint8 = y;
     var a = i(0),
@@ -17337,11 +17337,11 @@
         return new o(this, t)
     }
 
-    function R(t) {
+    function k(t) {
         return n.read(this, t, !1, 23, 4)
     }
 
-    function k(t) {
+    function R(t) {
         return n.read(this, t, !1, 52, 8)
     }
 }, function(t, e, i) {
@@ -37551,6 +37551,11 @@
                 c: 7895160,
                 t: 2
             }, {
+                p: [-1, 23, -103],
+                s: [912, 218, 573],
+                id: 13,
+                col: 1
+            }, {
                 p: [92, 66, 40],
                 s: [2, 39, 2],
                 c: 7895160,
@@ -40232,7 +40237,7 @@
                 t: 5
             }]
         }], o = 0; o < s.length; ++o)
-        for (var a = 0; a < s[o].objects.length; ++a) s[o].objects[a].id = n.prefabIDS[s[o].objects[a].id || 0], s[o].objects[a].t = n.textureIDS[s[o].objects[a].t || ("LADDER" == s[o].objects[a].id ? 2 : 0)];
+        for (var a = 0; a < s[o].objects.length; ++a) s[o].objects[a].id = n.prefabIDS[s[o].objects[a].id || 0], s[o].objects[a].t = n.textureIDS[s[o].objects[a].t || 0];
     t.exports.maps = s, t.exports.manager = function(t, e, n, o) {
         var a, c;
         this.manager = new(i(49).manager)(t, n, o), this.maps = s, this.modes = r, this.spawns = [], this.lastGen = null, this.setMaps = function(t) {
@@ -40285,7 +40290,7 @@
                         colr: a.c,
                         col: !a.col,
                         noVis: a.v
-                    }, a.r ? a.r[2] : 0, (a.r ? a.r[0] : 0) - Math.PI / 2, a.r ? a.r[1] : 0) : "RAMP" == a.id ? this.manager.addRamp(v, y, x, a.s[0], a.s[1], a.s[2], a.d * Math.PI / 2, a.b, a.t ? a.t.toLowerCase() + "_0" : "grey_0", a.v, a.c, p.ambS || o.ambScale) : "SCORE_ZONE" == a.id ? this.manager.addScoreZone(v, y, x, a.s[0], a.s[2], a.s[1]) : "DEATH_ZONE" == a.id ? this.manager.addDeathZone(v, y, x, a.s[0], a.s[2], a.s[1]) : "LADDER" == a.id ? this.manager.addLadder(v, y, x, a.s[1], a.d * Math.PI / 2, a.v, a.t ? a.t.toLowerCase() + "_0" : "floor_0", a.c) : this.manager.addMesh(v, y, x, a.r ? a.r[1] ? a.r[1] : Math.PI : 0, a.s[0] / 2, a.s[1] / 2, a.s[2] / 2, a.id.toLowerCase(), a.col);
+                    }, a.r ? a.r[2] : 0, (a.r ? a.r[0] : 0) - Math.PI / 2, a.r ? a.r[1] : 0) : "RAMP" == a.id ? this.manager.addRamp(v, y, x, a.s[0], a.s[1], a.s[2], a.d * Math.PI / 2, a.b, a.t ? a.t.toLowerCase() + "_0" : "grey_0", a.v, a.c, p.ambS || o.ambScale) : "SCORE_ZONE" == a.id ? this.manager.addScoreZone(v, y, x, a.s[0], a.s[2], a.s[1]) : "DEATH_ZONE" == a.id ? this.manager.addDeathZone(v, y, x, a.s[0], a.s[2], a.s[1]) : "LADDER" == a.id ? this.manager.addLadder(v, y, x, a.s[1], a.d * Math.PI / 2, a.v) : this.manager.addMesh(v, y, x, a.r ? a.r[1] ? a.r[1] : Math.PI : 0, a.s[0] / 2, a.s[1] / 2, a.s[2] / 2, a.id.toLowerCase(), a.col);
                     else if (e) {
                         var M = e.prefabs[parseInt(a.pr || 0)];
                         M.count = Math.round((a.s[0] + a.s[2] + a.s[1]) / M.cnt), e.area(v, y, x, a.s[0], a.s[1], a.s[2], M)
@@ -40318,14 +40323,14 @@
                                             }
                                         }
                                     }
-                                    var R = a.y + a.height > c.y + c.height,
-                                        k = a.y - a.height < c.y - c.height;
-                                    if ((R || k) && (S = n.boxCornerIntersection(a, c, "x", "z")))
+                                    var k = a.y + a.height > c.y + c.height,
+                                        R = a.y - a.height < c.y - c.height;
+                                    if ((k || R) && (S = n.boxCornerIntersection(a, c, "x", "z")))
                                         for (T = 0; T < S.length; ++T) {
                                             E = Math.sqrt(2) * _;
                                             var P = S[T].d - Math.PI / 4;
                                             for (A = 0; 2 > A; ++A)
-                                                if (y = c.y + (c.height + o.ambOff) * (A ? -1 : 1), (A || R) && (!A || k)) {
+                                                if (y = c.y + (c.height + o.ambOff) * (A ? -1 : 1), (A || k) && (!A || R)) {
                                                     var C = n.limitRect(S[T].x - E * Math.sin(P), S[T].z - E * Math.cos(P), _, _, S[T].d, c, "x", "z");
                                                     this.manager.addAmbient(C.x, y, C.z, S[T].d, Math.PI / 2, 0, C.width, C.length, 0)
                                                 }
@@ -40513,9 +40518,8 @@
             defaultSize: [2, 10, 4],
             scalable: !0,
             scaleWithSize: !1,
-            editColor: !0,
             hideBoundingBox: !1,
-            texturable: !0,
+            texturable: !1,
             genGeo: async t => p(...t),
             customDirection: !0,
             stepSrc: "a",
@@ -40968,11 +40972,11 @@
                             T = [];
                         if (-1 === c.indexOf("/")) E = S;
                         else
-                            for (var A, L = 0, R = S.length; L < R; L++) "" !== (A = S[L].split("/"))[0] && E.push(A[0]), "" !== A[1] && T.push(A[1]);
+                            for (var A, L = 0, k = S.length; L < k; L++) "" !== (A = S[L].split("/"))[0] && E.push(A[0]), "" !== A[1] && T.push(A[1]);
                         o.addLineGeometry(E, T)
                     } else if ("p" === l) {
-                        var k = c.substr(1).trim().split(" ");
-                        o.addPointGeometry(k)
+                        var R = c.substr(1).trim().split(" ");
+                        o.addPointGeometry(R)
                     } else if (null !== (p = n.exec(c))) {
                         var P = (" " + p[0].substr(1).trim()).substr(1);
                         o.startObject(P)
@@ -41375,7 +41379,7 @@
         }
     }
 }, function(t) {
-    t.exports = 733
+    t.exports = 32003
 }, function(t, e, i) {
     var n, r, s = 0,
         o = function(t) {
@@ -41433,10 +41437,10 @@
                 noShoot: !0,
                 complexMesh: !0
             }))
-        }, this.addLadder = function(i, n, c, l, p, h, u, d) {
-            var f = s.ladderScale,
-                m = s.ladderScale;
-            if (0 == p || p == Math.PI ? m = s.ladderWidth : f = s.ladderWidth, a = new o({
+        }, this.addLadder = function(i, n, c, l, p, h) {
+            var u = s.ladderScale,
+                d = s.ladderScale;
+            if (0 == p || p == Math.PI ? d = s.ladderWidth : u = s.ladderWidth, a = new o({
                     ladder: !0,
                     complexMesh: !0,
                     noShoot: !0,
@@ -41444,19 +41448,18 @@
                     x: i + s.ladderScale * Math.cos(p),
                     z: c + s.ladderScale * Math.sin(p),
                     y: n,
-                    w: f,
-                    l: m,
+                    w: u,
+                    l: d,
                     h: l
                 }), this.objects.push(a), t && !h) {
-                var g = {
-                    src: u || "floor_0",
+                var f = {
+                    src: "floor_0",
                     vertexColors: r.VertexColors,
-                    colr: d,
                     scale: .02,
                     shadows: !0
                 };
-                t.addCube(a.x + s.ladderWidth * Math.sin(p), a.y, a.z + s.ladderWidth * Math.cos(p), 2 * s.ladderScale, l + 2, 2 * s.ladderScale, [1, 1, 1, 1, 1, 1], g), t.addCube(a.x - s.ladderWidth * Math.sin(p), a.y, a.z - s.ladderWidth * Math.cos(p), 2 * s.ladderScale, l + 2, 2 * s.ladderScale, [1, 1, 1, 1, 1, 1], g);
-                for (var v = Math.floor(l / 6), y = 0; y < v; ++y) t.addPlane(a.x, n + 6 * (y + 1) + e.randFloat(-1, 1), a.z, s.ladderWidth, s.ladderScale, g, -p + Math.PI / 2, Math.PI / 2, e.randFloat(-.1, .1))
+                t.addCube(a.x + s.ladderWidth * Math.sin(p), a.y, a.z + s.ladderWidth * Math.cos(p), 2 * s.ladderScale, l + 2, 2 * s.ladderScale, [1, 1, 1, 1, 1, 1], f), t.addCube(a.x - s.ladderWidth * Math.sin(p), a.y, a.z - s.ladderWidth * Math.cos(p), 2 * s.ladderScale, l + 2, 2 * s.ladderScale, [1, 1, 1, 1, 1, 1], f);
+                for (var m = Math.floor(l / 6), g = 0; g < m; ++g) t.addPlane(a.x, n + 6 * (g + 1) + e.randFloat(-1, 1), a.z, s.ladderWidth, s.ladderScale, f, -p + Math.PI / 2, Math.PI / 2, e.randFloat(-.1, .1))
             }
         }, this.addRamp = function(e, i, n, a, c, l, p, h, u, d, f, m) {
             var g = 0 != p && p != Math.PI,
@@ -41674,11 +41677,11 @@
     var r = function(t, e, i, n, r) {
         var s;
         this.id = t, this.sentTo = [], this.inputs = [], this.spins = [], this.stateHistory = [], this.weaponMeshes = [], this.legMeshes = [], this.armMeshes = [], this.lastInput = [], this.lastDeltas = [], this.reloads = [], this.ammos = [], this.ping = 0, this.pings = [], this.score = 0, this.scoreObjs = {}, this.convs = 0, this.timer = null, this.gameTimer = null, this.kills = 0, this.deaths = 0, this.deathStreak = 0, this.level = 0, this.lives = r.waitTimers && r.config && r.config.lives || 0, this.deltaAdd = 0, this.deltaDiv = 1, this.sprayIndex = 0, this.hatIndex = -1, this.backIndex = -1, this.lastSpray = 0, this.playTime = 0, this.streaks = {}, this.init = function(t, e, i, r, s) {
-            this.x = t, this.y = e, this.z = i, this.stepSrc = null, this.name = r || "unknown", this.xVel = 0, this.yVel = 0, this.zVel = 0, this.renderMinimal = !1, this.spins.length = 0, this.xDire = 0, this.yDire = 0, this.hitTimer = 0, this.ticker = 0, this.spread = 0, this.spreadPlus = 0, this.aimVal = 1, this.aimDir = 0, this.aimTime = 0, this.streak = 0, this.killStreak = 0, this.lastKill = 0, this.stateHistory.length = 0, this.lastInput.length = 0, this.dmgReceived = {}, this.landBobY = 0, this.landBobYR = 0, this.jumpBobY = 0, this.slideTimer = 0, this.canSlide = !0, this.leanAnimX = 0, this.leanAnimY = 0, this.leanAnimZ = 0, this.bobAnimZ = 0, this.bobAnimY = 0, this.inspecting = !1, this.inspectX = !1, this.stepVal = 0, this.stepChase = 0, this.stepDir = 1, this.stepDirR = 1, this.stepTweenV = 0, this.reward = 0, this.recoilAnim = 0, this.recoilAnimY = 0, this.recoilForce = 0, this.recoilTweenY = 0, this.recoilTweenYM = 0, this.recoilTweenZ = 0, this.jumpRot = 0, this.jumpRotM = 0, this.recoilX = 0, this.recoilZ = 0, this.crouchVal = 0, this.onGround = !0, this.onLadder = !1, this.rampFix = null, this.didJump = !1, this.didShoot = !1, this.lodActive = !1, this.locked = !1, this.latestData = !1, this.airTime = 0, this.height = n.playerHeight, this.headScale = n.cameraHeight, this.scale = n.playerScale, this.active = !0, this.interpolate = !1, this.isYou = s, this.sentTo.length = 0, this.inputSN = 0, this.inputs.length = 0, this.weaponIndex = 0, this.swapTime = 0, this.recon = !1, this.inView = !1
+            this.x = t, this.y = e, this.z = i, this.stepSrc = null, this.name = r || "unknown", this.xVel = 0, this.yVel = 0, this.zVel = 0, this.renderMinimal = !1, this.spins.length = 0, this.xDire = 0, this.yDire = 0, this.hitTimer = 0, this.ticker = 0, this.spread = 0, this.spreadPlus = 0, this.aimVal = 1, this.aimDir = 0, this.aimTime = 0, this.streak = 0, this.killStreak = 0, this.lastKill = 0, this.stateHistory.length = 0, this.lastInput.length = 0, this.dmgReceived = {}, this.landAnim = 0, this.landVelocity = 0, this.slideTimer = 0, this.canSlide = !0, this.leanAnimX = 0, this.leanAnimY = 0, this.leanAnimZ = 0, this.bobAnimZ = 0, this.bobAnimY = 0, this.inspecting = !1, this.inspectX = !1, this.stepVal = 0, this.stepChase = 0, this.stepDir = 1, this.stepDirR = 1, this.reward = 0, this.recoilAnim = 0, this.recoilAnimY = 0, this.recoilForce = 0, this.crouchVal = 0, this.onGround = !0, this.onLadder = !1, this.rampFix = null, this.didJump = !1, this.didShoot = !1, this.lodActive = !1, this.locked = !1, this.latestData = !1, this.airTime = 0, this.height = n.playerHeight, this.headScale = n.cameraHeight, this.scale = n.playerScale, this.active = !0, this.interpolate = !1, this.isYou = s, this.sentTo.length = 0, this.inputSN = 0, this.inputs.length = 0, this.weaponIndex = 0, this.swapTime = 0, this.recon = !1, this.inView = !1
         }, this.setClass = function(t, e, i, n) {
             n || (t.config && 0 > t.config.classes.indexOf(e) && (e != t.config.classes[0] && (this.skins = [-1, -1]), e = t.config.classes[0]), t.mode && (t.mode.noWeap && (e = 9), t.mode.teamClass && t.mode.teamClass[this.team] && (e = t.mode.teamClass[this.team], this.skins = [-1, -1]))), (null == e || null == e) && (e = t.classes.length - 1), this.classIndex = e, this.reloads.length = 0, this.ammos.length = 0, this.loadout = [t.classes[e].loadout[0]], t.classes[e].secondary ? i && this.loadout.push(i) : this.secIndex = null, this.speed = t.classes[e].speed || 1;
             for (var r = 0; r < this.loadout.length; ++r) this.reloads.push(0), this.ammos.push(t.weapons[this.loadout[r]].ammo);
-            this.reloadTimer = 0, this.maxHealth = t.classes[e].health * (t.config && t.config.healthMlt || 1), this.health = this.maxHealth, this.regen = t.classes[e].regen
+            this.reloadTimer = 0, this.maxHealth = t.classes[e].health * (t.config && t.config.healthMlt || 1), this.health = this.maxHealth
         }, this.resetInputs = function() {
             this.inputs.length = 0
         }, this.procInputs = function(t, r, o) {
@@ -41688,11 +41691,11 @@
             var c = i.getAngleDist(t[2], this.xDire);
             e.saveSpin(this, c);
             var l = !o && this.isYou;
-            if (l && (this.leanAnimX -= c * n.leanSens, this.leanAnimX = i.limit(this.leanAnimX, n.leanMax), this.leanAnimY -= i.getAngleDist(t[3], this.yDire) * n.leanSens, this.leanAnimY = i.limit(this.leanAnimY, n.leanMax), this.leanAnimX && (this.leanAnimX *= Math.pow(n.leanPull, a)), this.leanAnimY && (this.leanAnimY *= Math.pow(n.leanPull, a)), this.leanAnimZ && (this.leanAnimZ *= Math.pow(n.leanPullZ, a)), this.bobAnimZ && (this.bobAnimZ *= Math.pow(n.bobPullZ, a)), this.bobAnimY && (this.bobAnimY *= Math.pow(n.bobPullY, a)), this.recoilX && (this.recoilX *= Math.pow(n.leanPull, a)), this.recoilZ && (this.recoilZ *= Math.pow(n.leanPull, a)), this.inspecting && this.inspectX < Math.PI / 2.8 && (this.inspectX += .1 * (Math.PI / 2.8 - this.inspectX))), t[10] && e.swapWeapon(this, t[10]), o || (this.recoilForce && (this.recoilAnim += this.recoilForce * a, this.recoilAnimY += this.recoilForce * a, this.recoilForce *= Math.pow(this.weapon.recoverF, a)), this.recoilAnim && (this.recoilAnim *= Math.pow(this.weapon.recover, a)), this.recoilAnimY && (this.recoilAnimY *= Math.pow(this.weapon.recoverY || this.weapon.recover, a))), this.xDire = (t[2] || 0).round(3), this.yDire = (t[3] || 0).round(3), this.oldX = this.x, this.oldY = this.y, this.oldZ = this.z, this.weapon.zoom && (!this.weapon.noAim || 0 < this.swapTime)) {
+            if (l && (this.leanAnimX -= c * n.leanSens, this.leanAnimX = i.limit(this.leanAnimX, n.leanMax), this.leanAnimY -= i.getAngleDist(t[3], this.yDire) * n.leanSens, this.leanAnimY = i.limit(this.leanAnimY, n.leanMax), this.leanAnimX && (this.leanAnimX *= Math.pow(n.leanPull, a)), this.leanAnimY && (this.leanAnimY *= Math.pow(n.leanPull, a)), this.leanAnimZ && (this.leanAnimZ *= Math.pow(n.leanPullZ, a)), this.bobAnimZ && (this.bobAnimZ *= Math.pow(n.bobPullZ, a)), this.bobAnimY && (this.bobAnimY *= Math.pow(n.bobPullY, a)), this.inspecting && this.inspectX < Math.PI / 2.8 && (this.inspectX += .1 * (Math.PI / 2.8 - this.inspectX))), o || (this.landAnim += .1 * this.landVelocity * a, this.landVelocity ? (this.landVelocity *= Math.pow(n.landPullV, a), this.landVelocity = i.cropVal(this.landVelocity, .01)) : this.landAnim && (this.landAnim *= Math.pow(n.landPull, a))), t[10] && e.swapWeapon(this, t[10]), o || (this.recoilForce && (this.recoilAnim += this.recoilForce * a, this.recoilAnimY += this.recoilForce * a, this.recoilForce *= Math.pow(this.weapon.recoverF, a)), this.recoilAnim && (this.recoilAnim *= Math.pow(this.weapon.recover, a)), this.recoilAnimY && (this.recoilAnimY *= Math.pow(this.weapon.recoverY || this.weapon.recover, a))), this.xDire = (t[2] || 0).round(3), this.yDire = (t[3] || 0).round(3), this.oldX = this.x, this.oldY = this.y, this.oldZ = this.z, this.weapon.zoom && (!this.weapon.noAim || 0 < this.swapTime)) {
                 var p = 0 >= this.reloadTimer && 0 >= this.swapTime;
                 t[6] && 0 < this.aimVal && p ? (e.cancelInspect(this), this.aimDir = 0, this.aimVal -= 1 / (this.weapon.aimSpeed / a), 0 >= this.aimVal && (this.aimVal = 0, this.isYou && !o && e.toggleAim(this, 1)), this.isYou && !o && !this.weapon.scope && e.updateAim(this, 1 - this.aimVal)) : (!p || !t[6] && 1 > this.aimVal) && (this.aimDir = 1, !this.aimVal && this.isYou && !o && e.toggleAim(this, 0), this.aimVal += 1 / (this.weapon.aimSpeed / a), 1 <= this.aimVal && (this.aimVal = 1), this.isYou && !o && !this.weapon.scope && e.updateAim(this, 1 - this.aimVal)), 0 == this.aimVal ? this.aimTime += a : this.aimTime = 0
             }
-            t[8] && 1 > this.crouchVal && !this.onLadder ? (this.crouchVal += n.crouchSpeed * a, 1 <= this.crouchVal && (this.crouchVal = 1), this.onGround ? l && (this.bobAnimY -= 1.4 * n.crouchAnim * a) : this.y += n.crouchSpeed * a) : !t[8] && 0 < this.crouchVal && (this.crouchVal -= n.crouchSpeed * a, 0 >= this.crouchVal && (this.crouchVal = 0), this.onGround ? l && (this.bobAnimY += n.crouchAnim * a) : this.y -= n.crouchSpeed * a), this.crouchVal && (this.crouchVal = this.crouchVal.round(3)), e.updateHeight(this);
+            t[8] && 1 > this.crouchVal && !this.onLadder ? (this.crouchVal += n.crouchSpeed * a, 1 <= this.crouchVal && (this.crouchVal = 1), this.onGround ? l && (this.bobAnimY -= n.crouchAnim * a) : this.y += n.crouchSpeed * a) : !t[8] && 0 < this.crouchVal && (this.crouchVal -= n.crouchSpeed * a, 0 >= this.crouchVal && (this.crouchVal = 0), this.onGround ? l && (this.bobAnimY += n.crouchAnim * a) : this.y -= n.crouchSpeed * a), this.crouchVal && (this.crouchVal = this.crouchVal.round(3)), e.updateHeight(this);
             var h = this.onGround || this.onLadder,
                 u = a * (h ? n.playerSpeed * this.speed : n.airSpeed) * (this.aimVal ? 1 : n.aimSlow) * (r.mode.spdMlt && r.mode.spdMlt[this.team] || 1) * (this.crouchVal ? n.crouchSlow : 1) * this.weapon.spdMlt,
                 d = this.onLadder ? n.ladderDecel : this.onGround ? n.groundDecel : n.airDecel;
@@ -41734,7 +41737,7 @@
             } else this.y < s.y + s.height && s.y + s.height - this.y <= n.climbHeight && this.oldY < s.y + s.height && x ? (this.y += .3 * (s.y + s.height - this.y), this.onGround = !0) : this.oldY >= s.y + s.height ? (this.stepSrc = s.stepSrc, this.oldY > this.y && e.resetStep(this, o), this.y = s.y + s.height, this.yVel = 0, this.onGround = !0) : this.oldX - this.scale >= s.x + s.width - 1e-5 ? (this.x = s.x + s.width + this.scale, this.xVel = 0) : this.oldX + this.scale <= s.x - s.width + 1e-5 ? (this.x = s.x - s.width - this.scale, this.xVel = 0) : this.oldZ - this.scale >= s.z + s.length - 1e-5 ? (this.z = s.z + s.length + this.scale, this.zVel = 0) : this.oldZ + this.scale <= s.z - s.length + 1e-5 ? (this.z = s.z - s.length - this.scale, this.zVel = 0) : this.oldY + this.height <= s.y - s.height && (this.y = s.y - s.height - this.height, this.yVel = 0);
             if (!this.didJump && null != this.rampFix && Math.abs(this.y - this.rampFix) <= n.climbHeight ? !w && (this.y = this.rampFix, this.onGround = !0, this.yVel = 0, this.rampFix = null) : this.rampFix = null, this.onGround ? this.airTime = 0 : this.airTime += a, !o) {
                 var T = i.getDistance3D(this.oldX, this.oldY, this.oldZ, this.x, this.y, this.z);
-                if (this.isYou && (this.onLadder && (T *= 1.4), i.getDirection(this.oldX, this.oldZ, this.x, this.z), this.bobAnimZ += i.getDistance(this.oldX, this.oldZ, this.x, this.z) * n.bobMltZ, this.bobAnimY -= (this.oldY - this.y) * n.bobMltY, h && void 0 !== y ? (e.playerStep(this, T), this.leanAnimZ -= T * n.leanMltZ * (this.weapon.zLnM || 1) * Math.cos(y)) : this.stepVal *= Math.pow(n.stepPull, a), this.stepChase != this.stepVal && (this.stepChase += .18 * (this.stepVal - this.stepChase))), this.spreadPlus += T * n.spreadMove + Math.abs(this.oldY - this.y) * n.spreadFall, this.spreadPlus *= Math.pow(n.spreadRecover, a), this.spread = Math.max(this.weapon.minSpread || 0, (this.weapon.spread - this.weapon.spread * n.crouchSpread * this.crouchVal + this.recoilAnim * (this.weapon.spreadInc || 1) * n.spreadMlt + this.spreadPlus) * this.aimVal), t[9] && e.reload(this), 0 < this.reloadTimer) {
+                if (this.isYou && (this.onLadder && (T *= 1.4), i.getDirection(this.oldX, this.oldZ, this.x, this.z), this.bobAnimZ += i.getDistance(this.oldX, this.oldZ, this.x, this.z) * n.bobMltZ, this.bobAnimY -= (this.oldY - this.y) * n.bobMltY, h && void 0 !== y ? (e.playerStep(this, T), this.leanAnimZ -= T * n.leanMltZ * (this.weapon.zLnM || 1) * Math.cos(y)) : this.stepVal *= Math.pow(n.stepPull, a), this.stepChase != this.stepVal && (this.stepChase += .15 * (this.stepVal - this.stepChase))), this.spreadPlus += T * n.spreadMove + Math.abs(this.oldY - this.y) * n.spreadFall, this.spreadPlus *= Math.pow(n.spreadRecover, a), this.spread = Math.max(this.weapon.minSpread || 0, (this.weapon.spread - this.weapon.spread * n.crouchSpread * this.crouchVal + this.recoilAnim * (this.weapon.spreadInc || 1) * n.spreadMlt + this.spreadPlus) * this.aimVal), t[9] && e.reload(this), 0 < this.reloadTimer) {
                     var A = this.reloadTimer;
                     this.reloadTimer -= a, this.isYou && A >= this.weapon.reload / 2 && this.reloadTimer < this.weapon.reload / 2 && e.endReload(this.weapon), 0 >= this.reloadTimer && (this.reloadTimer = 0, this.didShoot = !1, this.ammos[this.weaponIndex] = this.weapon.ammo, e.updatePlayerAmmo(this))
                 }
@@ -41816,37 +41819,24 @@
                     s = 1 - .8 * i.crouchVal,
                     o = (1 - (1 - i.aimVal)) * c.animMult;
                 i.isYou || (o = 0);
-                var a = 1 - (i.weapon.newM ? 1 : .1) * (1 - i.aimVal),
-                    l = 1 - (i.weapon.recoilZM || .5) * (1 - i.aimVal),
-                    p = (1 - (i.weapon.newM ? 1 : .3) * (1 - i.aimVal)) * e.weaponLean,
-                    h = 1 - (i.weapon.jYMlt || 1) * (1 - i.aimVal),
-                    u = 1 - .45 * (1 - i.aimVal),
-                    d = .9 * i.bobAnimY * h * e.weaponLean,
-                    f = i.landBobY * (i.weapon.landBob || 1) * .9 * (1 - .85 * (1 - i.aimVal)) * e.weaponLean;
-                i.landBobYR != f && (i.landBobYR += .15 * (f - i.landBobYR));
-                var m = i.landBobY * (i.weapon.landBob || 1) * .08 * (1 - .2 * (1 - i.aimVal)),
-                    g = 1 - .5 * i.crouchVal,
-                    v = i.jumpRot * g * (1 - .9 * (1 - i.aimVal)) * e.weaponLean;
-                i.jumpRotM != v && (i.jumpRotM += .08 * (v - i.jumpRotM));
-                var y = i.jumpBobY * (i.weapon.jumpYM || 1) * o * g * e.weaponLean,
-                    x = 1 - .89 * (1 - i.aimVal),
-                    w = 1 - (i.weapon.aimRecMlt || 1) * (1 - i.aimVal),
-                    b = n ? .05 : c.stepAnim,
-                    M = Math.sin(i.stepVal) * b,
-                    _ = Math.cos(2 * i.stepVal) / 2 * b,
-                    S = -Math.sin(i.stepChase) * b,
-                    E = -Math.cos(2 * i.stepChase) / 2 * b,
-                    T = i.stepTweenV * (1 - (1 - i.aimVal)) * e.weaponLean,
-                    A = t.config.thirdPerson ? 0 : 1 - i.aimVal,
-                    L = .5 * (.5 >= A ? A : .5 - (A - .5)),
-                    R = i.swapTime / i.weapon.swapTime,
-                    k = i.weapon.xOff,
-                    P = 0;
-                0 < i.reloadTimer && (P = .5 < (P = 1 - i.reloadTimer / i.weapon.reload) ? .5 - (P - .5) : P), e.moveMesh(i.objInstances, i.x, i.y + (i.isYou && !t.config.thirdPerson ? 0 : Math.abs(3.5 * M)), i.z), e.rotateMesh(i.objInstances, i.xDire + (i.isYou ? t.config.thirdPerson ? .5 * -M : 0 : 2 * -M)), _ -= _ * (i.crouchVal * c.crouchAnimMlt), M -= M * (i.crouchVal * c.crouchAnimMlt);
-                for (var C = 0; C < i.legMeshes.length; ++C) i.legMeshes[C].rotation.x = M * (1 == C || 3 == C ? 1 : -1) * 7 + (1 < C ? -.6 : 0);
-                for (C = 0; C < i.armMeshes.length; ++C) i.armMeshes[C].position.z = M * (C ? -1 : 1) * 12;
-                var I = t.config.thirdPerson ? .4 : 1;
-                e.rotateMesh(i.upperBody, P * (-1 * I), -.2 * d + +m + P * (-2.8 * I) + i.yDire * (i.isYou && !t.config.thirdPerson ? 1 : .5) + (-Math.PI / 4 * R + i.recoilAnimY * c.recoilMlt)), e.moveMesh(i.upperBody, 0, i.recoilAnimY * (i.weapon.recoilYM || .3) * o + (i.height - c.cameraHeight - c.legHeight), 0), e.rotateMesh(i.weaponMeshes[i.weaponIndex], i.inspectX + .3 * i.jumpRotM + i.recoilX * x + i.leanAnimX * u * e.weaponLean * (i.weapon.leanMlt || 1) + (.6 * S * o * s + .2 * i.leanAnimZ) * r, (i.weapon.yRot || 0) + .065 * -i.landBobYR + i.recoilTweenY * w + 1.5 * i.leanAnimY * u * e.weaponLean * (i.weapon.leanMlt || 1) + (i.recoilAnim * ((i.weapon.recoilY || 0) * a) - .7 * E) * r, .25 * -i.landBobYR * o + v * o + T + L + i.recoilX * x + i.leanAnimZ * p + -i.inspectX * (i.weapon.inspectR || 0) + ((i.weapon.cLean || 0) * i.crouchVal * o + .5 * S) * r), e.moveMesh(i.weaponMeshes[i.weaponIndex], -i.jumpRotM * o * 1.3 + -i.inspectX * (i.weapon.inspectM || 0) + (.35 * i.leanAnimZ - (i.weapon.cRot || 0) * i.crouchVal * o + 1 * M * s * o) * i.aimVal * r + k - (k - i.weapon.xOrg) * A, i.recoilTweenYM * w + y + .9 * f - 1.5 * d + (.85 * _ - (i.weapon.cDrop || 0) * i.crouchVal * o) * r + i.weapon.yOff - (i.weapon.yOff - i.weapon.yOrg) * A, i.weapon.zOff - (i.weapon.zOff - i.weapon.zOrg) * A + i.bobAnimZ * r + i.recoilAnim * (i.weapon.recoilZ || 0) * l)
+                var a = 1 - .3 * (1 - i.aimVal),
+                    l = 1 - (i.weapon.newM ? .4 : .1) * (1 - i.aimVal),
+                    p = 1 - (i.weapon.newM ? .7 : .3) * (1 - i.aimVal),
+                    h = n ? .05 : c.stepAnim,
+                    u = Math.sin(i.stepVal) * h,
+                    d = Math.cos(2 * i.stepVal) / 2 * h,
+                    f = -Math.sin(i.stepChase) * h,
+                    m = -Math.cos(2 * i.stepChase) / 2 * h,
+                    g = t.config.thirdPerson ? 0 : 1 - i.aimVal,
+                    v = .5 * (.5 >= g ? g : .5 - (g - .5)),
+                    y = i.swapTime / i.weapon.swapTime,
+                    x = i.weapon.xOff,
+                    w = 0;
+                0 < i.reloadTimer && (w = .5 < (w = 1 - i.reloadTimer / i.weapon.reload) ? .5 - (w - .5) : w), e.moveMesh(i.objInstances, i.x, i.y + (i.isYou && !t.config.thirdPerson ? 0 : Math.abs(3.5 * u)), i.z), e.rotateMesh(i.objInstances, i.xDire + (i.isYou ? t.config.thirdPerson ? .5 * -u : 0 : 2 * -u)), d -= d * (i.crouchVal * c.crouchAnimMlt), u -= u * (i.crouchVal * c.crouchAnimMlt);
+                for (var b = 0; b < i.legMeshes.length; ++b) i.legMeshes[b].rotation.x = u * (1 == b || 3 == b ? 1 : -1) * 7 + (1 < b ? -.6 : 0);
+                for (b = 0; b < i.armMeshes.length; ++b) i.armMeshes[b].position.z = u * (b ? -1 : 1) * 12;
+                var M = t.config.thirdPerson ? .4 : 1;
+                e.rotateMesh(i.upperBody, w * (-1 * M), w * (-2.8 * M) + i.yDire * (i.isYou && !t.config.thirdPerson ? 1 : .5) + (-Math.PI / 4 * y + .4 * i.landAnim * a + i.recoilAnimY * c.recoilMlt - i.bobAnimY * r)), e.moveMesh(i.upperBody, 0, i.height - c.cameraHeight - c.legHeight, 0), e.rotateMesh(i.weaponMeshes[i.weaponIndex], i.inspectX + (i.leanAnimX * (i.weapon.leanMlt || 1) + .6 * f * s + .2 * i.leanAnimZ) * r, .1 * i.landAnim * a + (i.recoilAnim * ((i.weapon.recoilY || 0) * l) + 2.7 * i.leanAnimY - .7 * m) * r, v + i.leanAnimZ * p + -i.inspectX * (i.weapon.inspectR || 0) + ((i.weapon.cLean || 0) * i.crouchVal * o + .5 * f) * r), e.moveMesh(i.weaponMeshes[i.weaponIndex], -i.inspectX * (i.weapon.inspectM || 0) + (.35 * i.leanAnimZ - (i.weapon.cRot || 0) * i.crouchVal * o + 1 * u * s * o) * i.aimVal * r + x - (x - i.weapon.xOrg) * g, .2 * i.landAnim * a + (1.2 * d + i.bobAnimY - (i.weapon.cDrop || 0) * i.crouchVal * o) * r + i.weapon.yOff - (i.weapon.yOff - i.weapon.yOrg) * g, i.weapon.zOff - (i.weapon.zOff - i.weapon.zOrg) * g + i.bobAnimZ * r + i.recoilAnim * (i.weapon.recoilZ || 0) * l)
             }
         }, this.updateHeight = function(i) {
             var n = c.crouchDst * i.crouchVal;
@@ -41895,7 +41885,7 @@
                         glowText: f,
                         noGreen: !0,
                         uv2: !0,
-                        ao: r && !h.noAo,
+                        ao: r,
                         shininess: 40,
                         transparent: h.seeThrough,
                         emissive: h.transp || f ? 16777215 : null
@@ -41942,24 +41932,15 @@
         }, this.playerStep = function(e, i, n) {
             if (i && (!e.isYou && e.crouchVal && (i *= 1.6), e.stepVal += i * c.stepMlt * e.stepDir, e.stepVal >= Math.PI / 2 && 1 == e.stepDir || e.stepVal <= -Math.PI / 2 && -1 == e.stepDir)) {
                 if (s && !n) {
-                    var r = a.randFloat(.1, .22) * (1 > e.crouchVal ? 1 : e.isYou ? .5 : 0),
+                    var r = .15 * (1 > e.crouchVal ? 1 : e.isYou ? .5 : 0),
                         o = (1 > e.crouchVal ? 1 : .8) * a.randFloat(.8, 1.2),
                         l = e.stepSrc ? "_" + e.stepSrc : "";
-                    e.isYou ? s.play("step_" + this.getStepSound() + l, r, !1, o) : r && t.playerSound("step_" + a.randInt(0, 2) + l, 0, r, e, o, 10), e.isYou && (e.stepTween && e.stepTween.stop(), e.stepTween = new TWEEN.Tween(e).to({
-                        stepTweenV: [.075 * -e.stepDir, 0]
-                    }, 300).easing(TWEEN.Easing.Linear.None).start())
+                    e.isYou ? s.play("step_" + this.getStepSound() + l, r, !1, o) : r && t.playerSound("step_" + a.randInt(0, 2) + l, 0, r, e, o, 10)
                 }
                 e.stepDir *= -1
             }
         }, this.resetStep = function(e, i) {
-            !i && e.isYou && e.yVel && (e.jumpTween && e.jumpTween.stop(), e.landTween && e.landTween.stop(), e.landTween = new TWEEN.Tween(e).to({
-                landBobY: 6 * e.yVel,
-                jumpBobY: 0
-            }, 100).easing(TWEEN.Easing.Linear.None).onComplete(function() {
-                e.landTween = new TWEEN.Tween(e).to({
-                    landBobY: 0
-                }, 1100).easing(TWEEN.Easing.Elastic.Out).start()
-            }).start()), s && !i && e.yVel && (e.stepSrc && e.stepSrc, s.play("step_" + this.getStepSound(), .5, !1, a.randFloat(.9, 1.2)), e.isYou && e.crouchVal && t.config.canSlide && e.canSlide && s.play("slide_0", .35, !1, a.randFloat(.9, 1.1))), t.config.canSlide && e.crouchVal && e.canSlide && (e.canSlide = !1, e.slideTimer = 350 * e.crouchVal, e.xVel *= 1.2, e.zVel *= 1.2)
+            i || (e.landVelocity += e.yVel), s && !i && (e.stepSrc && e.stepSrc, s.play("step_" + this.getStepSound(), .5, !1, a.randFloat(.9, 1.2)), e.isYou && e.crouchVal && t.config.canSlide && e.canSlide && s.play("slide_0", .25, !1, a.randFloat(.9, 1.1))), t.config.canSlide && e.crouchVal && e.canSlide && (e.canSlide = !1, e.slideTimer = 350 * e.crouchVal, e.xVel *= 1.2, e.zVel *= 1.2)
         }, this.tryJump = function(e, i) {
             t.config && t.config.autoJump && i ? this.jump(e) : (e.didJump && !i && (e.didJump = !1), !e.didJump && i && this.jump(e))
         }, this.jump = function(e) {
@@ -41968,18 +41949,7 @@
                 n = c.jumpPush * (t.config ? t.config.jumpMlt : 1);
             e.yVel += (i - i * (c.crouchJump * e.crouchVal)) * e.weapon.spdMlt * (e.aimVal ? 1 : c.aimJumpSlow);
             var r = a.getDistance(0, 0, e.xVel, e.zVel);
-            if (e.xVel -= n * r * Math.sin(e.xDire), e.zVel -= n * r * Math.cos(e.xDire), s && !e.recon && e.isYou) {
-                e.landTween && e.landTween.stop(), e.landTween = new TWEEN.Tween(e).to({
-                    landBobY: 0
-                }, 100).easing(TWEEN.Easing.Linear.None).start(), e.jumpTween && e.jumpTween.stop(), e.jumpTween = new TWEEN.Tween(e).to({
-                    jumpBobY: .22
-                }, 500).easing(TWEEN.Easing.Back.Out).start();
-                var o = a.randFloat(.12, .15);
-                new TWEEN.Tween(e).to({
-                    jumpRot: [o, 0]
-                }, 900).easing(TWEEN.Easing.Back.Out).start();
-                s.play("jump_" + a.randInt(0, 1), .04, !1, a.randFloat(.9, 1))
-            }
+            e.xVel -= n * r * Math.sin(e.xDire), e.zVel -= n * r * Math.cos(e.xDire), s && !e.recon && s.play("jump_" + a.randInt(0, 1), .04, !1, a.randFloat(.9, 1))
         }, this.updateAim = function(t, i) {
             e.zoom(1 + (t.weapon.zoom - 1) * i)
         }, this.toggleAim = function(i, n) {
@@ -42003,90 +41973,82 @@
             }
             if (i.recoilForce += i.weapon.recoil * (1 - .3 * i.crouchVal), i.isYou) {
                 var r = a.randInt(0, 1) ? -i.weapon.recoilR : i.weapon.recoilR;
-                i.recoilX += r, i.recoilZ += r, i.recoilTween && i.recoilTween.stop();
-                var p = i.weapon.recoilAnim && i.weapon.recoilAnim.time || i.weapon.rate;
-                i.recoilTween = new TWEEN.Tween(i).to(i.weapon.recoilAnim || {}, .15 * p).easing(TWEEN.Easing.Linear.None).onComplete(function() {
-                    i.recoilTween = new TWEEN.Tween(i).to({
-                        recoilTweenY: 0,
-                        recoilTweenYM: 0,
-                        recoilTweenZ: 0
-                    }, .95 * p).easing(TWEEN.Easing.Back.Out).start()
-                }).start(), this.cancelInspect(i)
+                i.leanAnimZ += r, i.leanAnimX += r, this.cancelInspect(i)
             }
             if (i.isYou && !t.hideWeapon) {
-                var u = i.weaponMeshes[i.weaponIndex],
-                    d = 0 == i.aimVal && i.weapon.scope;
+                var p = i.weaponMeshes[i.weaponIndex],
+                    u = 0 == i.aimVal && i.weapon.scope;
                 if (0 == e.useDepthMap || "0" == e.useDepthMap) {
-                    for (var f = 0; f < u.muzzles.length; ++f) u.muzzles[f].visible = !0, o.setMaterial(u.muzzles[f], i.weapon.muzID || 2, 1, !0), u.muzzles[f].init(f ? -2 * i.weapon.xOff : 0, i.weapon.muzOffY || 0, -i.weapon.muzOff, 0, 0, 0, 4 * (i.weapon.muzMlt || 1), 1);
-                    if (!d)(z = i.weaponMeshes[i.weaponIndex].muzzles[0].getWorldPosition().clone()).project(e.camera), z.x = (z.x + 1) / 2, z.y = (z.y + 1) / 2, e.flash(z.x, z.y)
+                    for (var d = 0; d < p.muzzles.length; ++d) p.muzzles[d].visible = !0, o.setMaterial(p.muzzles[d], i.weapon.muzID || 2, 1, !0), p.muzzles[d].init(d ? -2 * i.weapon.xOff : 0, i.weapon.muzOffY || 0, -i.weapon.muzOff, 0, 0, 0, 4 * (i.weapon.muzMlt || 1), 1);
+                    if (!u)(N = i.weaponMeshes[i.weaponIndex].muzzles[0].getWorldPosition().clone()).project(e.camera), N.x = (N.x + 1) / 2, N.y = (N.y + 1) / 2, e.flash(N.x, N.y)
                 }
                 if (!i.weapon.nCase)
-                    for (f = 0; f < i.weaponMeshes[i.weaponIndex].casings.length; ++f) z = i.weaponMeshes[i.weaponIndex].casings[f].getWorldPosition(), s && s.play3D("case_" + a.randInt(0, 1), z.x, z.y, z.z, .65, a.randFloat(.8, 1.3)), d || o.physObj(z.x, z.y, z.z, i.xDire - Math.PI / 2 * (f ? -1 : 1), Math.PI / 5 * a.randFloat(.4, 1.2), 25, i.weapon.caseInd || 1, i)
+                    for (d = 0; d < i.weaponMeshes[i.weaponIndex].casings.length; ++d) N = i.weaponMeshes[i.weaponIndex].casings[d].getWorldPosition(), s && s.play3D("case_" + a.randInt(0, 1), N.x, N.y, N.z, .65, a.randFloat(.8, 1.3)), u || o.physObj(N.x, N.y, N.z, i.xDire - Math.PI / 2 * (d ? -1 : 1), Math.PI / 5 * a.randFloat(.4, 1.2), 25, i.weapon.caseInd || 1, i)
             }
             if (null == i.weapon.projectile)
-                for (var g = 0; g < (i.weapon.shots || 1); ++g) {
-                    var v = (i.spread + (i.weapon.innac || 0)) * c.spreadAdj,
-                        y = i.xDire + a.randFloat(-v, v),
-                        x = i.yDire + i.recoilAnimY * c.recoilMlt + a.randFloat(-v, v);
+                for (var f = 0; f < (i.weapon.shots || 1); ++f) {
+                    var g = (i.spread + (i.weapon.innac || 0)) * c.spreadAdj,
+                        v = i.xDire + a.randFloat(-g, g),
+                        y = i.yDire + i.recoilAnimY * c.recoilMlt + a.randFloat(-g, g) + i.landAnim * c.landOff;
                     m.length = 0;
-                    for (var w = 0, b = 1 / (i.weapon.range * Math.sin(y + Math.PI) * Math.cos(x)), M = 1 / (i.weapon.range * Math.cos(y + Math.PI) * Math.cos(x)), _ = 1 / (i.weapon.range * Math.sin(x)), S = 0; S < t.map.manager.objects.length; ++S)(h = t.map.manager.objects[S]).active && !h.noShoot && ((w = a.lineInRect(i.x, i.z, i.y + i.height - c.cameraHeight, b, M, _, h.x - h.width, h.z - h.length, h.y - h.height, h.x + h.width, h.z + h.length, h.y + h.height)) && 1 >= w && m.push({
+                    for (var x = 0, w = 1 / (i.weapon.range * Math.sin(v + Math.PI) * Math.cos(y)), b = 1 / (i.weapon.range * Math.cos(v + Math.PI) * Math.cos(y)), M = 1 / (i.weapon.range * Math.sin(y)), _ = 0; _ < t.map.manager.objects.length; ++_)(h = t.map.manager.objects[_]).active && !h.noShoot && ((x = a.lineInRect(i.x, i.z, i.y + i.height - c.cameraHeight, w, b, M, h.x - h.width, h.z - h.length, h.y - h.height, h.x + h.width, h.z + h.length, h.y + h.height)) && 1 >= x && m.push({
                         obj: h,
-                        dst: w
+                        dst: x
                     }));
                     if (l)
-                        for (S = 0; S < this.list.length; ++S) this.list[S].active && i != this.list[S] && (!i.team || i.team != this.list[S].team) && ((h = this.fetchState(this.list[S], i.ping)) && ((w = a.lineInRect(i.x, i.z, i.y + i.height - c.cameraHeight, b, M, _, h.x - this.list[S].scale - c.hitBoxPad, h.z - this.list[S].scale - c.hitBoxPad, h.y, h.x + this.list[S].scale + c.hitBoxPad, h.z + this.list[S].scale + c.hitBoxPad, h.y + this.list[S].height + c.hitBoxPad)) && 1 >= w && m.push({
+                        for (_ = 0; _ < this.list.length; ++_) this.list[_].active && i != this.list[_] && (!i.team || i.team != this.list[_].team) && ((h = this.fetchState(this.list[_], i.ping)) && ((x = a.lineInRect(i.x, i.z, i.y + i.height - c.cameraHeight, w, b, M, h.x - this.list[_].scale - c.hitBoxPad, h.z - this.list[_].scale - c.hitBoxPad, h.y, h.x + this.list[_].scale + c.hitBoxPad, h.z + this.list[_].scale + c.hitBoxPad, h.y + this.list[_].height + c.hitBoxPad)) && 1 >= x && m.push({
                             player: !0,
-                            obj: this.list[S],
-                            dst: w
+                            obj: this.list[_],
+                            dst: x
                         })));
-                    var E = i.weapon.range;
+                    var S = i.weapon.range;
                     if (m.length) {
                         m.sort(a.orderByDst);
-                        var T = i.weapon.dmg;
-                        for (S = 0; S < m.length && (h = m[S], E = i.weapon.range * h.dst, l); ++S) {
-                            var A = i.weapon.dropStart || 0,
-                                L = Math.min(1, 1 - (1 - h.dst) * i.weapon.range / (i.weapon.range - A)),
-                                R = T - i.weapon.dmgDrop * L,
+                        var E = i.weapon.dmg;
+                        for (_ = 0; _ < m.length && (h = m[_], S = i.weapon.range * h.dst, l); ++_) {
+                            var T = i.weapon.dropStart || 0,
+                                A = Math.min(1, 1 - (1 - h.dst) * i.weapon.range / (i.weapon.range - T)),
+                                L = E - i.weapon.dmgDrop * A,
                                 k = !1,
-                                P = !1;
+                                R = !1;
                             if (h.player) {
-                                var C = i.y + i.height - c.cameraHeight + E * Math.sin(x);
-                                k = h.obj.y + h.obj.height - C < c.headScale, P = h.obj.y + c.legHeight > C, R *= k && !i.weapon.noHeadShot ? 1.5 : 1, R *= P ? .5 : 1
+                                var P = i.y + i.height - c.cameraHeight + S * Math.sin(y);
+                                k = h.obj.y + h.obj.height - P < c.headScale, R = h.obj.y + c.legHeight > P, L *= k && !i.weapon.noHeadShot ? 1.5 : 1, L *= R ? .5 : 1
                             }
-                            if (l && !t.waitTimers && h.obj.health && !h.player && (h.obj.health -= R, 0 >= h.obj.health && (h.obj.active = !1, h.obj.health = 0, t.destObjs.push(h.obj.uid), l.broadcast("game" + t.sid, "do", h.obj.uid))), h.player || h.obj.dummy) {
-                                if (this.changeHealth(h.obj, i, R)) {
-                                    var I = {
+                            if (l && !t.waitTimers && h.obj.health && !h.player && (h.obj.health -= L, 0 >= h.obj.health && (h.obj.active = !1, h.obj.health = 0, t.destObjs.push(h.obj.uid), l.broadcast("game" + t.sid, "do", h.obj.uid))), h.player || h.obj.dummy) {
+                                if (this.changeHealth(h.obj, i, L)) {
+                                    var C = {
                                         dst: h.dst,
                                         headShot: k
                                     };
-                                    this.kill(h.obj, i, I)
+                                    this.kill(h.obj, i, C)
                                 }
-                                T -= null == i.weapon.pierce ? T : i.weapon.dmg * c.materialDens.flesh * i.weapon.pierce
+                                E -= null == i.weapon.pierce ? E : i.weapon.dmg * c.materialDens.flesh * i.weapon.pierce
                             } else {
                                 if (!h.obj.penetrable) break;
-                                T -= null == i.weapon.pierce ? T : i.weapon.dmg * c.materialDens.default * i.weapon.pierce
+                                E -= null == i.weapon.pierce ? E : i.weapon.dmg * c.materialDens.default * i.weapon.pierce
                             }
-                            if (0 >= T) break
+                            if (0 >= E) break
                         }
                     }
-                    E -= .12;
-                    var O = i.x + E * Math.sin(y + Math.PI) * Math.cos(x),
-                        D = (C = i.y + i.height - c.cameraHeight + E * Math.sin(x), i.z + E * Math.cos(y + Math.PI) * Math.cos(x)),
-                        B = 0,
-                        N = 0;
-                    if (m.length && (C >= h.obj.y + h.obj.height ? N = Math.PI / 2 : C <= h.obj.y - h.obj.height ? N = -Math.PI / 2 : O <= h.obj.x - h.obj.width ? B = -Math.PI / 2 : O >= h.obj.x + h.obj.width ? B = Math.PI / 2 : D <= h.obj.z - h.obj.length && (B = Math.PI), !l && o.effect(O, C, D, B, N, 0)), l)
-                        for (S = 0; S < this.list.length; ++S)(this.list[S].active || this.list[S].spectating) && this.list[S] != i && (m.length && !h.player ? l.send(this.list[S].id, "9", i.sid, Math.round(O), Math.round(C), Math.round(D), B.round(1), N.round(1)) : l.send(this.list[S].id, "9", i.sid, Math.round(O), Math.round(C), Math.round(D)));
-                    if (i.isYou && E >= c.tracerMinDst) {
-                        var z, U = a.randInt(0, i.weaponMeshes[i.weaponIndex].muzzles.length - 1),
-                            F = (z = i.weaponMeshes[i.weaponIndex].muzzles[U].getWorldPosition()).x,
-                            H = z.y,
-                            j = z.z;
-                        a.getDistance3D(F, H, j, O, C, D), B = a.getDirection(j, F, D, O), N = a.getDirection(a.getDistance(F, j, O, D), C, 0, H);
-                        o.physObj(F, H, j, B, N, Math.min(E, c.tracerMaxDst), 0, i)
+                    S -= .12;
+                    var I = i.x + S * Math.sin(v + Math.PI) * Math.cos(y),
+                        O = (P = i.y + i.height - c.cameraHeight + S * Math.sin(y), i.z + S * Math.cos(v + Math.PI) * Math.cos(y)),
+                        D = 0,
+                        B = 0;
+                    if (m.length && (P >= h.obj.y + h.obj.height ? B = Math.PI / 2 : P <= h.obj.y - h.obj.height ? B = -Math.PI / 2 : I <= h.obj.x - h.obj.width ? D = -Math.PI / 2 : I >= h.obj.x + h.obj.width ? D = Math.PI / 2 : O <= h.obj.z - h.obj.length && (D = Math.PI), !l && o.effect(I, P, O, D, B, 0)), l && (!m.length || !h.player))
+                        for (_ = 0; _ < this.list.length; ++_)(this.list[_].active || this.list[_].spectating) && this.list[_] != i && (m.length ? l.send(this.list[_].id, "9", i.sid, Math.round(I), Math.round(P), Math.round(O), D.round(1), B.round(1)) : l.send(this.list[_].id, "9", i.sid, Math.round(I), Math.round(P), Math.round(O)));
+                    if (i.isYou && S >= c.tracerMinDst) {
+                        var N, z = a.randInt(0, i.weaponMeshes[i.weaponIndex].muzzles.length - 1),
+                            U = (N = i.weaponMeshes[i.weaponIndex].muzzles[z].getWorldPosition()).x,
+                            F = N.y,
+                            H = N.z;
+                        a.getDistance3D(U, F, H, I, P, O), D = a.getDirection(H, U, O, I), B = a.getDirection(a.getDistance(U, H, I, O), P, 0, F);
+                        o.physObj(U, F, H, D, B, Math.min(S, c.tracerMaxDst), 0, i)
                     }
                 } else if (l) {
-                    v = (i.spread + (i.weapon.innac || 0)) * c.spreadAdj, y = i.xDire + a.randFloat(-v, v), x = i.yDire + i.recoilAnimY * c.recoilMlt + a.randFloat(-v, v);
-                    t.projectiles.init(i.x, i.y + i.height - c.cameraHeight, i.z, y, x, i.weapon.projectile, i)
+                    g = (i.spread + (i.weapon.innac || 0)) * c.spreadAdj, v = i.xDire + a.randFloat(-g, g), y = i.yDire + i.recoilAnimY * c.recoilMlt + a.randFloat(-g, g);
+                    t.projectiles.init(i.x, i.y + i.height - c.cameraHeight, i.z, v, y, i.weapon.projectile, i)
                 }
         }, this.spray = function(e) {
             if (t.now - e.lastSpray >= c.sprayTimer) {
@@ -42130,9 +42092,9 @@
         }, this.score = function(e, i, n) {
             l && (e.score += i, l.send(e.id, "5", i), this.syncLeaders(), t.mode.teams && e.team && t.teams && (!n || !t.mode.objective) && (t.teams[e.team] ? t.teams[e.team] += i : t.teams[e.team] = i, l.broadcast("game" + t.sid, "ts", e.team, t.teams[e.team])))
         }, this.tickPlayer = function(t, e) {
-            t.playTime += e, 0 < t.hitTimer && (t.hitTimer -= e), t.ticker -= e, 0 >= t.ticker && (t.ticker = 500, 0 >= t.hitTimer && !t.challMode && this.changeHealth(t, null, -t.maxHealth * (t.regen || c.regenVal)))
+            t.playTime += e, 0 < t.hitTimer && (t.hitTimer -= e), t.ticker -= e, 0 >= t.ticker && (t.ticker = 500, 0 >= t.hitTimer && !t.challMode && this.changeHealth(t, null, -t.maxHealth * c.regenVal))
         }, this.changeHealth = function(e, i, n, r) {
-            if ((!t.waitTimers || t.waitTimers[0].canDMG) && !(0 > n && e.health == e.maxHealth) && (i && i.isHacker && (n *= .1), i && i.lastHack && 2e3 >= t.now - i.lastHack && (n *= .1), !(!r && e.team && i && e.team == i.team && 0 < n))) {
+            if ((!t.waitTimers || t.waitTimers[0].canDMG) && !(0 > n && e.health == e.maxHealth) && (i && i.lastHack && 2e3 >= t.now - i.lastHack && (n *= .1), !(!r && e.team && i && e.team == i.team && 0 < n))) {
                 if (i && i != e && l.send(i.id, "4"), e.dummy) return !0;
                 0 < n && (e.hitTimer = t.mode.regenDelay || c.regenDelay), e.health -= n, e.health = Math.max(Math.min(e.maxHealth, e.health), 0), i ? (l.send(e.id, "h", Math.ceil(e.health), null, Math.round(i.x), Math.round(i.z)), i != e && (e.dmgReceived[i.id] ? (e.dmgReceived[i.id].val += n, e.dmgReceived[i.id].time = t.now) : e.dmgReceived[i.id] = {
                     time: t.now,
@@ -42225,7 +42187,7 @@
         for (var t = [], e = 0; e < L.length; e++) document.getElementById("gameMap" + e).checked && t.push(e);
         if (0 != t.length || qt || "" != rawMapData.value) {
             var i = [];
-            for (e = 0; e < R.length; e++) document.getElementById("gameMode" + e).checked && i.push(e);
+            for (e = 0; e < k.length; e++) document.getElementById("gameMode" + e).checked && i.push(e);
             if (0 != i.length) {
                 var r = [];
                 for (e = 0; e < w.classes.length; e++) document.getElementById("gameClass" + e).checked && r.push(e);
@@ -42262,8 +42224,8 @@
     w = new w(!1, 0, null, f, m, g);
     var b, M, _, S, E, T, A = new(i(93))(f, u, v, d, w, n, x),
         L = i(42).maps,
-        R = i(42).modes,
-        k = i(94),
+        k = i(42).modes,
+        R = i(94),
         P = i(55).Player,
         C = new(i(95)),
         I = new u.Vector3,
@@ -42330,14 +42292,14 @@
         ot = t
     }, window.enterGame = function() {
         if (w.singlePlayer && !it) {
-            Re("0:00");
+            ke("0:00");
             var t = w.getSpawnPoint(null, !0);
             Ue([x.socketId, 1, t.x, t.y, t.z, "TEST", Pt, null]), it = !0, ei([1, "TEST", 0, 0, 0, 0]), v.toggleMenu(!1)
         } else if (x.connected && (!it || window.spectating && !nt)) {
             it = !0, window.idleTimer = 0, v.toggleMenu(!1), instructions.innerHTML = "LOADING...", window.loading = !0;
             var e = parseInt(Pt),
                 i = w.classes[e].loadout,
-                n = [null == kt[i[0]] ? -1 : kt[i[0]], null == kt[i[1]] ? -1 : kt[i[1]]];
+                n = [null == Rt[i[0]] ? -1 : Rt[i[0]], null == Rt[i[1]] ? -1 : Rt[i[1]]];
             x.send("etrg", [e, parseInt(De), n, parseInt(Lt), parseInt(At), parseInt(Ct), nt ? 1 : 0, ot ? 1 : 0])
         }
     }, window.addEventListener("resize", at), at(), window.toggleAd = function() {};
@@ -42670,7 +42632,7 @@
             set val(t) {},
             html: function() {
                 var t = "<select onchange='setSetting(23, this.value)' style='float:right'>";
-                for (var e of ki) t += "<option value='" + e + "' " + (e == xt[23].val ? "selected" : "") + ">", t += n.regionNames[e], t += "</option>";
+                for (var e of Ri) t += "<option value='" + e + "' " + (e == xt[23].val ? "selected" : "") + ">", t += n.regionNames[e], t += "</option>";
                 return t += "</select>"
             },
             set: function(t) {
@@ -42704,7 +42666,7 @@
     }
 
     function Tt(t, e, i, r, s) {
-        t ? St(t) : (M = new k(e, i, null, n), saveVal("krunker_id", e), saveVal("krunker_username", i), Mt(r), s && (saveVal("krunker_token", s), loginToken = s), updateWindow(null, !0))
+        t ? St(t) : (M = new R(e, i, null, n), saveVal("krunker_id", e), saveVal("krunker_username", i), Mt(r), s && (saveVal("krunker_token", s), loginToken = s), updateWindow(null, !0))
     }
     window.changeCont = function(t, e) {
         e || showWindow(7, !0), 3 >= t ? A.inputChanger = t : 4 == t ? A.inputChanger = "jumpKey" : 5 == t ? A.inputChanger = "crouchKey" : 6 == t ? A.inputChanger = "swapKeyD" : 7 == t ? A.inputChanger = "swapKeyU" : 8 == t ? A.inputChanger = "reloadKey" : 9 == t ? A.inputChanger = "sprayKey" : 10 == t ? A.inputChanger = "aimKey" : 11 == t ? A.inputChanger = "chatKey" : 12 == t ? A.inputChanger = "voiceKey" : 13 == t ? A.inputChanger = "recordKey" : 14 == t && (A.inputChanger = "inspKey"), document.getElementById("cont" + t).innerHTML = "Press any Key"
@@ -42713,12 +42675,12 @@
     }, window.loginAcc = function() {
         Et(1, [accName.value, accPass.value, null])
     }, window.logoutAcc = function() {
-        Et(-1), St(), s("krunker_id"), s("krunker_username"), s("krunker_token"), s("skins"), s("hatIndex"), s("backIndex"), Lt = -1, At = -1, kt = {}, selectSecondary(2), windows[12].clanData = null, loginToken = null, M = null, Mt(), showWindow(5), Ft()
+        Et(-1), St(), s("krunker_id"), s("krunker_username"), s("krunker_token"), s("skins"), s("hatIndex"), s("backIndex"), Lt = -1, At = -1, Rt = {}, selectSecondary(2), windows[12].clanData = null, loginToken = null, M = null, Mt(), showWindow(5), Ft()
     };
     var At = getSavedVal("backIndex") || -1,
         Lt = getSavedVal("hatIndex") || -1,
-        Rt = getSavedVal("skins"),
-        kt = Rt ? JSON.parse(Rt) : {},
+        kt = getSavedVal("skins"),
+        Rt = kt ? JSON.parse(kt) : {},
         Pt = getSavedVal("classindex") || 0,
         Ct = getSavedVal("secondaryInd") || 2,
         It = 0;
@@ -42733,7 +42695,7 @@
     }, window.skinSelector = function(t) {
         It = t, Ft(), showWindow(15)
     }, window.selectSkin = function(t, e) {
-        _ = w.store.skins[t], kt[e] = _ ? t : void 0, saveVal("skins", JSON.stringify(kt)), Ft(), showWindow(3)
+        _ = w.store.skins[t], Rt[e] = _ ? t : void 0, saveVal("skins", JSON.stringify(Rt)), Ft(), showWindow(3)
     };
     var Ot, Dt, Bt = 660,
         Nt = 350,
@@ -42750,8 +42712,8 @@
             i && (i += " - ");
             var n = "inherit",
                 r = w.weapons[t].name;
-            if (null != kt[t]) {
-                var s = w.store.skins[kt[t]];
+            if (null != Rt[t]) {
+                var s = w.store.skins[Rt[t]];
                 s && (n = w.store.rarities[s.rarity].color, r = s.name)
             }
             i += "<span style='color:" + (e ? n : "inherit") + "'>" + r + "</span>"
@@ -42763,7 +42725,7 @@
         e.secondary && t(Ct, !1), menuClassSubtext.innerHTML = i, (Ot = new u.Scene).add(new u.AmbientLight(9937064));
         var s = new u.DirectionalLight(15923452, .5);
         s.position.set(10, 17, -10), Ot.add(s);
-        var o = [null == kt[e.loadout[0]] ? -1 : kt[e.loadout[0]], null == kt[e.loadout[1]] ? -1 : kt[e.loadout[1]]];
+        var o = [null == Rt[e.loadout[0]] ? -1 : Rt[e.loadout[0]], null == Rt[e.loadout[1]] ? -1 : Rt[e.loadout[1]]];
         (Dt = new P(-1, this, d, n, w)).sid = -1, Dt.init(0, 0, 0, "preview", !1), Dt.skins = o, Dt.hatIndex = Lt, Dt.backIndex = At, Dt.secIndex = Ct, Dt.setClass(w, Pt, Ct, !0), w.players.swapWeapon(Dt, 0, !0), Ot.add(w.players.generateMeshes(Dt, !1)), Dt.swapTime = 0, Dt.weaponMeshes[0].visible = !0, zt.lookAt(new u.Vector3(0, .8 * n.playerHeight, 0))
     }
 
@@ -42882,7 +42844,7 @@
                 r = t.secondary ? "#2196F3" : "rgba(0,0,0,0.3)",
                 s = "rgba(0,0,0,0.3)",
                 o = s;
-            return M && (null != kt[t.loadout[0]] && ((e = w.store.skins[kt[t.loadout[0]]]) && (i = w.store.rarities[e.rarity].color, e = e.name)), t.loadout[1] && null != kt[t.loadout[1]] && ((n = w.store.skins[kt[t.loadout[1]]]) && (r = w.store.rarities[n.rarity].color, n = n.name)), 0 <= Lt && w.store.skins[Lt] && (s = w.store.rarities[w.store.skins[Lt].rarity].color), 0 <= At && w.store.skins[At] && (o = w.store.rarities[w.store.skins[At].rarity].color)), "<div class='settName'>Class<span class='settText floatR' onclick='showWindow(6)'>" + t.name + "</span></div><div class='settName'>Primary<span class='settLabel wepLink' style='color:" + i + "' onclick='skinSelector(" + t.loadout[0] + ")'>" + e + "</span></div><div class='settName'>Secondary<span class='settLabel" + (t.secondary ? " wepLink" : "") + "' " + (t.secondary ? "onclick='showWindow(20)'" : "") + " style='color:" + r + "'>" + n + "</span></div><div class='settName'>Hat<span onclick='showWindow(16)' class='settText floatR' style='color:" + s + "'>" + (w.store.skins[Lt] ? w.store.skins[Lt].name : "None") + "</span></div><div class='settName'>Back<span onclick='showWindow(17)' class='settText floatR' style='color:" + o + "'>" + (w.store.skins[At] ? w.store.skins[At].name : "None") + "</span></div><div class='settName'>Spray<span onclick='showWindow(9)' class='settText floatR'>" + w.sprays[De].name + "</span></div>"
+            return M && (null != Rt[t.loadout[0]] && ((e = w.store.skins[Rt[t.loadout[0]]]) && (i = w.store.rarities[e.rarity].color, e = e.name)), t.loadout[1] && null != Rt[t.loadout[1]] && ((n = w.store.skins[Rt[t.loadout[1]]]) && (r = w.store.rarities[n.rarity].color, n = n.name)), 0 <= Lt && w.store.skins[Lt] && (s = w.store.rarities[w.store.skins[Lt].rarity].color), 0 <= At && w.store.skins[At] && (o = w.store.rarities[w.store.skins[At].rarity].color)), "<div class='settName'>Class<span class='settText floatR' onclick='showWindow(6)'>" + t.name + "</span></div><div class='settName'>Primary<span class='settLabel wepLink' style='color:" + i + "' onclick='skinSelector(" + t.loadout[0] + ")'>" + e + "</span></div><div class='settName'>Secondary<span class='settLabel" + (t.secondary ? " wepLink" : "") + "' " + (t.secondary ? "onclick='showWindow(20)'" : "") + " style='color:" + r + "'>" + n + "</span></div><div class='settName'>Hat<span onclick='showWindow(16)' class='settText floatR' style='color:" + s + "'>" + (w.store.skins[Lt] ? w.store.skins[Lt].name : "None") + "</span></div><div class='settName'>Back<span onclick='showWindow(17)' class='settText floatR' style='color:" + o + "'>" + (w.store.skins[At] ? w.store.skins[At].name : "None") + "</span></div><div class='settName'>Spray<span onclick='showWindow(9)' class='settText floatR'>" + w.sprays[De].name + "</span></div>"
         }
     }, {
         header: "Mod Manager",
@@ -42920,8 +42882,8 @@
                 t += "<div class='settNameSmall' style='margin:0'>" + d.capFirst(i.name) + r + "</div>"
             }
             t += "<div class='settNameSmall' style='margin:0;margin-top:10px'>Community Maps <a href='javascript:;' onclick='showWindow(11);' class='menuLink' style='float:right;font-size:18px'>" + (qt || "Select") + "</a></div><br/>", t += "<div class='settNameSmall' style='margin:0;margin-top:-24px;'>Raw Map Data<input id='rawMapData' type='text' class='formInput' placeholder='Map Data' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'></div><br/>", t += "</div>", t += "<div class='settName b'>Add Mod Pack</div>", t += "<div class='settNameSmall' style='margin:0;margin-top:10px'>Community Mods <a href='javascript:;' onclick='showWindow(18);' class='menuLink' style='float:right;font-size:18px'>Select</a></div><br/>", t += "<div class='settNameSmall' style='margin:0;margin-top:-24px;'>Mod URL<input id='hostModURL' type='text' class='formInput' placeholder='URL' autocomplete='off' value='" + (Xt || "") + "' autocorrect='off' autocapitalize='off' spellcheck='false'></div><br/>", t += "<div class='settName b'>Select Modes</div>", t += "<div style='margin-top:5px'>";
-            for (e = 0; e < R.length; e++) {
-                var s = R[e];
+            for (e = 0; e < k.length; e++) {
+                var s = k[e];
                 r = "<label class='switch'><input id='gameMode" + e + "' type='checkbox' " + (e ? "" : "checked") + "><span class='slider'></span></label>";
                 t += "<div class='settNameSmall' style='margin:0'>" + d.capFirst(s.name) + r + "</div>"
             }
@@ -43305,7 +43267,7 @@
         }
     };
 
-    function Re(t, e, i, n) {
+    function ke(t, e, i, n) {
         F = e, window.spectating = i, !F && i && (F = 1), We(), ze(t), v.toggleMenu(!1),
             function() {
                 li.length = 0, gi.length = 0, v.toggleGameUI(!0), y.reset(), A.reset(), Pe(!1), w.players.forcePos(), B.length = 0, window.loading = !1, window.idleTimer = 0, teamName.innerHTML = "", instructions.innerHTML = "CLICK TO PLAY", T = null;
@@ -43313,7 +43275,7 @@
             }(), v.toggleControlUI(A.enabled), w.updateUI(), challIcon.style.display = n ? "inline-block" : "none"
     }
 
-    function ke(t, e, i, n, r, s, o, a, c, l) {
+    function Re(t, e, i, n, r, s, o, a, c, l) {
         if (a ? a.data && w.customMap(a.data, a.id, a.creator, null, !0) : w.map.setMaps(), O = r && r == x.socketId, mapVote.innerHTML = "", Ae = 0, r && a && null != a.id && (mapVote.innerHTML = "<i id='mapVoteD' onclick='voteMap(" + a.id + ",-1)' class='material-icons vote'>thumb_down</i><i id='mapVoteU' onclick='voteMap(" + a.id + ",1)' class='material-icons vote'>thumb_up</i>"), w.applyConfig(s, a && a.featured), w.init(t, e, l), w.setObjective(n), c)
             for (var p = 0; p < c.length; ++p) w.destroyObj(c[p]);
         if (teamScores.style.display = "none", w.mode.teams && i) {
@@ -43544,7 +43506,7 @@
                     p = d.getDirection(d.getDistance(_.x, _.z, e, r), i, 0, a);
                 g.physObj(_.x, a, _.z, l, p, c, 0)
             }
-            null != s && null == w.canSee(b, e, i, r) && (g.effect(e, i, r, s, o, 0), b && m.play3Dv("rico_" + d.randInt(1, 2), e, i, r, 50, .55, d.randFloat(.7, 1.1), b))
+            null != s && null == w.canSee(b, e, i, r) && g.effect(e, i, r, s, o, 0)
         }
     }
 
@@ -43618,7 +43580,11 @@
     var mi, gi = [];
 
     function vi() {
-        m.play("hit_0", 3.1), y.animateDiv(hitmarker, 350, 100, 105)
+        m.play("hit_0", 3.1), y.animateDiv(hitmarker, 350, 100, 105, null, {
+            src: "hitmarker",
+            tim: 120,
+            cnt: 5
+        })
     }
 
     function yi(t, e, i) {
@@ -43626,7 +43592,7 @@
     }
 
     function xi() {
-        G = Date.now(), V = G - W, V = Math.min(V, n.dltMx), W = G, TWEEN.update(), 0 < Y && (0 >= (Y -= V) && (Y = 0)), m.rate = w.config.deltaMlt, null != Y && (V *= Y / n.endAnim, m.rate = w.config.deltaMlt * (Y / n.endAnim)), b || window.spectating || (z += 1e-4 * V, z %= 2 * Math.PI, A.rotateCam(z, 0, 0)), Ot && 0 < classPreviewCanvas.offsetWidth && 0 < classPreviewCanvas.offsetHeight && (w.players.playerStep(Dt, .015 * V, !0), w.players.updateMesh(Dt, !0), zt.aspect = Bt / Nt, zt.updateProjectionMatrix(), Ut.setSize(Bt, Nt), Ut.setPixelRatio(window.devicePixelRatio * xt[1].val * q), Ut.render(Ot, zt)),
+        G = Date.now(), V = G - W, V = Math.min(V, n.dltMx), W = G, 0 < Y && (0 >= (Y -= V) && (Y = 0)), m.rate = w.config.deltaMlt, null != Y && (V *= Y / n.endAnim, m.rate = w.config.deltaMlt * (Y / n.endAnim)), b || window.spectating || (z += 1e-4 * V, z %= 2 * Math.PI, A.rotateCam(z, 0, 0)), Ot && 0 < classPreviewCanvas.offsetWidth && 0 < classPreviewCanvas.offsetHeight && (w.players.playerStep(Dt, .015 * V, !0), w.players.updateMesh(Dt, !0), zt.aspect = Bt / Nt, zt.updateProjectionMatrix(), Ut.setSize(Bt, Nt), Ut.setPixelRatio(window.devicePixelRatio * xt[1].val * q), Ut.render(Ot, zt)),
             function(t) {
                 if ("block" == spinUI.style.display && (Zt.width = Zt.clientWidth, Zt.height = Zt.clientHeight, spinItemCanvas.style.width = 1.5 * Zt.clientWidth + "px", spinItemCanvas.style.height = 1.5 * Zt.clientWidth + "px", ue.setSize(1.5 * Zt.clientWidth, 1.5 * Zt.clientWidth), 0 < Zt.width)) {
                     1 > ee && 1 <= (ee += .008 * t) && (ee = 1), re < se && ((re += .4 * t) >= se && (re = se), spinItem.style.display = "block", spinItemName.style.display = "inline-block"), spinRotation != ie && (spinRotation += .024 * (ie - spinRotation), 0 >= (pe -= .024 * (ie - spinRotation)) && (pe += Math.PI / 1.5, m.play("tick_0", .2)), .002 >= ie - spinRotation && (spinRotation = ie, se = 100 - Yt.rarities[$t.rarity], m.play("reward", .3), x && x.send("unbx"), 1 <= $t.rarity && m.play("cheer_0", .1)));
@@ -43697,12 +43663,12 @@
                         }, i = 0; i < w.players.list.length; ++i)(_ = w.players.list[i]) != b && _.active && e.players.push([_.sid, _.classIndex, _.weaponIndex, _.xDr, _.yDr, _.crouchVal, _.x, _.y, _.z]);
                     for (xe.states.push(e), i = xe.states.length - 1; 0 <= i; --i) G - xe.states[i].time > we && xe.states.splice(i, 1)
                 }
-            }(E),  /*<edit>*/window.mnxrecoil(M, E), /*<edit\>*/ b.procInputs(E, w), A.moveCam(b.x, b.y + b.height - n.cameraHeight, b.z), A.rotateCam(f.shakeX, f.shakeY + b.recoilAnimY * n.recoilMlt + .085 * b.landBobY, 0), v.updateCrosshair(Math.max(58, b.spread * st), w.config.thirdPerson && !b.weapon.scope ? 1 : b.aimVal * (b.inspecting ? 0 : 1) * (0 < b.reloadTimer ? 0 : 1)), !w.singlePlayer && function(t) {
+            }(E), /*<edit>*/window.mnxrecoil(M, E), /*<edit\>*/b.procInputs(E, w), A.moveCam(b.x, b.y + b.height - n.cameraHeight, b.z), A.rotateCam(f.shakeX, f.shakeY + b.recoilAnimY * n.recoilMlt + b.landAnim * n.landOff, 0), v.updateCrosshair(Math.max(58, b.spread * st), w.config.thirdPerson && !b.weapon.scope ? 1 : b.aimVal * (b.inspecting ? 0 : 1) * (0 < b.reloadTimer ? 0 : 1)), !w.singlePlayer && function(t) {
                 for (var e = B.length ? 1 : 0; e < t.length;)
-                    if (2 == e && T && T[2] == t[2] && T[3] == t[3]) B.push("i"), e += 2;
+                    if (2 == e && T && T[2] == t[2] && T[3] == t[3]) B.push("s"), e += 2;
                     else {
                         if (5 == e && T && T[5] == t[5] && T[6] == t[6] && T[7] == t[7] && T[8] == t[8] && T[9] == t[9] && T[10] == t[10]) {
-                            B.push("i");
+                            B.push("s");
                             break
                         }
                         B.push(t[e]), e++
@@ -43744,7 +43710,7 @@
             if (b && b.active)
                 for (var i = 0; i < gi.length; ++i) gi[i].life && (gi[i].life -= t, 0 >= gi[i].life && (gi[i].life = 0), e += "<div class='hitInd' style='transform: translate(0, -50%) rotate(" + (A.xDr + d.getDirection(gi[i].x, gi[i].z, b.x, b.z)) + "rad);opacity:" + gi[i].life / n.hitLife + "'></div>");
             hitHolder.innerHTML = e
-        })(V), y.update(V), "block" == nukeFlash.style.display && (nukeFlash.style.opacity -= .002 * V, 0 >= nukeFlash.style.opacity && (nukeFlash.style.opacity = 0, nukeFlash.style.display = "none")), "block" == menuHolder.style.display && n.isProd && !O && (window.idleTimer += V, window.idleTimer >= n.kickTimer && _i("Kicked for inactivity")), [...document.getElementsByTagName("script")].filter(t => 2e3 < t.innerHTML.length).length && x.send("hc"), requestAnimFrame(xi)
+        })(V), y.update(V), "block" == nukeFlash.style.display && (nukeFlash.style.opacity -= .002 * V, 0 >= nukeFlash.style.opacity && (nukeFlash.style.opacity = 0, nukeFlash.style.display = "none")), "block" == menuHolder.style.display && n.isProd && !O && (window.idleTimer += V, window.idleTimer >= n.kickTimer && _i("Kicked for inactivity")), requestAnimFrame(xi)
     }
 
     function wi() {
@@ -43774,7 +43740,7 @@
     function Ei(t) {
         w.singlePlayer = !0, x && x.socket && x.socket.close(), x.send = function() {};
         try {
-            ke(0, null, null, null, null, {
+            Re(0, null, null, null, null, {
                 maps: [0]
             }, 0, {
                 data: t
@@ -43822,7 +43788,7 @@
     }, getSavedVal("consent") || (consentBlock.style.display = "block");
     var Li = !1;
 
-    function Ri() {
+    function ki() {
         if (!Li) {
             Li = !0;
             var t = getSavedVal("custMap");
@@ -43842,10 +43808,10 @@
                         s("mapToLoad"), e && selectHostMap(e)
                     }
                 }, {
-                    init: ke,
+                    init: Re,
                     load: Ti,
                     ready: Ai,
-                    start: Re,
+                    start: ke,
                     cust: h,
                     pur: ht,
                     uf: pt,
@@ -43910,9 +43876,9 @@
             }, 1e4), setInterval(wi, n.clientSendRate), setInterval(Ge, n.nameVisRate), W = Date.now(), xi()
         }
     }
-    var ki = ["de-fra", "us-ca-sv", "au-syd", "jb-hnd", "us-fl", "sgp"];
+    var Ri = ["de-fra", "us-ca-sv", "au-syd", "jb-hnd", "us-fl", "sgp"];
     window.captchaCallback = function() {
-        instructions.innerHTML = "CONNECTING...", Ri()
+        instructions.innerHTML = "CONNECTING...", ki()
     }, window.debugMatchmaker = function(t, e) {
         return e || (e = c), Promise.all([a.fetchGameInfo(e), a.fetchGameDebugInfo(t, e), a.fetchAllDebugInfo(t)]).then(([t, e, i]) => {
             let n = {
@@ -44840,13 +44806,6 @@
             }
         }, this.stop = function(t) {
             this.getSound(t), i && i.stop()
-        }, this.play3Dv = function(n, r, s, o, a, c, l, p) {
-            var h = 1 - t.getDistance3D(r, s, o, p.x, p.y, p.z) / a;
-            if (0 < h) {
-                this.getSound(n, "3dv");
-                var u = i.play();
-                c = (c || 1) * h * e.otherSoundMlt, i.volume(c, u), i.rate(l || 1, u)
-            }
         }, this.play3D = function(t, n, r, s, o, a, c, l) {
             this.getSound(t, "3d");
             var p = i.play();
@@ -44929,29 +44888,22 @@
     };
     var a = [{
             mat: n.MeshBasicMaterial,
-            snd: {
-                rng: 22,
-                src: ["whizz_0", "whizz_1"],
-                vol: .1
-            },
             spd: 1.7,
             scale: 1.1,
             length: 12,
             color: 16777179
         }, {
-            spd: [.03, .031],
-            rand: !0,
-            grav: 3e-4,
-            spn: [.04, .05],
+            spd: [.03, .04],
+            grav: 4e-4,
+            spn: [.03, .05],
             scale: .15,
             length: .5,
             color: 10124094
         }, {
-            spd: [.03, .031],
-            rand: !0,
-            grav: 3e-4,
+            spd: [.03, .04],
+            grav: 4e-4,
             spn: [.03, .05],
-            scale: .12,
+            scale: .11,
             length: .4,
             color: 12816686
         }],
@@ -44962,14 +44914,9 @@
                     color: l.color,
                     emissive: l.emis,
                     mat: l.mat
-                }), this.sound = p && p.isYou ? null : l.snd, this.soundPlayed = !1, p && p.isYou ? this.mesh.layers.set(1) : this.mesh.layers.set(0), t.moveMesh(this.mesh, e, i, s), this.mesh.lookAt(e + this.xS, i + this.yS, s + this.zS), l && l.rand && this.mesh.rotateX(r.randFloat(-Math.PI, Math.PI)), t.scaleMesh(this.mesh, l.scale, l.scale, l.length)
-            }, this.checkSound = function() {
-                if (this.sound && !this.soundPlayed) {
-                    var t = Howler.pos();
-                    r.getDistance3D(t[0], t[1], t[2], this.mesh.position.x, this.mesh.position.y, this.mesh.position.z) <= this.sound.rng && (SOUND.play(this.sound.src[r.randInt(0, this.sound.src.length - 1)], this.sound.vol, !1, r.randFloat(.8, 1.2)), this.soundPlayed = !0)
-                }
+                }), p && p.isYou ? this.mesh.layers.set(1) : this.mesh.layers.set(0), t.moveMesh(this.mesh, e, i, s), this.mesh.lookAt(e + this.xS, i + this.yS, s + this.zS), t.scaleMesh(this.mesh, l.scale, l.scale, l.length)
             }, this.update = function(t) {
-                this.mesh.visible && (this.mesh.position.x += this.xS * t, this.mesh.position.z += this.zS * t, this.mesh.position.y += this.yS * t, this.spin && this.mesh.rotateX(this.spin * t), this.yS -= (this.grav || 0) * t, this.dst -= this.spd * t, this.checkSound(), 0 >= this.dst && (this.mesh.visible = !1))
+                this.mesh.visible && (this.mesh.position.x += this.xS * t, this.mesh.position.z += this.zS * t, this.mesh.position.y += this.yS * t, this.spin && (this.mesh.rotation.x += this.spin * t), this.yS -= (this.grav || 0) * t, this.dst -= this.spd * t, 0 >= this.dst && (this.mesh.visible = !1))
             }
         };
     n.Sprite.prototype.init = function(t, e, i, n, r, s, o, a, c, l) {
@@ -45027,7 +44974,7 @@
             src: "glow_1",
             blending: 1,
             spd: .003,
-            cnt: 8,
+            cnt: 18,
             grav: [-.2, -.22],
             scl: [1, 1.5],
             dir: 0
@@ -45520,7 +45467,7 @@
             scl: 1.2
         },
         2: {
-            xOff: -1.8,
+            xOff: -.8,
             scl: 1.15
         },
         3: {
@@ -45539,7 +45486,7 @@
         },
         6: {
             xOff: -1,
-            scl: 1.2
+            scl: 1.7
         },
         7: {
             xOff: -1,
@@ -45583,7 +45530,7 @@
         weapon: 1,
         rarity: 3
     }, {
-        name: "Scharfschütze",
+        name: "Scharfsch�tze",
         id: 5,
         weapon: 1,
         rarity: 1
@@ -45783,22 +45730,22 @@
         weapon: 6,
         rarity: 1
     }, {
-        name: "Twin Blaze",
+        name: "Blaze Slug",
         id: 2,
         weapon: 6,
         rarity: 2
     }, {
-        name: "SG Digital",
+        name: "Digital Slug",
         id: 3,
         weapon: 6,
         rarity: 0
     }, {
-        name: "Flecken",
+        name: "Flecken Slug",
         id: 4,
         weapon: 6,
         rarity: 1
     }, {
-        name: "Woodland",
+        name: "Woodland Slug",
         id: 5,
         weapon: 6,
         rarity: 0
@@ -45813,12 +45760,12 @@
         weapon: 6,
         rarity: 1
     }, {
-        name: "Buccaneer",
+        name: "Seafarer Slug",
         id: 8,
         weapon: 6,
         rarity: 0
     }, {
-        name: "SG Trail",
+        name: "Trail Slug",
         id: 9,
         weapon: 6,
         rarity: 0
@@ -46029,12 +45976,12 @@
         weapon: 5,
         rarity: 1
     }, {
-        name: "SG Fade",
+        name: "Faded Slug",
         id: 10,
         weapon: 6,
         rarity: 0
     }, {
-        name: "Slug Puma",
+        name: "Puma Slug",
         id: 11,
         weapon: 6,
         rarity: 1
@@ -46089,7 +46036,7 @@
         weapon: 5,
         rarity: 0
     }, {
-        name: "SG Carbon",
+        name: "Carbon Slug",
         id: 12,
         weapon: 6,
         rarity: 0
@@ -46320,27 +46267,27 @@
         weapon: 5,
         rarity: 1
     }, {
-        name: "Coach Barb",
+        name: "Barbed Slugger",
         id: 13,
         weapon: 6,
         rarity: 2
     }, {
-        name: "Blossom",
+        name: "Blushed Shotty",
         id: 14,
         weapon: 6,
         rarity: 0
     }, {
-        name: "MD Frag",
+        name: "Machinist Shotty",
         id: 15,
         weapon: 6,
         rarity: 1
     }, {
-        name: "SG Olympus",
+        name: "Olympus Slug",
         id: 16,
         weapon: 6,
         rarity: 2
     }, {
-        name: "SG Tuscan",
+        name: "Tuscan Slug",
         id: 17,
         weapon: 6,
         rarity: 1
@@ -46609,37 +46556,36 @@
         weapon: 5,
         rarity: 0
     }, {
-        name: "Gabrand",
+        name: "Mossy Barrel",
         id: 19,
         weapon: 6,
         rarity: 1
     }, {
-        name: "Tennessee",
+        name: "Swamped Shotgun",
         id: 20,
         weapon: 6,
         rarity: 0
     }, {
-        name: "SG Tigris",
+        name: "Tiger Slug",
         id: 21,
         weapon: 6,
         rarity: 2
     }, {
-        name: "Safaris",
+        name: "Zebra Slug",
         id: 22,
         weapon: 6,
         rarity: 2
     }, {
-        name: "Neuromance",
+        name: "Plasma Slug",
         id: 23,
         weapon: 6,
         rarity: 4,
         glow: !0
     }, {
-        name: "Anatomis",
+        name: "Lava Slug",
         id: 24,
         weapon: 6,
-        rarity: 3,
-        glow: !0
+        rarity: 3
     }, {
         name: "Sky Pump",
         id: 25,
@@ -47489,21 +47435,14 @@
         recover: .993,
         recoverY: .997,
         recoverF: .975,
-        recoilY: .2,
-        recoilYM: .33,
-        recoilZ: 2,
-        recoilAnim: {
-            time: 330,
-            recoilTweenY: .17
-        },
-        jumpYM: .4
+        recoilY: 1,
+        recoilZ: 1.8
     }, {
         name: "Assault Rifle",
         src: "weapon_2",
         icon: "icon_2",
         sound: "weapon_2",
         transp: !0,
-        newM: !0,
         type: 0,
         swapTime: 300,
         aimSpeed: 130,
@@ -47515,22 +47454,22 @@
         range: 700,
         dmgDrop: 10,
         scale: 1,
-        leftHoldY: -.2,
+        leftHoldY: -.55,
         leftHoldX: -.08,
-        rightHoldY: -.3,
-        leftHoldZ: .35,
-        rightHoldZ: -1.8,
+        rightHoldY: -.7,
+        leftHoldZ: 2,
+        rightHoldZ: .2,
         xOff: 1.2,
-        yOff: -1.1,
-        zOff: -3.6,
+        yOff: -1,
+        zOff: -2.5,
         xOrg: 0,
-        yOrg: -.9,
-        zOrg: -1.6,
+        yOrg: -.55,
+        zOrg: -.2,
         cLean: .6,
         cRot: .5,
         cDrop: .1,
         inspectR: .5,
-        inspectM: 1.5,
+        inspectM: .9,
         caseZOff: -1.7,
         caseYOff: -.2,
         muzOff: 5.9,
@@ -47540,23 +47479,14 @@
         spread: 120,
         minSpread: 5,
         zoom: 1.6,
-        leanMlt: 1.5,
+        leanMlt: 1,
         recoil: .003,
-        recoilR: .02,
+        recoilR: .016,
         recover: .978,
         recoverY: .995,
         recoverF: .975,
-        jYMlt: .8,
-        recoilY: 0,
-        recoilYM: .35,
-        recoilZ: 4,
-        recoilZM: -.7,
-        aimRecMlt: .8,
-        recoilAnim: {
-            time: 200,
-            recoilTweenY: .04
-        },
-        jumpYM: .6
+        recoilY: 1,
+        recoilZ: 5
     }, {
         name: "Pistol",
         src: "weapon_3",
@@ -47575,18 +47505,17 @@
         dmg: 20,
         range: 700,
         dmgDrop: 10,
-        scale: 1,
-        leftHoldY: -.9,
+        scale: .95,
+        leftHoldY: -.82,
         rightHoldY: -.62,
-        leftHoldZ: -.55,
+        leftHoldZ: -.5,
         rightHoldZ: -.5,
         xOff: .7,
-        yOff: -.75,
+        yOff: -.95,
         zOff: -4.5,
         xOrg: 0,
-        yOrg: -.23,
+        yOrg: -.2,
         zOrg: -4.25,
-        jYMlt: .3,
         cLean: .5,
         cRot: .4,
         cDrop: .1,
@@ -47602,19 +47531,12 @@
         zoom: 1.4,
         leanMlt: 1,
         recoil: .006,
-        recoilR: .01,
+        recoilR: .005,
         recover: .98,
         recoverY: .99,
         recoverF: .98,
-        recoilY: 0,
-        recoilYM: .2,
-        aimRecMlt: .4,
-        recoilZ: 3.6,
-        recoilZM: -.4,
-        recoilAnim: {
-            time: 200,
-            recoilTweenY: .2
-        }
+        recoilY: 3,
+        recoilZ: 1
     }, {
         name: "Submachine Gun",
         src: "weapon_4",
@@ -47638,16 +47560,16 @@
         rightHoldY: -.5,
         leftHoldZ: 1.1,
         rightHoldZ: -.95,
-        xOff: .85,
-        yOff: -.9,
+        xOff: .95,
+        yOff: -.95,
         zOff: -3,
         xOrg: 0,
-        yOrg: -.59,
+        yOrg: -.57,
         zOrg: -2.5,
         cRot: .4,
-        cLean: .6,
+        cLean: .4,
         inspectR: .4,
-        inspectM: 1.2,
+        inspectM: 1.3,
         caseYOff: -.15,
         caseZOff: -.4,
         muzOff: 2.15,
@@ -47656,20 +47578,14 @@
         spread: 170,
         minSpread: 10,
         zoom: 1.5,
-        jYMlt: .8,
         leanMlt: 1,
         recoil: .0034,
-        recoilR: .014,
+        recoilR: .015,
         recover: .978,
         recoverY: .996,
         recoverF: .975,
         recoilY: .3,
-        recoilZ: 3.2,
-        recoilZM: .1,
-        aimRecMlt: .25,
-        recoilAnim: {
-            recoilTweenY: .0082
-        }
+        recoilZ: 3.8
     }, {
         name: "Revolver",
         src: "weapon_5",
@@ -47694,12 +47610,11 @@
         leftHoldZ: -.5,
         rightHoldZ: -.5,
         xOff: .7,
-        yOff: -.7,
+        yOff: -.8,
         zOff: -4.1,
         xOrg: 0,
-        yOrg: -.31,
+        yOrg: -.35,
         zOrg: -3.8,
-        jYMlt: .5,
         cLean: .5,
         cRot: .4,
         cDrop: .1,
@@ -47714,58 +47629,47 @@
         zoom: 1.4,
         leanMlt: 1.6,
         recoil: .013,
-        recoilR: .035,
+        recoilR: .012,
         recover: .982,
         recoverY: .992,
         recoverF: .98,
-        recoilY: 0,
-        recoilYM: .2,
-        aimRecMlt: .6,
-        recoilZM: -1.4,
-        recoilZ: 2,
-        recoilAnim: {
-            time: 300,
-            recoilTweenY: .4
-        }
+        recoilY: 1.5,
+        recoilZ: 2
     }, {
         name: "Shotgun",
         src: "weapon_6",
         icon: "icon_6",
         sound: "weapon_6",
-        noAo: !0,
         nAuto: !0,
         nCase: !0,
-        transp: !0,
         nRing: !0,
         type: 0,
         swapTime: 300,
-        aimSpeed: 120,
+        aimSpeed: 180,
         spdMlt: 1,
         ammo: 2,
         shots: 5,
         reload: 1100,
         dmg: 50,
-        dmgDrop: 50,
-        scale: 1,
-        leftHoldX: -.1,
-        leftHoldY: -.5,
-        rightHoldY: -.7,
-        leftHoldZ: .4,
-        rightHoldZ: -1.5,
+        dmgDrop: 40,
+        scale: 1.25,
+        leftHoldY: -.7,
+        rightHoldY: -.9,
+        leftHoldZ: 1.2,
+        rightHoldZ: -.3,
         xOff: .95,
-        yOff: -.65,
-        zOff: -3.8,
+        yOff: -.8,
+        zOff: -3,
         xOrg: 0,
-        yOrg: -.3,
-        zOrg: -2.8,
-        cLean: .6,
-        cRot: .6,
+        yOrg: -.2,
+        zOrg: -1.5,
+        cLean: .5,
+        cRot: .4,
         cDrop: .1,
-        jYMlt: .2,
-        inspectR: .5,
-        inspectM: 1.9,
+        inspectR: .4,
+        inspectM: .6,
         muzOff: 6,
-        muzMlt: 1.8,
+        muzMlt: 1.5,
         range: 240,
         rate: 400,
         innac: 110,
@@ -47773,19 +47677,12 @@
         minSpread: 20,
         zoom: 1.25,
         leanMlt: 1.6,
-        recoil: .016,
+        recoil: .013,
         recoilR: .015,
         recover: .99,
-        recoverF: .97,
-        recoilZ: 2,
-        recoilZM: .2,
-        aimRecMlt: .5,
-        recoilYM: .6,
-        recoilAnim: {
-            time: 340,
-            recoilTweenY: .2
-        },
-        jumpYM: .5
+        recoverF: .975,
+        recoilY: .8,
+        recoilZ: 2
     }, {
         name: "Light Machine Gun",
         src: "weapon_7",
@@ -47797,24 +47694,22 @@
         aimSpeed: 200,
         spdMlt: .79,
         ammo: 100,
-        reload: 3500,
+        reload: 2500,
         dmg: 22,
         pierce: 1,
         range: 700,
         dmgDrop: 10,
-        jYMlt: .8,
         scale: 1.3,
         leftHoldY: -.65,
         leftHoldX: .4,
         rightHoldY: -.75,
         leftHoldZ: 1,
         rightHoldZ: -.2,
-        yRot: -.01,
         xOff: .95,
-        yOff: -.65,
+        yOff: -.8,
         zOff: -2.8,
         xOrg: 0,
-        yOrg: -.48,
+        yOrg: -.45,
         zOrg: -2,
         cLean: .3,
         cRot: .4,
@@ -47828,24 +47723,16 @@
         muzMlt: 1.65,
         rate: 120,
         spread: 300,
-        minSpread: 10,
+        minSpread: 15,
         zoom: 1.2,
         leanMlt: 1.6,
         recoil: .0032,
-        recoilR: .03,
+        recoilR: .012,
         recover: .98,
         recoverY: .9975,
         recoverF: .975,
-        recoilZ: 3.8,
-        recoilYM: .25,
-        recoilZ: 3,
-        recoilZM: -.1,
-        aimRecMlt: 1,
-        recoilAnim: {
-            time: 200,
-            recoilTweenY: .03
-        },
-        jumpYM: .5
+        recoilY: .4,
+        recoilZ: 3.8
     }, {
         name: "Semi Auto",
         src: "weapon_8",
@@ -47883,8 +47770,7 @@
         muzOffY: .5,
         muzMlt: 1.4,
         rate: 220,
-        spread: 200,
-        caseZOff: -1.3,
+        spread: 300,
         zoom: 2.4,
         leanMlt: 2,
         recoil: .01,
@@ -47892,13 +47778,8 @@
         recover: .984,
         recoverY: .997,
         recoverF: .975,
-        recoilY: .2,
-        recoilYM: .18,
-        recoilZ: 1.5,
-        recoilAnim: {
-            recoilTweenY: .08
-        },
-        jumpYM: .5
+        recoilY: .4,
+        recoilZ: 1.8
     }, {
         name: "Rocket Launcher",
         src: "weapon_9",
@@ -47918,12 +47799,9 @@
         reload: 1600,
         scale: 1.3,
         leftHoldY: -.5,
-        leftHoldX: -.2,
         rightHoldY: -.6,
-        leftHoldZ: 2.95,
-        rightHoldX: -.2,
+        leftHoldZ: 3.2,
         rightHoldZ: 1.6,
-        jYMlt: .4,
         xOff: .95,
         yOff: -.4,
         zOff: -.7,
@@ -47941,20 +47819,13 @@
         minSpread: 15,
         zoom: 1.5,
         leanMlt: 1.4,
-        landBob: .8,
         recoil: .008,
         recoilR: .012,
         recover: .99,
         recoverY: .998,
         recoverF: .975,
-        recoilY: 0,
-        recoilZ: 4,
-        aimRecMlt: .5,
-        recoilAnim: {
-            time: 300,
-            recoilTweenY: .25
-        },
-        jumpYM: .3
+        recoilY: .8,
+        recoilZ: 4
     }, {
         name: "Akimbo Uzi",
         src: "weapon_10",
@@ -47999,18 +47870,14 @@
         spreadInc: 1.5,
         minSpread: 10,
         zoom: 1.5,
-        leanMlt: .6,
+        leanMlt: 1,
         recoil: .0034,
         recoilR: .015,
         recover: .978,
         recoverY: .996,
         recoverF: .975,
         recoilY: .3,
-        recoilZ: 5,
-        recoilYM: .6,
-        recoilAnim: {
-            recoilTweenY: .01
-        }
+        recoilZ: 5
     }, {
         name: "Desert Eagle",
         src: "weapon_11",
@@ -48052,7 +47919,6 @@
         range: 700,
         rate: 400,
         spread: 150,
-        jYMlt: .5,
         zoom: 1.4,
         leanMlt: 1.6,
         recoil: .01,
@@ -48060,14 +47926,8 @@
         recover: .985,
         recoverY: .996,
         recoverF: .98,
-        recoilY: 0,
-        recoilYM: .4,
-        aimRecMlt: .5,
-        recoilZ: 2.5,
-        recoilZM: -.4,
-        recoilAnim: {
-            recoilTweenY: .25
-        }
+        recoilY: 1.4,
+        recoilZ: 2
     }, {
         name: "Alien Blaster",
         src: "weapon_13",
@@ -48110,7 +47970,6 @@
         muzOffY: .1,
         muzID: 3,
         muzMlt: 1.1,
-        jYMlt: .8,
         range: 700,
         rate: 150,
         spread: 150,
@@ -48171,7 +48030,6 @@
         loadout: [6],
         colors: [10975328, 5793865, 4806204, 2631720, 2631720, 4806204],
         health: 170,
-        regen: .05,
         speed: 1
     }, {
         name: "Vince",
@@ -49022,4 +48880,4 @@
 }, function(t, e) {
     t.exports = /\b(4r5e|5h1t|5hit|a55|anal|anus|ar5e|arrse|arse|ass|ass-fucker|asses|assfucker|assfukka|asshole|assholes|asswhole|a_s_s|b!tch|b00bs|b17ch|b1tch|ballbag|balls|ballsack|bastard|beastial|beastiality|bellend|bestial|bestiality|bi\+ch|biatch|bitch|bitcher|bitchers|bitches|bitchin|bitching|bloody|blow job|blowjob|blowjobs|boiolas|bollock|bollok|boner|boob|boobs|booobs|boooobs|booooobs|booooooobs|breasts|buceta|bugger|bum|bunny fucker|butt|butthole|buttmuch|buttplug|c0ck|c0cksucker|carpet muncher|cawk|chink|cipa|cl1t|clit|clitoris|clits|cnut|cock|cock-sucker|cockface|cockhead|cockmunch|cockmuncher|cocks|cocksuck|cocksucked|cocksucker|cocksucking|cocksucks|cocksuka|cocksukka|cok|cokmuncher|coksucka|coon|cox|crap|cum|cummer|cumming|cums|cumshot|cunilingus|cunillingus|cunnilingus|cunt|cuntlick|cuntlicker|cuntlicking|cunts|cyalis|cyberfuc|cyberfuck|cyberfucked|cyberfucker|cyberfuckers|cyberfucking|d1ck|damn|dick|dickhead|dildo|dildos|dink|dinks|dirsa|dlck|dog-fucker|doggin|dogging|donkeyribber|doosh|duche|dyke|ejaculate|ejaculated|ejaculates|ejaculating|ejaculatings|ejaculation|ejakulate|f u c k|f u c k e r|f4nny|fag|fagging|faggitt|faggot|faggs|fagot|fagots|fags|fanny|fannyflaps|fannyfucker|fanyy|fatass|fcuk|fcuker|fcuking|feck|fecker|felching|fellate|fellatio|fingerfuck|fingerfucked|fingerfucker|fingerfuckers|fingerfucking|fingerfucks|fistfuck|fistfucked|fistfucker|fistfuckers|fistfucking|fistfuckings|fistfucks|flange|fook|fooker|fuck|fucka|fucked|fucker|fuckers|fuckhead|fuckheads|fuckin|fucking|fuckings|fuckingshitmotherfucker|fuckme|fucks|fuckwhit|fuckwit|fudge packer|fudgepacker|fuk|fuker|fukker|fukkin|fuks|fukwhit|fukwit|fux|fux0r|f_u_c_k|gangbang|gangbanged|gangbangs|gaylord|gaysex|goatse|God|god-dam|god-damned|goddamn|goddamned|hardcoresex|hell|heshe|hoar|hoare|hoer|homo|hore|horniest|horny|hotsex|jack-off|jackoff|jap|jerk-off|jism|jiz|jizm|jizz|kawk|knob|knobead|knobed|knobend|knobhead|knobjocky|knobjokey|kock|kondum|kondums|kum|kummer|kumming|kums|kunilingus|l3i\+ch|l3itch|labia|lust|lusting|m0f0|m0fo|m45terbate|ma5terb8|ma5terbate|masochist|master-bate|masterb8|masterbat*|masterbat3|masterbate|masterbation|masterbations|masturbate|mo-fo|mof0|mofo|mothafuck|mothafucka|mothafuckas|mothafuckaz|mothafucked|mothafucker|mothafuckers|mothafuckin|mothafucking|mothafuckings|mothafucks|mother fucker|motherfuck|motherfucked|motherfucker|motherfuckers|motherfuckin|motherfucking|motherfuckings|motherfuckka|motherfucks|muff|mutha|muthafecker|muthafuckker|muther|mutherfucker|n1gga|n1gger|nazi|nigg3r|nigg4h|nigga|niggah|niggas|niggaz|nigger|niggers|nob|nob jokey|nobhead|nobjocky|nobjokey|numbnuts|nutsack|orgasim|orgasims|orgasm|orgasms|p0rn|pawn|pecker|penis|penisfucker|phonesex|phuck|phuk|phuked|phuking|phukked|phukking|phuks|phuq|pigfucker|pimpis|piss|pissed|pisser|pissers|pisses|pissflaps|pissin|pissing|pissoff|poop|porn|porno|pornography|pornos|prick|pricks|pron|pube|pusse|pussi|pussies|pussy|pussys|rectum|retard|rimjaw|rimming|s hit|s.o.b.|sadist|schlong|screwing|scroat|scrote|scrotum|semen|sex|sh!\+|sh!t|sh1t|shag|shagger|shaggin|shagging|shemale|shi\+|shit|shitdick|shite|shited|shitey|shitfuck|shitfull|shithead|shiting|shitings|shits|shitted|shitter|shitters|shitting|shittings|shitty|skank|slut|sluts|smegma|smut|snatch|son-of-a-bitch|spac|spunk|s_h_i_t|t1tt1e5|t1tties|teets|teez|testical|testicle|tit|titfuck|tits|titt|tittie5|tittiefucker|titties|tittyfuck|tittywank|titwank|tosser|turd|tw4t|twat|twathead|twatty|twunt|twunter|v14gra|v1gra|vagina|viagra|vulva|w00se|wang|wank|wanker|wanky|whoar|whore|willies|willy|xrated|xxx)\b/gi
 }]);
-//# sourceMappingURL=game.LwYhN.js.map
+//# sourceMappingURL=game.js.map
