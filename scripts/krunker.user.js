@@ -13,13 +13,14 @@
 // @require      jquery-confirm.js
 // @run-at       document-start
 // ==/UserScript==
-var msgpack5 = msgpack;
+
 if (window.location.hostname === 'krunker.io') {
     var pending;
     var krSocket;
     var current = 0;
     var current2 = 0;
     var current10 = 0;
+    var msgpack5 = msgpack;
 
     window.WebSocket.prototype.oldSend = WebSocket.prototype.send;
     window.WebSocket.prototype.send = function(m) {
@@ -29,7 +30,7 @@ if (window.location.hostname === 'krunker.io') {
         let finalData = data;
         //console.log(finalData);
         //if (finalData[0] == "hc") {
-            //console.log(finalData);
+        //console.log(finalData);
         //}
         //else
         this.oldSend(m);
@@ -147,28 +148,29 @@ if (window.location.hostname === 'krunker.io') {
         if (unsafeWindow.mdlsettingsmain.bhop) unsafeWindow.control.keys[32] = unsafeWindow.control.keys[32] ? !unsafeWindow.control.keys[32] : 1
         let nplayers = unsafeWindow.players.filter(x => x.inView).filter(x => !x.isYou).filter(x => (!x.team || (x.team !== me.team))).filter(x => x.active).filter(x => unsafeWindow.mdlsettings.screenaim ? unsafeWindow.camhook.containsPoint(x) : true).sort((a, b) => dist3(me, a) - dist3(me, b));
         let closest = nplayers[0];
-        var didShoot = 0;
-        if (closest) { unsafeWindow.control.camLookAt(closest.x, closest.y + 11 - 1.5 - 2.5 * closest.crouchVal - me.recoilAnimY * 0.3 * 25, closest.z);
-            switch (unsafeWindow.mdlsettingsmain.autoaim % 3) {
-                case 1: if (unsafeWindow.control.mouseDownR != 1) unsafeWindow.control.mouseDownR = 1;
-                    unsafeWindow.control.mouseDownL = !unsafeWindow.control.mouseDownL;
-                    if (unsafeWindow.control.mouseDownL) didShoot = 1;
-                    break;
+        let setByMe = 0;
 
-                case 2: if (unsafeWindow.control.mouseDownR != 1) unsafeWindow.control.mouseDownR = 1;
-                    break;
-                default:
-                    break;
-            } unsafeWindow.control.camLookAt(closest.x, closest.y + 11 - 1.5 - 2.5 * closest.crouchVal - me.recoilAnimY * 0.3 * 25, closest.z);
+        if (closest) {
+            if (unsafeWindow.control.mouseDownR = unsafeWindow.mdlsettingsmain.autoaim % 3 === 1) {
+                if (me.aimVal === 0) {
+                    unsafeWindow.control.camLookAt(closest.x, closest.y + 11 - 1.5 - 2.5 * closest.crouchVal - me.recoilAnimY * 0.3 * 25, closest.z);
+                    if (unsafeWindow.control.mouseDownL === 0) unsafeWindow.control.mouseDownL = 1;
+                    setByMe = 1;
+                }
+            } else if (unsafeWindow.control.mouseDownR = unsafeWindow.mdlsettingsmain.autoaim % 3 === 2) {
+                if (me.aimVal === 0) {
+                    unsafeWindow.control.camLookAt(closest.x, closest.y + 11 - 1.5 - 2.5 * closest.crouchVal - me.recoilAnimY * 0.3 * 25, closest.z);
+                    setByMe = 1;
+                }
+            }
         } else {
+            if (setByMe ===1) {
+                unsafeWindow.control.mouseDownR = 0;
+                setByMe = 0;
+            }
             unsafeWindow.control.camLookAt(null);
             unsafeWindow.control.aimTarget = null;
             unsafeWindow.control.target = null;
-            if (unsafeWindow.control.mouseDownR == 1 && didShoot)
-            {
-                didShoot = 0;
-                unsafeWindow.control.mouseDownR = 1;
-            }
         }
     }
 
@@ -192,5 +194,5 @@ if (window.location.hostname === 'krunker.io') {
 
     setTimeout(() => {
         pending = true;
-    }, 5000);
+    }, 10000);
 }

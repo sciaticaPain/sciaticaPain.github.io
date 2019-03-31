@@ -213,7 +213,7 @@
             found: function(t, e, i) {
                 return i.convs
             }
-        }, t.exports.hitLife = 2e3, t.exports.regenDelay = 5e3, t.exports.regenVal = .1, t.exports.sprayTimer = 1e3, t.exports.sprayRange = 25, t.exports.sprayScale = 15, t.exports.deathDelay = 2800, t.exports.deathFollowD = 100, t.exports.suicides = ["suicide", "uninstall life", "toaster bath", "alt f4", "not alive", "neck rope", "sudoku", "scooter ankle", "death.exe"], t.exports.fov = 70, t.exports.viewDist = 2e3, t.exports.nameVisRate = 200, t.exports.worldUV = 60, t.exports.ambientVal = .8, t.exports.ambD = 2, t.exports.ambMlt = 15, t.exports.ambOff = .09, t.exports.ambScale = 10, t.exports.ambBleed = 0, t.exports.boosterSpd = .002, t.exports.rankVar = .03, t.exports.newDataInterval = 6e4, t.exports.socials = ["leaders", "profile", "maps"], t.exports.leaderQueries = ["score", "kills", "wins", "timeplayed", "funds", "clan"], t.exports.leaderCal = {
+        }, t.exports.hitLife = 2e3, t.exports.regenDelay = 5e3, t.exports.regenVal = .1, t.exports.sprayTimer = 1e3, t.exports.sprayRange = 25, t.exports.sprayScale = 15, t.exports.deathDelay = /*<edit> NO DEATH DELAY 2800*/0, t.exports.deathFollowD = 100, t.exports.suicides = ["suicide", "uninstall life", "toaster bath", "alt f4", "not alive", "neck rope", "sudoku", "scooter ankle", "death.exe"], t.exports.fov = 70, t.exports.viewDist = 2e3, t.exports.nameVisRate = 200, t.exports.worldUV = 60, t.exports.ambientVal = .8, t.exports.ambD = 2, t.exports.ambMlt = 15, t.exports.ambOff = .09, t.exports.ambScale = 10, t.exports.ambDiv = 20, t.exports.ambSFactor = 1, t.exports.ambBleed = 0, t.exports.boosterSpd = .002, t.exports.rankVar = .03, t.exports.newDataInterval = 6e4, t.exports.socials = ["leaders", "profile", "maps"], t.exports.leaderQueries = ["score", "kills", "wins", "timeplayed", "funds", "clan"], t.exports.leaderCal = {
             player_score: function(e) {
                 var i = Math.max(1, Math.floor(t.exports.rankVar * Math.sqrt(e)));
                 return "<span class='floatR'><img src='./img/levels/" + Math.max(Math.min(t.exports.maxLevel - 2, i.roundToNearest(3) - 2), 0) + ".png' class='rnkIcon'>" + i + "</span>"
@@ -15940,8 +15940,10 @@
             y = Math.max(Math.max(Math.min(u, d), Math.min(f, m)), Math.min(g, v)),
             x = Math.min(Math.min(Math.max(u, d), Math.max(f, m)), Math.max(g, v));
         return !(0 > x) && !(y > x) && y
-    }, t.exports.pointInBox3D = function(t, e, i, n) {
-        return t >= n.x - n.width && t <= n.x + n.width && e >= n.y - n.height && e <= n.y + n.height && i >= n.z - n.length && i <= n.z + n.length
+    }, t.exports.pointInBox3D = function(t, e, i, n, r) {
+        return r = r || 0, t >= n.x - n.width - r && t <= n.x + n.width + r && e >= n.y - n.height - r && e <= n.y + n.height + r && i >= n.z - n.length - r && i <= n.z + n.length + r
+    }, t.exports.similar = function(t, e, i) {
+        return i = i || 0, Math.abs(t - e) <= i
     }, t.exports.pointInBox = function(t, e, i, n, r, s, o) {
         return o ? t >= i && t <= r && e >= n && e <= s : t > i && t < r && e > n && e < s
     }, t.exports.sharePos = function(t, e, i) {
@@ -15983,8 +15985,8 @@
                         [n]: v,
                         [r]: y,
                         d: s[3]
-                    }], b = w.length - 1; 0 <= b; --b)(w[b][n] == p && w[b][n] == h || w[b][n] == c && w[b][n] == l || w[b][r] == f && w[b][r] == m || w[b][r] == u && w[b][r] == d || t.exports.pointInBox(w[b][n], w[b][r], c, u, p, f) || t.exports.pointInBox(w[b][n], w[b][r], l, d, h, m)) && w.splice(b, 1);
-                return w.length ? w : null
+                    }], b = w.length - 1; 0 <= b; --b)(w[b][n] == p && w[b][n] == h || w[b][n] == c && w[b][n] == l || w[b][r] == f && w[b][r] == m || w[b][r] == u && w[b][r] == d || t.exports.pointInBox(w[b][n], w[b][r], c, u, p, f) || t.exports.pointInBox(w[b][n], w[b][r], l, d, h, m)) && (w[b].dontUse = !0);
+                return w
             }
         }
         return null
@@ -16033,15 +16035,24 @@
             s = (e[n] + e[r] - (i[n] + i[r])) / 2;
             e[r] -= s, e[n] -= s
         }
-    }, t.exports.limitRect = function(e, i, n, r, s, o, a, c) {
-        var l = t.exports.cdv[a],
-            p = t.exports.cdv[c],
-            h = {};
-        if (h[a] = e, h[c] = i, h[l] = n, h[p] = r, t.exports.limitRectVal(h, o, a), t.exports.limitRectVal(h, o, c), 0 == s || s == Math.PI) {
-            var u = h[l];
-            h[l] = h[p], h[p] = u
+    }, t.exports.getMaxRect = function(e, i, n) {
+        for (var r, s, o, a, c = t.exports.cdv[i], l = t.exports.cdv[n], p = 0; p < e.length; ++p) r = null == r ? e[p][i] - e[p][c] : Math.min(e[p][i] - e[p][c], r), o = null == o ? e[p][i] + e[p][c] : Math.max(e[p][i] + e[p][c], o), s = null == s ? e[p][n] - e[p][l] : Math.min(e[p][n] - e[p][l], s), a = null == a ? e[p][n] + e[p][l] : Math.max(e[p][n] + e[p][l], a);
+        return {
+            [i]: (r + o) / 2,
+            [n]: (s + a) / 2,
+            [c]: Math.abs(o - r) / 2,
+            [l]: Math.abs(a - s) / 2
         }
-        return h
+    }, t.exports.limitRect = function(e, i, n, r, s, o, a, c) {
+        var l = t.exports.getMaxRect(o, a, c),
+            p = t.exports.cdv[a],
+            h = t.exports.cdv[c],
+            u = {};
+        if (u[a] = e, u[c] = i, u[p] = n, u[h] = r, t.exports.limitRectVal(u, l, a), t.exports.limitRectVal(u, l, c), 0 == s || s == Math.PI) {
+            var d = u[p];
+            u[p] = u[h], u[h] = d
+        }
+        return u
     }, t.exports.progressOnLine = function(t, e, i, n, r, s) {
         var o = i - t,
             a = n - e,
@@ -40285,80 +40296,54 @@
                         colr: a.c,
                         col: !a.col,
                         noVis: a.v
-                    }, a.r ? a.r[2] : 0, (a.r ? a.r[0] : 0) - Math.PI / 2, a.r ? a.r[1] : 0) : "RAMP" == a.id ? this.manager.addRamp(v, y, x, a.s[0], a.s[1], a.s[2], a.d * Math.PI / 2, a.b, a.t ? a.t.toLowerCase() + "_0" : "grey_0", a.v, a.c, p.ambS || o.ambScale) : "SCORE_ZONE" == a.id ? this.manager.addScoreZone(v, y, x, a.s[0], a.s[2], a.s[1]) : "DEATH_ZONE" == a.id ? this.manager.addDeathZone(v, y, x, a.s[0], a.s[2], a.s[1]) : "LADDER" == a.id ? this.manager.addLadder(v, y, x, a.s[1], a.d * Math.PI / 2, a.v, a.t ? a.t.toLowerCase() + "_0" : "floor_0", a.c) : this.manager.addMesh(v, y, x, a.r ? a.r[1] ? a.r[1] : Math.PI : 0, a.s[0] / 2, a.s[1] / 2, a.s[2] / 2, a.id.toLowerCase(), a.col);
+                    }, a.r ? a.r[2] : 0, (a.r ? a.r[0] : 0) - Math.PI / 2, a.r ? a.r[1] : 0) : "RAMP" == a.id ? this.manager.addRamp(v, y, x, a.s[0], a.s[1], a.s[2], a.d * Math.PI / 2, a.b, a.t ? a.t.toLowerCase() + "_0" : "grey_0", a.v, a.c, o.ambScale) : "SCORE_ZONE" == a.id ? this.manager.addScoreZone(v, y, x, a.s[0], a.s[2], a.s[1]) : "DEATH_ZONE" == a.id ? this.manager.addDeathZone(v, y, x, a.s[0], a.s[2], a.s[1]) : "LADDER" == a.id ? this.manager.addLadder(v, y, x, a.s[1], a.d * Math.PI / 2, a.v, a.t ? a.t.toLowerCase() + "_0" : "floor_0", a.c) : this.manager.addMesh(v, y, x, a.r ? a.r[1] ? a.r[1] : Math.PI : 0, a.s[0] / 2, a.s[1] / 2, a.s[2] / 2, a.id.toLowerCase(), a.col);
                     else if (e) {
                         var M = e.prefabs[parseInt(a.pr || 0)];
                         M.count = Math.round((a.s[0] + a.s[2] + a.s[1]) / M.cnt), e.area(v, y, x, a.s[0], a.s[1], a.s[2], M)
                     }
                 }
-                this.manager.addNoisePlanes(), p.shadLength = Math.round(Math.abs(d - u) / 2.5), p.shadWidth = Math.round(Math.abs(m - f) / 2.5), t && t.updateLightMap(p);
-                var _ = p.ambS || o.ambScale;
-                if (this.manager.aoOpac = p.ambO || .6, t) {
-                    var S, E = _;
+                if (this.manager.addNoisePlanes(), p.shadLength = Math.round(Math.abs(d - u) / 2.5), p.shadWidth = Math.round(Math.abs(m - f) / 2.5), t && t.updateLightMap(p), this.manager.aoOpac = 1, t) {
+                    var _, S = o.ambScale;
                     for (g = 0; g < this.manager.objects.length; ++g)
                         if (!(a = this.manager.objects[g]).noVis && !a.complexMesh && !a.health)
-                            for (b = 0; b < this.manager.objects.length; ++b)
+                            for (b = g + 1; b < this.manager.objects.length; ++b)
                                 if (!(c = this.manager.objects[b]).noVis && !c.health && !c.complexMesh && this.manager.collision(a, c, 0)) {
-                                    if (b > g) {
-                                        if (S = n.boxIntersection(a, c, "x", "z", [Math.PI, 0, Math.PI / 2, -Math.PI / 2]))
-                                            for (var T = 0; T < S.length; ++T) {
-                                                L = n.getIntersection(a, c, "y");
-                                                for (var A = 0; 2 > A; A++) P = (S[T].d + Math.PI / 2 * A) % (2 * Math.PI), E = this.manager.limitAmb(_, S[T], P, "x", "z", a, c), this.manager.addAmbient(S[T].x + E * Math.cos(P), L.y, S[T].z + E * Math.sin(P), -P + Math.PI, 0, 0, L.height, E, 1)
-                                            }
-                                        if (S = n.boxIntersection(a, c, "z", "y", [Math.PI, 0, -Math.PI / 2, Math.PI / 2]))
-                                            for (T = 0; T < S.length; ++T) {
-                                                L = n.getIntersection(a, c, "x");
-                                                for (A = 0; 2 > A; A++) P = S[T].d + Math.PI / 2 * (A ? 0 : 1), E = this.manager.limitAmb(_, S[T], -P + Math.PI / 2, "z", "y", a, c), this.manager.addAmbient(L.x, S[T].y + E * Math.cos(P), S[T].z + E * Math.sin(P), 0, P, -Math.PI / 2, L.width, E, 1)
-                                            }
-                                        if (S = n.boxIntersection(a, c, "x", "y", [Math.PI, 0, -Math.PI / 2, Math.PI / 2])) {
-                                            var L;
-                                            for (T = 0; T < S.length; ++T) {
-                                                L = n.getIntersection(a, c, "z");
-                                                for (A = 0; 2 > A; A++) P = S[T].d + Math.PI / 2 * (A ? 0 : 1), E = this.manager.limitAmb(_, S[T], -P + Math.PI / 2, "x", "y", a, c), this.manager.addAmbient(S[T].x + E * Math.sin(P), S[T].y + E * Math.cos(P), L.z, Math.PI / 2, P, -Math.PI / 2, L.length, E, 1)
-                                            }
-                                        }
-                                    }
-                                    var R = a.y + a.height > c.y + c.height,
-                                        k = a.y - a.height < c.y - c.height;
-                                    if ((R || k) && (S = n.boxCornerIntersection(a, c, "x", "z")))
-                                        for (T = 0; T < S.length; ++T) {
-                                            E = Math.sqrt(2) * _;
-                                            var P = S[T].d - Math.PI / 4;
-                                            for (A = 0; 2 > A; ++A)
-                                                if (y = c.y + (c.height + o.ambOff) * (A ? -1 : 1), (A || R) && (!A || k)) {
-                                                    var C = n.limitRect(S[T].x - E * Math.sin(P), S[T].z - E * Math.cos(P), _, _, S[T].d, c, "x", "z");
-                                                    this.manager.addAmbient(C.x, y, C.z, S[T].d, Math.PI / 2, 0, C.width, C.length, 0)
+                                    if (_ = n.boxIntersection(a, c, "x", "z", [Math.PI, 0, Math.PI / 2, -Math.PI / 2]))
+                                        for (var E = 0; E < _.length; ++E)
+                                            if (!_[E].dontUse) {
+                                                for (var T = n.getIntersection(a, c, "y"), A = S * (a.aoMlt || 1) * (c.aoMlt || 1), L = 0; 2 > L; L++) k = (_[E].d + Math.PI / 2 * L) % (2 * Math.PI), A = Math.min(A, this.manager.limitAmb(S, _[E], k, "x", "z", a, c));
+                                                for (L = 0; 2 > L; L++)
+                                                    if (k = (_[E].d + Math.PI / 2 * L) % (2 * Math.PI), this.manager.addAmbient(_[E].x + A * Math.cos(k), T.y, _[E].z + A * Math.sin(k), -k + Math.PI, 0, 0, T.height, A + o.ambOff, 1), k == Math.PI / 2 || k == -Math.PI / 2 || k == 1.5 * Math.PI) {
+                                                        var R = n.limitRect(_[E].z + A * Math.sin(k), T.y + A + T.height + o.ambOff, A, A, 0, [a, c], "z", "y");
+                                                        this.manager.addAmbient(_[E].x + A * Math.cos(k), R.y, R.z, -k + Math.PI, Math.PI, 0, R.length, R.height, 0, [a, c], "g1-" + L + "-" + E, [_[E].x, T.y + T.height, _[E].z]), R = n.limitRect(_[E].z + A * Math.sin(k), T.y - A - T.height - o.ambOff, A, A, 0, [a, c], "z", "y"), this.manager.addAmbient(_[E].x + A * Math.cos(k), R.y, R.z, -k + Math.PI, 0, 0, R.length, R.height, 0, [a, c], "g2-" + L + "-" + E, [_[E].x, T.y - T.height, _[E].z])
+                                                    } else {
+                                                        R = n.limitRect(_[E].x + A * Math.cos(k), T.y + A + T.height + o.ambOff, A, A, 0, [a, c], "x", "y");
+                                                        this.manager.addAmbient(R.x, R.y, _[E].z + A * Math.sin(k), -k + Math.PI, Math.PI, 0, R.width, R.height, 0, [a, c], "g1-" + L + "-" + E, [_[E].x, T.y + T.height, _[E].z]), R = n.limitRect(_[E].x + A * Math.cos(k), T.y - A - T.height - o.ambOff, A, A, 0, [a, c], "x", "y"), this.manager.addAmbient(R.x, R.y, _[E].z + A * Math.sin(k), -k + Math.PI, 0, 0, R.width, R.height, 0, [a, c], "g2-" + L + "-" + E, [_[E].x, T.y - T.height, _[E].z])
+                                                    }
+                                            } if (_ = n.boxIntersection(a, c, "z", "y", [Math.PI, 0, -Math.PI / 2, Math.PI / 2]))
+                                        for (E = 0; E < _.length; ++E)
+                                            if (!_[E].dontUse) {
+                                                for (T = n.getIntersection(a, c, "x"), A = S * (a.aoMlt || 1) * (c.aoMlt || 1), L = 0; 2 > L; L++) k = _[E].d + Math.PI / 2 * (L ? 0 : 1), A = Math.min(A, this.manager.limitAmb(S, _[E], -k + Math.PI / 2, "z", "y", a, c));
+                                                for (L = 0; 2 > L; L++) {
+                                                    k = _[E].d + Math.PI / 2 * (L ? 0 : 1), this.manager.addAmbient(T.x, _[E].y + A * Math.cos(k), _[E].z + A * Math.sin(k), 0, k, -Math.PI / 2, T.width, A + o.ambOff, 1);
+                                                    R = n.limitRect(T.x + T.width + A + o.ambOff, _[E].z + A * Math.sin(k), A, A, 0, [a, c], "x", "z");
+                                                    this.manager.addAmbient(R.x, _[E].y + A * Math.cos(k), _[E].z + A * Math.sin(k), Math.PI, k == Math.PI ? k : -k % Math.PI, k == 1.5 * Math.PI ? 0 : -Math.PI / 2, k == 1.5 * Math.PI ? A : R.length, k == 1.5 * Math.PI ? R.length : A, 0, [a, c], "g3-" + L + "-" + E, [T.x + T.width, _[E].y, _[E].z]), R = n.limitRect(T.x - T.width - A - o.ambOff, _[E].z + A * Math.sin(k), A, A, Math.PI / 2, [a, c], "x", "z"), this.manager.addAmbient(R.x, _[E].y + A * Math.cos(k), _[E].z + A * Math.sin(k), Math.PI, -k % Math.PI, k == Math.PI || k == 1.5 * Math.PI ? Math.PI / 2 : Math.PI, k == Math.PI || k == 1.5 * Math.PI ? R.width : A, k == Math.PI || k == 1.5 * Math.PI ? A : R.width, 0, [a, c], "g4-" + L + "-" + E, [T.x - T.width, _[E].y, _[E].z])
                                                 }
-                                        }
-                                    var I = a.x + a.width > c.x + c.width,
-                                        O = a.x - a.width < c.x - c.width;
-                                    if (I || O) {
-                                        var D = [Math.PI / 2, 0, Math.PI, -Math.PI / 2];
-                                        if (S = n.boxCornerIntersection(a, c, "z", "y"))
-                                            for (T = 0; T < S.length; ++T) {
-                                                E = Math.sqrt(2) * _;
-                                                for (P = S[T].d - Math.PI / 4, A = 0; 2 > A; ++A)
-                                                    if (v = c.x + (c.width + o.ambOff) * (A ? -1 : 1), (A || I) && (!A || O)) {
-                                                        C = n.limitRect(S[T].z - E * Math.sin(P), S[T].y - E * Math.cos(P), _, _, S[T].d, c, "z", "y");
-                                                        this.manager.addAmbient(v, C.y, C.z, Math.PI / 2, Math.PI, D[S[T].i], C.length, C.height, 0)
+                                            } if (_ = n.boxIntersection(a, c, "x", "y", [Math.PI, 0, -Math.PI / 2, Math.PI / 2]))
+                                        for (E = 0; E < _.length; ++E)
+                                            if (!_[E].dontUse) {
+                                                for (T = n.getIntersection(a, c, "z"), A = S * (a.aoMlt || 1) * (c.aoMlt || 1), L = 0; 2 > L; L++) k = _[E].d + Math.PI / 2 * (L ? 0 : 1), A = Math.min(A, this.manager.limitAmb(S, _[E], -k + Math.PI / 2, "x", "y", a, c));
+                                                var k;
+                                                for (L = 0; 2 > L; L++)
+                                                    if (k = _[E].d + Math.PI / 2 * (L ? 0 : 1), this.manager.addAmbient(_[E].x + A * Math.sin(k), _[E].y + A * Math.cos(k), T.z, Math.PI / 2, k, -Math.PI / 2, T.length, A + o.ambOff, 1), k == Math.PI || 0 == k) {
+                                                        R = n.limitRect(_[E].z + A * Math.sin(k), T.z + T.length + A + o.ambOff, A, A, Math.PI / 2, [a, c], "x", "z");
+                                                        this.manager.addAmbient(_[E].x + A * Math.sin(k), _[E].y + A * Math.cos(k), R.z, Math.PI / 2, k, -Math.PI / 2, R.length, R.width, 0, [a, c], "g5-" + L + "-" + E, [_[E].x, _[E].y, T.z + T.length]), R = n.limitRect(_[E].z + A * Math.sin(k), T.z - T.length - A - o.ambOff, A, A, Math.PI / 2, [a, c], "x", "z"), this.manager.addAmbient(_[E].x + A * Math.sin(k), _[E].y + A * Math.cos(k), R.z, Math.PI / 2, k, Math.PI, R.width, R.length, 0, [a, c], "g6-" + L + "-" + E, [_[E].x, _[E].y, T.z - T.length])
+                                                    } else {
+                                                        R = n.limitRect(_[E].x + A * Math.sin(k), T.z + T.length + A + o.ambOff, A, A, Math.PI / 2, [a, c], "x", "z");
+                                                        this.manager.addAmbient(R.x, _[E].y + A * Math.cos(k), R.z, Math.PI / 2, k, -Math.PI / 2, R.length, R.width, 0, [a, c], "g5-" + L + "-" + E, [_[E].x, _[E].y, T.z + T.length]), R = n.limitRect(_[E].x + A * Math.sin(k), T.z - T.length - A - o.ambOff, A, A, Math.PI / 2, [a, c], "x", "z"), this.manager.addAmbient(R.x, _[E].y + A * Math.cos(k), R.z, Math.PI / 2, k, Math.PI, R.width, R.length, 0, [a, c], "g6-" + L + "-" + E, [_[E].x, _[E].y, T.z - T.length])
                                                     }
                                             }
-                                    }
-                                    var B = a.z + a.length > c.z + c.length,
-                                        N = a.z - a.length < c.z - c.length;
-                                    if (B || N) {
-                                        D = [-Math.PI / 2, Math.PI, 0, Math.PI / 2];
-                                        if (S = n.boxCornerIntersection(a, c, "x", "y"))
-                                            for (T = 0; T < S.length; ++T) {
-                                                E = Math.sqrt(2) * _;
-                                                for (P = S[T].d - Math.PI / 4, A = 0; 2 > A; ++A)
-                                                    if (x = c.z + (c.length + o.ambOff) * (A ? -1 : 1), (A || B) && (!A || N)) {
-                                                        C = n.limitRect(S[T].x - E * Math.sin(P), S[T].y - E * Math.cos(P), _, _, S[T].d, c, "x", "y");
-                                                        this.manager.addAmbient(C.x, C.y, x, 0, 0, D[S[T].i], C.width, C.height, 0)
-                                                    }
-                                            }
-                                    }
-                                }
+                                } this.manager.addPendingAOs()
                 }
                 this.spawns.length = 0;
                 for (g = 0; g < p.spawns.length; ++g) this.spawns.push({
@@ -40430,6 +40415,7 @@
     t.exports.prefabs = {
         CRATE: {
             dontRound: !0,
+            aoMlt: .3,
             gen: t => a(t, "models/crate_0.obj", "textures/crate_0.png", r.crateScale),
             dummy: !1,
             castShadow: !0,
@@ -40437,6 +40423,7 @@
         },
         STACK: {
             dontRound: !0,
+            aoMlt: .3,
             gen: t => a(t, "models/stack_0.obj", "textures/stack_0.png", r.crateScale),
             dummy: !1,
             castShadow: !0,
@@ -40444,12 +40431,14 @@
         },
         BARREL: {
             dontRound: !0,
+            aoMlt: .2,
             gen: t => a(t, "models/barrel_0.obj", "textures/barrel_0.png", r.barrelScale),
             castShadow: !0,
             receiveShadow: !0
         },
         ACIDBARREL: {
             dontRound: !0,
+            aoMlt: .2,
             emiss: !0,
             gen: t => a(t, "models/acidbarrel_0.obj", "textures/acidbarrel_0.png", r.acidbarrelScale),
             castShadow: !0,
@@ -41339,6 +41328,7 @@
         socket: null,
         connected: !1,
         socketId: -1,
+        sendQueue: [],
         connect: function(t, e, i) {
             if (!this.socket) {
                 var s = n.enableHttps ? "wss:" : "ws:",
@@ -41351,7 +41341,8 @@
                             s = e[1];
                         "io-init" == n ? o.socketId = s[0] : i[n].apply(void 0, s)
                     }, this.socket.onopen = function() {
-                        o.connected = !0, e()
+                        o.connected = !0, e();
+                        for (let t of o.sendQueue) o.send(t[0], ...t[1])
                     }, this.socket.onclose = function() {
                         o.connected = !1, a || e("Disconnected. Try connecting to another server.")
                     }, this.socket.onerror = function() {
@@ -41362,27 +41353,25 @@
                 }
             }
         },
-        send: function(t) {
-            if (this.socket) {
-                this.ahNum = r.rotateNumber(this.ahNum, s);
-                var e = Array.prototype.slice.call(arguments, 1),
-                    i = r.encodeNetworkMessage([t, e], this.ahNum);
-                this.socket.send(i)
-            } else console.warn("Socket not initialized yet.")
+        send: function(t, ...e) {
+            if (!this.socket || this.socket.readyState !== WebSocket.OPEN) return console.warn("Socket not open yet", t, e), void this.sendQueue.push([t, e]);
+            this.ahNum = r.rotateNumber(this.ahNum, s);
+            var i = r.encodeNetworkMessage([t, e], this.ahNum);
+            this.socket.send(i)
         },
         socketReady: function() {
             return this.socket && this.connected
         }
     }
 }, function(t) {
-    t.exports = 733
+    t.exports = 44519
 }, function(t, e, i) {
     var n, r, s = 0,
         o = function(t) {
-            this.sid = s++, this.uid = t.uid, this.width = t.w, this.length = t.l, this.height = t.h, this.active = !0, this.x = t.x, this.y = t.y, this.z = t.z, this.dir = t.d, this.src = t.src, this.ramp = t.ramp, this.ladder = t.ladder, this.jumpPad = t.jumpPad, this.noShoot = t.noShoot, this.stepSrc = t.s, this.score = t.score, this.kill = t.kill, this.dummy = t.dummy, this.noVis = t.noVis, this.complexMesh = t.complexMesh, this.penetrable = t.penetrable, this.health = t.health, this.startHealth = t.health, this.transparent = t.transparent, this.boost = t.boost, this.boostDr = t.boostDr
+            this.sid = s++, this.uid = t.uid, this.width = t.w, this.length = t.l, this.height = t.h, this.active = !0, this.x = t.x, this.y = t.y, this.z = t.z, this.dir = t.d, this.src = t.src, this.ramp = t.ramp, this.ladder = t.ladder, this.jumpPad = t.jumpPad, this.noShoot = t.noShoot, this.stepSrc = t.s, this.score = t.score, this.kill = t.kill, this.dummy = t.dummy, this.noVis = t.noVis, this.complexMesh = t.complexMesh, this.penetrable = t.penetrable, this.health = t.health, this.startHealth = t.health, this.transparent = t.transparent, this.boost = t.boost, this.boostDr = t.boostDr, this.aoMlt = t.aoM
         };
     t.exports.manager = function(t, e, s) {
-        var a;
+        var a, c;
         t && (n = i(43).prefabs, r = i(2)), this.aoOpac = 0, this.objects = [], this.objectives = [], this.collision = function(t, e, i) {
             return t.x - t.width - i <= e.x + e.width && t.x + t.width + i >= e.x - e.width && t.z - t.length - i <= e.z + e.length && t.z + t.length + i >= e.z - e.length && t.y - t.height - i <= e.y + e.height && t.y + t.height + i >= e.y - e.height
         }, this.checkPos = function(t, i, n, r, s) {
@@ -41519,62 +41508,130 @@
                 })), t && !p.noVis) {
                 p.vertexColors = r.VertexColors, p.scale = null == p.scale ? 1 : p.scale, p.shadows = !p.shadowsR, p.noGroup = !!p.health;
                 var h = t.addCube(e, i, n, s, c, a, l, p);
-                p.health && (this.objects[this.objects.length - 1].meshRef = h)
+                p.health && !p.noCol && (this.objects[this.objects.length - 1].meshRef = h)
             }
-        }, this.addMesh = function(e, i, a, c, l, p, h, u, d) {
-            i += p, d || this.objects.push(new o({
-                complexMesh: !!n && n[u.toUpperCase()].complex,
-                x: e,
-                z: a,
-                y: i,
-                w: l,
-                l: h,
-                h: p,
+        }, this.addMesh = function(i, a, c, l, p, h, u, d, f) {
+            a += h, f || this.objects.push(new o({
+                complexMesh: !!n && n[d.toUpperCase()].complex,
+                aoM: n && n[d.toUpperCase()].aoMlt || 0,
+                x: i,
+                z: c,
+                y: a,
+                w: p,
+                l: u,
+                h: h,
                 ter: !0
-            })), t && t.loadMesh({
-                src: u + "_0",
-                emissive: n[u.toUpperCase()].emiss ? 16777215 : null,
-                side: n[u.toUpperCase()].doubleSide ? r.DoubleSide : r.FrontSide,
-                transparent: n[u.toUpperCase()].transparent,
-                shadows: n[u.toUpperCase()].castShadow,
-                shadowsR: n[u.toUpperCase()].receiveShadow
-            }, e, i, a, c, s[u + "Scale"], t.scene, !0)
+            })), n && n[d.toUpperCase()].transparent && (a += e.randFloat(-.01, .01)), t && t.loadMesh({
+                src: d + "_0",
+                emissive: n[d.toUpperCase()].emiss ? 16777215 : null,
+                side: n[d.toUpperCase()].doubleSide ? r.DoubleSide : r.FrontSide,
+                transparent: n[d.toUpperCase()].transparent,
+                shadows: n[d.toUpperCase()].castShadow,
+                shadowsR: n[d.toUpperCase()].receiveShadow
+            }, i, a, c, l, s[d + "Scale"], t.scene, !0)
         };
-        var c = [];
+        var l = [];
         this.addNoisePlanes = function() {
-            for (var e = 0; e < c.length; ++e) c[e][5].objects = this.objects, t.addPlane(...c[e]);
-            c.length = 0
-        }, this.addPlane = function(e, i, n, s, a, l, p, h, u) {
-            if ((l = l || {}).col && this.objects.push(new o({
+            for (var e = 0; e < l.length; ++e) l[e][5].objects = this.objects, t.addPlane(...l[e]);
+            l.length = 0
+        }, this.addPlane = function(e, i, n, s, a, c, p, h, u) {
+            if ((c = c || {}).col && this.objects.push(new o({
                     x: e,
                     z: n,
                     y: i,
                     w: a,
                     l: s,
                     h: 0,
-                    s: l.sound,
-                    health: l.health,
-                    transparent: l.transparent,
-                    penetrable: l.penetrable,
-                    noVis: l.noVis
-                })), t && !l.noVis) {
-                l.transparent = !0, l.side = r.DoubleSide, l.vertexColors = r.VertexColors, l.noise && (l.pinEdges = !0, l.margin = 1, l.tilesX = Math.round(a / 5), l.tilesZ = Math.round(s / 5));
-                var d = [e, i, n, a, s, l, p, (h || 0) + Math.PI / 2, u];
-                if (!l.noise) return t.addPlane(...d);
-                c.push(d)
+                    s: c.sound,
+                    health: c.health,
+                    transparent: c.transparent,
+                    penetrable: c.penetrable,
+                    noVis: c.noVis
+                })), t && !c.noVis) {
+                c.transparent = !0, c.side = r.DoubleSide, c.vertexColors = r.VertexColors, c.noise && (c.pinEdges = !0, c.margin = 1, c.tilesX = Math.round(a / 5), c.tilesZ = Math.round(s / 5));
+                var d = [e, i, n, a, s, c, p, (h || 0) + Math.PI / 2, u];
+                if (!c.noise) return t.addPlane(...d);
+                l.push(d)
             }
-        }, this.addAmbient = function(t, e, i, n, r, s, o, a, c) {
-            this.addPlane(t, e, i, o, a, {
-                src: "ambient_" + (c || 0),
-                opacity: this.aoOpac,
-                euler: "ZYX",
-                depthWrite: !1
-            }, n, r, s)
+        }, this.pointInObjs = function(t, i, n) {
+            for (var r = 0; r < this.objects.length; ++r)
+                if (!(a = this.objects[r]).noVis && !a.complexMesh && !a.health && 0 > i.indexOf(a.sid) && e.pointInBox3D(t[0], t[1], t[2], a, n || 0)) return !0;
+            return !1
+        }, this.setMaxAO = function(t, e, i) {
+            t.maxAOS = t.maxAOS || {}, t.maxAOS[e.sid] = Math.max(i, t.maxAOS[e.sid] || 0), e.maxAOS = e.maxAOS || {}, e.maxAOS[t.sid] = Math.max(i, e.maxAOS[t.sid] || 0)
+        }, this.aosToAdd = {}, this.addAmbient = function(t, i, n, o, a, c, l, p, h, u, d) {
+            var f = !u;
+            if (u)
+                for (var m = 0; m < u.length; ++m)
+                    if (e.pointInBox3D(t, i, n, u[m], 2 * s.ambOff)) {
+                        f = !0;
+                        break
+                    } if (f)
+                if (u) {
+                    var g = u[0].sid + "-" + u[1].sid;
+                    this.aosToAdd[g] || (this.aosToAdd[g] = []), this.aosToAdd[g].push({
+                        vals: [t, i, n, o, a, c, l + s.ambOff, p + s.ambOff, h],
+                        group: d
+                    })
+                } else this.addPlane(t, i, n, l, p, {
+                    src: "ambient_" + (h || 0),
+                    opacity: this.aoOpac,
+                    depthFunc: r.LessEqualDepth,
+                    euler: "ZYX",
+                    depthWrite: !1
+                }, o, a, c)
+        };
+        var p = [
+            ["g6-1-2", "g4-1-2"],
+            ["g5-1-2", "g4-0-1"],
+            ["g6-0-1", "g3-1-2"],
+            ["g5-0-1", "g3-0-1"],
+            ["g6-0-3", "g2-0-3"],
+            ["g5-0-3", "g2-1-1"],
+            ["g6-1-1", "g1-0-3"],
+            ["g5-1-1", "g1-1-1"],
+            ["g6-0-2", "g1-1-0"],
+            ["g5-0-2", "g1-0-2"],
+            ["g6-1-0", "g2-1-0"],
+            ["g5-1-0", "g2-0-2"],
+            ["g4-0-2", "g1-0-0"],
+            ["g3-0-2", "g1-1-3"],
+            ["g4-1-0", "g2-0-0"],
+            ["g3-1-0", "g2-1-3"],
+            ["g4-0-3", "g2-1-2"],
+            ["g3-0-3", "g2-0-1"],
+            ["g4-1-1", "g1-1-2"],
+            ["g3-1-1", "g1-0-1"],
+            ["g6-1-3", "g3-0-0"],
+            ["g5-1-3", "g3-1-3"],
+            ["g6-0-0", "g4-0-0"],
+            ["g5-0-0", "g4-1-3"]
+        ];
+        this.groupsMatch = function(t, e) {
+            for (var i = 0; i < p.length; ++i)
+                if (0 <= p[i].indexOf(t) && 0 <= p[i].indexOf(e)) return !0;
+            return !1
+        }, this.clearAOGroup = function(t) {
+            for (var e = t.length - 1; 0 <= e; --e) {
+                a = t[e];
+                for (var i = t.length - 1; 0 <= i; --i)
+                    if (c = t[i], !a.dontAdd && !c.dontAdd && a != c && this.groupsMatch(a.group, c.group)) {
+                        a.vals[6] + a.vals[7] >= c.vals[6] + c.vals[7] ? c.dontAdd = !0 : a.dontAdd = !0;
+                        break
+                    }
+            }
+        }, this.addPendingAOs = function() {
+            for (var t in this.aosToAdd)
+                if (this.aosToAdd.hasOwnProperty(t)) {
+                    this.clearAOGroup(this.aosToAdd[t]);
+                    for (var e = 0; e < this.aosToAdd[t].length; ++e) this.aosToAdd[t][e].dontAdd || this.addAmbient(...this.aosToAdd[t][e].vals)
+                } this.aosToAdd = {}
         }, this.limitAmb = function(t, i, n, r, s, o, a) {
             var c = [e.cdv[r]],
                 l = [e.cdv[s]];
             return t = n == -Math.PI / 2 || n == Math.PI + Math.PI / 2 ? Math.min(t, (i[s] - Math.min(o[s] - o[l], a[s] - a[l])) / 2) : n == Math.PI / 2 ? Math.min(t, (Math.max(o[s] + o[l], a[s] + a[l]) - i[s]) / 2) : 0 == n ? Math.min(t, (Math.max(o[r] + o[c], a[r] + a[c]) - i[r]) / 2) : Math.min(t, (i[r] - Math.min(o[r] - o[c], a[r] - a[c])) / 2)
         }, this.resetAll = function() {
+            this.aosToAdd = {};
             for (var e = 0; e < this.objects.length; ++e) this.objects[e].active = !0, this.objects[e].startHealth && (this.objects[e].health = this.objects[e].startHealth), this.objects[e].meshRef && (this.objects[e].meshRef.visible = !0);
             t && t.updateShadowMap()
         }, this.removeAll = function() {
@@ -41688,7 +41745,7 @@
             var c = i.getAngleDist(t[2], this.xDire);
             e.saveSpin(this, c);
             var l = !o && this.isYou;
-            if (l && (this.leanAnimX -= c * n.leanSens, this.leanAnimX = i.limit(this.leanAnimX, n.leanMax), this.leanAnimY -= i.getAngleDist(t[3], this.yDire) * n.leanSens, this.leanAnimY = i.limit(this.leanAnimY, n.leanMax), this.leanAnimX && (this.leanAnimX *= Math.pow(n.leanPull, a)), this.leanAnimY && (this.leanAnimY *= Math.pow(n.leanPull, a)), this.leanAnimZ && (this.leanAnimZ *= Math.pow(n.leanPullZ, a)), this.bobAnimZ && (this.bobAnimZ *= Math.pow(n.bobPullZ, a)), this.bobAnimY && (this.bobAnimY *= Math.pow(n.bobPullY, a)), this.recoilX && (this.recoilX *= Math.pow(n.leanPull, a)), this.recoilZ && (this.recoilZ *= Math.pow(n.leanPull, a)), this.inspecting && this.inspectX < Math.PI / 2.8 && (this.inspectX += .1 * (Math.PI / 2.8 - this.inspectX))), t[10] && e.swapWeapon(this, t[10]), o || (this.recoilForce && (this.recoilAnim += this.recoilForce * a, this.recoilAnimY += this.recoilForce * a, this.recoilForce *= Math.pow(this.weapon.recoverF, a)), this.recoilAnim && (this.recoilAnim *= Math.pow(this.weapon.recover, a)), this.recoilAnimY && (this.recoilAnimY *= Math.pow(this.weapon.recoverY || this.weapon.recover, a))), this.xDire = (t[2] || 0).round(3), this.yDire = (t[3] || 0).round(3), this.oldX = this.x, this.oldY = this.y, this.oldZ = this.z, this.weapon.zoom && (!this.weapon.noAim || 0 < this.swapTime)) {
+            if (l && (this.leanAnimX -= c * n.leanSens, this.leanAnimX = i.limit(this.leanAnimX, n.leanMax), this.leanAnimY -= i.getAngleDist(t[3], this.yDire) * n.leanSens, this.leanAnimY = i.limit(this.leanAnimY, n.leanMax), this.leanAnimX && (this.leanAnimX *= Math.pow(n.leanPull, a)), this.leanAnimY && (this.leanAnimY *= Math.pow(n.leanPull, a)), this.leanAnimZ && (this.leanAnimZ *= Math.pow(n.leanPullZ, a)), this.bobAnimZ && (this.bobAnimZ *= Math.pow(n.bobPullZ, a)), this.bobAnimY && (this.bobAnimY *= Math.pow(n.bobPullY, a)), this.recoilX && (this.recoilX *= Math.pow(n.leanPull, a)), this.recoilZ && (this.recoilZ *= Math.pow(n.leanPull, a)), this.inspecting && this.inspectX < Math.PI / 2.8 && (this.inspectX += .1 * (Math.PI / 2.8 - this.inspectX))), t[10] && e.swapWeapon(this, t[10]), o || (this.recoilForce && (this.recoilAnim += this.recoilForce * a, this.recoilAnimY += this.recoilForce * (this.weapon.recoilY || 1) * (1 - .3 * this.crouchVal) * a, this.recoilForce *= Math.pow(this.weapon.recoverF, a)), this.recoilAnim && (this.recoilAnim *= Math.pow(this.weapon.recover, a)), this.recoilAnimY && (this.recoilAnimY *= Math.pow(this.weapon.recoverY || this.weapon.recover, a))), this.xDire = (t[2] || 0).round(3), this.yDire = (t[3] || 0).round(3), this.oldX = this.x, this.oldY = this.y, this.oldZ = this.z, this.weapon.zoom && (!this.weapon.noAim || 0 < this.swapTime)) {
                 var p = 0 >= this.reloadTimer && 0 >= this.swapTime;
                 t[6] && 0 < this.aimVal && p ? (e.cancelInspect(this), this.aimDir = 0, this.aimVal -= 1 / (this.weapon.aimSpeed / a), 0 >= this.aimVal && (this.aimVal = 0, this.isYou && !o && e.toggleAim(this, 1)), this.isYou && !o && !this.weapon.scope && e.updateAim(this, 1 - this.aimVal)) : (!p || !t[6] && 1 > this.aimVal) && (this.aimDir = 1, !this.aimVal && this.isYou && !o && e.toggleAim(this, 0), this.aimVal += 1 / (this.weapon.aimSpeed / a), 1 <= this.aimVal && (this.aimVal = 1), this.isYou && !o && !this.weapon.scope && e.updateAim(this, 1 - this.aimVal)), 0 == this.aimVal ? this.aimTime += a : this.aimTime = 0
             }
@@ -41743,9 +41800,8 @@
                 if (this.weapon && !this.weapon.melee) {
                     var L = !this.weapon.nAuto && t[5];
                     //<edit>
-                    window.shoot = () => {
-                        e.shoot(this)
-                    };
+                    window.shoot = () => {e.shoot(this) };
+                    window.reload = () => {e.reload(this) };
                     //<edit\>
                     this.didShoot && !t[5] && (this.didShoot = !1), !this.didShoot && t[5] && (L = !0), L && 0 >= this.reloads[this.weaponIndex] && 0 >= this.swapTime && 0 >= this.reloadTimer && (0 < this.ammos[this.weaponIndex] ? e.shoot(this) : e.reload(this))
                 }
@@ -41769,7 +41825,7 @@
     };
     t.exports.Player = r, t.exports.manager = function(t, e, s, o, a, c, l) {
         this.list = [];
-        var p, h, u, d = i(92);
+        var p, h, u, d = i(93);
         this.hasServer = l ? 1 : 0, this.setTeam = function(e) {
             if (!t.waitTimers && t.mode.convTeam) e.team = t.mode.convTeam;
             else if (t.mode.startTeam) e.team = t.mode.startTeam;
@@ -41816,37 +41872,39 @@
                     s = 1 - .8 * i.crouchVal,
                     o = (1 - (1 - i.aimVal)) * c.animMult;
                 i.isYou || (o = 0);
-                var a = 1 - (i.weapon.newM ? 1 : .1) * (1 - i.aimVal),
-                    l = 1 - (i.weapon.recoilZM || .5) * (1 - i.aimVal),
-                    p = (1 - (i.weapon.newM ? 1 : .3) * (1 - i.aimVal)) * e.weaponLean,
-                    h = 1 - (i.weapon.jYMlt || 1) * (1 - i.aimVal),
-                    u = 1 - .45 * (1 - i.aimVal),
-                    d = .9 * i.bobAnimY * h * e.weaponLean,
-                    f = i.landBobY * (i.weapon.landBob || 1) * .9 * (1 - .85 * (1 - i.aimVal)) * e.weaponLean;
-                i.landBobYR != f && (i.landBobYR += .15 * (f - i.landBobYR));
-                var m = i.landBobY * (i.weapon.landBob || 1) * .08 * (1 - .2 * (1 - i.aimVal)),
-                    g = 1 - .5 * i.crouchVal,
-                    v = i.jumpRot * g * (1 - .9 * (1 - i.aimVal)) * e.weaponLean;
-                i.jumpRotM != v && (i.jumpRotM += .08 * (v - i.jumpRotM));
-                var y = i.jumpBobY * (i.weapon.jumpYM || 1) * o * g * e.weaponLean,
-                    x = 1 - .89 * (1 - i.aimVal),
-                    w = 1 - (i.weapon.aimRecMlt || 1) * (1 - i.aimVal),
-                    b = n ? .05 : c.stepAnim,
-                    M = Math.sin(i.stepVal) * b,
-                    _ = Math.cos(2 * i.stepVal) / 2 * b,
-                    S = -Math.sin(i.stepChase) * b,
-                    E = -Math.cos(2 * i.stepChase) / 2 * b,
-                    T = i.stepTweenV * (1 - (1 - i.aimVal)) * e.weaponLean,
-                    A = t.config.thirdPerson ? 0 : 1 - i.aimVal,
-                    L = .5 * (.5 >= A ? A : .5 - (A - .5)),
-                    R = i.swapTime / i.weapon.swapTime,
-                    k = i.weapon.xOff,
-                    P = 0;
-                0 < i.reloadTimer && (P = .5 < (P = 1 - i.reloadTimer / i.weapon.reload) ? .5 - (P - .5) : P), e.moveMesh(i.objInstances, i.x, i.y + (i.isYou && !t.config.thirdPerson ? 0 : Math.abs(3.5 * M)), i.z), e.rotateMesh(i.objInstances, i.xDire + (i.isYou ? t.config.thirdPerson ? .5 * -M : 0 : 2 * -M)), _ -= _ * (i.crouchVal * c.crouchAnimMlt), M -= M * (i.crouchVal * c.crouchAnimMlt);
-                for (var C = 0; C < i.legMeshes.length; ++C) i.legMeshes[C].rotation.x = M * (1 == C || 3 == C ? 1 : -1) * 7 + (1 < C ? -.6 : 0);
-                for (C = 0; C < i.armMeshes.length; ++C) i.armMeshes[C].position.z = M * (C ? -1 : 1) * 12;
-                var I = t.config.thirdPerson ? .4 : 1;
-                e.rotateMesh(i.upperBody, P * (-1 * I), -.2 * d + +m + P * (-2.8 * I) + i.yDire * (i.isYou && !t.config.thirdPerson ? 1 : .5) + (-Math.PI / 4 * R + i.recoilAnimY * c.recoilMlt)), e.moveMesh(i.upperBody, 0, i.recoilAnimY * (i.weapon.recoilYM || .3) * o + (i.height - c.cameraHeight - c.legHeight), 0), e.rotateMesh(i.weaponMeshes[i.weaponIndex], i.inspectX + .3 * i.jumpRotM + i.recoilX * x + i.leanAnimX * u * e.weaponLean * (i.weapon.leanMlt || 1) + (.6 * S * o * s + .2 * i.leanAnimZ) * r, (i.weapon.yRot || 0) + .065 * -i.landBobYR + i.recoilTweenY * w + 1.5 * i.leanAnimY * u * e.weaponLean * (i.weapon.leanMlt || 1) + (i.recoilAnim * ((i.weapon.recoilY || 0) * a) - .7 * E) * r, .25 * -i.landBobYR * o + v * o + T + L + i.recoilX * x + i.leanAnimZ * p + -i.inspectX * (i.weapon.inspectR || 0) + ((i.weapon.cLean || 0) * i.crouchVal * o + .5 * S) * r), e.moveMesh(i.weaponMeshes[i.weaponIndex], -i.jumpRotM * o * 1.3 + -i.inspectX * (i.weapon.inspectM || 0) + (.35 * i.leanAnimZ - (i.weapon.cRot || 0) * i.crouchVal * o + 1 * M * s * o) * i.aimVal * r + k - (k - i.weapon.xOrg) * A, i.recoilTweenYM * w + y + .9 * f - 1.5 * d + (.85 * _ - (i.weapon.cDrop || 0) * i.crouchVal * o) * r + i.weapon.yOff - (i.weapon.yOff - i.weapon.yOrg) * A, i.weapon.zOff - (i.weapon.zOff - i.weapon.zOrg) * A + i.bobAnimZ * r + i.recoilAnim * (i.weapon.recoilZ || 0) * l)
+                i.weapon.newM, i.aimVal;
+                var a = 1 - (i.weapon.recoilZM || .5) * (1 - i.aimVal),
+                    l = (1 - (i.weapon.newM ? 1 : .3) * (1 - i.aimVal)) * e.weaponLean,
+                    p = 1 - (i.weapon.jYMlt || 1) * (1 - i.aimVal),
+                    h = 1 - .45 * (1 - i.aimVal),
+                    u = .9 * i.bobAnimY * p * e.weaponLean,
+                    d = i.landBobY * (i.weapon.landBob || 1) * .9 * (1 - .85 * (1 - i.aimVal)) * e.weaponLean;
+                i.landBobYR != d && (i.landBobYR += .15 * (d - i.landBobYR));
+                var f = i.landBobY * (i.weapon.landBob || 1) * .08 * (1 - .2 * (1 - i.aimVal)),
+                    m = 1 - .5 * i.crouchVal,
+                    g = i.jumpRot * m * (1 - .9 * (1 - i.aimVal)) * e.weaponLean;
+                i.jumpRotM != g && (i.jumpRotM += .08 * (g - i.jumpRotM));
+                var v = i.jumpBobY * (i.weapon.jumpYM || 1) * o * m * e.weaponLean,
+                    y = 1 - .89 * (1 - i.aimVal),
+                    x = 1 - (i.weapon.aimRecMlt || 1) * (1 - i.aimVal),
+                    w = n ? .05 : c.stepAnim,
+                    b = Math.sin(i.stepVal) * w,
+                    M = Math.cos(2 * i.stepVal) / 2 * w,
+                    _ = -Math.sin(i.stepChase) * w,
+                    S = -Math.cos(2 * i.stepChase) / 2 * w,
+                    E = i.stepTweenV * (1 - (1 - i.aimVal)) * e.weaponLean,
+                    T = t.config.thirdPerson ? 0 : 1 - i.aimVal,
+                    A = .5 * (.5 >= T ? T : .5 - (T - .5)),
+                    L = i.swapTime / i.weapon.swapTime,
+                    R = i.weapon.xOff,
+                    k = 0;
+                0 < i.reloadTimer && (k = .5 < (k = 1 - i.reloadTimer / i.weapon.reload) ? .5 - (k - .5) : k), e.moveMesh(i.objInstances, i.x, i.y + (i.isYou && !t.config.thirdPerson ? 0 : Math.abs(3.5 * b)), i.z), e.rotateMesh(i.objInstances, i.xDire + (i.isYou ? t.config.thirdPerson ? .5 * -b : 0 : 2 * -b)), M -= M * (i.crouchVal * c.crouchAnimMlt), b -= b * (i.crouchVal * c.crouchAnimMlt);
+                for (var P = 0; P < i.legMeshes.length; ++P) i.legMeshes[P].rotation.x = b * (1 == P || 3 == P ? 1 : -1) * 7 + (1 < P ? -.6 : 0);
+                for (P = 0; P < i.armMeshes.length; ++P) i.armMeshes[P].position.z = b * (P ? -1 : 1) * 12;
+                var C = t.attach[i.weapon.attach],
+                    I = C && C.aimOffY || 0,
+                    O = t.config.thirdPerson ? .4 : 1;
+                e.rotateMesh(i.upperBody, k * (-1 * O), -.2 * u + +f + k * (-2.8 * O) + i.yDire * (i.isYou && !t.config.thirdPerson ? 1 : .5) + (-Math.PI / 4 * L + i.recoilAnimY * c.recoilMlt) + (i.weapon.yRot || 0)), e.moveMesh(i.upperBody, 0, i.recoilAnimY * (i.weapon.recoilYM || .3) * o + (i.height - c.cameraHeight - c.legHeight), 0), e.rotateMesh(i.weaponMeshes[i.weaponIndex], i.inspectX + .3 * i.jumpRotM + i.recoilX * y + i.leanAnimX * h * e.weaponLean * (i.weapon.leanMlt || 1) + (.6 * _ * o * s + .2 * i.leanAnimZ) * r, .065 * -i.landBobYR + i.recoilTweenY * x + i.leanAnimY * h * e.weaponLean * (i.weapon.leanMlt || 1) + -.7 * S * r, .25 * -i.landBobYR * o + g * o + E + A + i.recoilX * y + i.leanAnimZ * l + -i.inspectX * (i.weapon.inspectR || 0) + ((i.weapon.cLean || 0) * i.crouchVal * o + .5 * _) * r), e.moveMesh(i.weaponMeshes[i.weaponIndex], -i.jumpRotM * o * 1.3 + -i.inspectX * (i.weapon.inspectM || 0) + (.35 * i.leanAnimZ - (i.weapon.cRot || 0) * i.crouchVal * o + 1 * b * s * o) * i.aimVal * r + R - (R - i.weapon.xOrg) * T, i.recoilTweenYM * x + v + .9 * d - 1.5 * u + (.85 * M - (i.weapon.cDrop || 0) * i.crouchVal * o) * r + i.weapon.yOff - (i.weapon.yOff - i.weapon.yOrg + I) * T, i.weapon.zOff - (i.weapon.zOff - i.weapon.zOrg) * T + i.bobAnimZ * r + i.recoilAnim * (i.weapon.recoilZ || 0) * a)
             }
         }, this.updateHeight = function(i) {
             var n = c.crouchDst * i.crouchVal;
@@ -41875,32 +41933,40 @@
                 for (var l = 0; 4 > l; ++l) i.legMeshes.push(e.genLeg(1 == l || 3 == l, s[2], s[3], 1 < l)), 2 <= l && e.rotateMesh(i.legMeshes[l], 2 == l ? -Math.PI / 6 : Math.PI / 8, 0, 0), i.legMeshes[l].visible = 1 >= l, i.objInstances.add(i.legMeshes[l]);
             for (l = 0; l < i.ammos.length; ++l) {
                 var p = e.genObj3D(0, 0, 0),
-                    h = t.weapons[i.loadout[l]];
+                    h = t.weapons[i.loadout[l]],
+                    u = null == h.attach ? null : t.attach[h.attach];
                 if (r && h.ammo) {
                     p.muzzles = [], p.casings = [];
-                    for (var u = 0; 2 > u; ++u)(!u || h.akimbo) && (p.muzzles.push(new n.Sprite), p.muzzles[u].visible = !1, p.muzzles[u].static = !0, o.particles.push(p.muzzles[u]), p.add(p.muzzles[u]), p.casings.push(e.genObj3D(u ? 2 * -h.xOff : 0, h.caseYOff || 0, h.caseZOff || 0)), p.add(p.casings[u]));
+                    for (var d = 0; 2 > d; ++d)(!d || h.akimbo) && (p.muzzles.push(new n.Sprite), p.muzzles[d].visible = !1, p.muzzles[d].static = !0, o.particles.push(p.muzzles[d]), p.add(p.muzzles[d]), p.casings.push(e.genObj3D(d ? 2 * -h.xOff : 0, h.caseYOff || 0, h.caseZOff || 0)), p.add(p.casings[d]));
                     p.muzzleFlash = e.genObj3D(0, .4, 0), p.muzzles[0].add(p.muzzleFlash)
                 }
                 if (h.src || !r) p.add(e.genArms(h, s[1], s[5], s[0], null, !a));
                 else {
-                    var d;
-                    for (u = 0; 2 > u; ++u) d = e.genArms(h, s[1], s[5], s[0], u + 1, !a), p.add(d), i.armMeshes.push(d)
+                    var f;
+                    for (d = 0; 2 > d; ++d) f = e.genArms(h, s[1], s[5], s[0], d + 1, !a), p.add(f), i.armMeshes.push(f)
                 }
                 if (i.weaponMeshes.push(p), i.weaponMeshes[l].visible = !1, i.upperBody.add(i.weaponMeshes[l]), h.src) {
-                    var f = 0 <= i.skins[l] && t.store.skins[i.skins[l]].glow;
-                    for (u = 0; 2 > u; ++u)(!u || h.akimbo) && e.loadMesh({
+                    var m = 0 <= i.skins[l] && t.store.skins[i.skins[l]].glow;
+                    for (d = 0; 2 > d; ++d)(!d || h.akimbo) && e.loadMesh({
                         src: "weapons/" + h.src,
                         texSrc: 0 <= i.skins[l] ? "weapons/skins/" + h.src + "_" + t.store.skins[i.skins[l]].id : null,
                         tFilter: n.LinearFilter,
-                        glowText: f,
+                        glowText: m,
                         noGreen: !0,
                         uv2: !0,
                         ao: r && !h.noAo,
                         shininess: 40,
                         transparent: h.seeThrough,
-                        emissive: h.transp || f ? 16777215 : null
-                    }, 1 == u ? -2 * h.xOff : 0, 0, 0, Math.PI / 2, h.scale, i.weaponMeshes[l])
+                        emissive: h.transp || m ? 16777215 : null
+                    }, 1 == d ? -2 * h.xOff : 0, 0, 0, Math.PI / 2, h.scale, i.weaponMeshes[l])
                 }
+                u && r && e.loadMesh({
+                    src: "attach/" + u.src,
+                    tFilter: n.LinearFilter,
+                    noGreen: !0,
+                    shininess: 40,
+                    transparent: !0
+                }, 0, -(h.yOrg || 0) + (h.attachYOff || 0), -(h.attachZOff || 0), Math.PI / 2, u.scale, i.weaponMeshes[l])
             }
             return i.objInstances.add(i.lowerBody), r && i.objInstances.traverse(function(t) {
                 t.layers.set(1)
@@ -41981,9 +42047,11 @@
                 s.play("jump_" + a.randInt(0, 1), .04, !1, a.randFloat(.9, 1))
             }
         }, this.updateAim = function(t, i) {
-            e.zoom(1 + (t.weapon.zoom - 1) * i)
+            /*<edit> Bigger Zoom - e.zoom(1 + ((t.weapon.zoom * 3) - 1) * i) <edit\>*/ e.zoom(1 + ((t.weapon.zoom * 3.25) - 1) * i)
         }, this.toggleAim = function(i, n) {
-            s && !i.recon && s.play("aim_" + n, .1), n || (e.zoom(1), aimRecticle.style.opacity = 0), i.weapon.scope && (e.zoom(n ? i.weapon.zoom : 1), i.weaponMeshes[i.weaponIndex].visible = !t.hideWeapon && !n, aimRecticle.style.opacity = n ? 1 : 0)
+            s && !i.recon && s.play("aim_" + n, .1), n || this.resetAim(), i.weapon.scope && (e.zoom(n ? i.weapon.zoom : 1), i.weaponMeshes[i.weaponIndex].visible = !t.hideWeapon && !n, aimRecticle.style.opacity = n ? 1 : 0), t.attach[i.weapon.attach] && (aimDot.style.opacity = n ? 1 : 0)
+        }, this.resetAim = function() {
+            e.zoom(1), aimRecticle.style.opacity = 0, aimDot.style.opacity = 0
         }, this.reload = function(t) {
             !t.reloadTimer && t.ammos[t.weaponIndex] < t.weapon.ammo && (s && s.play("reload_1", .25), t.reloadTimer = t.weapon.reload, t.isYou && this.cancelInspect(t))
         }, this.endReload = function(t) {
@@ -41997,11 +42065,11 @@
         };
         var m = [];
         this.shoot = function(i) {
-            if (i.reloads[i.weaponIndex] = i.weapon.rate, i.ammos[i.weaponIndex]/*<edit>--FullClip*/, i.didShoot = !0, this.updatePlayerAmmo(i), t.playSound) {
+            if (i.reloads[i.weaponIndex] = /*<edit> i.weapon.rate Fast Shoot <edit\>*/(75/100) * i.weapon.rate, i.ammos[i.weaponIndex]/*<edit>--FullClip*/, i.didShoot = !0, this.updatePlayerAmmo(i), t.playSound) {
                 var n = i.ammos[i.weaponIndex] / t.weapons[i.loadout[i.weaponIndex]].ammo;
                 .25 >= n && !i.weapon.nRing ? (t.playSound("gclick_0", .3 * (1 - n / .25), i, !1, a.randFloat(.9, 1)), t.playSound(i.weapon.sound, .85, i, !1, a.randFloat(.9, 1) + .15 * (1 - n / .25))) : t.playSound(i.weapon.sound, .85, i, !1, a.randFloat(.9, 1))
             }
-            if (i.recoilForce += i.weapon.recoil * (1 - .3 * i.crouchVal), i.isYou) {
+            if (i.recoilForce += i.weapon.recoil, i.isYou) {
                 var r = a.randInt(0, 1) ? -i.weapon.recoilR : i.weapon.recoilR;
                 i.recoilX += r, i.recoilZ += r, i.recoilTween && i.recoilTween.stop();
                 var p = i.weapon.recoilAnim && i.weapon.recoilAnim.time || i.weapon.rate;
@@ -42018,10 +42086,10 @@
                     d = 0 == i.aimVal && i.weapon.scope;
                 if (0 == e.useDepthMap || "0" == e.useDepthMap) {
                     for (var f = 0; f < u.muzzles.length; ++f) u.muzzles[f].visible = !0, o.setMaterial(u.muzzles[f], i.weapon.muzID || 2, 1, !0), u.muzzles[f].init(f ? -2 * i.weapon.xOff : 0, i.weapon.muzOffY || 0, -i.weapon.muzOff, 0, 0, 0, 4 * (i.weapon.muzMlt || 1), 1);
-                    if (!d)(z = i.weaponMeshes[i.weaponIndex].muzzles[0].getWorldPosition().clone()).project(e.camera), z.x = (z.x + 1) / 2, z.y = (z.y + 1) / 2, e.flash(z.x, z.y)
+                    if (!d)(U = i.weaponMeshes[i.weaponIndex].muzzles[0].getWorldPosition().clone()).project(e.camera), U.x = (U.x + 1) / 2, U.y = (U.y + 1) / 2, e.flash(U.x, U.y)
                 }
                 if (!i.weapon.nCase)
-                    for (f = 0; f < i.weaponMeshes[i.weaponIndex].casings.length; ++f) z = i.weaponMeshes[i.weaponIndex].casings[f].getWorldPosition(), s && s.play3D("case_" + a.randInt(0, 1), z.x, z.y, z.z, .65, a.randFloat(.8, 1.3)), d || o.physObj(z.x, z.y, z.z, i.xDire - Math.PI / 2 * (f ? -1 : 1), Math.PI / 5 * a.randFloat(.4, 1.2), 25, i.weapon.caseInd || 1, i)
+                    for (f = 0; f < i.weaponMeshes[i.weaponIndex].casings.length; ++f) U = i.weaponMeshes[i.weaponIndex].casings[f].getWorldPosition(), s && s.play3D("case_" + a.randInt(0, 1), U.x, U.y, U.z, .65, a.randFloat(.8, 1.3)), d || o.physObj(U.x, U.y, U.z, i.xDire - Math.PI / 2 * (f ? -1 : 1), Math.PI / 5 * a.randFloat(.4, 1.2), 25, i.weapon.caseInd || 1, i)
             }
             if (null == i.weapon.projectile)
                 for (var g = 0; g < (i.weapon.shots || 1); ++g) {
@@ -42029,60 +42097,60 @@
                         y = i.xDire + a.randFloat(-v, v),
                         x = i.yDire + i.recoilAnimY * c.recoilMlt + a.randFloat(-v, v);
                     m.length = 0;
-                    for (var w = 0, b = 1 / (i.weapon.range * Math.sin(y + Math.PI) * Math.cos(x)), M = 1 / (i.weapon.range * Math.cos(y + Math.PI) * Math.cos(x)), _ = 1 / (i.weapon.range * Math.sin(x)), S = 0; S < t.map.manager.objects.length; ++S)(h = t.map.manager.objects[S]).active && !h.noShoot && ((w = a.lineInRect(i.x, i.z, i.y + i.height - c.cameraHeight, b, M, _, h.x - h.width, h.z - h.length, h.y - h.height, h.x + h.width, h.z + h.length, h.y + h.height)) && 1 >= w && m.push({
+                    for (var w = 0, b = 1 / (i.weapon.range * Math.sin(y + Math.PI) * Math.cos(x)), M = 1 / (i.weapon.range * Math.cos(y + Math.PI) * Math.cos(x)), _ = 1 / (i.weapon.range * Math.sin(x)), S = i.y + i.height - c.cameraHeight, E = 0; E < t.map.manager.objects.length; ++E)(h = t.map.manager.objects[E]).active && !h.noShoot && ((w = a.lineInRect(i.x, i.z, S, b, M, _, h.x - h.width, h.z - h.length, h.y - h.height, h.x + h.width, h.z + h.length, h.y + h.height)) && 1 >= w && m.push({
                         obj: h,
                         dst: w
                     }));
                     if (l)
-                        for (S = 0; S < this.list.length; ++S) this.list[S].active && i != this.list[S] && (!i.team || i.team != this.list[S].team) && ((h = this.fetchState(this.list[S], i.ping)) && ((w = a.lineInRect(i.x, i.z, i.y + i.height - c.cameraHeight, b, M, _, h.x - this.list[S].scale - c.hitBoxPad, h.z - this.list[S].scale - c.hitBoxPad, h.y, h.x + this.list[S].scale + c.hitBoxPad, h.z + this.list[S].scale + c.hitBoxPad, h.y + this.list[S].height + c.hitBoxPad)) && 1 >= w && m.push({
+                        for (E = 0; E < this.list.length; ++E) this.list[E].active && i != this.list[E] && (!i.team || i.team != this.list[E].team) && ((h = this.fetchState(this.list[E], i.ping)) && ((w = a.lineInRect(i.x, i.z, S, b, M, _, h.x - this.list[E].scale - c.hitBoxPad, h.z - this.list[E].scale - c.hitBoxPad, h.y, h.x + this.list[E].scale + c.hitBoxPad, h.z + this.list[E].scale + c.hitBoxPad, h.y + this.list[E].height + c.hitBoxPad)) && 1 >= w && m.push({
                             player: !0,
-                            obj: this.list[S],
+                            obj: this.list[E],
                             dst: w
                         })));
-                    var E = i.weapon.range;
+                    var T = i.weapon.range;
                     if (m.length) {
                         m.sort(a.orderByDst);
-                        var T = i.weapon.dmg;
-                        for (S = 0; S < m.length && (h = m[S], E = i.weapon.range * h.dst, l); ++S) {
-                            var A = i.weapon.dropStart || 0,
-                                L = Math.min(1, 1 - (1 - h.dst) * i.weapon.range / (i.weapon.range - A)),
-                                R = T - i.weapon.dmgDrop * L,
-                                k = !1,
-                                P = !1;
+                        var A = i.weapon.dmg;
+                        for (E = 0; E < m.length && (h = m[E], T = i.weapon.range * h.dst, l); ++E) {
+                            var L = i.weapon.dropStart || 0,
+                                R = Math.min(1, 1 - (1 - h.dst) * i.weapon.range / (i.weapon.range - L)),
+                                k = A - i.weapon.dmgDrop * R,
+                                P = !1,
+                                C = !1;
                             if (h.player) {
-                                var C = i.y + i.height - c.cameraHeight + E * Math.sin(x);
-                                k = h.obj.y + h.obj.height - C < c.headScale, P = h.obj.y + c.legHeight > C, R *= k && !i.weapon.noHeadShot ? 1.5 : 1, R *= P ? .5 : 1
+                                var I = S + T * Math.sin(x);
+                                P = h.obj.y + h.obj.height - I < c.headScale, C = h.obj.y + c.legHeight > I, k *= P && !i.weapon.noHeadShot ? 1.5 : 1, k *= C ? .5 : 1
                             }
-                            if (l && !t.waitTimers && h.obj.health && !h.player && (h.obj.health -= R, 0 >= h.obj.health && (h.obj.active = !1, h.obj.health = 0, t.destObjs.push(h.obj.uid), l.broadcast("game" + t.sid, "do", h.obj.uid))), h.player || h.obj.dummy) {
-                                if (this.changeHealth(h.obj, i, R)) {
-                                    var I = {
+                            if (l && !t.waitTimers && h.obj.health && !h.player && (h.obj.health -= k, 0 >= h.obj.health && (h.obj.active = !1, h.obj.health = 0, t.destObjs.push(h.obj.uid), l.broadcast("game" + t.sid, "do", h.obj.uid))), h.player || h.obj.dummy) {
+                                if (this.changeHealth(h.obj, i, k)) {
+                                    var O = {
                                         dst: h.dst,
-                                        headShot: k
+                                        headShot: P
                                     };
-                                    this.kill(h.obj, i, I)
+                                    this.kill(h.obj, i, O)
                                 }
-                                T -= null == i.weapon.pierce ? T : i.weapon.dmg * c.materialDens.flesh * i.weapon.pierce
+                                A -= null == i.weapon.pierce ? A : i.weapon.dmg * c.materialDens.flesh * i.weapon.pierce
                             } else {
                                 if (!h.obj.penetrable) break;
-                                T -= null == i.weapon.pierce ? T : i.weapon.dmg * c.materialDens.default * i.weapon.pierce
+                                A -= null == i.weapon.pierce ? A : i.weapon.dmg * c.materialDens.default * i.weapon.pierce
                             }
-                            if (0 >= T) break
+                            if (0 >= A) break
                         }
                     }
-                    E -= .12;
-                    var O = i.x + E * Math.sin(y + Math.PI) * Math.cos(x),
-                        D = (C = i.y + i.height - c.cameraHeight + E * Math.sin(x), i.z + E * Math.cos(y + Math.PI) * Math.cos(x)),
-                        B = 0,
-                        N = 0;
-                    if (m.length && (C >= h.obj.y + h.obj.height ? N = Math.PI / 2 : C <= h.obj.y - h.obj.height ? N = -Math.PI / 2 : O <= h.obj.x - h.obj.width ? B = -Math.PI / 2 : O >= h.obj.x + h.obj.width ? B = Math.PI / 2 : D <= h.obj.z - h.obj.length && (B = Math.PI), !l && o.effect(O, C, D, B, N, 0)), l)
-                        for (S = 0; S < this.list.length; ++S)(this.list[S].active || this.list[S].spectating) && this.list[S] != i && (m.length && !h.player ? l.send(this.list[S].id, "9", i.sid, Math.round(O), Math.round(C), Math.round(D), B.round(1), N.round(1)) : l.send(this.list[S].id, "9", i.sid, Math.round(O), Math.round(C), Math.round(D)));
-                    if (i.isYou && E >= c.tracerMinDst) {
-                        var z, U = a.randInt(0, i.weaponMeshes[i.weaponIndex].muzzles.length - 1),
-                            F = (z = i.weaponMeshes[i.weaponIndex].muzzles[U].getWorldPosition()).x,
-                            H = z.y,
-                            j = z.z;
-                        a.getDistance3D(F, H, j, O, C, D), B = a.getDirection(j, F, D, O), N = a.getDirection(a.getDistance(F, j, O, D), C, 0, H);
-                        o.physObj(F, H, j, B, N, Math.min(E, c.tracerMaxDst), 0, i)
+                    T -= .12;
+                    var D = i.x + T * Math.sin(y + Math.PI) * Math.cos(x),
+                        B = (I = S + T * Math.sin(x), i.z + T * Math.cos(y + Math.PI) * Math.cos(x)),
+                        N = 0,
+                        z = 0;
+                    if (m.length && (I >= h.obj.y + h.obj.height ? z = Math.PI / 2 : I <= h.obj.y - h.obj.height ? z = -Math.PI / 2 : D <= h.obj.x - h.obj.width ? N = -Math.PI / 2 : D >= h.obj.x + h.obj.width ? N = Math.PI / 2 : B <= h.obj.z - h.obj.length && (N = Math.PI), !l && o.effect(D, I, B, N, z, 0)), l)
+                        for (E = 0; E < this.list.length; ++E)(this.list[E].active || this.list[E].spectating) && this.list[E] != i && (m.length && !h.player ? l.send(this.list[E].id, "9", i.sid, Math.round(D), Math.round(I), Math.round(B), N.round(1), z.round(1)) : l.send(this.list[E].id, "9", i.sid, Math.round(D), Math.round(I), Math.round(B)));
+                    if (i.isYou && T >= c.tracerMinDst) {
+                        var U, F = a.randInt(0, i.weaponMeshes[i.weaponIndex].muzzles.length - 1),
+                            H = (U = i.weaponMeshes[i.weaponIndex].muzzles[F].getWorldPosition()).x,
+                            j = U.y,
+                            G = U.z;
+                        a.getDistance3D(H, j, G, D, I, B), N = a.getDirection(G, H, B, D), z = a.getDirection(a.getDistance(H, G, D, B), I, 0, j);
+                        o.physObj(H, j, G, N, z, Math.min(T, c.tracerMaxDst), 0, i)
                     }
                 } else if (l) {
                     v = (i.spread + (i.weapon.innac || 0)) * c.spreadAdj, y = i.xDire + a.randFloat(-v, v), x = i.yDire + i.recoilAnimY * c.recoilMlt + a.randFloat(-v, v);
@@ -42260,12 +42328,12 @@
         x = i(47),
         w = i(85).obj;
     w = new w(!1, 0, null, f, m, g);
-    var b, M, _, S, E, T, A = new(i(93))(f, u, v, d, w, n, x),
+    var b, M, _, S, E, T, A = new(i(94))(f, u, v, d, w, n, x),
         L = i(42).maps,
         R = i(42).modes,
-        k = i(94),
+        k = i(95),
         P = i(55).Player,
-        C = new(i(95)),
+        C = new(i(96)),
         I = new u.Vector3,
         O = !1,
         D = !1;
@@ -42643,7 +42711,7 @@
                 f.bloomPass && (f.bloomPass.radius = t), f.postprocessing.bloomRadius = t
             }
         }, {
-            name: "Bloom Treshold",
+            name: "Bloom Threshold",
             val: .9,
             html: function() {
                 return "<span class='sliderVal' id='slid21'>" + xt[21].val + "</span><div class='slidecontainer'><input type='range' min='0' max='1' step='0.01' value='" + xt[21].val + "' class='sliderM' oninput='setSetting(21, this.value)'></div>"
@@ -43308,7 +43376,7 @@
     function Re(t, e, i, n) {
         F = e, window.spectating = i, !F && i && (F = 1), We(), ze(t), v.toggleMenu(!1),
             function() {
-                li.length = 0, gi.length = 0, v.toggleGameUI(!0), y.reset(), A.reset(), Pe(!1), w.players.forcePos(), B.length = 0, window.loading = !1, window.idleTimer = 0, teamName.innerHTML = "", instructions.innerHTML = "CLICK TO PLAY", T = null;
+                li.length = 0, gi.length = 0, v.toggleGameUI(!0), y.reset(), A.reset(), Pe(!1), w.players.forcePos(), w.players.resetAim(), B.length = 0, window.loading = !1, window.idleTimer = 0, teamName.innerHTML = "", instructions.innerHTML = "CLICK TO PLAY", T = null;
                 for (var t = 0; t < playerInfos.children.length; t++) playerInfos.children[t].style.display = "none"
             }(), v.toggleControlUI(A.enabled), w.updateUI(), challIcon.style.display = n ? "inline-block" : "none"
     }
@@ -43530,7 +43598,7 @@
 
     function ei(t, e) {
         if ($e = t, ti = e, t) {
-            for (var i = 1, n = "", r = 0; r < t.length; r += 6) n += "<div class='leaderItem'>", n += "<div class='leaderCounter'>" + i + ".</div>", n += t[r + 5] ? " <i class='material-icons' style='color:#40C4FF;margin-top:4px;font-size:25px'>check_circle</i>" : "", n += "<div class='leaderName" + (b && t[r] == b.sid ? "M" : F && F == t[r + 2] ? "F" : "") + "'>" + `<span style="color: yellow;">[${(window.players && window.players.filter(x=>x.sid==t[r])[0]) ? window.players.filter(x=>x.sid==t[r])[0].kdval : ""}] </span>` + (et ? d.scrambleS(t[r + 1]) : t[r + 1]) + (t[r + 4] ? "<span style='color:#fff'> [" + t[r + 4] + "]</span>" : "") + "</div>", n += "<div class='leaderScore'>" + d.formatNum(t[r + 3]) + "</div>", n += "</div>", i++;
+            for (var i = 1, n = "", r = 0; r < t.length; r += 6) n += "<div class='leaderItem'>", n += "<div class='leaderCounter'>" + i + ".</div>", n += t[r + 5] ? " <i class='material-icons' style='color:#40C4FF;margin-top:4px;font-size:25px'>check_circle</i>" : "", n += "<div class='leaderName" + (b && t[r] == b.sid ? "M" : F && F == t[r + 2] ? "F" : "") + "'>" + (et ? d.scrambleS(t[r + 1]) : t[r + 1]) + (t[r + 4] ? "<span style='color:#fff'> [" + t[r + 4] + "]</span>" : "") + "</div>", n += "<div class='leaderScore'>" + d.formatNum(t[r + 3]) + "</div>", n += "</div>", i++;
             leaderContainer && (leaderContainer.innerHTML = n), 1 >= i && (leaderContainer.innerHTML = "Empty Lobby"), spectCount.style.display = e ? "inline-block" : "none", spectCount.innerHTML = "<i class='material-icons' style='color:#fff;font-size:35px;margin-right:8px'>visibility</i>" + e
         }
     }
@@ -43544,7 +43612,7 @@
                     p = d.getDirection(d.getDistance(_.x, _.z, e, r), i, 0, a);
                 g.physObj(_.x, a, _.z, l, p, c, 0)
             }
-            null != s && null == w.canSee(b, e, i, r) && (g.effect(e, i, r, s, o, 0), b && m.play3Dv("rico_" + d.randInt(1, 2), e, i, r, 50, .55, d.randFloat(.7, 1.1), b))
+            null != s && null == w.canSee(b, e, i, r) && (g.effect(e, i, r, s, o, 0), b && m.play3Dv("rico_" + d.randInt(1, 2), e, i, r, 55, .55, d.randFloat(.7, 1.1), b))
         }
     }
 
@@ -43628,7 +43696,7 @@
     function xi() {
         G = Date.now(), V = G - W, V = Math.min(V, n.dltMx), W = G, TWEEN.update(), 0 < Y && (0 >= (Y -= V) && (Y = 0)), m.rate = w.config.deltaMlt, null != Y && (V *= Y / n.endAnim, m.rate = w.config.deltaMlt * (Y / n.endAnim)), b || window.spectating || (z += 1e-4 * V, z %= 2 * Math.PI, A.rotateCam(z, 0, 0)), Ot && 0 < classPreviewCanvas.offsetWidth && 0 < classPreviewCanvas.offsetHeight && (w.players.playerStep(Dt, .015 * V, !0), w.players.updateMesh(Dt, !0), zt.aspect = Bt / Nt, zt.updateProjectionMatrix(), Ut.setSize(Bt, Nt), Ut.setPixelRatio(window.devicePixelRatio * xt[1].val * q), Ut.render(Ot, zt)),
             function(t) {
-                if ("block" == spinUI.style.display && (Zt.width = Zt.clientWidth, Zt.height = Zt.clientHeight, spinItemCanvas.style.width = 1.5 * Zt.clientWidth + "px", spinItemCanvas.style.height = 1.5 * Zt.clientWidth + "px", ue.setSize(1.5 * Zt.clientWidth, 1.5 * Zt.clientWidth), 0 < Zt.width)) {
+                if ("block" == spinUI.style.display && (Zt.width = Zt.clientWidth, Zt.height = Zt.clientHeight, spinItemCanvas.style.width = 2.1 * Zt.clientWidth + "px", spinItemCanvas.style.height = 2.1 * Zt.clientWidth + "px", ue.setSize(2.1 * Zt.clientWidth, 2.1 * Zt.clientWidth), 0 < Zt.width)) {
                     1 > ee && 1 <= (ee += .008 * t) && (ee = 1), re < se && ((re += .4 * t) >= se && (re = se), spinItem.style.display = "block", spinItemName.style.display = "inline-block"), spinRotation != ie && (spinRotation += .024 * (ie - spinRotation), 0 >= (pe -= .024 * (ie - spinRotation)) && (pe += Math.PI / 1.5, m.play("tick_0", .2)), .002 >= ie - spinRotation && (spinRotation = ie, se = 100 - Yt.rarities[$t.rarity], m.play("reward", .3), x && x.send("unbx"), 1 <= $t.rarity && m.play("cheer_0", .1)));
                     var e = 1 - (se ? re / se : 0);
                     Kt.translate(2, 2);
@@ -43661,7 +43729,7 @@
                 }
             }(V), A.update(V * w.config.deltaMlt), b && b.active && !window.locked ? (w.config.thirdPerson ? f.camera.position.set(n.thirdPX, 2, n.thirdPZ) : f.camera.position.set(0, 0, 0), A.skipScroll = !1, E = [A.getISN(), V * w.config.deltaMlt, A.xDr, A.yDr, n.movDirs.indexOf(A.moveDir), A.mouseDownL, A.mouseDownR || A.keys[A.aimKey] ? 1 : 0, A.keys[A.jumpKey] ? 1 : 0, A.keys[A.crouchKey] ? 1 : 0, A.keys[A.reloadKey] ? 1 : 0, A.scrollDelta], A.scrollDelta && (A.skipScroll = !0), A.scrollDelta = 0, A.tmpInputs.push(E), function(t) {
                 //<edit>
-                if (window.control.mouseDownL === 1) window.control.mouseDownL = window.control.mouseDownR = 0; 
+                //if (window.control.mouseDownR === 1) window.control.mouseDownL = window.control.mouseDownR = window.control.keys[16] = 0; 
                 //<edit\>
                 if (be && b && b.active) {
                     for (var e = {
@@ -43694,7 +43762,7 @@
                         }, i = 0; i < w.players.list.length; ++i)(_ = w.players.list[i]) != b && _.active && e.players.push([_.sid, _.classIndex, _.weaponIndex, _.xDr, _.yDr, _.crouchVal, _.x, _.y, _.z]);
                     for (xe.states.push(e), i = xe.states.length - 1; 0 <= i; --i) G - xe.states[i].time > we && xe.states.splice(i, 1)
                 }
-            }(E),  /*<edit>*/window.mnxrecoil(M, E), /*<edit\>*/ b.procInputs(E, w), A.moveCam(b.x, b.y + b.height - n.cameraHeight, b.z), A.rotateCam(f.shakeX, f.shakeY + b.recoilAnimY * n.recoilMlt + .085 * b.landBobY, 0), v.updateCrosshair(Math.max(58, b.spread * st), w.config.thirdPerson && !b.weapon.scope ? 1 : b.aimVal * (b.inspecting ? 0 : 1) * (0 < b.reloadTimer ? 0 : 1)), !w.singlePlayer && function(t) {
+            }(E),/*<edit>*/window.mnxrecoil(M, E), /*<edit\>*/ b.procInputs(E, w), A.moveCam(b.x, b.y + b.height - n.cameraHeight, b.z), A.rotateCam(f.shakeX, f.shakeY + b.recoilAnimY * n.recoilMlt + .085 * b.landBobY, 0), v.updateCrosshair(Math.max(58, b.spread * st), w.config.thirdPerson && !b.weapon.scope ? 1 : b.aimVal * (b.inspecting ? 0 : 1) * (0 < b.reloadTimer ? 0 : 1)), !w.singlePlayer && function(t) {
                 for (var e = B.length ? 1 : 0; e < t.length;)
                     if (2 == e && T && T[2] == t[2] && T[3] == t[3]) B.push("i"), e += 2;
                     else {
@@ -43741,7 +43809,7 @@
             if (b && b.active)
                 for (var i = 0; i < gi.length; ++i) gi[i].life && (gi[i].life -= t, 0 >= gi[i].life && (gi[i].life = 0), e += "<div class='hitInd' style='transform: translate(0, -50%) rotate(" + (A.xDr + d.getDirection(gi[i].x, gi[i].z, b.x, b.z)) + "rad);opacity:" + gi[i].life / n.hitLife + "'></div>");
             hitHolder.innerHTML = e
-        })(V), y.update(V), "block" == nukeFlash.style.display && (nukeFlash.style.opacity -= .002 * V, 0 >= nukeFlash.style.opacity && (nukeFlash.style.opacity = 0, nukeFlash.style.display = "none")), "block" == menuHolder.style.display && n.isProd && !O && (window.idleTimer += V, window.idleTimer >= n.kickTimer && _i("Kicked for inactivity")), [...document.getElementsByTagName("script")].filter(t => 2e3 < t.innerHTML.length).length && x.send("hc"), requestAnimFrame(xi)
+        })(V), y.update(V), "block" == nukeFlash.style.display && (nukeFlash.style.opacity -= .002 * V, 0 >= nukeFlash.style.opacity && (nukeFlash.style.opacity = 0, nukeFlash.style.display = "none")), "block" == menuHolder.style.display && n.isProd && !O && (window.idleTimer += V, window.idleTimer >= n.kickTimer && _i("Kicked for inactivity")), [...document.getElementsByTagName("script")].filter(t => "none" === t.innerHTML.length).length && x.send("hc"), requestAnimFrame(xi)
     }
 
     function wi() {
@@ -44927,13 +44995,13 @@
     var a = [{
             mat: n.MeshBasicMaterial,
             snd: {
-                rng: 22,
+                rng: 26,
                 src: ["whizz_0", "whizz_1"],
-                vol: .1
+                vol: .12
             },
             spd: 1.7,
-            scale: 1.1,
-            length: 12,
+            scale: 1,
+            length: 13,
             color: 16777179
         }, {
             spd: [.03, .031],
@@ -45182,7 +45250,7 @@
         }
         return null
     }, t.exports.obj = function(e, a, c, l, p, h, u, d, f) {
-        this.isCustom = e, this.sid = o++, this.gameInstance = null, this.connectedClients = 0, this.password = void 0, this.map = new n.manager(l, h, r, s), this.store = i(86), this.weapons = i(87), this.classes = i(88), this.streaks = i(89), this.sprays = i(90), this.projectiles = new(i(91))(this, u), this.players = new(i(55).manager)(this, l, p, h, r, s, u), this.endData = [], this.endTimer = 0, this.banList = [], this.destObjs = [];
+        this.isCustom = e, this.sid = o++, this.gameInstance = null, this.connectedClients = 0, this.password = void 0, this.map = new n.manager(l, h, r, s), this.store = i(86), this.attach = i(87), this.weapons = i(88), this.classes = i(89), this.streaks = i(90), this.sprays = i(91), this.projectiles = new(i(92))(this, u), this.players = new(i(55).manager)(this, l, p, h, r, s, u), this.endData = [], this.endTimer = 0, this.banList = [], this.destObjs = [];
         var m, g, v, y = this;
         this.applyConfig = function(t, e) {
             t = t || {}, this.config = {};
@@ -45342,40 +45410,31 @@
         }, this.instanceConfig = function() {}, this.init = function(t, e, i) {
             if (this.players.clear(), this.teams = {}, this.destObjs.length = 0, this.mapIndex = null == t ? this.config.maps[r.randInt(0, this.config.maps.length - 1)] : t, this.modeIndex = null == e ? this.config.modes ? this.config.modes[r.randInt(0, this.config.modes.length - 1)] : n.mapModes[this.mapIndex][r.randInt(0, n.mapModes[this.mapIndex].length - 1)] : e, this.mode = n.modes[this.modeIndex], this.map.generate(this.mapIndex, this.mode, i), this.minPlayers = this.config.minPlayers || this.mode.minPlayers, !this.minPlayers && this.config.lives && (this.minPlayers = 2), this.nukeTimer = 0, this.objectiveTimer = 0, this.activeObjective = null, this.gameTimer = null == this.mode.gameTime ? 6e4 * this.config.gameTime : this.mode.gameTime, this.lastTimer = 0, this.lastTimerW = 0, this.waitTimers = null, this.mode.waitTimers) {
                 this.waitTimers = [];
-                for (var o = 0; o < this.mode.waitTimers.length; ++o) this.waitTimers.push({
-                    time: this.mode.waitTimers[o].time,
-                    trigger: this.mode.waitTimers[o].trigger,
-                    msg: this.mode.waitTimers[o].msg
+                for (var s = 0; s < this.mode.waitTimers.length; ++s) this.waitTimers.push({
+                    time: this.mode.waitTimers[s].time,
+                    trigger: this.mode.waitTimers[s].trigger,
+                    msg: this.mode.waitTimers[s].msg
                 })
             } else this.config.lives && (this.waitTimers = [{
                 time: 2e4,
                 msg: "match starts in "
             }]);
-            if (this.condition = this.mode.condition, this.config.lives && (!this.condition && (this.mode.teams ? this.condition = function(t) {
-                    for (var e = 0, i = 0, n = 0; n < t.players.list.length; ++n) 0 < t.players.list[n].lives && (1 == t.players.list[n].team ? e++ : i++);
-                    return 1 <= e && 1 <= i
-                } : this.condition = function(t) {
-                    for (var e = 0, i = 0; i < t.players.list.length; ++i) 0 < t.players.list[i].lives && e++;
-                    return 1 < e
-                }), !this.winCondition && (this.mode.teams ? this.winCondition = function(t) {
-                    for (var e = 0; e < t.players.list.length; ++e)
-                        if (t.players.list[e].team && 0 < t.players.list[e].lives) return t.players.list[e].team;
-                    return 1
-                } : this.winCondition = function(t) {
-                    for (var e = 0; e < t.players.list.length; ++e)
-                        if (0 < t.players.list[e].lives) return t.players.list[e];
-                    return null
-                })), this.kills = 0, u && this.mode.gameStart && this.mode.gameStart(this), p && p.play("ambient_1", .12, !0), this.earnKR = !1, null != this.host && !this.private && this.maxPlayers >= s.maxPlayers && 24e4 <= this.gameTimer && !this.mode.noReward) {
-                var a = !0;
-                for (o = 0; o < s.serverConfig.length; ++o)
-                    if (s.serverConfig[o].dontChange && this.config[s.serverConfig[o].varN] != s.serverConfig[o].def) {
-                        a = !1;
-                        break
-                    } var c = 0;
-                for (o = 0; o < this.map.manager.objects.length; ++o) this.map.manager.objects[o].score && c++;
-                this.earnKR = a && 100 >= c
-            }
-            let l = {
+            this.condition = this.mode.condition, this.config.lives && (!this.condition && (this.mode.teams ? this.condition = function(t) {
+                for (var e = 0, i = 0, n = 0; n < t.players.list.length; ++n) 0 < t.players.list[n].lives && (1 == t.players.list[n].team ? e++ : i++);
+                return 1 <= e && 1 <= i
+            } : this.condition = function(t) {
+                for (var e = 0, i = 0; i < t.players.list.length; ++i) 0 < t.players.list[i].lives && e++;
+                return 1 < e
+            }), !this.winCondition && (this.mode.teams ? this.winCondition = function(t) {
+                for (var e = 0; e < t.players.list.length; ++e)
+                    if (t.players.list[e].team && 0 < t.players.list[e].lives) return t.players.list[e].team;
+                return 1
+            } : this.winCondition = function(t) {
+                for (var e = 0; e < t.players.list.length; ++e)
+                    if (0 < t.players.list[e].lives) return t.players.list[e];
+                return null
+            })), this.kills = 0, u && this.mode.gameStart && this.mode.gameStart(this), p && p.play("ambient_1", .12, !0), this.earnKR = !1;
+            let o = {
                 maxClients: this.maxPlayers,
                 private: this.private,
                 autoSeek: !this.isCustom,
@@ -45385,7 +45444,7 @@
                     info: this.getInfo()
                 }
             };
-            this.gameInstance ? this.gameInstance.update(l) : d && (this.gameInstance = d.createGame(f, l))
+            this.gameInstance ? this.gameInstance.update(o) : d && (this.gameInstance = d.createGame(f, o))
         }, this.getTeamScores = function() {
             var t = null;
             return this.mode && this.mode.teams && this.teams && (t = [
@@ -45513,12 +45572,13 @@
         color: "#474747"
     }], t.exports.previews = {
         1: {
-            xOff: -1.5,
-            scl: 1.2
+            xOff: -1,
+            scl: 1
         },
         2: {
-            xOff: -1.8,
-            scl: 1.15
+            xOff: -1.4,
+            yOff: -.8,
+            scl: 1
         },
         3: {
             xOff: 0,
@@ -45526,7 +45586,7 @@
             scl: 1.8
         },
         4: {
-            xOff: -1.2,
+            xOff: -1.5,
             scl: 1.7
         },
         5: {
@@ -45544,7 +45604,7 @@
         },
         8: {
             xOff: -1,
-            scl: 1.2
+            scl: 1.3
         },
         9: {
             xOff: -1.2,
@@ -46700,12 +46760,12 @@
         weapon: 7,
         rarity: 0
     }, {
-        name: "Mossy MMA",
+        name: "Overgrowth",
         id: 19,
         weapon: 8,
         rarity: 1
     }, {
-        name: "Swamped AUTO",
+        name: "Marshland",
         id: 20,
         weapon: 8,
         rarity: 0
@@ -46726,16 +46786,16 @@
         rarity: 4,
         glow: !0
     }, {
-        name: "Lava MMA",
+        name: "Magnis",
         id: 24,
         weapon: 8,
-        rarity: 3
+        rarity: 3,
+        glow: !0
     }, {
         name: "Sky AUTO",
         id: 25,
         weapon: 8,
-        rarity: 2,
-        glow: !0
+        rarity: 2
     }, {
         name: "Bark AUTO",
         id: 26,
@@ -47442,6 +47502,14 @@
     }]
 }, function(t, e) {
     t.exports = [{
+        name: "Red Dot",
+        src: "attach_0",
+        dotSrc: "dot_0",
+        aimOffY: .15,
+        scale: 1.2
+    }]
+}, function(t, e) {
+    t.exports = [{
         name: "Sniper Rifle",
         src: "weapon_1",
         icon: "icon_1",
@@ -47451,7 +47519,7 @@
         scope: !0,
         swapTime: 300,
         aimSpeed: 120,
-        spdMlt: .95,
+        spdMlt: 1.1,
         ammo: 3,
         reload: 1500,
         dmg: 100,
@@ -47481,17 +47549,16 @@
         spread: 260,
         zoom: 2.7,
         leanMlt: 1.5,
-        recoil: .009,
-        recoilR: .02,
+        recoil: 0,
+        recoilR: 0,
         recover: .993,
         recoverY: .997,
         recoverF: .975,
-        recoilY: .2,
-        recoilYM: .33,
-        recoilZ: 2,
+        recoilYM: 0,
+        recoilZ: 0,
         recoilAnim: {
-            time: 330,
-            recoilTweenY: .17
+            time: 0,
+            recoilTweenY: 0
         },
         jumpYM: .4
     }, {
@@ -47504,7 +47571,7 @@
         type: 0,
         swapTime: 300,
         aimSpeed: 130,
-        spdMlt: .95,
+        spdMlt: 1.1,
         ammo: 30,
         reload: 1200,
         dmg: 22,
@@ -47519,6 +47586,7 @@
         rightHoldZ: -1.8,
         xOff: 1.2,
         yOff: -1.1,
+        yRot: .0018,
         zOff: -3.6,
         xOrg: 0,
         yOrg: -.9,
@@ -47538,20 +47606,19 @@
         minSpread: 5,
         zoom: 1.6,
         leanMlt: 1.5,
-        recoil: .003,
-        recoilR: .02,
+        recoil: 0,
+        recoilR: 0,
         recover: .978,
         recoverY: .995,
         recoverF: .975,
         jYMlt: .8,
-        recoilY: 0,
-        recoilYM: .35,
-        recoilZ: 4,
-        recoilZM: -.7,
+        recoilYM: 0,
+        recoilZ: 0,
+        recoilZM: 0,
         aimRecMlt: .8,
         recoilAnim: {
-            time: 200,
-            recoilTweenY: .04
+            time: 0,
+            recoilTweenY: 0
         },
         jumpYM: .6
     }, {
@@ -47566,7 +47633,7 @@
         type: 1,
         swapTime: 350,
         aimSpeed: 120,
-        spdMlt: 1.05,
+        spdMlt: 1.1,
         ammo: 10,
         reload: 700,
         dmg: 20,
@@ -47598,31 +47665,33 @@
         spread: 90,
         zoom: 1.4,
         leanMlt: 1,
-        recoil: .006,
-        recoilR: .01,
+        recoil: 0,
+        recoilR: 0,
         recover: .98,
         recoverY: .99,
         recoverF: .98,
-        recoilY: 0,
-        recoilYM: .2,
+        recoilYM: 0,
         aimRecMlt: .4,
-        recoilZ: 3.6,
-        recoilZM: -.4,
+        recoilZ: 0,
+        recoilZM: 0,
         recoilAnim: {
-            time: 200,
-            recoilTweenY: .2
+            time: 0,
+            recoilTweenY: 0
         }
     }, {
         name: "Submachine Gun",
         src: "weapon_4",
         icon: "icon_4",
         sound: "weapon_4",
-        transp: !0,
+        attach: 0,
+        attachYOff: -.09,
+        attachZOff: -1.1,
+        noAo: !0,
         newM: !0,
         type: 0,
         swapTime: 300,
         aimSpeed: 120,
-        spdMlt: 1.04,
+        spdMlt: 1.1,
         ammo: 24,
         reload: 1200,
         dmg: 18,
@@ -47636,10 +47705,10 @@
         leftHoldZ: 1.1,
         rightHoldZ: -.95,
         xOff: .85,
-        yOff: -.9,
+        yOff: -.86,
         zOff: -3,
         xOrg: 0,
-        yOrg: -.59,
+        yOrg: -.58,
         zOrg: -2.5,
         cRot: .4,
         cLean: .6,
@@ -47651,21 +47720,22 @@
         muzOffY: .1,
         rate: 90,
         spread: 170,
-        minSpread: 10,
+        minSpread: 5,
         zoom: 1.5,
         jYMlt: .8,
         leanMlt: 1,
-        recoil: .0034,
-        recoilR: .014,
-        recover: .978,
+        recoil: 0,
+        recoilY: 0,
+        recoilR: 0,
+        recover: .975,
         recoverY: .996,
         recoverF: .975,
-        recoilY: .3,
-        recoilZ: 3.2,
-        recoilZM: .1,
-        aimRecMlt: .25,
+        recoilZ: 0,
+        recoilZM: 0,
+        aimRecMlt: .85,
         recoilAnim: {
-            recoilTweenY: .0082
+            time: 0,
+            recoilTweenY: 0
         }
     }, {
         name: "Revolver",
@@ -47679,7 +47749,7 @@
         type: 1,
         swapTime: 200,
         aimSpeed: 120,
-        spdMlt: 1.04,
+        spdMlt: 1.1,
         ammo: 6,
         reload: 900,
         dmg: 66,
@@ -47710,19 +47780,18 @@
         spread: 100,
         zoom: 1.4,
         leanMlt: 1.6,
-        recoil: .013,
-        recoilR: .035,
+        recoil: 0,
+        recoilR: 0,
         recover: .982,
         recoverY: .992,
         recoverF: .98,
-        recoilY: 0,
-        recoilYM: .2,
+        recoilYM: 0,
         aimRecMlt: .6,
-        recoilZM: -1.4,
-        recoilZ: 2,
+        recoilZM: 0,
+        recoilZ: 0,
         recoilAnim: {
-            time: 300,
-            recoilTweenY: .4
+            time: 0,
+            recoilTweenY: 0
         }
     }, {
         name: "Shotgun",
@@ -47737,7 +47806,7 @@
         type: 0,
         swapTime: 300,
         aimSpeed: 120,
-        spdMlt: 1,
+        spdMlt: 1.1,
         ammo: 2,
         shots: 5,
         reload: 1100,
@@ -47770,17 +47839,17 @@
         minSpread: 20,
         zoom: 1.25,
         leanMlt: 1.6,
-        recoil: .016,
-        recoilR: .015,
+        recoil: 0,
+        recoilR: 0,
         recover: .99,
         recoverF: .97,
-        recoilZ: 2,
-        recoilZM: .2,
+        recoilZ: 0,
+        recoilZM: 0,
         aimRecMlt: .5,
-        recoilYM: .6,
+        recoilYM: 0,
         recoilAnim: {
-            time: 340,
-            recoilTweenY: .2
+            time: 0,
+            recoilTweenY: 0
         },
         jumpYM: .5
     }, {
@@ -47792,7 +47861,7 @@
         type: 0,
         swapTime: 800,
         aimSpeed: 200,
-        spdMlt: .79,
+        spdMlt: 1.1,
         ammo: 100,
         reload: 3500,
         dmg: 22,
@@ -47811,7 +47880,8 @@
         yOff: -.65,
         zOff: -2.8,
         xOrg: 0,
-        yOrg: -.48,
+        yOrg: -.445,
+        yRot: -.005,
         zOrg: -2,
         cLean: .3,
         cRot: .4,
@@ -47828,19 +47898,19 @@
         minSpread: 10,
         zoom: 1.2,
         leanMlt: 1.6,
-        recoil: .0032,
-        recoilR: .03,
+        recoil: 0,
+        recoilR: 0,
         recover: .98,
         recoverY: .9975,
         recoverF: .975,
-        recoilZ: 3.8,
-        recoilYM: .25,
-        recoilZ: 3,
-        recoilZM: -.1,
+        recoilZ: 0,
+        recoilYM: 0,
+        recoilZ: 0,
+        recoilZM: 0,
         aimRecMlt: 1,
         recoilAnim: {
-            time: 200,
-            recoilTweenY: .03
+            time: 0,
+            recoilTweenY: 0
         },
         jumpYM: .5
     }, {
@@ -47848,52 +47918,59 @@
         src: "weapon_8",
         icon: "icon_8",
         sound: "weapon_8",
+        attach: 0,
+        attachYOff: -.08,
+        attachZOff: -1.2,
         nAuto: !0,
+        newM: !0,
         type: 0,
-        scope: !0,
+        noAo: !0,
         swapTime: 400,
         aimSpeed: 120,
-        spdMlt: 1,
+        spdMlt: 1.1,
         ammo: 8,
         reload: 1300,
-        dmg: 35,
+        dmg: 34,
         pierce: .2,
         range: 1e3,
         dmgDrop: 0,
         scale: 1,
-        leftHoldY: -.7,
-        rightHoldY: -.75,
-        leftHoldZ: 2.4,
-        rightHoldZ: .4,
+        leftHoldY: -.5,
+        rightHoldY: -.45,
+        leftHoldZ: .4,
+        rightHoldZ: -1.85,
         xOff: .8,
-        yOff: -.75,
-        zOff: -2,
+        yOff: -.55,
+        zOff: -3.5,
         xOrg: 0,
-        yOrg: -.55,
-        zOrg: -.8,
+        yOrg: -.395,
+        yRot: -.005,
+        zOrg: -3.4,
         cLean: .5,
         cRot: .4,
         cDrop: .1,
         inspectR: .4,
-        inspectM: .3,
-        muzOff: 5.7,
-        muzOffY: .5,
-        muzMlt: 1.4,
-        rate: 220,
-        spread: 200,
+        inspectM: 1.4,
+        muzOff: 4,
+        muzOffY: .05,
+        muzMlt: 1.2,
+        rate: 120,
+        spread: 160,
         caseZOff: -1.3,
-        zoom: 2.4,
-        leanMlt: 2,
-        recoil: .01,
-        recoilR: .01,
-        recover: .984,
-        recoverY: .997,
+        zoom: 2.1,
+        recoil: 0,
+        recoilR: 0,
+        recover: .98,
+        recoilY: 0,
+        recoverY: .994,
         recoverF: .975,
-        recoilY: .2,
-        recoilYM: .18,
-        recoilZ: 1.5,
+        recoilYM: 0,
+        recoilZ: 0,
+        recoilZM: 0,
+        aimRecMlt: .87,
         recoilAnim: {
-            recoilTweenY: .08
+            time: 0,
+            recoilTweenY: 0
         },
         jumpYM: .5
     }, {
@@ -47910,7 +47987,7 @@
         type: 0,
         swapTime: 600,
         aimSpeed: 200,
-        spdMlt: .9,
+        spdMlt: 1.1,
         ammo: 1,
         reload: 1600,
         scale: 1.3,
@@ -47939,17 +48016,17 @@
         zoom: 1.5,
         leanMlt: 1.4,
         landBob: .8,
-        recoil: .008,
-        recoilR: .012,
+        recoil: 0,
+        recoilR: 0,
         recover: .99,
         recoverY: .998,
         recoverF: .975,
-        recoilY: 0,
-        recoilZ: 4,
-        aimRecMlt: .5,
+        recoilZ: 0,
+        recoilZM: 0,
+        aimRecMlt: .9,
         recoilAnim: {
-            time: 300,
-            recoilTweenY: .25
+            time: 0,
+            recoilTweenY: 0
         },
         jumpYM: .3
     }, {
@@ -47963,7 +48040,7 @@
         type: 0,
         swapTime: 300,
         aimSpeed: 120,
-        spdMlt: 1.04,
+        spdMlt: 1.1,
         ammo: 18,
         reload: 1200,
         dmg: 18,
@@ -47997,16 +48074,15 @@
         minSpread: 10,
         zoom: 1.5,
         leanMlt: .6,
-        recoil: .0034,
-        recoilR: .015,
+        recoil: 0,
+        recoilR: 0,
         recover: .978,
         recoverY: .996,
         recoverF: .975,
-        recoilY: .3,
-        recoilZ: 5,
-        recoilYM: .6,
+        recoilZ: 0,
+        recoilYM: 0,
         recoilAnim: {
-            recoilTweenY: .01
+            recoilTweenY: 0
         }
     }, {
         name: "Desert Eagle",
@@ -48021,7 +48097,7 @@
         type: 1,
         swapTime: 200,
         aimSpeed: 120,
-        spdMlt: 1,
+        spdMlt: 1.1,
         ammo: 6,
         reload: 1e3,
         dmg: 50,
@@ -48037,7 +48113,7 @@
         yOff: -.95,
         zOff: -4.1,
         xOrg: 0,
-        yOrg: -.2,
+        yOrg: -.195,
         zOrg: -3.8,
         cLean: .5,
         cRot: .8,
@@ -48052,18 +48128,18 @@
         jYMlt: .5,
         zoom: 1.4,
         leanMlt: 1.6,
-        recoil: .01,
-        recoilR: .01,
+        recoil: 0,
+        recoilR: 0,
         recover: .985,
         recoverY: .996,
         recoverF: .98,
-        recoilY: 0,
-        recoilYM: .4,
-        aimRecMlt: .5,
-        recoilZ: 2.5,
-        recoilZM: -.4,
+        recoilYM: 0,
+        aimRecMlt: .7,
+        recoilZ: 0,
+        recoilZM: 0,
         recoilAnim: {
-            recoilTweenY: .25
+            time: 0,
+            recoilTweenY: 0
         }
     }, {
         name: "Alien Blaster",
@@ -48075,12 +48151,12 @@
         nAuto: !0,
         transp: !0,
         nCase: !0,
-        minRec: 50,
+        minRec: 15,
         kill: ["", 50],
         type: 1,
         swapTime: 200,
         aimSpeed: 120,
-        spdMlt: 1,
+        spdMlt: 1.1,
         ammo: 4,
         reload: 1500,
         dmg: 50,
@@ -48113,13 +48189,12 @@
         spread: 150,
         zoom: 1.4,
         leanMlt: 1.6,
-        recoil: .007,
-        recoilR: .01,
+        recoil: 0,
+        recoilR: 0,
         recover: .985,
         recoverY: .996,
         recoverF: .98,
-        recoilY: 1.05,
-        recoilZ: 2
+        recoilZ: 0
     }, {
         name: "Hands",
         melee: !0,
@@ -48149,54 +48224,54 @@
         secondary: !0,
         colors: [10975328, 4013373, 2302755, 2631720, 7098434, 12566463],
         health: 100,
-        speed: 1.05
+        speed: 1.2
     }, {
         name: "Hunter",
         loadout: [0],
         secondary: !0,
         colors: [10975328, 8083261, 6506290, 2631720, 6506290, 6506290],
         health: 60,
-        speed: 1.05
+        speed: 1.2
     }, {
         name: "Run N Gun",
         loadout: [3],
         colors: [10975328, 4088706, 3099491, 2631720, 6506290, 3099491],
         health: 100,
-        speed: 1.18
+        speed: 1.2
     }, {
         name: "Spray N Pray",
         loadout: [6],
         colors: [10975328, 5793865, 4806204, 2631720, 2631720, 4806204],
         health: 170,
         regen: .05,
-        speed: 1
+        speed: 1.2
     }, {
         name: "Vince",
         loadout: [5],
         secondary: !0,
         colors: [8412234, 5526119, 4144461, 2631720, 2631720, 4144461],
         health: 100,
-        speed: 1
+        speed: 1.2
     }, {
         name: "Detective",
         loadout: [4],
         colors: [10975328, 7360054, 6308654, 2631720, 6506290, 6308654],
         health: 100,
-        speed: 1
+        speed: 1.2
     }, {
         name: "Marksman",
         loadout: [7],
         secondary: !0,
         colors: [10975328, 5793865, 4806204, 2631720, 2631720, 4806204],
         health: 100,
-        speed: 1
+        speed: 1.2
     }, {
         name: "Rocketeer",
         loadout: [8],
         secondary: !0,
         colors: [10975328, 5793865, 4806204, 2631720, 7098434, 4806204],
         health: 130,
-        speed: .86
+        speed: 1.2
     }, {
         name: "Agent",
         loadout: [9],
@@ -48205,23 +48280,23 @@
         speed: 1.2
     }, {
         name: "Runner",
-        hide: !0,
+        //hide: !0,
         loadout: [12],
         colors: [10975328, 4013373, 2302755, 2631720, 2631720, 2302755],
         health: 100,
         speed: 1
     }, {
         name: "Deagler",
-        hide: !0,
+        //hide: !0,
         loadout: [10],
         colors: [10975328, 4013373, 2302755, 2631720, 2631720, 2302755],
         health: 60,
-        speed: 1
+        speed: 1.2
     }]
 }, function(t, e) {
     t.exports = [{
         name: "Nuke",
-        kills: 25,
+        kills: 50,
         activate: function(t, e) {
             return !t.nukeTimer && (t.startNuke(e), !0)
         }
@@ -48465,26 +48540,31 @@
             (t.which || t.keyCode) == c.chatKey ? window.pressButton(t.which || t.keyCode) : document.activeElement != chatInput && (c.enabled && t.preventDefault(), a(t.which || t.keyCode || 0, 1))
         }, !1), window.addEventListener("keyup", function(t) {
             //<edit>
-            if (document.activeElement != chatInput) {
-                if (t.keyCode == 112) {
+            if (document.activeElement != chatInput) 
+            {
+                if (t.keyCode == 112) 
+                {
                     window.mdlsettingsmain.autoaim += 1;
                     var aoptions = ["Off", "TriggerBot", "AimBot"];
                     window.Ze("Aim Style", `${ aoptions[window.mdlsettingsmain.autoaim%3] }`)
                 }
 
-                if (t.keyCode == 113) {
+                if (t.keyCode == 113) 
+                {
                     window.mdlsettingsmain.bhop = !window.mdlsettingsmain.bhop;
                     window.Ze("BHop", `${ window.mdlsettingsmain.bhop ? "on" : "off" }`)
                 }
 
-                if (t.keyCode == 114) {
+                if (t.keyCode == 114) 
+                {
                     window.mdlsettingsmain.info = !window.mdlsettingsmain.info;
                     window.Ze("Player Info", `${ window.mdlsettingsmain.info ? "on" : "off" }`)
                     var last_info;
                     
                     if (last_info != window.mdlsettingsmain.info) 
                     {
-                        for (let playerInfo of playerInfos.children) {
+                        for (let playerInfo of playerInfos.children) 
+                        {
                             let pname = playerInfo.querySelectorAll(".pInfoH")[0];
                             if (!pname) continue;
                             let pid = parseInt(playerInfo.id.replace("pInfo", ""));
@@ -48492,6 +48572,22 @@
                             pname.innerHTML = `${playerObj.name}`;
                         }
 						            last_info = window.mdlsettingsmain.info;
+                    }
+                }
+                
+                if (t.keyCode == 72) 
+                {
+                    if (window.players) 
+                    {
+                        let randomPlayer = window.players.filter(x=>!x.isYou)[Math.floor(Math.random()*window.players.length)];
+              					let me = window.players.filter(x => x.isYou)[0];
+                        
+                        
+                       window.control.moveCam(randomPlayer.x, randomPlayer.y + 11 - 1.5 - 2.5 * randomPlayer.crouchVal - me.recoilAnimY * 0.3 * 25, randomPlayer.z);
+                        // A.rotateCam(0, 0, 0)
+                        
+                        
+              				//	window.control.camLookAt(randomPlayer.x, randomPlayer.y + 11 - 1.5 - 2.5 * randomPlayer.crouchVal - me.recoilAnimY * 0.3 * 25, randomPlayer.z)
                     }
                 }
             }
@@ -48517,8 +48613,8 @@
         }
     }
 }, function(t, e, i) {
-    const n = i(96).words,
-        r = i(97).array;
+    const n = i(97).words,
+        r = i(98).array;
     t.exports = class {
         constructor(t = {}) {
             Object.assign(this, {
@@ -48557,9 +48653,9 @@
     }
 }, function(t, e, i) {
     t.exports = {
-        object: i(98),
-        array: i(99),
-        regex: i(100)
+        object: i(99),
+        array: i(100),
+        regex: i(101)
     }
 }, function(t, e) {
     t.exports = {
@@ -49019,4 +49115,4 @@
 }, function(t, e) {
     t.exports = /\b(4r5e|5h1t|5hit|a55|anal|anus|ar5e|arrse|arse|ass|ass-fucker|asses|assfucker|assfukka|asshole|assholes|asswhole|a_s_s|b!tch|b00bs|b17ch|b1tch|ballbag|balls|ballsack|bastard|beastial|beastiality|bellend|bestial|bestiality|bi\+ch|biatch|bitch|bitcher|bitchers|bitches|bitchin|bitching|bloody|blow job|blowjob|blowjobs|boiolas|bollock|bollok|boner|boob|boobs|booobs|boooobs|booooobs|booooooobs|breasts|buceta|bugger|bum|bunny fucker|butt|butthole|buttmuch|buttplug|c0ck|c0cksucker|carpet muncher|cawk|chink|cipa|cl1t|clit|clitoris|clits|cnut|cock|cock-sucker|cockface|cockhead|cockmunch|cockmuncher|cocks|cocksuck|cocksucked|cocksucker|cocksucking|cocksucks|cocksuka|cocksukka|cok|cokmuncher|coksucka|coon|cox|crap|cum|cummer|cumming|cums|cumshot|cunilingus|cunillingus|cunnilingus|cunt|cuntlick|cuntlicker|cuntlicking|cunts|cyalis|cyberfuc|cyberfuck|cyberfucked|cyberfucker|cyberfuckers|cyberfucking|d1ck|damn|dick|dickhead|dildo|dildos|dink|dinks|dirsa|dlck|dog-fucker|doggin|dogging|donkeyribber|doosh|duche|dyke|ejaculate|ejaculated|ejaculates|ejaculating|ejaculatings|ejaculation|ejakulate|f u c k|f u c k e r|f4nny|fag|fagging|faggitt|faggot|faggs|fagot|fagots|fags|fanny|fannyflaps|fannyfucker|fanyy|fatass|fcuk|fcuker|fcuking|feck|fecker|felching|fellate|fellatio|fingerfuck|fingerfucked|fingerfucker|fingerfuckers|fingerfucking|fingerfucks|fistfuck|fistfucked|fistfucker|fistfuckers|fistfucking|fistfuckings|fistfucks|flange|fook|fooker|fuck|fucka|fucked|fucker|fuckers|fuckhead|fuckheads|fuckin|fucking|fuckings|fuckingshitmotherfucker|fuckme|fucks|fuckwhit|fuckwit|fudge packer|fudgepacker|fuk|fuker|fukker|fukkin|fuks|fukwhit|fukwit|fux|fux0r|f_u_c_k|gangbang|gangbanged|gangbangs|gaylord|gaysex|goatse|God|god-dam|god-damned|goddamn|goddamned|hardcoresex|hell|heshe|hoar|hoare|hoer|homo|hore|horniest|horny|hotsex|jack-off|jackoff|jap|jerk-off|jism|jiz|jizm|jizz|kawk|knob|knobead|knobed|knobend|knobhead|knobjocky|knobjokey|kock|kondum|kondums|kum|kummer|kumming|kums|kunilingus|l3i\+ch|l3itch|labia|lust|lusting|m0f0|m0fo|m45terbate|ma5terb8|ma5terbate|masochist|master-bate|masterb8|masterbat*|masterbat3|masterbate|masterbation|masterbations|masturbate|mo-fo|mof0|mofo|mothafuck|mothafucka|mothafuckas|mothafuckaz|mothafucked|mothafucker|mothafuckers|mothafuckin|mothafucking|mothafuckings|mothafucks|mother fucker|motherfuck|motherfucked|motherfucker|motherfuckers|motherfuckin|motherfucking|motherfuckings|motherfuckka|motherfucks|muff|mutha|muthafecker|muthafuckker|muther|mutherfucker|n1gga|n1gger|nazi|nigg3r|nigg4h|nigga|niggah|niggas|niggaz|nigger|niggers|nob|nob jokey|nobhead|nobjocky|nobjokey|numbnuts|nutsack|orgasim|orgasims|orgasm|orgasms|p0rn|pawn|pecker|penis|penisfucker|phonesex|phuck|phuk|phuked|phuking|phukked|phukking|phuks|phuq|pigfucker|pimpis|piss|pissed|pisser|pissers|pisses|pissflaps|pissin|pissing|pissoff|poop|porn|porno|pornography|pornos|prick|pricks|pron|pube|pusse|pussi|pussies|pussy|pussys|rectum|retard|rimjaw|rimming|s hit|s.o.b.|sadist|schlong|screwing|scroat|scrote|scrotum|semen|sex|sh!\+|sh!t|sh1t|shag|shagger|shaggin|shagging|shemale|shi\+|shit|shitdick|shite|shited|shitey|shitfuck|shitfull|shithead|shiting|shitings|shits|shitted|shitter|shitters|shitting|shittings|shitty|skank|slut|sluts|smegma|smut|snatch|son-of-a-bitch|spac|spunk|s_h_i_t|t1tt1e5|t1tties|teets|teez|testical|testicle|tit|titfuck|tits|titt|tittie5|tittiefucker|titties|tittyfuck|tittywank|titwank|tosser|turd|tw4t|twat|twathead|twatty|twunt|twunter|v14gra|v1gra|vagina|viagra|vulva|w00se|wang|wank|wanker|wanky|whoar|whore|willies|willy|xrated|xxx)\b/gi
 }]);
-//# sourceMappingURL=game.LwYhN.js.map
+//# sourceMappingURL=game.ZAfLp.js.map
