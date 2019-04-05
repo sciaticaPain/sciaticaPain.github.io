@@ -22,6 +22,7 @@ if (window.location.hostname === 'krunker.io') {
     var current10 = 0;
     var msgpack5 = msgpack;
 
+    console.log(window.WebSocket);
     window.WebSocket.prototype.oldSend = WebSocket.prototype.send;
     window.WebSocket.prototype.send = function(m) {
         if (!krSocket) addListener(this);
@@ -45,6 +46,8 @@ if (window.location.hostname === 'krunker.io') {
 
     window.stop();
     document.innerHTML = ``;
+    unsafeWindow.zip = "";
+    unsafeWindow.zipExt = "";
 
     GM_xmlhttpRequest({
         method: "GET",
@@ -81,10 +84,12 @@ if (window.location.hostname === 'krunker.io') {
     }
 
     socialWS.onmessage = (msg) => {
+        //console.log(msg);
         let msgRaw = new Uint8Array(msg.data).slice(2);
+        //console.log(msgRaw);
         msg = msgpack5.decode(Array.from(msgRaw));
         let playerData = msg[1][2];
-        let playerObj = unsafeWindow.players.filter(x => x.name == playerData.player_name)[0];
+        let playerObj = unsafeWindow.players.list.filter(x => x.name == playerData.player_name)[0];
         playerObj.kdval = Math.round(playerData.player_kills / playerData.player_deaths * 100) / 100;
         if (!playerObj.kdval) playerObj.kdval = "N/A"
     }
@@ -118,11 +123,12 @@ if (window.location.hostname === 'krunker.io') {
     unsafeWindow.mnxrecoil = (me, inputs) => {
         if (!unsafeWindow.players) return;
 
-        me = unsafeWindow.players.filter(x => x.isYou)[0];
+        me = unsafeWindow.players.list.filter(x => x.isYou)[0];
 
-        for (let player of unsafeWindow.players) {
+        for (let player of unsafeWindow.players.list) {
             if (unsafeWindow.mdlsettingsmain.info) {
                 if (!player.kdval) {
+                    //console.log("Setting kdval!");
                     let data = msgpack5.encode(["r", ["profile", player.name, null, null]]);
                     data = Array.from(data);
                     data.unshift(0, 7);
@@ -133,6 +139,7 @@ if (window.location.hostname === 'krunker.io') {
         }
 
         if (me.weapon.ammo && me.ammos[me.weaponIndex] === 0) {
+            //console.log(inputs);
             if (inputs && /* inval */ inputs[9] === 0) inputs[9] = 1; //Simulate click
         }
 
@@ -141,33 +148,26 @@ if (window.location.hostname === 'krunker.io') {
             let pname = playerInfo.querySelectorAll(".pInfoH")[0];
             if (!pname) continue;
             let pid = parseInt(playerInfo.id.replace("pInfo", ""));
-            let playerObj = unsafeWindow.players.filter(x => x.sid == pid)[0];
+            let playerObj = unsafeWindow.players.list.filter(x => x.sid == pid)[0];
             pname.innerHTML = `${playerObj.name} (${Math.round(dist3(playerObj, me))/10} mm)<h4 style="color: white; text-align: center; margin-top: 20px; margin-bottom: 0px;">[${playerObj.weapon.name}]</h4>`;
         }
 
         if (unsafeWindow.mdlsettingsmain.bhop) unsafeWindow.control.keys[32] = unsafeWindow.control.keys[32] ? !unsafeWindow.control.keys[32] : 1
-        let nplayers = unsafeWindow.players.filter(x => x.inView).filter(x => !x.isYou).filter(x => (!x.team || (x.team !== me.team))).filter(x => x.active).filter(x => unsafeWindow.mdlsettings.screenaim ? unsafeWindow.camhook.containsPoint(x) : true).sort((a, b) => dist3(me, a) - dist3(me, b));
+        let nplayers = unsafeWindow.players.list.filter(x => x.inView).filter(x => !x.isYou).filter(x => (!x.team || (x.team !== me.team))).filter(x => x.active).filter(x => unsafeWindow.mdlsettings.screenaim ? unsafeWindow.camhook.containsPoint(x) : true).sort((a, b) => dist3(me, a) - dist3(me, b));
         let closest = nplayers[0];
-        let setByMe = 0;
 
         if (closest) {
             if (unsafeWindow.control.mouseDownR = unsafeWindow.mdlsettingsmain.autoaim % 3 === 1) {
                 if (me.aimVal === 0) {
                     unsafeWindow.control.camLookAt(closest.x, closest.y + 11 - 1.5 - 2.5 * closest.crouchVal - me.recoilAnimY * 0.3 * 25, closest.z);
                     if (unsafeWindow.control.mouseDownL === 0) unsafeWindow.control.mouseDownL = 1;
-                    setByMe = 1;
                 }
             } else if (unsafeWindow.control.mouseDownR = unsafeWindow.mdlsettingsmain.autoaim % 3 === 2) {
                 if (me.aimVal === 0) {
                     unsafeWindow.control.camLookAt(closest.x, closest.y + 11 - 1.5 - 2.5 * closest.crouchVal - me.recoilAnimY * 0.3 * 25, closest.z);
-                    setByMe = 1;
                 }
             }
         } else {
-            if (setByMe ===1) {
-                unsafeWindow.control.mouseDownR = 0;
-                setByMe = 0;
-            }
             unsafeWindow.control.camLookAt(null);
             unsafeWindow.control.aimTarget = null;
             unsafeWindow.control.target = null;
@@ -177,12 +177,7 @@ if (window.location.hostname === 'krunker.io') {
     function addListener(socket) {
         unsafeWindow.socket = socket;
         krSocket = socket;
-        $('#aHolder').css({
-            opacity: 0,
-            cursor: "default",
-            marginTop: 5000,
-            position: "absolute"
-        });
+
         unsafeWindow.Ze2("mrPain", `<span style="color:#FF0000">Welcome to Krunker!</span> <br>
                                     <span style="color:#FF7F00">'F1'</span><em> Aim Helper Type</em> <br>
                                     <span style="color:#FFFF00">'F2'</span><em> Bhop Toggle</em> <br>

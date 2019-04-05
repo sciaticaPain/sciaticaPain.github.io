@@ -42262,10 +42262,6 @@
                 for (b = 0; b < this.reloads.length; ++b) 0 < this.reloads[b] && (this.reloads[b] -= a, 0 > this.reloads[b] && (this.reloads[b] = 0));
                 if (this.weapon && !this.weapon.melee) {
                     var k = !this.weapon.nAuto && t[5];
-                    //<edit>
-                    window.shoot = () => {e.shoot(this) };
-                    window.reload = () => {e.reload(this) };					
-                    //<edit\>
                     this.didShoot && !t[5] && (this.didShoot = !1), !this.didShoot && t[5] && (k = !0), k && 0 >= this.reloads[this.weaponIndex] && 0 >= this.swapTime && 0 >= this.reloadTimer && (0 < this.ammos[this.weaponIndex] ? e.shoot(this) : e.reload(this))
                 }
             }
@@ -42508,7 +42504,7 @@
                 s.play("jump_" + a.randInt(0, 1), .04, !1, a.randFloat(.9, 1))
             }
         }, this.updateAim = function(t, i) {
-            /*<edit> Bigger Zoom - e.zoom(1 + ((t.weapon.zoom * 10) - 1) * i) <edit\>*/ e.zoom(1 + ((t.weapon.zoom * 3.25) - 1) * i)
+            /*<edit> Bigger Zoom - e.zoom(1 + ((t.weapon.zoom * 10) - 1) * i) <edit\>*/ e.zoom(1 + ((t.weapon.zoom * 2.25) - 1) * i)
         }, this.toggleAim = function(i, n) {
             s && !i.recon && s.play("aim_" + n, .1), n || this.resetAim(), i.weapon.scope && (e.zoom(n ? i.weapon.zoom : 1), i.weaponMeshes[i.weaponIndex].visible = !t.hideWeapon && !n, aimRecticle.style.opacity = n ? 1 : 0), t.attach[i.weapon.attach] && (aimDot.style.opacity = n ? 1 : 0)
         }, this.resetAim = function() {
@@ -42530,10 +42526,10 @@
                 var n = i.ammos[i.weaponIndex] / t.weapons[i.loadout[i.weaponIndex]].ammo;
                 .25 >= n && !i.weapon.nRing ? (t.playSound("gclick_0", .3 * (1 - n / .25), i, !1, a.randFloat(.9, 1)), t.playSound(i.weapon.sound, .85, i, !1, a.randFloat(.9, 1) + .15 * (1 - n / .25))) : t.playSound(i.weapon.sound, .85, i, !1, a.randFloat(.9, 1))
             }
-            //<edit> - NoRecoil
-            //if (i.recoilForce += i.weapon.recoil, i.isYou) {
-            if (0) {
+				     //<edit> - NoRecoil
+            /*
             //<edit\>
+            if (i.recoilForce += i.weapon.recoil, i.isYou) {
                 var r = a.randInt(0, 1) ? -i.weapon.recoilR : i.weapon.recoilR;
                 i.recoilX += r, i.recoilZ += r, i.recoilTween && i.recoilTween.stop();
                 var p = i.weapon.recoilAnim && i.weapon.recoilAnim.time || i.weapon.rate;
@@ -42545,6 +42541,9 @@
                     }, .95 * p).easing(TWEEN.Easing.Back.Out).start()
                 }).start(), this.cancelInspect(i)
             }
+            //<edit>
+            */
+            //<edit\>
             if (i.isYou && !t.hideWeapon) {
                 var u = i.weaponMeshes[i.weaponIndex],
                     d = 0 == i.aimVal && i.weapon.scope;
@@ -42582,20 +42581,13 @@
                             })
                         }
                     }
-                    //<edit> - Weapon Range +
-                    var L = 2000;//i.weapon.range;
+                    var L = i.weapon.range;
                     if (m.length) {
                         m.sort(a.orderByDst);
-                        //<edit> - Weapon Damage +
-                        var R = 250;//i.weapon.dmg;
-                        //<edit\>
-                        //<edit> - Weapon Range +
-                        for (T = 0; T < m.length && (h = m[T], L /*= i.weapon.range */* h.dst, l); ++T) {
-                        //<edit\>
+                        var R = i.weapon.dmg;
+                        for (T = 0; T < m.length && (h = m[T], L = i.weapon.range * h.dst, l); ++T) {
                             var k = i.weapon.dropStart || 0,
-                                //<edit> - Weapon Range +
-                                P = Math.min(1, 1 - (1 - h.dst) * L/*i.weapon.range*/ / (L/*i.weapon.range*/ - k)),
-                                //<edit\>
+                                P = Math.min(1, 1 - (1 - h.dst) * i.weapon.range / (i.weapon.range - k)),
                                 C = R - i.weapon.dmgDrop * P,
                                 I = !1,
                                 O = !1;
@@ -42611,17 +42603,15 @@
                                     };
                                     this.kill(h.obj, i, B)
                                 }
-                                //<edit> - what is this poop
-                                //R -= null == i.weapon.pierce ? R : i.weapon.dmg * c.materialDens.flesh * i.weapon.pierce
-                            } //else {
-                                //if (!h.obj || !h.obj.penetrable) break;
-                                //R -= null == i.weapon.pierce ? R : i.weapon.dmg * c.materialDens.default * i.weapon.pierce
-                            //}
-                            //if (0 >= R) break
-                            //<edit\>
+                                R -= null == i.weapon.pierce ? R : i.weapon.dmg * c.materialDens.flesh * i.weapon.pierce
+                            } else {
+                                if (!h.obj || !h.obj.penetrable) break;
+                                R -= null == i.weapon.pierce ? R : i.weapon.dmg * c.materialDens.default * i.weapon.pierce
+                            }
+                            if (0 >= R) break
                         }
                     }
-                    L -= .12;
+                    L -= 1;
                     var N = i.x + L * Math.sin(y + Math.PI) * Math.cos(x),
                         z = (D = S + L * Math.sin(x), i.z + L * Math.cos(y + Math.PI) * Math.cos(x)),
                         U = 0,
@@ -42640,11 +42630,6 @@
                     v = (i.spread + (i.weapon.innac || 0)) * c.spreadAdj, y = i.xDire + a.randFloat(-v, v), x = i.yDire + i.recoilAnimY * c.recoilMlt + a.randFloat(-v, v);
                     t.projectiles.init(i.x, i.y + i.height - c.cameraHeight, i.z, y, x, i.weapon.projectile, i)
                 }
-				//<edit>
-				if (window.control.mouseDownR === 1) {	
-					window.control.mouseDownR = 0;  
-				}
-				//<edit\>
         }, this.spray = function(e) {
             if (t.now - e.lastSpray >= c.sprayTimer) {
                 m.length = 0;
@@ -46034,7 +46019,7 @@
             this.updateAccounts(), this.init()
         }, this.update = function(t, e, i) {
         //<edit>
-        window.players = this.players.list;
+        window.players = this.players;
         //<edit\>
             if (this.now = e, d) {
                 var n = !0;
@@ -46060,7 +46045,7 @@
             col: "#E040FB"
         },
         price: 50,
-        rarities: [75, 22, 3, 0, 0, 0]
+        rarities: [0, 0, 3, 22, 75, 0]
     }, {
         name: "Elite",
         lab: {
@@ -46068,7 +46053,7 @@
             col: "#E040FB"
         },
         price: 100,
-        rarities: [50, 30, 15, 5, 0, 0]
+        rarities: [0, 5, 15, 30, 50, 0]
     }, {
         name: "Heroic",
         lab: {
@@ -46076,7 +46061,7 @@
             col: "#E040FB"
         },
         price: 500,
-        rarities: [1, 48, 35, 14, 2, 0]
+        rarities: [1, 2, 14, 35, 48, 0]
     }, {
         name: "Hunter",
         lab: {
@@ -46095,7 +46080,7 @@
         },
         itemTypes: [1, 2],
         price: 750,
-        rarities: [43, 33, 17, 6, 1, 0]
+        rarities: [1, 6, 17, 33, 43, 0]
     }], t.exports.types = ["weapons/weapon_", "hats/hat_", "body/body_"], t.exports.purchases = [{
         val: 300,
         price: .99
@@ -48872,7 +48857,7 @@
 }, function(t, e) {
     t.exports = [{
         name: "Nuke",
-        kills: 50,
+        kills: 25,
         activate: function(t, e) {
             return !t.nukeTimer && (t.startNuke(e), !0)
         }
@@ -49079,6 +49064,13 @@
         }, this.update = function(e) {
             if (this.target) {
                 //<edit>
+                //*
+                var i = n.getAngleDist(this.object.rotation.y, this.target.yD);
+                this.object.rotation.y += i * e * s.camChaseTrn, i = n.getAngleDist(c.pitchObject.rotation.x, this.target.xD), this.pitchObject.rotation.x += i * e * s.camChaseTrn, i = n.getDistance3D(this.object.position.x, this.object.position.y, this.object.position.z, this.target.x, this.target.y, this.target.z) * e * s.camChaseSpd;
+                var r = n.getDirection(this.object.position.z, this.object.position.x, this.target.z, this.target.x),
+                    o = n.getXDir(this.object.position.x, this.object.position.y, this.object.position.z, this.target.x, this.target.y, this.target.z);
+                this.object.position.x -= i * Math.sin(r) * Math.cos(o), this.object.position.y += i * Math.sin(o), this.object.position.z -= i * Math.cos(r) * Math.cos(o), t.updateFrustum()
+                //*/
                 this.object.rotation.y = this.target.yD;
                 this.pitchObject.rotation.x = this.target.xD;
                 const jkx = Math.PI / 2;
@@ -49092,11 +49084,6 @@
                 this.yDr = (this.pitchObject.rotation.x % Math.PI2).round(3);
                 this.xDr = (this.object.rotation.y % Math.PI2).round(3);
                 //<edit\>
-                var i = n.getAngleDist(this.object.rotation.y, this.target.yD);
-                this.object.rotation.y += i * e * s.camChaseTrn, i = n.getAngleDist(c.pitchObject.rotation.x, this.target.xD), this.pitchObject.rotation.x += i * e * s.camChaseTrn, i = n.getDistance3D(this.object.position.x, this.object.position.y, this.object.position.z, this.target.x, this.target.y, this.target.z) * e * s.camChaseSpd;
-                var r = n.getDirection(this.object.position.z, this.object.position.x, this.target.z, this.target.x),
-                    o = n.getXDir(this.object.position.x, this.object.position.y, this.object.position.z, this.target.x, this.target.y, this.target.z);
-                this.object.position.x -= i * Math.sin(r) * Math.cos(o), this.object.position.y += i * Math.sin(o), this.object.position.z -= i * Math.cos(r) * Math.cos(o), t.updateFrustum()
             }
         }, this.camLookAt = /*<edit>*/window.camLookAt = /*<edit\>*/function(t, e, i) {
             var r = n.getXDir(this.object.position.x, this.object.position.y, this.object.position.z, t, e, i),
