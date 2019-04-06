@@ -1,7 +1,7 @@
-// ==UserScript==
-// @name         Krunker Bitch Local
+﻿// ==UserScript==
+// @name         Krunker Bitch
 // @namespace    -
-// @version      1.0
+// @version      1.2.0
 // @description  The Painful Modification
 // @author       mrPain / Sammy «Z»#7383
 // @match        *://krunker.io/*
